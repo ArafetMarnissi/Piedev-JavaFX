@@ -3,7 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Pidev_javaFX.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/tools/MaConnection.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/tools/Statics.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/CoachController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Participation.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ModifierCoach.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/ActiviteService.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AjoutActivite.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AffichageActiviteFrontController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AfficherCoachController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ModifierCoachController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Coach_test.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageParticipation.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/CrudInterface.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AjoutActiviteController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/Coach.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/CoachService.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AffichageActiviteController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageActiviteFront.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AfficherCoach.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/ParticipationService.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Coach.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ModifierActiviteController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Activite.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageActivite.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ModifierActivite.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AffichageParticipationController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Test.java</file>
         </group>
     </open-files>
 </project-private>

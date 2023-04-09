@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="553.0" prefWidth="785.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ModifierActiviteController">
+   <children>
+      <Label layoutX="38.0" layoutY="41.0" text="Nom" />
+      <Label layoutX="38.0" layoutY="100.0" text="Description" />
+      <Label layoutX="38.0" layoutY="166.0" text="Nombre de places" />
+      <Label layoutX="38.0" layoutY="234.0" text="image" />
+      <TextField fx:id="nom_activite_modif_field" layoutX="146.0" layoutY="36.0" style="-fx-background-radius: 25;" />
+      <TextField fx:id="description_activite_modif_field" layoutX="146.0" layoutY="95.0" style="-fx-background-radius: 25;" />
+      <TextField fx:id="nbreplace_activite_modif" layoutX="176.0" layoutY="161.0" style="-fx-background-radius: 25;" />
+      <TextField fx:id="image_activite_modif" layoutX="146.0" layoutY="229.0" style="-fx-background-radius: 25;" />
+      <Button fx:id="btn_image_activite_modif" layoutX="336.0" layoutY="229.0" mnemonicParsing="false" onAction="#image_activite_modifOnClick" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Image" textFill="WHITE" />
+      <Button fx:id="btn_modifier_activite" layoutX="208.0" layoutY="489.0" mnemonicParsing="false" onAction="#modifier_activiteOnClick" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifier" textFill="WHITE" />
+      <ComboBox fx:id="comb1" layoutX="146.0" layoutY="289.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #1372f4;" />
+      <Label layoutX="41.0" layoutY="294.0" text="Coach" />
+      <JFXDatePicker fx:id="date_activite_modif" defaultColor="#1372f4" layoutX="167.0" layoutY="335.0" prefHeight="31.0" prefWidth="187.0" />
+      <JFXTimePicker fx:id="deb_activite_modif" defaultColor="#1372f4" layoutX="168.0" layoutY="373.0" prefHeight="31.0" prefWidth="187.0" />
+      <JFXTimePicker fx:id="fin_activite_modif" defaultColor="#1372f4" layoutX="169.0" layoutY="419.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="41.0" layoutY="351.0" text="Date" />
+      <Label layoutX="41.0" layoutY="394.0" text="l'heure de debut" />
+      <Label layoutX="41.0" layoutY="440.0" text="l'heure de fin" />
+      <Button fx:id="retour_activite_modif" layoutX="427.0" layoutY="489.0" mnemonicParsing="false" onAction="#retour_act_modifOnClick" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Retour" textFill="WHITE" />
+      <Label fx:id="erreur_nom_act_modif" layoutX="375.0" layoutY="41.0" textFill="RED" />
+      <Label fx:id="erreur_description_modif" layoutX="363.0" layoutY="100.0" textFill="RED" />
+      <Label fx:id="erreur_nbreplace_modif" layoutX="410.0" layoutY="166.0" textFill="RED" />
+      <Label fx:id="erreur_date_modif" layoutX="393.0" layoutY="351.0" textFill="RED" />
+      <ImageView fitHeight="150.0" fitWidth="357.0" layoutX="419.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/logo1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
