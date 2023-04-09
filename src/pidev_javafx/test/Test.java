@@ -5,10 +5,17 @@
  */
 package pidev_javafx.test;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.ObservableList;
+import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.User;
+import pidev_javafx.service.CategoryService;
 import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
+import pidev_javafx.service.ProduitService;
 
 /**
  *
@@ -19,19 +26,27 @@ public class Test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Commande c =new Commande(2,"c21,ariana,haouaria",150,"par chèque",26845811);
-        Commande c1 =new Commande(6,2,"2023-03-11 09:39:00.0","c21,tunis,haouaria",150,"par chèque",23232323);
-        CommandeService CS =new CommandeService();
-        LigneCommandeService LS=new LigneCommandeService();
-        //CS.ajouter(c);
-        User u =new User(2);
-        //System.out.println(u.getId());
-        //CS.supprimer(c);
-        //CS.modifier(c1);
-       // System.out.println(LS.afficher());
-        System.out.println(CS.getCommandeParId(1));
-        //System.out.println(CS.afficher());
+    public static void main(String[] args) throws SQLException {
+//        Category c1=new Category(2);
+//        Category c2=new Category("BCCA");
+//        //Category cat=new Category("BCCA");
+       CategoryService cs=new CategoryService();
+//        //cs.ajouter(cat);
+//        //System.out.println(cs.afficher());
+//        //cs.modifier(c2);
+//        //cs.supprimer(c1);
+       //System.out.println(cs.afficher());
+//        System.out.println(cs.affichercat());
+        ProduitService ps=new ProduitService();
+       System.out.println(ps.findprodbycat(17));
+       
+//       ObservableList<Category> l= cs.afficher();
+//        List<String> nc = new ArrayList<>();
+//            for (Category category : l) {
+//                 nc.add(category.getNomCategory());
+//            }
+//            System.out.println(nc);
+
         
     }
     

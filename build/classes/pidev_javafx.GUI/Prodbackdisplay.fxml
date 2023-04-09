@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.ProdbackdisplayController">
+   <children>
+      <Button fx:id="btnajoutprod" layoutX="39.0" layoutY="261.0" mnemonicParsing="false" onAction="#addprodclick" style="-fx-background-color: #1372f4;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="modifierprodbtn" layoutX="492.0" layoutY="261.0" mnemonicParsing="false" onAction="#updateprod" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier" textFill="WHITE" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="191.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/logo1.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tableprodback" layoutX="39.0" layoutY="14.0" prefHeight="200.0" prefWidth="527.0">
+        <columns>
+          <TableColumn fx:id="tablenom" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="tablecat" prefWidth="75.0" text="Category" />
+            <TableColumn fx:id="tabledesc" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="tableprix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="tablequant" prefWidth="75.0" text="Quantite" />
+            <TableColumn fx:id="tabledate" prefWidth="75.0" text="Date exp" />
+            <TableColumn fx:id="tablenote" prefWidth="75.0" text="Note" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

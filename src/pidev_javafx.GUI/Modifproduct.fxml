@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.ModifproductController">
+   <children>
+      <TextField fx:id="textnommodif" layoutX="111.0" layoutY="45.0" />
+      <TextField fx:id="textprixmodif" layoutX="111.0" layoutY="91.0" />
+      <TextField fx:id="textquantmodif" layoutX="111.0" layoutY="136.0" />
+      <TextField fx:id="textimgmodif" layoutX="111.0" layoutY="175.0" />
+      <TextArea fx:id="textdescmodif" layoutX="128.0" layoutY="211.0" prefHeight="109.0" prefWidth="115.0" />
+      <DatePicker fx:id="datemodif" layoutX="104.0" layoutY="350.0" />
+      <Button fx:id="btnimgmofig" layoutX="286.0" layoutY="175.0" mnemonicParsing="false" onAction="#addimgonclickmodif" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="choisir un fichier" textFill="WHITE" />
+      <Button fx:id="btnmodif" layoutX="246.0" layoutY="479.0" mnemonicParsing="false" onAction="#btnmodifonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier " textFill="WHITE" />
+      <Label layoutX="37.0" layoutY="49.0" text="Nom" />
+      <Label layoutX="37.0" layoutY="95.0" text="Prix" />
+      <Label layoutX="37.0" layoutY="140.0" text="Quantite" />
+      <Label layoutX="43.0" layoutY="179.0" text="image" />
+      <Label layoutX="47.0" layoutY="251.0" text="Description" />
+      <Label layoutX="33.0" layoutY="354.0" text="Date" />
+      <Label layoutX="33.0" layoutY="420.0" text="Category" />
+      <ComboBox fx:id="textcatmodif" layoutX="116.0" layoutY="416.0" prefWidth="150.0" />
+      <FontAwesomeIconView fx:id="closeicon" glyphName="CLOSE" layoutX="510.0" layoutY="33.0" onMouseClicked="#closemodif" size="20" wrappingWidth="33.000004291534424" />
+   </children>
+</AnchorPane>

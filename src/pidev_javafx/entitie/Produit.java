@@ -6,6 +6,7 @@
 package pidev_javafx.entitie;
 
 import java.sql.Date;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +25,17 @@ public class Produit {
     public Produit() {
     }
 
+    public Produit(Category category, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration, float note) {
+        this.category = category;
+        this.nom = nom;
+        this.description = description;
+        this.prix_produit = prix_produit;
+        this.quantite_produit = quantite_produit;
+        this.image_produit = image_produit;
+        this.date_expiration = date_expiration;
+        this.note = note;
+    }
+
     public Produit(int id, Category category, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration, float note) {
         this.id = id;
         this.category = category;
@@ -35,8 +47,11 @@ public class Produit {
         this.date_expiration = date_expiration;
         this.note = note;
     }
+    
+    
 
-    public Produit(Category category, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration, float note) {
+    public Produit(int id, Category category, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration) {
+        this.id = id;
         this.category = category;
         this.nom = nom;
         this.description = description;
@@ -44,8 +59,39 @@ public class Produit {
         this.quantite_produit = quantite_produit;
         this.image_produit = image_produit;
         this.date_expiration = date_expiration;
-        this.note = note;
+        this.note = 0;
     }
+
+    public Produit(Category category, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration) {
+        this.category = category;
+        this.nom = nom;
+        this.description = description;
+        this.prix_produit = prix_produit;
+        this.quantite_produit = quantite_produit;
+        this.image_produit = image_produit;
+        this.date_expiration = date_expiration;
+        this.note = 0;
+    }
+
+    public Produit(int id, String nom, String description, float prix_produit, int quantite_produit, String image_produit, Date date_expiration) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.prix_produit = prix_produit;
+        this.quantite_produit = quantite_produit;
+        this.image_produit = image_produit;
+        this.date_expiration = date_expiration;
+    }
+
+    public Produit(int id, String nom, String description, float prix_produit, int quantite_produit, String image_produit) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.prix_produit = prix_produit;
+        this.quantite_produit = quantite_produit;
+        this.image_produit = image_produit;
+    }
+    
 
     public int getId() {
         return id;
