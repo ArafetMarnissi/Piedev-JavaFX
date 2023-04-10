@@ -48,8 +48,30 @@ public class UserService implements CrudInterface<User> {
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+          
         }
     }
+    
+   public boolean userExists(User t ) {
+    boolean exists = false;
+    try {
+        // Assuming you have a connection object called "conn" to the database
+        PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM User WHERE email = ?");
+        stmt.setString(1, t.getEmail());
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        if (rs.getInt(1) > 0) {
+            exists = true;
+        }
+        rs.close();
+        stmt.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle the exception here, e.g. log it or display an error message to the user
+    }
+    return exists;
+}
+
 
     
 

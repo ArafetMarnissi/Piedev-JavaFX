@@ -21,7 +21,9 @@ public class JavaFXMain extends Application{
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().
-                    getResource("affichage.fxml"));
+                    getResource("addUser.fxml"));
+             root.setStyle("-fx-background-color: #ffffff;");
+
             Scene scene = new Scene(root);
             
             primaryStage.setTitle("Créer un compte");
