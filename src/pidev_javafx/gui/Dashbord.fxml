@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="941.0" stylesheets="@dashbord.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="698.0" prefWidth="183.0">
+         <children>
+            <AnchorPane fx:id="side_anchorpane" prefHeight="706.0" prefWidth="183.0" styleClass="side_anchorpane" stylesheets="@dashbord.css">
+               <children>
+                  <Pane fx:id="inner_pane" layoutX="8.0" layoutY="32.0" prefHeight="44.0" prefWidth="168.0" styleClass="inner_pane" stylesheets="@dashbord.css" />
+               </children></AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>
