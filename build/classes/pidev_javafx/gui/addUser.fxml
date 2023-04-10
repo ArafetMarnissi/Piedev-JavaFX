@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="pidev_javafx.gui.AddUserController">
+   <children>
+      <TextField fx:id="email" layoutX="187.0" layoutY="66.0" promptText="email" />
+      <TextField fx:id="mdp" layoutX="187.0" layoutY="106.0" promptText="mot de passe" />
+      <TextField fx:id="name" layoutX="187.0" layoutY="146.0" promptText="nom" />
+      <TextField fx:id="lastname" layoutX="187.0" layoutY="187.0" promptText="prénom" />
+      <Button layoutX="226.0" layoutY="226.0" mnemonicParsing="false" onAction="#creerCompte" text="Créer" />
+   </children>
+</AnchorPane>

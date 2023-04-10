@@ -9,6 +9,8 @@ import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
+import pidev_javafx.service.UserService;
+import pidev_javafx.tools.MaConnection;
 
 /**
  *
@@ -20,17 +22,22 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        MaConnection M = MaConnection.getInstance();
         Commande c =new Commande(2,"c21,ariana,haouaria",150,"par chèque",26845811);
         Commande c1 =new Commande(6,2,"2023-03-11 09:39:00.0","c21,tunis,haouaria",150,"par chèque",23232323);
         CommandeService CS =new CommandeService();
-        LigneCommandeService LS=new LigneCommandeService();
+        User u1 = new User("dsdssd@gmail.com","khalil123","khalil","hermassi");
+        UserService US = new UserService();
+         US.ajouter(u1); 
+       
+       
+        
+        System.out.println(US.afficher());
         //CS.ajouter(c);
-        User u =new User(2);
         //System.out.println(u.getId());
         //CS.supprimer(c);
         //CS.modifier(c1);
        // System.out.println(LS.afficher());
-        System.out.println(CS.getCommandeParId(1));
         //System.out.println(CS.afficher());
         
     }
