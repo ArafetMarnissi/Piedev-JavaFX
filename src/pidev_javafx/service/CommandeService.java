@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.User;
 import pidev_javafx.tools.MaConnection;
@@ -51,8 +53,8 @@ public class CommandeService implements CrudInterface<Commande> {
     }
 
     @Override
-    public List<Commande> afficher() {
-        List<Commande> commandes =new ArrayList<>();
+    public ObservableList<Commande> afficher() {
+        ObservableList <Commande> commandes = FXCollections.observableArrayList();
         String sql ="select * from commande";
         Statement ste;
         try {
@@ -103,7 +105,7 @@ public class CommandeService implements CrudInterface<Commande> {
             ste.setInt(6, t.getTelephone());
             ste.setInt(7, t.getId());
             ste.executeUpdate();
-            System.out.println("Commande modifiée");
+            System.out.println("Commande "+t.getId()+" modifiée");
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

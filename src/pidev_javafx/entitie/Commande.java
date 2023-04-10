@@ -36,6 +36,15 @@ public class Commande {
         this.methode_paiement = methode_paiement;
         this.telephone = telephone;
     }
+       public Commande(int id, int user_id, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
+        this.id = id;
+        this.user_id = user_id;
+        this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.adresse_livraison = adresse_livraison;
+        this.prix_commande = prix_commande;
+        this.methode_paiement = methode_paiement;
+        this.telephone = telephone;
+    }
 
     public Commande(int user_id, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
         this.user_id = user_id;

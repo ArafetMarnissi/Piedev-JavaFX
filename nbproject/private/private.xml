@@ -4,6 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Pidev_javaFX.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AjouterCommande.fxml</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev/javafx/controller/ListeCommandeController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev/javafx/controller/ModifierCommandeController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ModifierCommande.fxml</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/User.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ListeCommande.fxml</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Commande.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev/javafx/controller/ListeCommandeClientController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/test/Test.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/LigneCommandeService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ProduitService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev/javafx/controller/AjouterCommandeController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Produit.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ListeCommandeClient.fxml</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CommandeService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CrudInterface.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/MaConnection.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/LigneCommande.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandeClientController.java</file>
         </group>
     </open-files>
 </project-private>
