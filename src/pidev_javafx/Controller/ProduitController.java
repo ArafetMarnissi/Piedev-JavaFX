@@ -30,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -70,6 +71,16 @@ public class ProduitController implements Initializable {
     private File selectedFile = null;
     @FXML
     private Button btnaff;
+    @FXML
+    private Label erreurnom;
+    @FXML
+    private Label erreurdesc;
+    @FXML
+    private Label erreurquant;
+    @FXML
+    private Label erreurdate;
+    @FXML
+    private Label erreurprix;
 
     /**
      * Initializes the controller class.

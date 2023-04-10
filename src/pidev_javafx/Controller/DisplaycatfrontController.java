@@ -80,14 +80,15 @@ public class DisplaycatfrontController implements Initializable {
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
             card.setOnMouseClicked((MouseEvent e)->{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/DisplayProduct.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/ProdByCat.fxml"));
                 try{
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setTitle("Product");
-                    DisplayProductController dpc=loader.getController();
-                    dpc.afficherbycat(cat.getId());
+                    ProdByCatController pbcc=loader.getController();
+                    //DisplayProductController dpc=loader.getController();
+                    pbcc.cat(cat.getId());
                     Stage stage1 = (Stage) card.getScene().getWindow();
                     stage1.close();
                             stage.show();
