@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageController">
    <children>
-      <TableView fx:id="userTable" layoutX="41.0" layoutY="43.0" onMouseClicked="#fill" prefHeight="284.0" prefWidth="454.0">
+      <TableView fx:id="userTable" layoutX="41.0" layoutY="43.0" onMouseClicked="#fill" prefHeight="637.0" prefWidth="1344.0">
         <columns>
-          <TableColumn fx:id="email" prefWidth="127.20001220703125" text="email" />
-          <TableColumn fx:id="password" prefWidth="89.60003662109375" text="password" />
-            <TableColumn fx:id="nom" minWidth="9.5999755859375" prefWidth="73.5999755859375" text="nom" />
-            <TableColumn fx:id="prenom" prefWidth="83.20001220703125" text="prenom" />
+          <TableColumn fx:id="email" prefWidth="264.79999923706055" text="email" />
+          <TableColumn fx:id="password" prefWidth="614.4000549316406" text="password" />
+            <TableColumn fx:id="nom" minWidth="0.0" prefWidth="203.99993896484375" text="nom" />
+            <TableColumn fx:id="prenom" prefWidth="212.800048828125" text="prenom" />
         </columns>
       </TableView>
-      <Button fx:id="btnsupprimer" layoutX="89.0" layoutY="400.0" mnemonicParsing="false" onAction="#supprimerUser" text="supprimer" />
-      <Button fx:id="btnmodifier" layoutX="578.0" layoutY="290.0" mnemonicParsing="false" onAction="#modifierUser" text="modifier" />
-      <TextField fx:id="emailtext" layoutX="534.0" layoutY="79.0" promptText="email" />
-      <TextField fx:id="passwordtext" layoutX="533.0" layoutY="116.0" promptText="password" />
-      <TextField fx:id="nomtext" layoutX="533.0" layoutY="159.0" promptText="nom" />
-      <TextField fx:id="prenomtext" layoutX="533.0" layoutY="199.0" promptText="prenom" />
+      <Button fx:id="btnsupprimer" layoutX="108.0" layoutY="758.0" mnemonicParsing="false" onAction="#supprimerUser" stylesheets="@../assets/stylesheet.css" text="supprimer" />
+      <Button fx:id="btnmodifier" layoutX="1446.0" layoutY="326.0" mnemonicParsing="false" onAction="#modifierUser" stylesheets="@../assets/stylesheet.css" text="modifier" />
+      <TextField fx:id="emailtext" layoutX="1410.0" layoutY="126.0" onKeyTyped="#checkemail" promptText="email" stylesheets="@../assets/stylesheet.css" />
+      <TextField fx:id="passwordtext" layoutX="1409.0" layoutY="165.0" promptText="password" stylesheets="@../assets/stylesheet.css" />
+      <TextField fx:id="nomtext" layoutX="1408.0" layoutY="205.0" promptText="nom" stylesheets="@../assets/stylesheet.css" />
+      <TextField fx:id="prenomtext" layoutX="1410.0" layoutY="246.0" promptText="prenom" stylesheets="@../assets/stylesheet.css" />
+      <GridPane layoutX="370.0" layoutY="325.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <ImageView fitHeight="687.0" fitWidth="766.0" layoutX="526.0" layoutY="553.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="verifemail" layoutX="1630.0" layoutY="135.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
+      <Label fx:id="verifmdp" layoutX="1622.0" layoutY="174.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
+      <Label fx:id="verifnom" layoutX="1622.0" layoutY="214.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
+      <Label fx:id="verifprenom" layoutX="1622.0" layoutY="255.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
    </children>
 </AnchorPane>

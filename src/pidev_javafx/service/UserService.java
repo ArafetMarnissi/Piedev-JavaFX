@@ -71,7 +71,26 @@ public class UserService implements CrudInterface<User> {
     }
     return exists;
 }
-
+ public boolean login(String email,String password)
+    {
+       boolean exists = false;
+    try {
+        PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM User WHERE email = ? and password = ?");
+        stmt.setString(1,email);
+        stmt.setString(2, password);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        if (rs.getInt(1) > 0) {
+            exists = true;
+        }
+        rs.close();
+        stmt.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        System.out.println(exists);
+    return exists; 
+    }
 
     
 
@@ -88,6 +107,8 @@ public class UserService implements CrudInterface<User> {
             System.out.println(ex.getMessage());
         }
     }
+    
+   
 
     @Override
     public void modifier(User t) {

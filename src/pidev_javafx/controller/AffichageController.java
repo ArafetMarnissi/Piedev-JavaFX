@@ -13,10 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.UserService;
@@ -51,6 +53,14 @@ public class AffichageController implements Initializable {
     private TextField nomtext;
     @FXML
     private TextField prenomtext;
+    @FXML
+    private Label verifemail;
+    @FXML
+    private Label verifmdp;
+    @FXML
+    private Label verifnom;
+    @FXML
+    private Label verifprenom;
 
     /**
      * Initializes the controller class.
@@ -106,6 +116,16 @@ public class AffichageController implements Initializable {
         passwordtext.setText(userTable.getSelectionModel().getSelectedItem().getPassword());
         nomtext.setText(userTable.getSelectionModel().getSelectedItem().getNom());
         prenomtext.setText(userTable.getSelectionModel().getSelectedItem().getPrenom());
+    }
+
+    @FXML
+    private void checkemail(KeyEvent event) {
+        verifemail.setText("");
+        
+        if (!email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{1,}"))
+        {
+            verifemail.setText("L'email n'est pas valide.");
+        }
     }
     
 }

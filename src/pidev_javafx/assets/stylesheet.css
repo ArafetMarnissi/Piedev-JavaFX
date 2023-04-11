@@ -7,6 +7,15 @@
     -fx-padding: 8px 16px;
 }
 
+.button:signup {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+}
+
 .label {
     -fx-font-size: 24px;
     -fx-font-weight: bold;

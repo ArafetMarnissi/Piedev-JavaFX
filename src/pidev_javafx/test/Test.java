@@ -28,6 +28,7 @@ public class Test {
         CommandeService CS =new CommandeService();
         User u1 = new User("dsdssd@gmail.com","khalil123","khalil","hermassi");
         UserService US = new UserService();
+        US.login("qshdqk", "kljqskjd");
          US.ajouter(u1); 
        
        
