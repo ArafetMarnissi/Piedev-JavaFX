@@ -6,8 +6,6 @@
 package pidev_javafx.test;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,22 +15,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pidev_javafx.service.CategoryService;
 
 /**
  *
  * @author damma
  */
-public class NewFXMain extends Application {
-    
-   // CategoryService sc;
+public class gestioncat extends Application {
     
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/acceuil.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Category.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            primaryStage.setTitle("Acceuil");
+            primaryStage.setTitle("Categories");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

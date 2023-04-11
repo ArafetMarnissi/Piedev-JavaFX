@@ -181,7 +181,7 @@ CategoryService cs=new CategoryService();
             stage.close();
             Parent root = loader.load();
             Stage stage1 = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root,1000,700));
             stage.setTitle("Product");
             stage.show();
             

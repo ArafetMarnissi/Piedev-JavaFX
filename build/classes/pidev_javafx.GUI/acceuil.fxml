@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.AcceuilController">
+   <children>
+      <HBox layoutX="74.0" layoutY="101.0" prefHeight="198.0" prefWidth="453.0" style="-fx-background-color: ffffff;" />
+      <Button fx:id="gc" layoutX="160.0" layoutY="220.0" mnemonicParsing="false" onAction="#affcatonclick" prefHeight="48.0" prefWidth="280.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Gestion des categories" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="gp" layoutX="160.0" layoutY="132.0" mnemonicParsing="false" onAction="#affprodonclick" prefHeight="48.0" prefWidth="280.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Gestion des produits" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/logo1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -5,6 +5,7 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -50,6 +54,8 @@ public class CategoryupdateController implements Initializable {
     CategoryService sc;
     @FXML
     private Label nomerrur;
+    @FXML
+    private FontAwesomeIconView closebtn;
 
     /**
      * Initializes the controller class.
@@ -138,6 +144,25 @@ public class CategoryupdateController implements Initializable {
         nomupdate.setText(c.getNomCategory());
         imgupdate.setText(c.getImageCategory());
         c1=c;
+    }
+
+    @FXML
+    private void verscataffonclick(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/CategoryDisplay.fxml"));
+            DisplayProductController dpc= loader.getController();
+            //dpc.afficherprodfxml();
+            Stage stage = (Stage) closebtn.getScene().getWindow();
+            stage.close();
+            Parent root = loader.load();
+            Stage stage1 = new Stage();
+            stage.setScene(new Scene(root,1000,700));
+            stage.setTitle("Categorie");
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ModifproductController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -21,5 +21,6 @@
             <Image url="@../Assets/logo1.png" />
          </image>
       </ImageView>
+      <Button fx:id="btncataff" layoutX="348.0" layoutY="27.0" mnemonicParsing="false" onAction="#cataffonclick" style="-fx-background-radius: 25px; -fx-background-color: #1372f4;" text="Vers affichage" textFill="WHITE" />
    </children>
 </AnchorPane>

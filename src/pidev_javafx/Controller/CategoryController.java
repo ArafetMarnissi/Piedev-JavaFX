@@ -53,6 +53,8 @@ public class CategoryController implements Initializable {
     private TextField suppfield;
     @FXML
     private Label erreurnomcat;
+    @FXML
+    private Button btncataff;
 
     /**
      * Initializes the controller class.
@@ -167,6 +169,13 @@ public class CategoryController implements Initializable {
             }else{
                 erreurnomcat.setText("");
             }
+    }
+
+    @FXML
+    private void cataffonclick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/CategoryDisplay.fxml"));
+            Parent root = loader.load();
+            nomfiled.getScene().setRoot(root);
     }
     
 }

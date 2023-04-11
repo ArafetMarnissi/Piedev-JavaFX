@@ -62,6 +62,10 @@ public class DisplayProductController implements Initializable {
     private FlowPane panf;
         
 ObservableList<Produit>listprod=FXCollections.observableArrayList();
+    @FXML
+    private Button ajoutprod;
+    @FXML
+    private Button acceuibtn;
     
     
 
@@ -102,35 +106,36 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
             }
             Label l1=new Label("\n");
             card.getChildren().add(l1);
-            Label namelabel=new Label(produit.getNom());     
+            Label namelabel=new Label("Nom produit:"+produit.getNom());     
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            Label prixLabel=new Label(Float.toString(produit.getPrix_produit())+"DT");
+            Label prixLabel=new Label("Prix"+Float.toString(produit.getPrix_produit())+"DT");
             prixLabel.setWrapText(true);
             prixLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(prixLabel);
-            Label catLabel=new Label(produit.getCategory().getNomCategory());
+            Label catLabel=new Label("Categorie"+produit.getCategory().getNomCategory());
             catLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(catLabel);
-//            Button btn=new Button("Edit");
-//            btn.setOnAction(e->{
-//                try {
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
-//                    Parent root = loader.load();
-//                    Stage stage = new Stage();
-//                    stage.setScene(new Scene(root));
-//                    stage.setTitle("Edit Product");
-//                    ModifproductController mpc = loader.getController();
-//                    mpc.getdata(produit);
-//                    Stage stage1 = (Stage) card.getScene().getWindow();
-//                    stage1.close();
-//                    stage.show();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(DisplayProductController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            });
-//            card.getChildren().add(btn);
+            Button btn=new Button("Edit");
+            btn.setAlignment(Pos.TOP_LEFT);
+            btn.setOnAction(e->{
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Edit Product");
+                    ModifproductController mpc = loader.getController();
+                    mpc.getdata(produit);
+                    Stage stage1 = (Stage) card.getScene().getWindow();
+                    stage1.close();
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(DisplayProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            card.getChildren().add(btn);
             card.setOnMousePressed(e -> {
                 if (e.isPrimaryButtonDown()) { 
                     showProductDetails(produit);
@@ -200,24 +205,25 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
             Label catLabel=new Label(produit.getCategory().getNomCategory());
             catLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(catLabel);
-//            Button btn=new Button("Edit");
-//            btn.setOnAction(e->{
-//                try {
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
-//                    Parent root = loader.load();
-//                    Stage stage = new Stage();
-//                    stage.setScene(new Scene(root));
-//                    stage.setTitle("Edit Product");
-//                    ModifproductController mpc = loader.getController();
-//                    mpc.getdata(produit);
-//                    Stage stage1 = (Stage) card.getScene().getWindow();
-//                    stage1.close();
-//                    stage.show();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(DisplayProductController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            });
-//            card.getChildren().add(btn);
+            Button btn=new Button("Edit");
+            btn.setAlignment(Pos.TOP_RIGHT);
+            btn.setOnAction(e->{
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Edit Product");
+                    ModifproductController mpc = loader.getController();
+                    mpc.getdata(produit);
+                    Stage stage1 = (Stage) card.getScene().getWindow();
+                    stage1.close();
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(DisplayProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            card.getChildren().add(btn);
             card.setOnMousePressed(e -> {
                 if (e.isPrimaryButtonDown()) { 
                     showProductDetails(produit);
@@ -227,5 +233,29 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
             panf.getChildren().add(card);
             panf.setMargin(card, new Insets(5, 5, 5, 5));
     }
+    }
+
+    @FXML
+    private void versaddonclick(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Produit.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            panf.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(ProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+
+    @FXML
+    private void versacceuilonclick(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/acceuil.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            panf.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(ProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 }
