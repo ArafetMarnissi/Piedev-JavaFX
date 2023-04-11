@@ -157,7 +157,7 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Product Details");
     alert.setHeaderText(product.getNom());
-    alert.setContentText("Description: " + product.getDescription() + "\nPrix: " + product.getPrix_produit()+"DT");
+    alert.setContentText("Description: " + product.getDescription() + "\nPrix: " + product.getPrix_produit()+"DT"+"\nQuantite:"+product.getQuantite_produit()+"\nNote:"+product.getNote());
     alert.show();
 }
     public void afficherbycat(int idcat){

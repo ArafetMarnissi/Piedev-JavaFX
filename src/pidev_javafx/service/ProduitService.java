@@ -34,7 +34,7 @@ public class ProduitService implements CrudInterface<Produit>{
     public ObservableList<Produit> afficher() {
         ObservableList<Produit>prod=FXCollections.observableArrayList(); 
         String sql="select * from produit";
-        //Category cat=new Category();
+        //  Category cat=new Category();
         CategoryService cs=new CategoryService();
         //cat=cs.getCatParId(0);
         try {

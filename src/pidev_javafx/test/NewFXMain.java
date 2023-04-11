@@ -30,8 +30,8 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Displaycatfront.fxml"));
-            Scene scene = new Scene(root, 450, 300);
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Produit.fxml"));
+            Scene scene = new Scene(root, 1000, 700);
             primaryStage.setTitle("Categories");
             primaryStage.setScene(scene);
             primaryStage.show();

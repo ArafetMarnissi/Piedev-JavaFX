@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pidev_javafx.entitie.Category;
@@ -81,6 +84,8 @@ public class ProduitController implements Initializable {
     private Label erreurdate;
     @FXML
     private Label erreurprix;
+    @FXML
+    private Label erreurimg;
 
     /**
      * Initializes the controller class.
@@ -98,6 +103,16 @@ public class ProduitController implements Initializable {
             System.out.println(nc);
             
       catprod.setItems(FXCollections.observableList(nc));
+      catprod.setValue(nc.get(0));
+      dateprod.setValue(LocalDate.now());
+      prixprod.setText("0");
+      quantprod.setText("0");
+      erreurdate.setTextFill(Color.RED);
+      erreurdesc.setTextFill(Color.RED);
+      erreurnom.setTextFill(Color.RED);
+      erreurprix.setTextFill(Color.RED);
+      erreurquant.setTextFill(Color.RED);
+      erreurimg.setTextFill(Color.RED);
       catprod.setStyle("-fx-background-color: -fx-text-box-border, -fx-background ;\n" +
 "    -fx-background-insets: 0, 0 0 1 0 ;\n" +
 "    -fx-background-radius: 0 ;");
@@ -127,17 +142,34 @@ public class ProduitController implements Initializable {
 //                .map(row->row[1])
 //                .collect(Collectors.toList()));
   }    
-
+        public boolean estAlpha(String chaine) {
+            return chaine.matches("[a-zA-Z]+");
+        }
+        public boolean testdate(LocalDate d){
+            return d.isAfter(LocalDate.now()) ;
+        }
+        public boolean testpos(float d){
+            if(d>1&&d!=0){
+                return true;
+            }else return false;
+            
+        }
     @FXML
     private void addprod(ActionEvent event) {
-        String chaine = catprod.getValue();
+        erreurdate.setText("");
+        erreurdesc.setText("");
+        erreurnom.setText("");
+        erreurprix.setText("");
+        erreurquant.setText("");
+        //System.out.println(cat1);
+        if(estAlpha(nomprod.getText()) && estAlpha(descprod.getText()) && descprod.getText().length()>=10 && testdate(dateprod.getValue()) && testpos(Float.parseFloat(prixprod.getText())) && testpos(Float.parseFloat(quantprod.getText())) && Integer.parseInt(quantprod.getText())!=0 && !imgprod.getText().isEmpty()){
+           String chaine = catprod.getValue();
         int index = chaine.indexOf(":");
         String sousChaine = chaine.substring(0, index);
         System.out.println(sousChaine);
         ps=new ProduitService();
         Category cat1=cs.getCatParId(Integer.parseInt(sousChaine));
-        System.out.println(cat1);
-        int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+            int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
         String newFileName = random_int+"-"+selectedFile.getName();
         Produit p=new Produit(cat1, nomprod.getText(), descprod.getText(),Float.parseFloat(prixprod.getText()), Integer.parseInt(quantprod.getText()),newFileName,java.sql.Date.valueOf(dateprod.getValue()));
         System.out.println(p);
@@ -156,8 +188,47 @@ public class ProduitController implements Initializable {
             descprod.getScene().setRoot(root);
         } catch (IOException ex) {
             Logger.getLogger(ProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        }   
         }
+        else{
+            if(imgprod.getText().isEmpty()){
+                erreurimg.setText("veuillez choisir une image");
+            }
+            if(!estAlpha(nomprod.getText())&&nomprod.getText().isEmpty()){
+                erreurnom.setText("seulement des alphabets");
+            }
+            if(!estAlpha(descprod.getText())&&descprod.getText().length()<10&&descprod.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets et un nombre de caractere sup a 10");
+            }
+            if(!estAlpha(descprod.getText())&&descprod.getText().isEmpty()){
+                erreurdesc.setText("seulement des alphabets");
+            }
+            if(descprod.getText().length()<10&&descprod.getText().isEmpty()){
+                erreurdesc.setText("il faut un nombre de caractere sup a 10");
+            }
+            if(!testdate(dateprod.getValue())){
+                erreurdate.setText("une date superieur a aujourd'hui");
+            }
+            String hh=prixprod.getText();
+            hh+="0";
+            if(!testpos(Float.parseFloat(hh))||prixprod.getText().isEmpty()){
+                erreurprix.setText("il faut un prix positif");
+            }
+            String xx=quantprod.getText();
+            xx+="0";
+            if(!testpos(Float.parseFloat(xx))&&Integer.parseInt(xx)==0||quantprod.getText().isEmpty()){
+               erreurquant.setText("il faut une quantite positif et quantite sup a 0");
+            }
             
+            if(!testpos(Float.parseFloat(xx))||quantprod.getText().isEmpty()){
+                erreurquant.setText("il faut une quantite positif"); 
+            }
+            if(Integer.parseInt(xx)==0||quantprod.getText().isEmpty()){
+                erreurquant.setText("quantite sup a 0");
+            }
+            
+        }
+        
     }
 
     @FXML
