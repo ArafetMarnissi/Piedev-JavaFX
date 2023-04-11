@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.javafx.controller.ListeCommandeClientController">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.javafx.controller.ListeCommandebackController">
    <top>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Votre liste de Commande" textAlignment="CENTER" textFill="#1372f4">
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Liste des Commande" textAlignment="CENTER" textFill="#1372f4">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
@@ -31,7 +31,8 @@
          <children>
             <TableView fx:id="tableCommande" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="coldatecommande" prefWidth="216.80001527071" text="Date Commande" />
+                  <TableColumn fx:id="colClientName" prefWidth="102.40001755952835" text="Client" />
+                <TableColumn fx:id="coldatecommande" prefWidth="190.4000244140625" text="Date Commande" />
                 <TableColumn fx:id="coladresse" prefWidth="224.00001525878906" text="Adresse de livraison" />
                   <TableColumn fx:id="colmethpaiement" prefWidth="203.99996948242188" text="Méthode de paiement" />
                   <TableColumn fx:id="coltelephone" prefWidth="167.20001220703125" text="Téléphone" />
@@ -57,15 +58,13 @@
       <HBox BorderPane.alignment="CENTER" />
    </left>
    <bottom>
-      <HBox spacing="35.0" BorderPane.alignment="CENTER">
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="35.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAjouterCommande" mnemonicParsing="false" onAction="#AjouterCommandeClient" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Ajouter Commande" textFill="WHITE" />
-            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnDetaisCommande" mnemonicParsing="false" onAction="#DetailsCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Détais" textFill="WHITE" />
+            <Region />
             <Button fx:id="btnModifer" mnemonicParsing="false" onAction="#ModiferCommandeClient" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textFill="WHITE" />
             <Region HBox.hgrow="ALWAYS" />
             <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#SupprimerCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
-            <Region HBox.hgrow="ALWAYS" />
-            <Button fx:id="btnDetails" layoutX="727.0" layoutY="35.0" mnemonicParsing="false" onAction="#DetailsCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Détails" textFill="WHITE" />
          </children>
          <BorderPane.margin>
             <Insets />

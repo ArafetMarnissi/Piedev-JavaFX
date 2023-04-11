@@ -58,7 +58,7 @@ public class EditCommandeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
    public void setCommande(Commande t){
     txtAdresseLivraison.setText(t.getAdresse_livraison());
@@ -77,7 +77,6 @@ public class EditCommandeController implements Initializable {
     @FXML
     private void ModiferCommande(ActionEvent event) throws IOException {
         
-                
                erreurAdresse.setText("");
             erreurTelephone.setText("");
             erreurPaiement.setText("");
@@ -90,7 +89,7 @@ public class EditCommandeController implements Initializable {
                         RadioButton selectedRadioBtn = (RadioButton) newValue;
                     });
                     String MethodedePaiement = ((RadioButton) MethodePaiement.getSelectedToggle()).getText();
-                    Commande t =new Commande(c.getId(),c.getUser_id(), AdresseLivarison,c.getPrix_commande(), MethodedePaiement, telephone) ;
+                    Commande t =new Commande(c.getId(),c.getUser(), AdresseLivarison,c.getPrix_commande(), MethodedePaiement, telephone) ;
 
                     CommandeService ps = new CommandeService();
                     
@@ -119,7 +118,7 @@ public class EditCommandeController implements Initializable {
             erreurPaiement.setText("choisir la méthode de paiement");
             }
          }
-       
+
     }
 
     @FXML

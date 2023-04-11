@@ -16,7 +16,8 @@ import java.time.format.DateTimeFormatter;
  */
 public class Commande {
     
-    private int id,user_id;
+    private int id;
+    private User user;
     private String date_commande;
     private String adresse_livraison;
     private float prix_commande;
@@ -27,18 +28,18 @@ public class Commande {
        this.date_commande = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
-    public Commande(int id, int user_id, String date_commande, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
+    public Commande(int id, User user, String date_commande, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
         this.id = id;
-        this.user_id = user_id;
+        this.user = user;
         this.date_commande = date_commande;
         this.adresse_livraison = adresse_livraison;
         this.prix_commande = prix_commande;
         this.methode_paiement = methode_paiement;
         this.telephone = telephone;
     }
-       public Commande(int id, int user_id, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
+       public Commande(int id, User user, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
         this.id = id;
-        this.user_id = user_id;
+        this.user = user;
         this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         this.adresse_livraison = adresse_livraison;
         this.prix_commande = prix_commande;
@@ -46,8 +47,8 @@ public class Commande {
         this.telephone = telephone;
     }
 
-    public Commande(int user_id, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
-        this.user_id = user_id;
+    public Commande(User user, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
+        this.user = user;
         this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         this.adresse_livraison = adresse_livraison;
         this.prix_commande = prix_commande;
@@ -63,12 +64,12 @@ public class Commande {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDate_commande() {
@@ -113,7 +114,7 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", user_id=" + user_id + ", date_commande=" + date_commande + ", adresse_livraison=" + adresse_livraison + ", prix_commande=" + prix_commande + ", methode_paiement=" + methode_paiement + ", telephone=" + telephone + '}';
+        return "Commande{" + "id=" + id + ", user=" + user + ", date_commande=" + date_commande + ", adresse_livraison=" + adresse_livraison + ", prix_commande=" + prix_commande + ", methode_paiement=" + methode_paiement + ", telephone=" + telephone + '}';
     }
     
     

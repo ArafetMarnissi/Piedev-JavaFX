@@ -19,7 +19,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import pidev_javafx.entitie.Commande;
+import pidev_javafx.entitie.LigneCommande;
+import pidev_javafx.entitie.Produit;
+import pidev_javafx.entitie.User;
 import pidev_javafx.service.CommandeService;
+import pidev_javafx.service.LigneCommandeService;
+import pidev_javafx.service.ProduitService;
 
 /**
  * FXML Controller class
@@ -62,7 +67,7 @@ public class AddCommandeController implements Initializable {
     @FXML
     private void AjouterCommande(ActionEvent event) throws IOException {
         
-                       erreurAdresse.setText("");
+                erreurAdresse.setText("");
                 erreurTelephone.setText("");
                 erreurPaiement.setText("");
         
@@ -75,11 +80,22 @@ public class AddCommandeController implements Initializable {
                         RadioButton selectedRadioBtn = (RadioButton) newValue;
                     });
                     String MethodedePaiement = ((RadioButton) MethodePaiement.getSelectedToggle()).getText();
-                    Commande t =new Commande(2, AdresseLivarison,250, MethodedePaiement, telephone) ;
-
+                    ///a changer aprés la création de la session panier
+                    ProduitService pserv = new ProduitService();
+                    LigneCommandeService lcs = new LigneCommandeService();
+                    Produit p1= pserv.getProduitParId(20); 
+                    User u =new User(1, "test", "test", "test", "test", "test", 0, true);
+                    ///
+                    Commande t =new Commande(u, AdresseLivarison,250, MethodedePaiement, telephone) ;
+                    ///
+                    
+                    
                     CommandeService ps = new CommandeService();
                     
                     ps.ajouter(t);
+                    LigneCommande lc =new LigneCommande(ps.getLatestCommande(), p1, 2, p1.getPrix_produit());
+                    
+                    lcs.ajouter(lc);
 
 
 

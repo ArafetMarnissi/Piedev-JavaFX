@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Commande;
+import pidev_javafx.entitie.LigneCommande;
 import pidev_javafx.entitie.User;
 import pidev_javafx.tools.MaConnection;
 
@@ -35,7 +36,7 @@ public class CommandeService implements CrudInterface<Commande> {
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
-            ste.setInt(1, t.getUser_id());
+            ste.setInt(1, t.getUser().getId());
             ste.setString(2, t.getAdresse_livraison());
             ste.setString(3, t.getDate_commande());
             ste.setFloat(4,t.getPrix_commande());
@@ -60,9 +61,10 @@ public class CommandeService implements CrudInterface<Commande> {
         try {
             ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
+            UserService us = new UserService();
             while(rs.next()){
             Commande c = new Commande(rs.getInt("id"),
-                    rs.getInt("user_id"),
+                    us.getUserParId(rs.getInt("user_id")),
                     rs.getString("date_commande"),
                     rs.getString("adresse_livraison"),
                     rs.getFloat("prix_commande"),
@@ -80,6 +82,14 @@ public class CommandeService implements CrudInterface<Commande> {
     @Override
     public void supprimer(Commande t) {
         String sql = "delete from commande where id=?";
+        LigneCommandeService lcs =new LigneCommandeService();
+
+        for (LigneCommande Lignecommande : lcs.afficherLigneCommandesParCommande(t)) {
+            lcs.supprimer(Lignecommande);
+        }
+
+        
+
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, t.getId());
@@ -97,7 +107,7 @@ public class CommandeService implements CrudInterface<Commande> {
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
-            ste.setInt(1, t.getUser_id());
+            ste.setInt(1, t.getUser().getId());
             ste.setString(2, t.getAdresse_livraison());
             ste.setString(3, t.getDate_commande());
             ste.setFloat(4,t.getPrix_commande());
@@ -121,9 +131,10 @@ public class CommandeService implements CrudInterface<Commande> {
             ste = cnx.prepareStatement(sql);
             //ste.setInt(1,u.getId());
             ResultSet rs = ste.executeQuery(sql);
+            UserService us = new UserService();
             while(rs.next()){
             Commande c = new Commande(rs.getInt("id"),
-                    rs.getInt("user_id"),
+                    us.getUserParId(rs.getInt("user_id")),
                     rs.getString("date_commande"),
                     rs.getString("adresse_livraison"),
                     rs.getFloat("prix_commande"),
@@ -145,11 +156,12 @@ public class CommandeService implements CrudInterface<Commande> {
     try {
         ste = cnx.prepareStatement(sql);
         ste.setInt(1, id);
+        UserService us = new UserService();
         ResultSet rs = ste.executeQuery();
         if (rs.next()) {
             Commande c = new Commande(
                     rs.getInt("id"),
-                    rs.getInt("user_id"),
+                    us.getUserParId(rs.getInt("user_id")),
                     rs.getString("date_commande"),
                     rs.getString("adresse_livraison"),
                     rs.getFloat("prix_commande"),
@@ -163,6 +175,32 @@ public class CommandeService implements CrudInterface<Commande> {
     }
     return null;
 }
+   ////////return la derniére commande dans la base
+   public Commande getLatestCommande() {
+         List<Commande> commandes =new ArrayList<>();
+        String sql ="select * from commande";
+        Statement ste;
+        try {
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            UserService us = new UserService();
+            while(rs.next()){
+            Commande c = new Commande(rs.getInt("id"),
+                    us.getUserParId(rs.getInt("user_id")),
+                    rs.getString("date_commande"),
+                    rs.getString("adresse_livraison"),
+                    rs.getFloat("prix_commande"),
+                    rs.getString("methode_paiement"),
+                    rs.getInt("telephone"));
+            commandes.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return commandes.get(commandes.size() - 1);
+        
+    }
+
 
        
 
