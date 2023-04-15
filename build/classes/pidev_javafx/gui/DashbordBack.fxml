@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -76,8 +77,30 @@
                         <Image url="@../../pidev/javafx/assets/fichier.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/se-deconnecter.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="44.0">
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/se-deconnecter.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pidev/javafx/assets/se-deconnecter.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pane1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -132,6 +155,18 @@
                   </ImageView>
                </children>
             </VBox>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="44.0" AnchorPane.bottomAnchor="20.0">
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/se-deconnecter.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pane2" prefHeight="553.0" prefWidth="178.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="46.39999999999998">
@@ -179,6 +214,15 @@
                      </font>
                   </JFXButton>
                   <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Réclamations">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>
