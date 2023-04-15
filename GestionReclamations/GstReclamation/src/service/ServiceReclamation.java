@@ -14,10 +14,12 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import utils.MyConnection;
 
 /**
@@ -100,6 +102,13 @@ public class ServiceReclamation implements IService<Reclamation>{
             Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lr;
+    }
+    public List<Reclamation> tri(){
+        
+        return afficher()
+                .stream()
+                .sorted(Comparator.comparing(Reclamation::getDescription_reclamation))
+                .collect(Collectors.toList());
     }
     
 }

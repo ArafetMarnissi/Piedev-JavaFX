@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1394.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="view.FXMLreclamationadminController">
+<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1394.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLreclamationadminController">
    <children>
       <TableView fx:id="tvreclamation" layoutX="548.0" layoutY="106.0" prefHeight="455.0" prefWidth="732.0">
         <columns>
@@ -26,5 +26,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <TextField fx:id="tfrecherche" layoutX="754.0" layoutY="50.0" promptText="Recherche" />
+      <Button layoutX="992.0" layoutY="50.0" mnemonicParsing="false" onAction="#tri" text="Tri" />
+      <Button layoutX="1134.0" layoutY="50.0" mnemonicParsing="false" onAction="#stat" text="Stat" />
    </children>
 </AnchorPane>

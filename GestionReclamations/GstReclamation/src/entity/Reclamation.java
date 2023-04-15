@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -57,8 +58,10 @@ public class Reclamation {
         this.type_reclamation = type_reclamation;
     }
 
-    public Date getDate_reclamation() {
-        return date_reclamation;
+    public String getDate_reclamation() {
+        SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+        String date=dateFormat.format(date_reclamation);
+        return date;
     }
 
     public void setDate_reclamation(Date date_reclamation) {
@@ -67,7 +70,9 @@ public class Reclamation {
 
     @Override
     public String toString() {
-        return "Reclamation{" + "id=" + id + ", description_reclamation=" + description_reclamation + ", type_reclamation=" + type_reclamation + ", date_reclamation=" + date_reclamation + '}'+"\n";
+        SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+        String date=dateFormat.format(date_reclamation);
+        return "Reclamation{" + "id=" + id + ", description_reclamation=" + description_reclamation + ", type_reclamation=" + type_reclamation + ", date_reclamation=" + date + '}'+"\n";
     }
     
     

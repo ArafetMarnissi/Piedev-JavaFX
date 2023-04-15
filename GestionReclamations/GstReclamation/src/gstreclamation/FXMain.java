@@ -28,8 +28,8 @@ public class FXMain extends Application {
     public void start(Stage primaryStage) {
         
         try {
-            //Parent root=FXMLLoader.load(getClass().getResource("/view/FXMLreclamationuser.fxml"));
-            Parent root=FXMLLoader.load(getClass().getResource("/view/FXMLreclamationadmin.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("/view/FXMLreclamationuser.fxml"));
+            //Parent root=FXMLLoader.load(getClass().getResource("/view/FXMLreclamationadmin.fxml"));
 
             
             Scene scene = new Scene(root);

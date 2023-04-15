@@ -6,7 +6,6 @@
 package gstreclamation;
 
 import entity.Reclamation;
-import entity.Reponse;
 import entity.TypeReclamation;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,13 +27,9 @@ public class GstReclamation {
        ServiceReclamation sr=new ServiceReclamation();
         ServiceReponse srep=new ServiceReponse();
        Reclamation r=new Reclamation("test33",TypeReclamation.Activite,new Date());
-       Reponse rep = new Reponse("testrep3",new Date(),29);
        //sr.ajouter(r);
        //sr.modifier(33, r);
        //sr.supprimer(33);
-       //srep.ajouter(rep);
-       //srep.modifier(16,rep);
-       srep.supprimer(16);
        System.out.println(srep.afficher());
     }
     
