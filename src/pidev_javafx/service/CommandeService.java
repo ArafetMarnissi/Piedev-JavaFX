@@ -81,22 +81,20 @@ public class CommandeService implements CrudInterface<Commande> {
 
     @Override
     public void supprimer(Commande t) {
-        String sql = "delete from commande where id=?";
-        LigneCommandeService lcs =new LigneCommandeService();
+    String sql1 = "DELETE FROM ligne_commande WHERE commande_id = ?";
+    String sql2 = "DELETE FROM commande WHERE id = ?";
 
-        for (LigneCommande Lignecommande : lcs.afficherLigneCommandesParCommande(t)) {
-            lcs.supprimer(Lignecommande);
-        }
+            try {
+        PreparedStatement ste1 = cnx.prepareStatement(sql1);
+        ste1.setInt(1, t.getId());
+        ste1.executeUpdate();
 
-        
-
-        try {
-            PreparedStatement ste = cnx.prepareStatement(sql);
-            ste.setInt(1, t.getId());
-            ste.executeUpdate();
-            System.out.println("commande supprimée");
+        PreparedStatement ste2 = cnx.prepareStatement(sql2);
+        ste2.setInt(1, t.getId());
+        ste2.executeUpdate();
+            System.out.println("Commande supprimée avec succès.");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        System.out.println(ex.getMessage());
         }
     }
 
