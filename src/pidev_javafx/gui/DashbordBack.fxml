@@ -27,7 +27,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="46.0" prefHeight="553.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane layoutY="46.0" prefHeight="553.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.39999999999998">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="11.0" AnchorPane.topAnchor="20.0">
                <children>
@@ -81,7 +81,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pane1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane prefHeight="553.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane prefHeight="553.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.39999999999998">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="11.0" AnchorPane.topAnchor="20.0">
                <children>
@@ -134,7 +134,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane2" prefHeight="553.0" prefWidth="178.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0">
+      <AnchorPane fx:id="pane2" prefHeight="553.0" prefWidth="178.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="46.39999999999998">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
