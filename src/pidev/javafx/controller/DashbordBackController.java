@@ -30,6 +30,8 @@ public class DashbordBackController implements Initializable {
     private AnchorPane pane2;
     @FXML
     private ImageView menu;
+    @FXML
+    private AnchorPane PaneContent;
 
     /**
      * Initializes the controller class.
