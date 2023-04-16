@@ -6,8 +6,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.CategoryDisplayController">
    <children>
-      <Button fx:id="versajouter" layoutX="19.0" layoutY="114.0" mnemonicParsing="false" onAction="#afficherajouter" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" />
+      <Button fx:id="versajouter" layoutY="113.0" mnemonicParsing="false" onAction="#afficherajouter" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Ajouter" />
       <FlowPane fx:id="catflow" layoutX="102.0" layoutY="67.0" prefHeight="380.0" prefWidth="488.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button fx:id="versacceuilbtn" layoutX="10.0" layoutY="175.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Vers acceuil" />
+      <Button fx:id="versacceuilbtn" layoutY="176.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Vers acceuil" />
    </children>
 </AnchorPane>

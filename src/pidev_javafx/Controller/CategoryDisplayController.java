@@ -5,6 +5,7 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -78,6 +79,10 @@ public class CategoryDisplayController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        FontAwesomeIconView icon2 = new FontAwesomeIconView(FontAwesomeIcon.PLUS);
+            icon2.getStyleClass().add("icon1");
+            icon2.setStyle("-fx-fill: white;");
+            versajouter.setGraphic(icon2);
         CategoryService cs=new CategoryService();
         ObservableList<Category>listcat=FXCollections.observableArrayList();
         listcat=cs.afficher();     
@@ -100,7 +105,12 @@ public class CategoryDisplayController implements Initializable {
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
             Button btn=new Button("Edit");
+            FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE_ALT);
+            icon.getStyleClass().add("icon");
+            icon.setStyle("-fx-fill: white;");
+            btn.setGraphic(icon);
             btn.setAlignment(Pos.TOP_RIGHT);
+            btn.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn.setOnAction(e->{
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Categoryupdate.fxml"));
@@ -120,6 +130,11 @@ public class CategoryDisplayController implements Initializable {
             card.getChildren().add(btn);
             Button btn1=new Button("Supprimer");
             btn1.setAlignment(Pos.TOP_RIGHT);
+            FontAwesomeIconView icon1 = new FontAwesomeIconView(FontAwesomeIcon.ERASER);
+            icon1.getStyleClass().add("icon1");
+            icon1.setStyle("-fx-fill: white;");
+            btn1.setGraphic(icon1);
+             btn1.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn1.setOnAction(e->{
                 CategoryService sc=new CategoryService();
                 sc.supprimer(cat);
@@ -266,7 +281,12 @@ public class CategoryDisplayController implements Initializable {
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
             Button btn=new Button("Edit");
+            FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE_ALT);
+            icon.getStyleClass().add("icon");
+            icon.setStyle("-fx-fill: white;");
+            btn.setGraphic(icon);
             btn.setAlignment(Pos.TOP_RIGHT);
+            btn.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn.setOnAction(e->{
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Categoryupdate.fxml"));
@@ -286,6 +306,11 @@ public class CategoryDisplayController implements Initializable {
             card.getChildren().add(btn);
             Button btn1=new Button("Supprimer");
             btn1.setAlignment(Pos.TOP_RIGHT);
+            FontAwesomeIconView icon1 = new FontAwesomeIconView(FontAwesomeIcon.ERASER);
+            icon1.getStyleClass().add("icon1");
+            icon1.setStyle("-fx-fill: white;");
+            btn1.setGraphic(icon1);
+             btn1.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn1.setOnAction(e->{
                 CategoryService sc=new CategoryService();
                 sc.supprimer(cat);

@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.User;
+import pidev_javafx.entitie.SMS;
 import pidev_javafx.service.CategoryService;
 import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
@@ -37,9 +38,11 @@ public class Test {
 //        //cs.supprimer(c1);
        //System.out.println(cs.afficher());
 //        System.out.println(cs.affichercat());
-        ProduitService ps=new ProduitService();
-       System.out.println(ps.findprodbycat(17));
-       
+//        ProduitService ps=new ProduitService();
+//       System.out.println(ps.findprodbycat(17));
+       SMS ss=new SMS();
+       //ss.sms("goldengym", "Esprit2023", "+21693763578", "hello ");
+       ss.sms("whey");
 //       ObservableList<Category> l= cs.afficher();
 //        List<String> nc = new ArrayList<>();
 //            for (Category category : l) {

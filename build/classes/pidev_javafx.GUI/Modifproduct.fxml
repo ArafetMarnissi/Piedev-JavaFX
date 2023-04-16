@@ -9,24 +9,29 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.ModifproductController">
+<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.ModifproductController">
    <children>
-      <TextField fx:id="textnommodif" layoutX="111.0" layoutY="45.0" />
-      <TextField fx:id="textprixmodif" layoutX="111.0" layoutY="91.0" />
-      <TextField fx:id="textquantmodif" layoutX="111.0" layoutY="136.0" />
-      <TextField fx:id="textimgmodif" layoutX="111.0" layoutY="175.0" />
-      <TextArea fx:id="textdescmodif" layoutX="128.0" layoutY="211.0" prefHeight="109.0" prefWidth="115.0" />
-      <DatePicker fx:id="datemodif" layoutX="104.0" layoutY="350.0" />
-      <Button fx:id="btnimgmofig" layoutX="286.0" layoutY="175.0" mnemonicParsing="false" onAction="#addimgonclickmodif" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="choisir un fichier" textFill="WHITE" />
-      <Button fx:id="btnmodif" layoutX="246.0" layoutY="479.0" mnemonicParsing="false" onAction="#btnmodifonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier " textFill="WHITE" />
-      <Label layoutX="37.0" layoutY="49.0" text="Nom" />
-      <Label layoutX="37.0" layoutY="95.0" text="Prix" />
-      <Label layoutX="37.0" layoutY="140.0" text="Quantite" />
-      <Label layoutX="43.0" layoutY="179.0" text="image" />
-      <Label layoutX="47.0" layoutY="251.0" text="Description" />
-      <Label layoutX="33.0" layoutY="354.0" text="Date" />
-      <Label layoutX="33.0" layoutY="420.0" text="Category" />
-      <ComboBox fx:id="textcatmodif" layoutX="116.0" layoutY="416.0" prefWidth="150.0" />
-      <FontAwesomeIconView fx:id="closeicon" glyphName="CLOSE" layoutX="510.0" layoutY="33.0" onMouseClicked="#closemodif" size="20" wrappingWidth="33.000004291534424" />
+      <TextField fx:id="textnommodif" layoutX="108.0" layoutY="97.0" />
+      <TextField fx:id="textprixmodif" layoutX="108.0" layoutY="161.0" />
+      <TextField fx:id="textquantmodif" layoutX="108.0" layoutY="228.0" />
+      <TextField fx:id="textimgmodif" layoutX="108.0" layoutY="304.0" />
+      <TextArea fx:id="textdescmodif" layoutX="493.0" layoutY="46.0" prefHeight="109.0" prefWidth="115.0" />
+      <DatePicker fx:id="datemodif" layoutX="469.0" layoutY="185.0" />
+      <Button fx:id="btnimgmofig" layoutX="283.0" layoutY="304.0" mnemonicParsing="false" onAction="#addimgonclickmodif" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="choisir un fichier" textFill="WHITE" />
+      <Button fx:id="btnmodif" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnmodifonclick" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier " textFill="WHITE" />
+      <Label layoutX="40.0" layoutY="101.0" text="Nom" />
+      <Label layoutX="40.0" layoutY="165.0" text="Prix" />
+      <Label layoutX="40.0" layoutY="232.0" text="Quantite" />
+      <Label layoutX="40.0" layoutY="308.0" text="image" />
+      <Label layoutX="412.0" layoutY="86.0" text="Description" />
+      <Label layoutX="398.0" layoutY="189.0" text="Date" />
+      <Label layoutX="398.0" layoutY="255.0" text="Category" />
+      <ComboBox fx:id="textcatmodif" layoutX="481.0" layoutY="251.0" prefWidth="150.0" />
+      <FontAwesomeIconView fx:id="closeicon" glyphName="CLOSE" layoutX="661.0" layoutY="31.0" onMouseClicked="#closemodif" size="20" wrappingWidth="33.000004291534424" />
+      <Label fx:id="errprix" layoutX="108.0" layoutY="122.0" textFill="RED" />
+      <Label fx:id="errprix" layoutX="108.0" layoutY="189.0" textFill="RED" />
+      <Label layoutX="108.0" layoutY="255.0" textFill="RED" />
+      <Label fx:id="errdesc" layoutX="493.0" layoutY="157.0" textFill="RED" />
+      <Label fx:id="errdate" layoutX="467.0" layoutY="210.0" textFill="RED" />
    </children>
 </AnchorPane>

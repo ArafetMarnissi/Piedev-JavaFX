@@ -7,7 +7,8 @@
 <AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.DisplayProductController">
    <children>
       <FlowPane fx:id="panf" layoutX="105.0" layoutY="10.0" prefHeight="625.0" prefWidth="856.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
-      <Button fx:id="ajoutprod" layoutX="14.0" layoutY="271.0" mnemonicParsing="false" onAction="#versaddonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" textFill="WHITE" />
-      <Button fx:id="acceuibtn" layoutX="16.0" layoutY="333.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Vers acceuil" textFill="WHITE" />
+      <Button fx:id="ajoutprod" layoutX="2.0" layoutY="273.0" mnemonicParsing="false" onAction="#versaddonclick" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="acceuibtn" layoutX="2.0" layoutY="335.0" mnemonicParsing="false" onAction="#versacceuilonclick" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Vers acceuil" textFill="WHITE" />
+      <FlowPane fx:id="panf1" layoutX="132.0" layoutY="20.0" prefHeight="625.0" prefWidth="839.0" />
    </children>
 </AnchorPane>

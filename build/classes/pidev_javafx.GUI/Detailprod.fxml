@@ -3,10 +3,12 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.Rating?>
 
 <!--<?import javafx.scene.layout.Separator?>-->
 
@@ -25,6 +27,11 @@
               <Label fx:id="descriptionprodlabel" layoutY="160.0" prefHeight="17.0" prefWidth="250.0" translateY="120.0" />
                   <Label text="Description:" translateY="85.0" />
               <Label fx:id="dispoprodlabel" layoutY="210.0" prefHeight="17.0" prefWidth="250.0" translateY="120.0" />
+                  <Rating fx:id="ratingstar" onMouseClicked="#ratted" rating="0.0" translateY="135.0" updateOnHover="true">
+                     <effect>
+                        <DropShadow color="#1372f4" />
+                     </effect>
+                  </Rating>
                </children>
             </VBox>
          </children>

@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Category;
@@ -118,6 +120,55 @@ public class ProduitService implements CrudInterface<Produit>{
         }
         return prod;
     }
-
+    
+    public Produit findprodbyid(int id) throws SQLException{
+        String sql="SELECT * from produit where id=?";
+            PreparedStatement preparedStatement = cnx.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            CategoryService cs=new CategoryService();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                Produit c=new Produit(resultSet.getInt(1),cs.getCatParId(resultSet.getInt(2)),resultSet.getString(3), resultSet.getString(4),resultSet.getFloat(5),resultSet.getInt(6),resultSet.getString(7),resultSet.getDate(8),resultSet.getFloat(9));
+                return c;
+            }
+            else 
+                return null;
+    }
+    public void updaterate(int id,float rate){
+        Produit pp=null;
+        try {
+            pp=findprodbyid(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(pp.getNote()==0){
+            String sql="update produit set note=? where id=? ";
+        PreparedStatement ste ;
+        try {
+            ste = cnx.prepareStatement(sql);
+            ste.setFloat(1, rate);
+            ste.setInt(2, id);
+            ste.executeUpdate();
+            System.out.println("note modifiée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        }
+        else{
+                String sql="update produit set note=? where id=? ";
+        PreparedStatement ste ;
+        try {
+            ste = cnx.prepareStatement(sql);
+            ste.setFloat(1, (rate+pp.getNote())/2);
+            ste.setInt(2, id);
+            ste.executeUpdate();
+            System.out.println("note modifiée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+                }
+        
+    
+}
    
 }

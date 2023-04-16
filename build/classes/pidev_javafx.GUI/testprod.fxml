@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.TestprodController">
+   <children>
+      <FlowPane fx:id="panaff" layoutX="96.0" layoutY="83.0" prefHeight="380.0" prefWidth="494.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Button fx:id="versacceuilbtn" layoutX="14.0" layoutY="227.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="vers acceuil" textFill="WHITE" />
+      <Button fx:id="versajoutbtn" layoutX="14.0" layoutY="156.0" mnemonicParsing="false" onAction="#versajouonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="ajouter" textFill="WHITE" />
+   </children>
+</AnchorPane>

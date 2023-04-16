@@ -5,6 +5,7 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -66,11 +68,21 @@ CategoryService cs=new CategoryService();
     ProduitService ps=new ProduitService();
     @FXML
     private FontAwesomeIconView closeicon;
+    @FXML
+    private Label errprix;
+    @FXML
+    private Label errdesc;
+    @FXML
+    private Label errdate;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN_ALT);
+            icon.getStyleClass().add("icon");
+            icon.setStyle("-fx-fill: white;");
+            btnimgmofig.setGraphic(icon);
         CategoryService cs=new CategoryService();
         ObservableList<Category> l= cs.afficher();
         List<String> nc = new ArrayList<>();
@@ -174,9 +186,7 @@ CategoryService cs=new CategoryService();
     @FXML
     private void closemodif(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/DisplayProduct.fxml"));
-            DisplayProductController dpc= loader.getController();
-            //dpc.afficherprodfxml();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/testprod.fxml"));
             Stage stage = (Stage) closeicon.getScene().getWindow();
             stage.close();
             Parent root = loader.load();

@@ -37,7 +37,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import pidev_javafx.entitie.Produit;
+import pidev_javafx.service.ProduitService;
 import pidev_javafx.tools.Statics;
 
 /**
@@ -66,6 +68,8 @@ public class DetailprodController implements Initializable {
     @FXML
     private FontAwesomeIconView returnprod;
     Produit pr;
+    @FXML
+    private Rating ratingstar;
 
     /**
      * Initializes the controller class.
@@ -93,6 +97,7 @@ public class DetailprodController implements Initializable {
         descriptionprodlabel.setText(p.getDescription());
         descriptionprodlabel.setWrapText(true);
         descriptionprodlabel.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+        ratingstar.setRating(p.getNote());
         if(p.getQuantite_produit()==0){
             dispoprodlabel.setText("Out Of Stock");
             dispoprodlabel.setTextFill(Color.RED);
@@ -130,6 +135,14 @@ public class DetailprodController implements Initializable {
                 }catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
+    }
+
+    @FXML
+    private void ratted(MouseEvent event) {
+        System.out.println(ratingstar.getRating());
+        ProduitService ps=new ProduitService();
+        ps.updaterate(pr.getId(), (float)ratingstar.getRating());
+        
     }
     
     

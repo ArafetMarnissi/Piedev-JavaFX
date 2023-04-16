@@ -5,6 +5,8 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -74,7 +76,10 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+//        FontAwesomeIconView icon2 = new FontAwesomeIconView(FontAwesomeIcon.PLUS);
+//            icon2.getStyleClass().add("icon1");
+//            icon2.setStyle("-fx-fill: white;");
+//            ajoutprod.setGraphic(icon2);
         ProduitService ps=new ProduitService();
         
         listprod=ps.afficher();
@@ -118,8 +123,8 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
             catLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(catLabel);
             Button btn=new Button("Edit");
-            btn.setAlignment(Pos.TOP_LEFT);
-            btn.setOnAction(e->{
+//            
+            btn.setOnMouseClicked(e->{
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
                     Parent root = loader.load();
@@ -136,6 +141,11 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
                 }
             });
             card.getChildren().add(btn);
+            Button b=new Button("k");
+            b.setOnMouseClicked(e->{
+                System.out.println("jj");
+            });
+            card.getChildren().add(b);
             card.setOnMousePressed(e -> {
                 if (e.isPrimaryButtonDown()) { 
                     showProductDetails(produit);
@@ -207,7 +217,7 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
             card.getChildren().add(catLabel);
             Button btn=new Button("Edit");
             btn.setAlignment(Pos.TOP_RIGHT);
-            btn.setOnAction(e->{
+            btn.setOnMouseClicked(e->{
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Modifproduct.fxml"));
                     Parent root = loader.load();

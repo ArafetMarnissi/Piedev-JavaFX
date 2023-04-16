@@ -51,7 +51,7 @@ public class AcceuilController implements Initializable {
 
     @FXML
     private void affprodonclick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/DisplayProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/testprod.fxml"));
             Parent root;
         try {
             root = loader.load();

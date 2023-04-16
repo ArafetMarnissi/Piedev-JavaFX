@@ -5,6 +5,8 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -93,6 +95,10 @@ public class ProduitController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN_ALT);
+            icon.getStyleClass().add("icon");
+            icon.setStyle("-fx-fill: white;");
+            imgfileprod.setGraphic(icon);
         cs=new CategoryService();
         ObservableList<Category> l= cs.afficher();
         List<String> nc = new ArrayList<>();
@@ -247,7 +253,7 @@ public class ProduitController implements Initializable {
 
     @FXML
     private void affonclick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/DisplayProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/testprod.fxml"));
             Parent root;
         try {
             root = loader.load();
