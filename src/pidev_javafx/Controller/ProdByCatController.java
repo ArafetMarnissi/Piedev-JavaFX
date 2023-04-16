@@ -100,11 +100,7 @@ public class ProdByCatController implements Initializable {
                 dispo.setAlignment(Pos.CENTER);
                 dispo.setTextFill(Color.GREEN);
                 card.getChildren().add(dispo);
-            }
-            Label catLabel=new Label(produit.getCategory().getNomCategory());
-            catLabel.setAlignment(Pos.CENTER);
-            card.getChildren().add(catLabel);
-            card.setOnMouseClicked(e->{
+                card.setOnMouseClicked(e->{
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/Detailprod.fxml"));
                 try{
                     Parent root = loader.load();
@@ -120,6 +116,11 @@ public class ProdByCatController implements Initializable {
                     System.out.println(ex.getMessage());
                 }
             });
+            }
+            Label catLabel=new Label(produit.getCategory().getNomCategory());
+            catLabel.setAlignment(Pos.CENTER);
+            card.getChildren().add(catLabel);
+            
             listprodbycat.getChildren().add(card);
             listprodbycat.setMargin(card, new Insets(5, 5, 5, 5));
     }

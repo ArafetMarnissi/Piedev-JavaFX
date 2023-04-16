@@ -42,7 +42,7 @@ public class Test {
 //       System.out.println(ps.findprodbycat(17));
        SMS ss=new SMS();
        //ss.sms("goldengym", "Esprit2023", "+21693763578", "hello ");
-       ss.sms("whey");
+       //ss.sms("whey");
 //       ObservableList<Category> l= cs.afficher();
 //        List<String> nc = new ArrayList<>();
 //            for (Category category : l) {

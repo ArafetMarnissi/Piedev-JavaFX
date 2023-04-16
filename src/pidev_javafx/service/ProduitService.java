@@ -102,7 +102,7 @@ public class ProduitService implements CrudInterface<Produit>{
     
     public ObservableList<Produit> findprodbycat(int idprod){
         ObservableList<Produit>prod=FXCollections.observableArrayList(); 
-        String sql="select * from produit where category_id=?";
+        String sql="select * from produit where category_id=? and date_expiration>=sysdate() ";
         PreparedStatement ste;
         CategoryService cs=new CategoryService();
         try{
