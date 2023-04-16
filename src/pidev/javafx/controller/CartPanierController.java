@@ -87,13 +87,13 @@ public class CartPanierController implements Initializable {
     // Créer le contrôleur pour la vue des détails de la commande
     DashbordFrontController controller = loader.getController();
     //controller.afficherPanier();
-    btnRemoveCart.getScene().setRoot(root);
+    //btnRemoveCart.getScene().setRoot(root);
     
-//    controller.updatePanier();
- //   controller.afficherPanier();
+    controller.updatePanier();
+    //controller.afficherPanier();
 
     //controller.afficherPanier();
-    //btnRemoveCart.getScene().setRoot(root);
+   // btnRemoveCart.getScene().setRoot(root);
        
     //DashbordFrontController controller = (DashbordFrontController) btnRemoveCart.getScene().getUserData();
     //controller.afficherPanier();
@@ -103,17 +103,15 @@ public class CartPanierController implements Initializable {
 
     @FXML
     private void plus(ActionEvent event) {
-        HashMap<Produit,Integer> panier =PanierSession.getPanier();
-        panier.replace(produit, panier.get(produit), panier.get(produit)+1);
-        PanierSession.setPanier(panier);
+        //HashMap<Produit,Integer> panier =PanierSession.getPanier();
+        //panier.replace(produit, panier.get(produit), panier.get(produit)+1);
+        PanierSession.getInstance().addProduct(produit);
         quantiteProduitCart.setText(PanierSession.getPanier().get(produit).toString());
     }
 
     @FXML
     private void Minus(ActionEvent event) {
-        HashMap<Produit,Integer> panier =PanierSession.getPanier();
-        panier.replace(produit, panier.get(produit), panier.get(produit)-1);
-        PanierSession.setPanier(panier);
+        PanierSession.getInstance().decreaseProduct(produit);
         quantiteProduitCart.setText(PanierSession.getPanier().get(produit).toString());
     }
 

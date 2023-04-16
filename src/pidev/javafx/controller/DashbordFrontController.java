@@ -5,6 +5,7 @@
  */
 package pidev.javafx.controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,16 +17,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -50,7 +57,7 @@ public class DashbordFrontController implements Initializable {
     @FXML
     private AnchorPane panePanier1;
     @FXML
-    private AnchorPane PaneContent;
+    public AnchorPane PaneContent;
     
     @FXML
     private ScrollPane ScrollPanePanierContent;
@@ -58,6 +65,11 @@ public class DashbordFrontController implements Initializable {
     private GridPane GridPanier;
     
     private List<Produit> produits = new ArrayList<>();
+    @FXML
+    private JFXButton btnCommandes;
+    
+    private BorderPane workPlace;
+    
     /**
      * Initializes the controller class.
      * 
@@ -182,7 +194,52 @@ public void afficherPanier(){
                 AnchorPane anchorPane = fxmlLoader.load();
                 CartPanierController cartPanierController = fxmlLoader.getController();
                 cartPanierController.SetData(produitsPanier.get(i));
-                GridPanier.add(anchorPane, column, row++);
+                
+                HBox hboxEnry =new HBox();
+                hboxEnry.getChildren().add(anchorPane);
+                
+
+                ///add button
+                Button btn = new Button("Supprimer");
+                btn.setUserData(produitsPanier.get(i));
+                btn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Node sourceComponent = (Node)event.getSource();
+                        Produit produit =(Produit) sourceComponent.getUserData();
+                        panier.remove(produit);
+                        PanierSession.setPanier(panier);
+                        System.out.println(panier.toString());
+                        GridPanier.getChildren().clear();
+                        afficherPanier();
+/*
+                        // Trouver l'élément dans la vue correspondant au produit supprimé
+                        List<Node> nodesToRemove = new ArrayList<>();
+                        for (Node node : GridPanier.getChildren()) {
+                            if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) > 0) {
+                                if (node.getUserData() instanceof Produit) {
+                                    Produit p = (Produit) node.getUserData();
+                                    if (p.equals(produit)) {
+                                        nodesToRemove.add(node);
+                                    }
+                                }
+                            }
+                        }
+
+                        // Supprimer l'élément de la vue
+                        for (Node node : nodesToRemove) {
+                            GridPanier.getChildren().remove(node);
+                        }*/
+
+                        // Mettre à jour la vue du panier
+                        //afficherPanier();
+                    }
+                });
+                hboxEnry.getChildren().add(btn);
+                GridPanier.add(hboxEnry, column, row++);
+                
+                
+                 //GridPanier.add(btn, column, row);
                 
                 //set Grid width
                 GridPanier.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -209,7 +266,10 @@ public void afficherPanier(){
 
 
 public void updatePanier() throws IOException {
-    HashMap<Produit,Integer> panier = PanierSession.getPanier();
+  
+    GridPanier.getChildren().clear();
+    
+    /*HashMap<Produit,Integer> panier = PanierSession.getPanier();
     List<Node> nodesToRemove = new ArrayList<>();
     int row = 1;
     for (Node node : GridPanier.getChildren()) {
@@ -236,7 +296,20 @@ public void updatePanier() throws IOException {
                 cartPanierController.SetData(produit);
         GridPane.setRowIndex(anchorPane, row);
         row++;
-    }
+    }*/
 }
+
+    @FXML
+    private void ConsulterMesCommandes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            //workPlace.setCenter(autreInterface);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

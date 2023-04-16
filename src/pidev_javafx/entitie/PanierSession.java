@@ -49,8 +49,42 @@ public class PanierSession {
         }
         return instance;
     }
-    
-
+    public void addProduct(Produit produit){
+        PanierSession.getInstance();
+        if(panier.containsKey(produit))
+        {
+            panier.replace(produit, panier.get(produit)+1);
+        }
+        else{
+            panier.put(produit, 1);
+        }
+    }
+        public void decreaseProduct(Produit produit){
+        PanierSession.getInstance();
+        if(panier.containsKey(produit))
+        {
+            if(panier.get(produit)>1){
+            panier.replace(produit, panier.get(produit)-1);
+            }
+        }
+    }
+    public int getQuantity(Produit produit){
+        PanierSession.getInstance();
+        if(panier.containsKey(produit))
+        {
+            return panier.get(produit);
+        }
+        else
+            return 0;
+    }    
+    public float calculTotale(){
+        PanierSession.getInstance();
+        float total =0;
+        for (Produit prod : panier.keySet()){
+            total +=prod.getPrix_produit()*panier.get(prod);
+        }
+        return total;
+    }    
     }
     
 

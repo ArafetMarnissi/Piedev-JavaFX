@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="152.0" prefWidth="278.0" style="-fx-background-color: #D3D3D3;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="pidev.javafx.controller.CartPanierController">
+<AnchorPane id="AnchorPane" prefHeight="152.0" prefWidth="278.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.javafx.controller.CartPanierController">
    <children>
       <VBox layoutX="71.0" layoutY="-35.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -80,21 +79,6 @@
                               </JFXButton>
                            </children>
                         </HBox>
-                        <JFXButton fx:id="btnRemoveCart" alignment="CENTER" contentDisplay="CENTER" onAction="#RemoveProduct" textAlignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../pidev/javafx/assets/close.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="1.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </JFXButton>
                      </children>
                   </VBox>
                </children>
