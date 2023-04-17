@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.javafx.controller;
+package pidev_javafx.controller;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
-import pidev.javafx.controller.DashbordFrontController;
+import pidev_javafx.controller.DashbordFrontController;
 
 /**
  * FXML Controller class

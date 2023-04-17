@@ -3,16 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.javafx.controller;
+package pidev_javafx.controller;
 
+import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 /**
@@ -32,6 +37,8 @@ public class DashbordBackController implements Initializable {
     private ImageView menu;
     @FXML
     private AnchorPane PaneContent;
+    @FXML
+    private JFXButton btnListeCommande;
 
     /**
      * Initializes the controller class.
@@ -39,6 +46,24 @@ public class DashbordBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        SlideBar();
+
+    }    
+
+    @FXML
+    private void ListeCommandeBack(ActionEvent event) {
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeback.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void SlideBar(){
+    
         pane1.setVisible(false);
         
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), pane1);
@@ -79,6 +104,6 @@ public class DashbordBackController implements Initializable {
         translateTransition1.setByX(-600);
         translateTransition1.play();
         });
-    }    
+    }
     
 }

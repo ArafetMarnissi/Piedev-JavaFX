@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.javafx.controller;
+package pidev_javafx.controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,6 +34,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.LigneCommande;
 import pidev_javafx.entitie.Produit;
@@ -121,6 +124,20 @@ public class ListeCommandeClientController implements Initializable {
     private RadioButton MPR3Modifer;
     @FXML
     private Button btnModiferListe;
+    @FXML
+    private AnchorPane PaneDetaisCommandeClient;
+    @FXML
+    private Button btnRetourDetails;
+    @FXML
+    private TableView<LigneCommande> tableLigneCommande;
+    @FXML
+    private TableColumn<LigneCommande, String> colProduit;
+    @FXML
+    private TableColumn<LigneCommande, Integer> colQuantite;
+    @FXML
+    private TableColumn<LigneCommande, Float> colPrixUnitaire;
+
+
 
     /**
      * Initializes the controller class.
@@ -184,13 +201,24 @@ public class ListeCommandeClientController implements Initializable {
 
     @FXML
     private void DetailsCommande(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DetailsCommande.fxml"));
-        Parent root = loader.load();
-        // Créer le contrôleur pour la vue des détails de la commande
-        DetailsCommandeController controller = loader.getController(); 
-        controller.commande=tableCommande.getSelectionModel().getSelectedItem();
-        controller.afficher();
-        btnDetails.getScene().setRoot(root);
+
+        PaneDetaisCommandeClient.toFront();
+        Commande commande=tableCommande.getSelectionModel().getSelectedItem();
+   
+        colProduit.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<LigneCommande, String>, ObservableValue<String>>() {
+        @Override
+        public ObservableValue<String> call(TableColumn.CellDataFeatures<LigneCommande, String> cellData) {
+            Produit produit = cellData.getValue().getProduit(); // récupérer le produit associé à la Ligne de commande
+            return new SimpleStringProperty(produit.getNom()); // retourner le nom de produit
+        }
+        });
+
+        colQuantite.setCellValueFactory(new PropertyValueFactory<LigneCommande, Integer>("quantite_produit"));
+        colPrixUnitaire.setCellValueFactory(new PropertyValueFactory<LigneCommande, Float>("prix_unitaire"));
+        ObservableList<LigneCommande>listLigneCommande=FXCollections.observableArrayList();
+        LigneCommandeService lcs =new LigneCommandeService();
+        listLigneCommande=lcs.afficherLigneCommandesParCommande(commande);
+        tableLigneCommande.setItems(listLigneCommande);
     }
 
     @FXML
@@ -326,5 +354,11 @@ public class ListeCommandeClientController implements Initializable {
    
        
 }
+
+    @FXML
+    private void RetourDetails(ActionEvent event) {
+                afficher();
+        PaneListeCommandeClient.toFront();
+    }
 
 }

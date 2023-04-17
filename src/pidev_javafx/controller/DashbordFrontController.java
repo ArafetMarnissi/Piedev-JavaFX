@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.javafx.controller;
+package pidev_javafx.controller;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
@@ -299,13 +299,13 @@ public void updatePanier() throws IOException {
     }*/
 }
 
-    @FXML
-    private void ConsulterMesCommandes(ActionEvent event) {
+@FXML
+private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
             PaneContent.getChildren().setAll(autreInterface);
-            //workPlace.setCenter(autreInterface);
+            
             
         } catch (IOException e) {
             e.printStackTrace();
