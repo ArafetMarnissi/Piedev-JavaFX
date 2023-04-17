@@ -66,6 +66,8 @@ public class AbonnementService implements CrudInterface<Abonnement>{
         }
         return abonnements;
     }
+    
+    
 
     @Override
     public void supprimer(Abonnement t) {
@@ -82,14 +84,15 @@ public class AbonnementService implements CrudInterface<Abonnement>{
 
     @Override
     public void modifier(Abonnement t) {
-            String sql = "UPDATE abonnement SET nom_abonnement=?, prix_abonnement=?, duree_abonnement=? WHERE id=?";
+            String sql = "UPDATE abonnement SET nom_abonnement=?, prix_abonnement=?, duree_abonnement=?, count=? WHERE id=?";
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
             ste.setString(1,t.getNomAbonnement());
             ste.setFloat(2,t.getPrixAbonnement());            
             ste.setString(3, t.getDureeAbonnement());
-            ste.setInt(4, t.getId());
+            ste.setInt(4, t.getCount());
+            ste.setInt(5, t.getId());
             ste.executeUpdate();
             System.out.println("Abonnement modifiée");
             

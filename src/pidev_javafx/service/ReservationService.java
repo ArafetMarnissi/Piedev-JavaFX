@@ -35,8 +35,8 @@ public class ReservationService implements CrudInterface<Reservation> {
             ste = cnx.prepareStatement(sql);
             ArrayList<Abonnement> abonnements = t.getAbonnements();
             if (abonnements != null && !abonnements.isEmpty()) {
-                Abonnement a = abonnements.get(0); // Obtenez le premier abonnement de la liste (vous pouvez adapter cela à vos besoins)
-                int abonnementId = a.getId(); // Obtenez l'ID de l'abonnement
+                Abonnement a = abonnements.get(0);
+                int abonnementId = a.getId(); 
                 ste.setInt(1, abonnementId);
                 ste.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
                 LocalDate dateFin = LocalDate.now();
@@ -99,15 +99,9 @@ int abonnementId = a.getId();
 ste.setInt(1, abonnementId);
 ste.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
 java.sql.Date dateFin = Date.valueOf(dateActuelle1) ;
- 
-/*if (a.getDureeAbonnement().equalsIgnoreCase("Mensuel")) {
-dateFin = dateFin.plusMonths(1);
-} else if (a.getDureeAbonnement().equalsIgnoreCase("Annuel")) {
-dateFin = dateFin.plusYears(1);
-}*/
 ste.setDate(3, dateFin);
 ste.executeUpdate();
-System.out.println("Reservation ajoutée");
+System.out.println("Reservation ajoutée"); 
 } catch (SQLException ex) {
 System.out.println(ex.getMessage());
 }

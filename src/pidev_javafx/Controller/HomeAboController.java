@@ -197,8 +197,7 @@ public class HomeAboController implements Initializable {
             Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
             Matcher m = p.matcher(noma.getText());
             boolean nom = m.find();
-            if(
-                    noma.getText().isEmpty() || prixa.getText().isEmpty() || dureea.getText().isEmpty()      //prixa.getText()).isEmpty()    Float.parseFloat(prixa.getText())==0
+            if( noma.getText().isEmpty() || prixa.getText().isEmpty() || dureea.getText().isEmpty()      //prixa.getText()).isEmpty()    Float.parseFloat(prixa.getText())==0
                     ) 
             {
                 
@@ -225,10 +224,14 @@ public class HomeAboController implements Initializable {
                }
                
                else {
+                    
                     t.setNomAbonnement(noma.getText());
                     t.setPrixAbonnement(Float.parseFloat(prixa.getText()));
                     t.setDureeAbonnement(dureea.getText());
                     aa.ajouter(t); 
+                    formulaire_erreur.setText("Abonnement ajouté");
+                    erreurNom.setText("");
+                    erreurPrix.setText("");
                        showabo2(); 
                        noma.clear();
                        prixa.clear();

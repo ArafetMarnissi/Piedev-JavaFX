@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -30,14 +31,25 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import pidev_javafx.Controller.CarteAbonnementController;
 import pidev_javafx.entitie.Abonnement;
 import pidev_javafx.service.AbonnementService;
 import pidev_javafx.tools.MaConnection;
@@ -51,25 +63,15 @@ import pidev_javafx.service.ReservationService;
  */
 public class ReservationController implements Initializable {
 
-    @FXML
     private TableColumn<Abonnement, String> abr;
-    @FXML
     private TableColumn<Abonnement, Float> prixr;
-    @FXML
     private TableColumn<Abonnement, String> dureea;
-    @FXML
-    private TableColumn<Abonnement, Integer> ida;
-    @FXML
-    private TableColumn<Abonnement, Integer> counta;
-    @FXML
-    private Button reserver;
     @FXML
     private TableColumn<Reservation, Integer> idr;
     @FXML
     private TableColumn<Reservation, Date> debutr;
     @FXML
     private TableColumn<Reservation, Date> finr;
-    @FXML
     private TableView<Abonnement> tableAb;
     @FXML
     private TableView<Reservation> tableRe;
@@ -81,11 +83,17 @@ public class ReservationController implements Initializable {
     ObservableList<Abonnement> abList2;
     ObservableList<Reservation> reList = FXCollections.observableArrayList();
     ObservableList<Reservation> reList2;
+    @FXML
+    private Label labelReservation;
+    private HBox HboxAB;
+    @FXML
+    private GridPane GridPAB;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        showAbonnement();
+        //showAbonnement();
+        afficherAB();
         showReservation();
     }    
     
@@ -119,7 +127,9 @@ public class ReservationController implements Initializable {
         
 
         tableAb.setItems(abList);
-    }   
+    }  
+    
+    
     
         public void showReservation() {
         try {
@@ -181,38 +191,93 @@ public class ReservationController implements Initializable {
     }     
         
     
-    @FXML
-    private void Addreservation(ActionEvent event) throws IOException, SQLException {
-        ArrayList<Abonnement> abonnements = new ArrayList<>();
-        Abonnement t = new Abonnement();
-        AbonnementService sv = new AbonnementService();
-        
-        ReservationService rse = new ReservationService();
-        Scanner sc = new Scanner(System.in);
-        Connection cnx = MaConnection.getInstance().getCnx();
-        Statement st;
-        ResultSet rs;
-        st = cnx.createStatement();
-        Statement stm = cnx.createStatement();
-	t = tableAb.getSelectionModel().getSelectedItem();
-	t.setId(tableAb.getSelectionModel().getSelectedItem().getId());
-        int abID = t.getId();
-        LocalDate dateActuelle1 = LocalDate.now(); // Date actuelle 
-        java.sql.Date debutAbo = Date.valueOf(dateActuelle1);
-        LocalDate dateActuelle2= LocalDate.now();        
-        if (t.getDureeAbonnement().equalsIgnoreCase("Mensuel")){
-            dateActuelle2 = dateActuelle2.plusMonths(1);
-        }
-        else if (t.getDureeAbonnement().equalsIgnoreCase("Annuel")) {
-            dateActuelle2 = dateActuelle2.plusYears(1);
-        }
-        java.sql.Date finAbo = Date.valueOf(dateActuelle1);    
-        abonnements.add(t);
-        Reservation r = new Reservation(debutAbo, finAbo, abonnements);
-        rse.ajouter(r);
-        t.setCount(t.getCount() + 1);
-        showReservation1();
-        
-                   
+private void Addreservation(Abonnement ab) {
+    ArrayList<Abonnement> abonnements = new ArrayList<>();
+    AbonnementService sv = new AbonnementService();
+
+    ReservationService rse = new ReservationService();
+
+    ab.getId();
+    
+    LocalDate dateActuelle1 = LocalDate.now(); // Date actuelle 
+    java.sql.Date debutAbo = Date.valueOf(dateActuelle1);
+    LocalDate dateActuelle2 = LocalDate.now();
+    if (ab.getDureeAbonnement().equalsIgnoreCase("Mensuel")) {
+        dateActuelle2 = dateActuelle2.plusMonths(1);
+    } else if (ab.getDureeAbonnement().equalsIgnoreCase("Annuel")) {
+        dateActuelle2 = dateActuelle2.plusYears(1);
+    }
+    java.sql.Date finAbo = Date.valueOf(dateActuelle1);
+    ab.setCount(ab.getCount() + 1);
+    sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
+    abonnements.add(ab);
+    Reservation r = new Reservation(debutAbo, finAbo, abonnements);
+    rse.ajouter(r);
+    showReservation1();
+    //labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
+    
 }
+
+public void afficherAB(){
+
+    ArrayList<Abonnement> abonnements = new ArrayList<>();
+    Abonnement t = new Abonnement();
+    AbonnementService sv = new AbonnementService();
+    abonnements = (ArrayList<Abonnement>) sv.afficher();
+        int column=0;
+        int row=1;
+        try {
+            for(int i=0;i<abonnements.size();i++){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CarteAbonnement.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+                CarteAbonnementController cartAbonnementController = fxmlLoader.getController();
+                cartAbonnementController.SetData(abonnements.get(i));
+                VBox vboxEntry = new VBox(); 
+                vboxEntry.getChildren().add(anchorPane);
+                //GridPAB.add(anchorPane, column++, row);
+
+                ///add button
+                Button btn = new Button("Reserver");
+                
+                btn.setUserData(abonnements.get(i));
+                btn.setStyle("-fx-background-color: #0c1f28; -fx-text-fill: white; -fx-background-radius: 25;");              
+                btn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Node sourceComponent = (Node)event.getSource();
+                        Abonnement ab =(Abonnement) sourceComponent.getUserData();                       
+                        Addreservation(ab);
+
+                    }
+                });
+                vboxEntry.getChildren().add(btn);
+                
+                if( abonnements.get(i).getDureeAbonnement().equalsIgnoreCase("Mensuel")){anchorPane.setStyle("-fx-background-color: #e97d68;");}
+               else {anchorPane.setStyle("-fx-background-color: #3aa0d1;");}
+                GridPAB.add(vboxEntry, column++, row);
+                if(column == 3){
+                 row++;
+                 column=0;
+                }
+
+                //set Grid width
+                GridPAB.setMinWidth(Region.USE_COMPUTED_SIZE);
+                GridPAB.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                GridPAB.setMaxWidth(Region.USE_PREF_SIZE);
+                //set Grid height
+                GridPAB.setMinHeight(Region.USE_COMPUTED_SIZE);
+                GridPAB.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                GridPAB.setMaxHeight(Region.USE_PREF_SIZE);
+                GridPAB.setMargin(anchorPane, new Insets(10));
+            }
+            
+            } catch (IOException ex) {
+                Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
+
+}
+
+
 }

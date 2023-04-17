@@ -43,28 +43,28 @@
                               <TableColumn fx:id="countAbonnement" prefWidth="75.0" text="count" />
                           </columns>
                         </TableView>
-                        <Button fx:id="supprimerabo" layoutX="545.0" layoutY="505.0" mnemonicParsing="false" onAction="#SupprimerAbonnementOnClick" prefHeight="25.0" prefWidth="94.0" text="   Supprimer" />
-                        <ImageView fitHeight="17.0" fitWidth="20.0" layoutX="545.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="supprimerabo" layoutX="535.0" layoutY="505.0" mnemonicParsing="false" onAction="#SupprimerAbonnementOnClick" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="     Supprimer" textFill="WHITE" />
+                        <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="535.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/remove.png" />
+                              <Image url="@../../assets/eraser.png" />
                            </image>
                         </ImageView>
-                        <TextArea fx:id="prixa" layoutX="67.0" layoutY="281.0" prefHeight="25.0" prefWidth="165.0" promptText="Prix" />
-                        <TextArea fx:id="noma" layoutX="67.0" layoutY="201.0" prefHeight="39.0" prefWidth="165.0" promptText="Nom" />
-                        <TextArea fx:id="dureea" layoutX="68.0" layoutY="360.0" prefHeight="39.0" prefWidth="165.0" promptText="Dureé" />
-                        <Button fx:id="ajouterabo" layoutX="67.0" layoutY="443.0" mnemonicParsing="false" onAction="#ajoutAbo" prefHeight="25.0" prefWidth="74.0" text="    Ajouter" />
-                        <ImageView fitHeight="25.0" fitWidth="17.0" layoutX="67.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+                        <TextArea fx:id="prixa" layoutX="85.0" layoutY="300.0" prefHeight="25.0" prefWidth="165.0" promptText="Prix" />
+                        <TextArea fx:id="noma" layoutX="85.0" layoutY="221.0" prefHeight="39.0" prefWidth="165.0" promptText="Basic / Pro / Premium" />
+                        <TextArea fx:id="dureea" layoutX="85.0" layoutY="380.0" prefHeight="39.0" prefWidth="165.0" promptText="Mensuel / Annuel" />
+                        <Button fx:id="ajouterabo" layoutX="54.0" layoutY="481.0" mnemonicParsing="false" onAction="#ajoutAbo" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="      Ajouter" textFill="WHITE" />
+                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="51.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/add.png" />
+                              <Image url="@../../assets/ajouter.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="modifierabo" layoutX="149.0" layoutY="443.0" mnemonicParsing="false" onAction="#ModAbo" prefHeight="25.0" prefWidth="74.0" text="    Modifier" />
-                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="150.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="modifierabo" layoutX="181.0" layoutY="481.0" mnemonicParsing="false" onAction="#ModAbo" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="    Modifier" textFill="WHITE" />
+                        <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="181.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/update.png" />
+                              <Image url="@../../assets/updated.png" />
                            </image>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="13.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Abonnements" wrappingWidth="252.33673095703125">
+                        <Text fill="#1372f4" layoutX="13.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Abonnements" wrappingWidth="252.33673095703125">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -85,10 +85,25 @@
                               </LinearGradient>
                            </stroke>
                         </Text>
-                        <Label fx:id="formulaire_erreur" layoutX="70.0" layoutY="522.0" prefHeight="17.0" prefWidth="371.0" textFill="RED" />
-                        <Label fx:id="erreurNom" layoutX="12.0" layoutY="247.0" prefHeight="17.0" prefWidth="277.0" textFill="RED" />
-                        <Label fx:id="erreurPrix" layoutX="6.0" layoutY="326.0" prefHeight="17.0" prefWidth="286.0" textFill="RED" />
-                        <Label fx:id="erreurDuree" layoutX="70.0" layoutY="400.0" prefHeight="28.0" prefWidth="165.0" textFill="RED" />
+                        <Label fx:id="formulaire_erreur" layoutX="64.0" layoutY="541.0" prefHeight="62.0" prefWidth="413.0" textFill="RED" />
+                        <Label fx:id="erreurNom" layoutX="12.0" layoutY="272.0" prefHeight="17.0" prefWidth="277.0" textFill="RED" />
+                        <Label fx:id="erreurPrix" layoutX="8.0" layoutY="343.0" prefHeight="28.0" prefWidth="286.0" textFill="RED" />
+                        <Label fx:id="erreurDuree" layoutX="88.0" layoutY="429.0" prefHeight="39.0" prefWidth="187.0" textFill="RED" />
+                        <Label layoutX="7.0" layoutY="221.0" prefHeight="39.0" prefWidth="48.0" text="Nom :" textFill="#1372f4">
+                           <font>
+                              <Font name="Bell MT" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="300.0" prefHeight="38.0" prefWidth="48.0" text="Prix : " textFill="#1372f4">
+                           <font>
+                              <Font name="Bell MT" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="-1.0" layoutY="380.0" prefHeight="39.0" prefWidth="63.0" text=" Durée :" textFill="#1372f4">
+                           <font>
+                              <Font name="Bell MT" size="19.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
