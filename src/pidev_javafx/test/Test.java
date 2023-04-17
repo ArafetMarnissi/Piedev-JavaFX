@@ -23,13 +23,13 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
+
        /* Commande c =new Commande(2,"c21,ariana,haouaria",150,"par chèque",26845811);
         Commande c1 =new Commande(6,2,"2023-03-11 09:39:00.0","c21,tunis,haouaria",150,"par chèque",23232323);
         CommandeService CS =new CommandeService();
         LigneCommandeService LS=new LigneCommandeService();
         CS.ajouter(c);
-=======
+
        
         CommandeService CS =new CommandeService();
         LigneCommandeService LS=new LigneCommandeService();
@@ -59,12 +59,12 @@ public class Test {
         //AS.modifier(a);
         System.out.println(AS.afficher());
         
-=======
+
        // System.out.println(LS.afficher());
         //System.out.println(CS.getCommandeParId(1));
         //System.out.println(CS.afficher());
-        System.out.println(LS.afficherLigneCommandesParCommande(c1));
->>>>>>> cb7a42cd7813a357c840b7def4bdc301852d5a36
+       // System.out.println(LS.afficherLigneCommandesParCommande(c1));
+
         
     }
     

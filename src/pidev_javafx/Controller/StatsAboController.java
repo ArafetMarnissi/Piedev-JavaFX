@@ -45,9 +45,12 @@ public class StatsAboController implements Initializable {
         // TODO
        cnx = MaConnection.getInstance().getCnx();
        stat();
-       btnActualiser.setOnAction(event -> {stat1();});
+       stat2();
+       //btnActualiser.setOnAction(event -> {stat1();});
     }    
+    @FXML
     private void stat() {
+        data.removeAll(data);
           try{
            
            String query = "SELECT `nom_abonnement`, `count`, `duree_abonnement` FROM abonnement ;";
@@ -67,29 +70,9 @@ public class StatsAboController implements Initializable {
         AboStat.setTitle("** Statistiques des abonnements les plus réservés **");
         AboStat.setLegendSide(Side.LEFT);
         AboStat.setData(data);
+        stat2();
     }
-    
-    private void stat1() {
-          data.removeAll(data);
-          try{
-           
-           String query = "SELECT `nom_abonnement`, `count`, `duree_abonnement` FROM abonnement ;";
-
-
-           PreparedStatement PreparedStatement = cnx.prepareStatement(query);
-             rs = PreparedStatement.executeQuery();
-            while (rs.next()){               
-                data.add(new PieChart.Data(rs.getString("nom_abonnement") + " - " + rs.getString("duree_abonnement"), rs.getInt("count")));
-            }
- 
-             
-        } catch (SQLException ex) {
-              System.out.println(ex.getMessage());
-        }
-        
-        AboStat.setTitle("**Statistiques des Abonnements les plus reserve **");
-        AboStat.setLegendSide(Side.LEFT);
-        AboStat.setData(data);
-    }    
+ private void stat2(){
+ }  
     
 }

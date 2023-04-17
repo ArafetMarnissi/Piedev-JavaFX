@@ -174,7 +174,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Dashboard">
+                  <JFXButton fx:id="StatAbDa" alignment="BASELINE_LEFT" onAction="#StatAboDashboard" prefHeight="38.0" prefWidth="179.0" text="Dashboard">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -209,7 +209,7 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Abonnements">
+                  <JFXButton fx:id="BtnAB" alignment="BASELINE_LEFT" onAction="#Listabonnement" prefHeight="38.0" prefWidth="179.0" text="Abonnements">
                      <font>
                         <Font size="16.0" />
                      </font>

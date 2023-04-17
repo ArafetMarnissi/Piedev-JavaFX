@@ -39,6 +39,10 @@ public class DashbordBackController implements Initializable {
     private AnchorPane PaneContent;
     @FXML
     private JFXButton btnListeCommande;
+    @FXML
+    private JFXButton BtnAB;
+    @FXML
+    private JFXButton StatAbDa;
 
     /**
      * Initializes the controller class.
@@ -104,6 +108,32 @@ public class DashbordBackController implements Initializable {
         translateTransition1.setByX(-600);
         translateTransition1.play();
         });
+    }
+
+    @FXML
+    private void Listabonnement(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/HomeAbo.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void StatAboDashboard(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/StatsAbo.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }        
     }
     
 }
