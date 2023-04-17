@@ -1,0 +1,58 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.root{
+    -fx-background-color: #EAEEF4;
+}
+.side_anchorpane{
+    -fx-background-color: #eee;
+    -fx-border-width : 2px 2px 2px 2px ;
+    -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+    -fx-border-style : solid;
+}
+.inner_pane{
+    -fx-background-color: #784CF1 ;
+    -fx-border-width : 2px 2px 2px 2px ;
+    -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+    -fx-border-style : solid;
+    -fx-border-color: #784CF1 ;
+}
+.most_inner_pan{
+    
+     -fx-background-color: #6780E2 ;
+    -fx-border-width : 2px 2px 2px 2px ;
+    -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+    -fx-border-style : solid;
+    -fx-border-color: #784CF1 ;
+}
+
+.btn_back_Dashbord{
+        
+     -fx-background-color: #6780E2 ;
+     -fx-border-width : 2px 2px 2px 2px ;
+     -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+    
+    
+}
+.btn_back_User{
+         -fx-background-color: #6780E2 ;
+     -fx-border-width : 2px 2px 2px 2px ;
+     -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+    
+}
+.btn_back{
+    
+             -fx-background-color: #6780E2 ;
+     -fx-border-width : 2px 2px 2px 2px ;
+     -fx-border-radius : 20px;
+    -fx-background-radius : 20px;
+}
