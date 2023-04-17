@@ -3,12 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -237,18 +237,35 @@
       </AnchorPane>
       <AnchorPane fx:id="panePanier1" prefHeight="553.0" prefWidth="320.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.3">
          <children>
-            <ScrollPane fx:id="ScrollPanePanierContent" prefHeight="486.0" prefWidth="300.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fx:id="ScrollPanePanierContent" prefHeight="437.0" prefWidth="320.0" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <GridPane fx:id="GridPanier" alignment="CENTER" prefHeight="95.0" prefWidth="318.0">
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                     </rowConstraints>
-                  </GridPane>
+                  <VBox fx:id="VBoxPanier" alignment="CENTER_LEFT" prefHeight="415.0" prefWidth="300.0" spacing="10.0">
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
                </content>
             </ScrollPane>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="82.0" prefWidth="320.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="179.0" text="Commander" VBox.vgrow="ALWAYS">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="91.0" text="Prix Total =   ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LabelPrixTotal" prefHeight="32.0" prefWidth="178.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <JFXButton fx:id="btnPasserCommande" alignment="CENTER" contentDisplay="CENTER" onAction="#PasserCommande" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Commander" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>

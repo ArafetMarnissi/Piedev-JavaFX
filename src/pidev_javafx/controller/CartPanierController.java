@@ -61,50 +61,18 @@ public class CartPanierController implements Initializable {
     public void SetData(Produit produit){
         this.produit=produit; 
         NomProduitCart.setText(produit.getNom());
-        PrixProduitCart.setText("DT "+produit.getPrix_produit());
-        //PrixProduitCart.setText("DT "+PanierSession.getPanier().get(1));
+        PrixProduitCart.setText("DT "+produit.getPrix_produit());      
         
-        quantiteProduitCart.setText("1");
         try {
-            //Image image = new Image(getClass().getResourceAsStream(produit.getImage_produit()));
-            //imageProduitCart.setImage(image);
             imageProduitCart.setImage(new Image(new FileInputStream(produit.getImage_produit())));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CartPanierController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
-    private void RemoveProduct(ActionEvent event) throws IOException {
-        HashMap<Produit,Integer> panier =PanierSession.getPanier();
-        panier.remove(produit);
-        PanierSession.setPanier(panier);
-        System.out.println(PanierSession.getPanier().toString());
-
-
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
-    Parent root = loader.load();
-    // Créer le contrôleur pour la vue des détails de la commande
-    DashbordFrontController controller = loader.getController();
-    //controller.afficherPanier();
-    //btnRemoveCart.getScene().setRoot(root);
-    
-    controller.updatePanier();
-    //controller.afficherPanier();
-
-    //controller.afficherPanier();
-   // btnRemoveCart.getScene().setRoot(root);
-       
-    //DashbordFrontController controller = (DashbordFrontController) btnRemoveCart.getScene().getUserData();
-    //controller.afficherPanier();
-
-        
-    }
-
+   
     @FXML
     private void plus(ActionEvent event) {
-        //HashMap<Produit,Integer> panier =PanierSession.getPanier();
-        //panier.replace(produit, panier.get(produit), panier.get(produit)+1);
         PanierSession.getInstance().addProduct(produit);
         quantiteProduitCart.setText(PanierSession.getPanier().get(produit).toString());
     }
