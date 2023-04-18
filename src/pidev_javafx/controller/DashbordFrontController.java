@@ -26,7 +26,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -61,17 +63,27 @@ public class DashbordFrontController implements Initializable {
     
     @FXML
     private ScrollPane ScrollPanePanierContent;
-    @FXML
     private GridPane GridPanier;
     
     private List<Produit> produits = new ArrayList<>();
     @FXML
     private JFXButton btnCommandes;
     
+<<<<<<< HEAD
     private BorderPane workPlace;
     @FXML
     private JFXButton BtnRes;
+=======
+    private HashMap<Produit,HBox> mapHashbox = new HashMap<>();
+    @FXML
+    private VBox VBoxPanier;
+    @FXML
+    private Label LabelPrixTotal;
+    @FXML
+    private JFXButton btnPasserCommande;
+>>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
     
+  
     /**
      * Initializes the controller class.
      * 
@@ -81,9 +93,26 @@ public class DashbordFrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 ///Panier///
-getData();
-afficherPanier();
-
+    getData();
+    afficherPanier();
+    if(PanierSession.getPanier().isEmpty()){
+        btnPasserCommande.setVisible(false);
+    }else{
+        btnPasserCommande.setVisible(true);
+    }
+    
+    
+    ///tester ajouter Produit
+        Produit produit =new Produit();
+        produit.setId(20);
+        produit.setNom("Vitamin");
+        produit.setPrix_produit(170);
+        produit.setImage_produit("/pidev_javafx/assets/front-view-fit-woman-training-with-dumbells.jpg");
+        try {
+            AjouterProduitPanier(produit);
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
 /////////all Slide Bar//////////       
@@ -169,136 +198,137 @@ private List<Produit> getData(){
     Produit produit;
     for(int i=0;i<5;i++){
         produit =new Produit();
-        produit.setId(i+1);
+        produit.setId(20);
         produit.setNom("Protein");
         produit.setPrix_produit(150);
         produit.setImage_produit("/pidev_javafx/assets/front-view-fit-woman-training-with-dumbells.jpg");
-        panier.put(produit, 2);
-        PanierSession.getInstance(panier);
-        produits.add(produit);
+        PanierSession.getInstance().addProduct(produit);
+        
     }
+    
     System.out.println(PanierSession.getPanier().toString());
     return produits;
 }
 
 public void afficherPanier(){
 
-        //produits.addAll(getData());
         
         HashMap<Produit,Integer> panier =PanierSession.getPanier();
         List<Produit> produitsPanier = new ArrayList<>(panier.keySet());
         
-        int column=0;
-        int row=1;
-        try {
+
+      
             for(int i=0;i<produitsPanier.size();i++){
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CartPanier.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-                CartPanierController cartPanierController = fxmlLoader.getController();
-                cartPanierController.SetData(produitsPanier.get(i));
-                
-                HBox hboxEnry =new HBox();
-                hboxEnry.getChildren().add(anchorPane);
-                
 
-                ///add button
-                Button btn = new Button("Supprimer");
-                btn.setUserData(produitsPanier.get(i));
-                btn.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        Node sourceComponent = (Node)event.getSource();
-                        Produit produit =(Produit) sourceComponent.getUserData();
-                        panier.remove(produit);
-                        PanierSession.setPanier(panier);
-                        System.out.println(panier.toString());
-                        GridPanier.getChildren().clear();
-                        afficherPanier();
-/*
-                        // Trouver l'élément dans la vue correspondant au produit supprimé
-                        List<Node> nodesToRemove = new ArrayList<>();
-                        for (Node node : GridPanier.getChildren()) {
-                            if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) > 0) {
-                                if (node.getUserData() instanceof Produit) {
-                                    Produit p = (Produit) node.getUserData();
-                                    if (p.equals(produit)) {
-                                        nodesToRemove.add(node);
-                                    }
-                                }
-                            }
-                        }
-
-                        // Supprimer l'élément de la vue
-                        for (Node node : nodesToRemove) {
-                            GridPanier.getChildren().remove(node);
-                        }*/
-
-                        // Mettre à jour la vue du panier
-                        //afficherPanier();
-                    }
-                });
-                hboxEnry.getChildren().add(btn);
-                GridPanier.add(hboxEnry, column, row++);
+               HBox hboxEntry =new HBox();
+               hboxEntry=createCarteProduit(produitsPanier.get(i));
+               VBoxPanier.getChildren().add(hboxEntry);
                 
-                
-                 //GridPanier.add(btn, column, row);
-                
-                //set Grid width
-                GridPanier.setMinWidth(Region.USE_COMPUTED_SIZE);
-                GridPanier.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                GridPanier.setMaxWidth(Region.USE_PREF_SIZE);
-                //set Grid height
-                GridPanier.setMinHeight(Region.USE_COMPUTED_SIZE);
-                GridPanier.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                GridPanier.setMaxHeight(Region.USE_PREF_SIZE);
-                GridPane.setMargin(anchorPane, new Insets(10));
             }
             AnchorPane anchorPaneLast = new AnchorPane();
             anchorPaneLast.setPrefWidth(152);
             anchorPaneLast.setPrefHeight(278);
-            GridPanier.add(anchorPaneLast, column, row++);
-            
-            } catch (IOException ex) {
-                Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            VBoxPanier.getChildren().add(anchorPaneLast);
+            LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+
             
         
 
 }
 
 
-public void updatePanier() throws IOException {
-  
-    GridPanier.getChildren().clear();
+public void RemoveItemPanier(Produit produit) throws IOException {
+  VBoxPanier.getChildren().clear();
+    mapHashbox.remove(produit);
     
-    /*HashMap<Produit,Integer> panier = PanierSession.getPanier();
-    List<Node> nodesToRemove = new ArrayList<>();
-    int row = 1;
-    for (Node node : GridPanier.getChildren()) {
-        if (GridPane .getRowIndex(node) == row) {
-            Produit produit = ((CartPanierController) node.getProperties().get("controller")).getProduit();
-            if (panier.containsKey(produit)) {
-                row++;
-                continue;
-            }
-            nodesToRemove.add(node);
-        }
+    for(Produit prod :mapHashbox.keySet()){
+        
+        VBoxPanier.getChildren().add(mapHashbox.get(prod));
+
     }
-    for (Node node : nodesToRemove) {
-        GridPanier.getChildren().remove(node);
-    }
-    row = 1;
-    for (Produit produit : panier.keySet()) {
-        if (panier.get(produit) == 0) {
-            continue;
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CartPanier.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-                CartPanierController cartPanierController = fxmlLoader.getController();
-                cartPanierController.SetData(produit);
-        GridPane.setRowIndex(anchorPane, row);
-        row++;
-    }*/
+    AnchorPane anchorPaneLast = new AnchorPane();
+    anchorPaneLast.setPrefWidth(152);
+    anchorPaneLast.setPrefHeight(278);
+    VBoxPanier.getChildren().add(anchorPaneLast);
+}
+public VBox creatHboxBtn(Produit produit){
+                HashMap<Produit,Integer> panier =PanierSession.getPanier();
+
+                //creer une button plus
+                ImageView imageViewPlus = new ImageView(new Image("/pidev/javafx/assets/plus.png"));
+                imageViewPlus.setFitWidth(27);
+                imageViewPlus.setFitHeight(29);
+                JFXButton btnPlus = new JFXButton("", imageViewPlus);
+                //creer une button moins
+                ImageView imageViewMoins = new ImageView(new Image("/pidev/javafx/assets/minus.png"));
+                imageViewMoins.setFitWidth(27);
+                imageViewMoins.setFitHeight(29);
+                JFXButton btnMoins = new JFXButton("", imageViewMoins);
+                //creer une button supprimer
+                ImageView imageViewSupp = new ImageView(new Image("/pidev/javafx/assets/close.png"));
+                imageViewSupp.setFitWidth(27);
+                imageViewSupp.setFitHeight(29);
+                JFXButton btnSupp = new JFXButton("", imageViewSupp);
+                //creer une label de quantité
+                Label labelQua = new Label(panier.get(produit).toString());
+                labelQua.setId("labelQu");
+                
+                
+                btnSupp.setUserData(produit);
+                btnMoins.setUserData(produit);
+                btnPlus.setUserData(produit);
+                //creer les evenement pour les btns
+                btnSupp.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            Node sourceComponent = (Node)event.getSource();
+                            Produit produit =(Produit) sourceComponent.getUserData();
+                            panier.remove(produit);
+                            PanierSession.setPanier(panier);
+                            VBoxPanier.getChildren().clear();
+                            RemoveItemPanier(produit);
+                            LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+                        } catch (IOException ex) {
+                            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    }
+                });
+                btnPlus.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Node sourceComponent = (Node)event.getSource();
+                        Produit produit =(Produit) sourceComponent.getUserData();
+                        PanierSession.getInstance().addProduct(produit);
+                        labelQua.setText(panier.get(produit).toString());
+                        LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+
+                    }
+                });
+                btnMoins.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Node sourceComponent = (Node)event.getSource();
+                        Produit produit =(Produit) sourceComponent.getUserData();
+                        PanierSession.getInstance().decreaseProduct(produit);
+                        labelQua.setText(panier.get(produit).toString());
+                        LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+
+                    }
+                });
+                
+                HBox hboxBtn =new HBox();
+                VBox vboxallBtn =new VBox();
+                
+                hboxBtn.getChildren().addAll(btnPlus,labelQua,btnMoins);
+                hboxBtn.setSpacing(5);
+                
+                vboxallBtn.getChildren().addAll(hboxBtn,btnSupp);
+                vboxallBtn.setSpacing(5);
+                vboxallBtn.setAlignment(Pos.CENTER);
+                vboxallBtn.setId("VboxBtn");
+                return vboxallBtn;
 }
 
 @FXML
@@ -306,15 +336,24 @@ private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
+<<<<<<< HEAD
             PaneContent.getChildren().setAll(autreInterface);
             autreInterface.setPadding(new Insets(0));
+=======
+>>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
             
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
             
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+<<<<<<< HEAD
     @FXML
     private void ListReservation(ActionEvent event) {
         try {
@@ -322,11 +361,91 @@ private void ConsulterMesCommandes(ActionEvent event) {
             Pane autreInterface = loader.load();
             autreInterface.setPadding(new Insets(0));
             PaneContent.getChildren().setAll(autreInterface);
+=======
+@FXML
+  private void PasserCommande(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            ListeCommandeClientController controller = loader.getController();
+            controller.PanePasserCommande.toFront();
+>>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
             
             
         } catch (IOException e) {
             e.printStackTrace();
+<<<<<<< HEAD
         }        
     }
 
+=======
+        }
+    }
+///
+  ///creation carteProdui de panier
+  public HBox createCarteProduit(Produit produit){
+      HBox hboxEntry =new HBox();  
+      try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CartPanier.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            CartPanierController cartPanierController = fxmlLoader.getController();
+            cartPanierController.SetData(produit);
+            
+            
+            hboxEntry.getChildren().add(anchorPane);
+            
+            VBox VboxBtn=creatHboxBtn(produit);
+            
+            hboxEntry.getChildren().add(VboxBtn);
+            hboxEntry.setStyle("-fx-background-color: #D3D3D3;");
+            hboxEntry.setId("HboxCarte");
+            mapHashbox.put(produit, hboxEntry);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return hboxEntry;
+}
+  ////Ajouter un produit au panier
+  
+  public void AjouterProduitPanier(Produit produit) throws IOException {
+ 
+      VBoxPanier.getChildren().clear();
+      
+      if(PanierSession.getPanier().containsKey(produit))
+      {
+          PanierSession.getInstance().addProduct(produit);
+          LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+          System.out.println("le produit est deja dans le panier");
+          mapHashbox.get(produit);
+          HBox hboxProduit = mapHashbox.get(produit);
+
+// Récupération de la VBox dans le HBox
+            VBox vboxProduit = (VBox) hboxProduit.lookup("#VboxBtn");
+
+// Récupération de la HBox interne dans la VBox
+            //HBox hboxInterne = (HBox) vboxProduit.lookup("#maHBox");
+
+// Récupération de la Label dans la HBox interne
+            Label labelProduit = (Label) vboxProduit.lookup("#labelQu");
+            labelProduit.setText(PanierSession.getPanier().get(produit).toString());
+      }
+      else{
+          PanierSession.getInstance().addProduct(produit);
+          createCarteProduit(produit);
+          System.out.println("le produit n'est pas dans le panier");
+      }
+ 
+      for(Produit prod :mapHashbox.keySet()){
+        
+        VBoxPanier.getChildren().add(mapHashbox.get(prod));
+
+    }
+    AnchorPane anchorPaneLast = new AnchorPane();
+    anchorPaneLast.setPrefWidth(152);
+    anchorPaneLast.setPrefHeight(278);
+    VBoxPanier.getChildren().add(anchorPaneLast);
+}
+>>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
 }

@@ -30,6 +30,14 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+<<<<<<< HEAD
+=======
+    
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("DashbordFront.fxml"));
+            //Scene scene = new Scene(root, 870, 584);
+            Scene scene = new Scene(root, 1095, 665);
+>>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
 
         try {
             Parent root = FXMLLoader.load(getClass().

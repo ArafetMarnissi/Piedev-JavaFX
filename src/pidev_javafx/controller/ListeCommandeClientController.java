@@ -37,6 +37,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.LigneCommande;
+import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.CommandeService;
@@ -67,15 +68,13 @@ public class ListeCommandeClientController implements Initializable {
     
     CommandeService cs =new CommandeService();
     @FXML
-    private Button btnAjouterCommande;
-    @FXML
     private Button btnModifer;
     @FXML
     private Button btnDetails;
     @FXML
     private BorderPane BordePane;
     @FXML
-    private AnchorPane PanePasserCommande;
+    public AnchorPane PanePasserCommande;
     @FXML
     private Button btnRetour;
     @FXML
@@ -189,15 +188,6 @@ public class ListeCommandeClientController implements Initializable {
        PaneModiferCommande.toFront();
         
     }
-    
-
-
-@FXML
-    private void AjouterCommandeClient(ActionEvent event) throws IOException {
- 
-       PanePasserCommande.toFront();
-        
-    }
 
     @FXML
     private void DetailsCommande(ActionEvent event) throws IOException {
@@ -246,27 +236,29 @@ public class ListeCommandeClientController implements Initializable {
                     ///a changer aprés la création de la session panier
                     ProduitService pserv = new ProduitService();
                     LigneCommandeService lcs = new LigneCommandeService();
+                    
                     Produit p1= pserv.getProduitParId(20); 
                     User u =new User(1, "test", "test", "test", "test", "test", 0, true);
                     ///
-                    Commande t =new Commande(u, AdresseLivarison,250, MethodedePaiement, telephone) ;
+                    Commande t =new Commande(u, AdresseLivarison,PanierSession.getInstance().calculTotale(), MethodedePaiement, telephone) ;
                     ///
                     
                     
                     CommandeService ps = new CommandeService();
                     
                     ps.ajouter(t);
-                    LigneCommande lc =new LigneCommande(ps.getLatestCommande(), p1, 2, p1.getPrix_produit());
-                    
+                    for(Produit prod :PanierSession.getPanier().keySet()){
+                    LigneCommande lc =new LigneCommande(ps.getLatestCommande(), prod, PanierSession.getPanier().get(prod), prod.getPrix_produit());
                     lcs.ajouter(lc);
+                    }
+                    
+                    
+                    
+                    
 
                     afficher();
                     PaneListeCommandeClient.toFront();
-                    
-                    //PanePasserCommande.setVisible(false);
-                   /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
-                    Parent root = loader.load();
-                    btnComander.getScene().setRoot(root);*/
+
          }else{
            if(txtAdresseLivraison.getText().isEmpty()){
             erreurAdresse.setText("L'adrresse est obligatoire");}

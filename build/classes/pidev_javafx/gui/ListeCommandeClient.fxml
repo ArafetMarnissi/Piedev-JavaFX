@@ -20,6 +20,70 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ListeCommandeClientController">
    <children>
+      <AnchorPane fx:id="PaneDetaisCommandeClient" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="25.0" left="75.0" right="75.0" top="25.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Détails" textAlignment="CENTER" textFill="#1372f4">
+                           <font>
+                              <Font name="Arial" size="25.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnRetourDetails" mnemonicParsing="false" onAction="#RetourDetails" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Retour" />
+                     </children>
+                  </VBox>
+               </top>
+               <center>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <TableView fx:id="tableLigneCommande" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="colProduit" prefWidth="102.40001755952835" text="Produit" />
+                              <TableColumn fx:id="colQuantite" prefWidth="190.4000244140625" text="Quantité" />
+                              <TableColumn fx:id="colPrixUnitaire" prefWidth="224.00001525878906" text="Prix unitaire" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </center>
+               <right>
+                  <HBox BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <HBox BorderPane.alignment="CENTER" />
+               </left>
+               <bottom>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="35.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textFill="WHITE" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="25.0" left="100.0" right="100.0" top="25.0" />
+                     </padding>
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="PanePasserCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -119,6 +183,73 @@
                      </font>
                   </Button>
                </top>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="PaneListeCommandeClient" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane fx:id="BordePane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Votre liste de Commande" textAlignment="CENTER" textFill="#1372f4">
+                           <font>
+                              <Font name="Arial" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="25.0" left="75.0" right="75.0" top="25.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </top>
+               <center>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <TableView fx:id="tableCommande" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="coldatecommande" prefWidth="216.80001527071" text="Date Commande" />
+                            <TableColumn fx:id="coladresse" prefWidth="224.00001525878906" text="Adresse de livraison" />
+                              <TableColumn fx:id="colmethpaiement" prefWidth="203.99996948242188" text="Méthode de paiement" />
+                              <TableColumn fx:id="coltelephone" prefWidth="167.20001220703125" text="Téléphone" />
+                              <TableColumn fx:id="colprix" prefWidth="147.199951171875" text="Prix" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </center>
+               <right>
+                  <HBox BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <HBox BorderPane.alignment="CENTER" />
+               </left>
+               <bottom>
+                  <HBox spacing="35.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btnModiferListe" mnemonicParsing="false" onAction="#ModiferCommandeClient" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textFill="WHITE" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#SupprimerCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnDetails" layoutX="727.0" layoutY="35.0" mnemonicParsing="false" onAction="#DetailsCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Détails" textFill="WHITE" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="25.0" left="100.0" right="100.0" top="25.0" />
+                     </padding>
+                  </HBox>
+               </bottom>
             </BorderPane>
          </children>
       </AnchorPane>
@@ -223,139 +354,6 @@
                      </BorderPane.margin>
                   </Button>
                </top>
-            </BorderPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="PaneListeCommandeClient" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <BorderPane fx:id="BordePane">
-               <top>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Votre liste de Commande" textAlignment="CENTER" textFill="#1372f4">
-                           <font>
-                              <Font name="Arial" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets bottom="25.0" left="75.0" right="75.0" top="25.0" />
-                     </BorderPane.margin>
-                  </VBox>
-               </top>
-               <center>
-                  <VBox BorderPane.alignment="CENTER">
-                     <children>
-                        <TableView fx:id="tableCommande" VBox.vgrow="ALWAYS">
-                          <columns>
-                            <TableColumn fx:id="coldatecommande" prefWidth="216.80001527071" text="Date Commande" />
-                            <TableColumn fx:id="coladresse" prefWidth="224.00001525878906" text="Adresse de livraison" />
-                              <TableColumn fx:id="colmethpaiement" prefWidth="203.99996948242188" text="Méthode de paiement" />
-                              <TableColumn fx:id="coltelephone" prefWidth="167.20001220703125" text="Téléphone" />
-                              <TableColumn fx:id="colprix" prefWidth="147.199951171875" text="Prix" />
-                          </columns>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </BorderPane.margin>
-                  </VBox>
-               </center>
-               <right>
-                  <HBox BorderPane.alignment="CENTER" />
-               </right>
-               <left>
-                  <HBox BorderPane.alignment="CENTER" />
-               </left>
-               <bottom>
-                  <HBox spacing="35.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="btnAjouterCommande" mnemonicParsing="false" onAction="#AjouterCommandeClient" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Ajouter Commande" textFill="WHITE" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnModiferListe" mnemonicParsing="false" onAction="#ModiferCommandeClient" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textFill="WHITE" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#SupprimerCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnDetails" layoutX="727.0" layoutY="35.0" mnemonicParsing="false" onAction="#DetailsCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Détails" textFill="WHITE" />
-                     </children>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                     <padding>
-                        <Insets bottom="25.0" left="100.0" right="100.0" top="25.0" />
-                     </padding>
-                  </HBox>
-               </bottom>
-            </BorderPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="PaneDetaisCommandeClient" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <top>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="25.0" left="75.0" right="75.0" top="25.0" />
-                     </BorderPane.margin>
-                     <children>
-                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="862.0" text="Détails" textAlignment="CENTER" textFill="#1372f4">
-                           <font>
-                              <Font name="Arial" size="25.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btnRetourDetails" mnemonicParsing="false" onAction="#RetourDetails" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Retour" />
-                     </children>
-                  </VBox>
-               </top>
-               <center>
-                  <VBox BorderPane.alignment="CENTER">
-                     <children>
-                        <TableView fx:id="tableLigneCommande" VBox.vgrow="ALWAYS">
-                           <columns>
-                              <TableColumn fx:id="colProduit" prefWidth="102.40001755952835" text="Produit" />
-                              <TableColumn fx:id="colQuantite" prefWidth="190.4000244140625" text="Quantité" />
-                              <TableColumn fx:id="colPrixUnitaire" prefWidth="224.00001525878906" text="Prix unitaire" />
-                           </columns>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </BorderPane.margin>
-                  </VBox>
-               </center>
-               <right>
-                  <HBox BorderPane.alignment="CENTER" />
-               </right>
-               <left>
-                  <HBox BorderPane.alignment="CENTER" />
-               </left>
-               <bottom>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="35.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textFill="WHITE" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
-                     </children>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                     <padding>
-                        <Insets bottom="25.0" left="100.0" right="100.0" top="25.0" />
-                     </padding>
-                  </HBox>
-               </bottom>
             </BorderPane>
          </children>
       </AnchorPane>
