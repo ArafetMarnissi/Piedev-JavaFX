@@ -20,110 +20,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ListeCommandeClientController">
    <children>
-      <AnchorPane fx:id="PaneModiferCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <center>
-                  <StackPane>
-                     <children>
-                        <ImageView fitHeight="1257.0" fitWidth="2256.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../pidev/javafx/assets/sportsman-running-dark-smoke.jpg" />
-                           </image>
-                        </ImageView>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="105.0" prefWidth="555.0" text="Modifer  commande" textAlignment="CENTER" textFill="#1372f4">
-                                 <font>
-                                    <Font name="Arial" size="25.0" />
-                                 </font>
-                              </Label>
-                              <HBox spacing="35.0">
-                                 <children>
-                                    <Label prefHeight="22.0" prefWidth="149.0" text="Adresse de livraison" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txtAdresseLivraisonModifer" prefHeight="42.0" prefWidth="222.0" />
-                                    <Label fx:id="erreurAdresseModifer" textFill="RED" />
-                                 </children>
-                              </HBox>
-                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0">
-                                 <children>
-                                    <Label prefHeight="22.0" prefWidth="160.0" text="Téléphone" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txtTelephoneModifer" prefHeight="42.0" prefWidth="225.0" />
-                                    <Label fx:id="erreurTelephoneModifer" textFill="RED" />
-                                 </children>
-                              </HBox>
-                              <VBox spacing="25.0">
-                                 <children>
-                                    <HBox spacing="25.0">
-                                       <children>
-                                          <Label prefHeight="22.0" prefWidth="412.0" text="Méthode de paiement" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="erreurPaiementModifer" textFill="RED" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="25.0">
-                                       <children>
-                                          <RadioButton fx:id="MPR1Modifer" mnemonicParsing="false" prefHeight="22.0" prefWidth="132.0" text="Chèque" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="MethodePaiementModifer" />
-                                             </toggleGroup>
-                                          </RadioButton>
-                                          <RadioButton fx:id="MPR2Modifer" mnemonicParsing="false" text="à la livraison" textFill="WHITE" toggleGroup="$MethodePaiementModifer" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                          <RadioButton fx:id="MPR3Modifer" mnemonicParsing="false" text="carte bancaire" textFill="#efefef" toggleGroup="$MethodePaiementModifer" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                       </children>
-                                       <padding>
-                                          <Insets left="140.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <HBox alignment="CENTER" prefHeight="114.0" prefWidth="555.0">
-                                 <children>
-                                    <Region HBox.hgrow="ALWAYS" />
-                                    <Button fx:id="btnModifer" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ModiferCommande" prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textAlignment="CENTER" textFill="WHITE" />
-                                    <Region HBox.hgrow="ALWAYS" />
-                                 </children>
-                              </HBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </StackPane>
-               </center>
-               <top>
-                  <Button fx:id="btnRetourModifer" mnemonicParsing="false" onAction="#MretourList" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Retour" BorderPane.alignment="TOP_LEFT">
-                     <BorderPane.margin>
-                        <Insets left="25.0" top="25.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </top>
-            </BorderPane>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="PaneDetaisCommandeClient" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -354,6 +250,110 @@
                      </padding>
                   </HBox>
                </bottom>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="PaneModiferCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <center>
+                  <StackPane>
+                     <children>
+                        <ImageView fitHeight="1257.0" fitWidth="2256.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../pidev/javafx/assets/sportsman-running-dark-smoke.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="105.0" prefWidth="555.0" text="Modifer  commande" textAlignment="CENTER" textFill="#1372f4">
+                                 <font>
+                                    <Font name="Arial" size="25.0" />
+                                 </font>
+                              </Label>
+                              <HBox spacing="35.0">
+                                 <children>
+                                    <Label prefHeight="22.0" prefWidth="149.0" text="Adresse de livraison" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtAdresseLivraisonModifer" prefHeight="42.0" prefWidth="222.0" />
+                                    <Label fx:id="erreurAdresseModifer" textFill="RED" />
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0">
+                                 <children>
+                                    <Label prefHeight="22.0" prefWidth="160.0" text="Téléphone" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtTelephoneModifer" prefHeight="42.0" prefWidth="225.0" />
+                                    <Label fx:id="erreurTelephoneModifer" textFill="RED" />
+                                 </children>
+                              </HBox>
+                              <VBox spacing="25.0">
+                                 <children>
+                                    <HBox spacing="25.0">
+                                       <children>
+                                          <Label prefHeight="22.0" prefWidth="412.0" text="Méthode de paiement" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="erreurPaiementModifer" textFill="RED" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="25.0">
+                                       <children>
+                                          <RadioButton fx:id="MPR1Modifer" mnemonicParsing="false" prefHeight="22.0" prefWidth="132.0" text="Chèque" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="MethodePaiementModifer" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="MPR2Modifer" mnemonicParsing="false" text="à la livraison" textFill="WHITE" toggleGroup="$MethodePaiementModifer" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </RadioButton>
+                                          <RadioButton fx:id="MPR3Modifer" mnemonicParsing="false" text="carte bancaire" textFill="#efefef" toggleGroup="$MethodePaiementModifer" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </RadioButton>
+                                       </children>
+                                       <padding>
+                                          <Insets left="140.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER" prefHeight="114.0" prefWidth="555.0">
+                                 <children>
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="btnModifer" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ModiferCommande" prefHeight="40.0" prefWidth="186.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifer" textAlignment="CENTER" textFill="WHITE" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </center>
+               <top>
+                  <Button fx:id="btnRetourModifer" mnemonicParsing="false" onAction="#MretourList" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Retour" BorderPane.alignment="TOP_LEFT">
+                     <BorderPane.margin>
+                        <Insets left="25.0" top="25.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </top>
             </BorderPane>
          </children>
       </AnchorPane>

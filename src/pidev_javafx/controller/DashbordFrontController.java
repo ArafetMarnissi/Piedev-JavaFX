@@ -77,6 +77,7 @@ public class DashbordFrontController implements Initializable {
     @FXML
     private JFXButton btnPasserCommande;
     
+  
     /**
      * Initializes the controller class.
      * 
@@ -93,7 +94,19 @@ public class DashbordFrontController implements Initializable {
     }else{
         btnPasserCommande.setVisible(true);
     }
-
+    
+    
+    ///tester ajouter Produit
+        Produit produit =new Produit();
+        produit.setId(20);
+        produit.setNom("Vitamin");
+        produit.setPrix_produit(170);
+        produit.setImage_produit("/pidev_javafx/assets/front-view-fit-woman-training-with-dumbells.jpg");
+        try {
+            AjouterProduitPanier(produit);
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
 /////////all Slide Bar//////////       
@@ -186,34 +199,24 @@ private List<Produit> getData(){
         PanierSession.getInstance().addProduct(produit);
         
     }
+    
     System.out.println(PanierSession.getPanier().toString());
     return produits;
 }
 
 public void afficherPanier(){
 
-        //produits.addAll(getData());
         
         HashMap<Produit,Integer> panier =PanierSession.getPanier();
         List<Produit> produitsPanier = new ArrayList<>(panier.keySet());
         
 
-        try {
+      
             for(int i=0;i<produitsPanier.size();i++){
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CartPanier.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-                CartPanierController cartPanierController = fxmlLoader.getController();
-                cartPanierController.SetData(produitsPanier.get(i));
-                
-                HBox hboxEntry =new HBox();
-                hboxEntry.getChildren().add(anchorPane);
-                
-                VBox VboxBtn=creatHboxBtn(produitsPanier.get(i));
 
-                hboxEntry.getChildren().add(VboxBtn);
-                hboxEntry.setStyle("-fx-background-color: #D3D3D3;");
-                mapHashbox.put(produitsPanier.get(i), hboxEntry);
-                VBoxPanier.getChildren().add(hboxEntry);
+               HBox hboxEntry =new HBox();
+               hboxEntry=createCarteProduit(produitsPanier.get(i));
+               VBoxPanier.getChildren().add(hboxEntry);
                 
             }
             AnchorPane anchorPaneLast = new AnchorPane();
@@ -221,9 +224,7 @@ public void afficherPanier(){
             anchorPaneLast.setPrefHeight(278);
             VBoxPanier.getChildren().add(anchorPaneLast);
             LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
-            } catch (IOException ex) {
-                Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
             
         
 
@@ -264,7 +265,9 @@ public VBox creatHboxBtn(Produit produit){
                 JFXButton btnSupp = new JFXButton("", imageViewSupp);
                 //creer une label de quantité
                 Label labelQua = new Label(panier.get(produit).toString());
-
+                labelQua.setId("labelQu");
+                
+                
                 btnSupp.setUserData(produit);
                 btnMoins.setUserData(produit);
                 btnPlus.setUserData(produit);
@@ -318,6 +321,7 @@ public VBox creatHboxBtn(Produit produit){
                 vboxallBtn.getChildren().addAll(hboxBtn,btnSupp);
                 vboxallBtn.setSpacing(5);
                 vboxallBtn.setAlignment(Pos.CENTER);
+                vboxallBtn.setId("VboxBtn");
                 return vboxallBtn;
 }
 
@@ -326,16 +330,20 @@ private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
-            PaneContent.getChildren().setAll(autreInterface);
             
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
             
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    private void PasserCommande(ActionEvent event) {
+@FXML
+  private void PasserCommande(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
@@ -348,5 +356,69 @@ private void ConsulterMesCommandes(ActionEvent event) {
             e.printStackTrace();
         }
     }
+///
+  ///creation carteProdui de panier
+  public HBox createCarteProduit(Produit produit){
+      HBox hboxEntry =new HBox();  
+      try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CartPanier.fxml"));
+            AnchorPane anchorPane = fxmlLoader.load();
+            CartPanierController cartPanierController = fxmlLoader.getController();
+            cartPanierController.SetData(produit);
+            
+            
+            hboxEntry.getChildren().add(anchorPane);
+            
+            VBox VboxBtn=creatHboxBtn(produit);
+            
+            hboxEntry.getChildren().add(VboxBtn);
+            hboxEntry.setStyle("-fx-background-color: #D3D3D3;");
+            hboxEntry.setId("HboxCarte");
+            mapHashbox.put(produit, hboxEntry);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return hboxEntry;
+}
+  ////Ajouter un produit au panier
+  
+  public void AjouterProduitPanier(Produit produit) throws IOException {
+ 
+      VBoxPanier.getChildren().clear();
+      
+      if(PanierSession.getPanier().containsKey(produit))
+      {
+          PanierSession.getInstance().addProduct(produit);
+          LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+          System.out.println("le produit est deja dans le panier");
+          mapHashbox.get(produit);
+          HBox hboxProduit = mapHashbox.get(produit);
 
+// Récupération de la VBox dans le HBox
+            VBox vboxProduit = (VBox) hboxProduit.lookup("#VboxBtn");
+
+// Récupération de la HBox interne dans la VBox
+            //HBox hboxInterne = (HBox) vboxProduit.lookup("#maHBox");
+
+// Récupération de la Label dans la HBox interne
+            Label labelProduit = (Label) vboxProduit.lookup("#labelQu");
+            labelProduit.setText(PanierSession.getPanier().get(produit).toString());
+      }
+      else{
+          PanierSession.getInstance().addProduct(produit);
+          createCarteProduit(produit);
+          System.out.println("le produit n'est pas dans le panier");
+      }
+ 
+      for(Produit prod :mapHashbox.keySet()){
+        
+        VBoxPanier.getChildren().add(mapHashbox.get(prod));
+
+    }
+    AnchorPane anchorPaneLast = new AnchorPane();
+    anchorPaneLast.setPrefWidth(152);
+    anchorPaneLast.setPrefHeight(278);
+    VBoxPanier.getChildren().add(anchorPaneLast);
+}
 }
