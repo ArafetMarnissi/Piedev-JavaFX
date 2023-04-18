@@ -36,7 +36,7 @@ public class NewFXMain extends Application {
                     getResource("DashbordBack.fxml"));
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Abonnement");
+            primaryStage.setTitle("Espace admin");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

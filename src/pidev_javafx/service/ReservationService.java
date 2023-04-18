@@ -79,6 +79,27 @@ public class ReservationService implements CrudInterface<Reservation> {
         return reservations ;    
     }
 
+    
+    public Reservation getDerniereReservation() {
+        Reservation derniereReservation = null;
+        String sql = "select * from reservation order by date_fin desc limit 1"; // Requête SQL pour obtenir la dernière réservation en triant par date_fin en ordre décroissant et en limitant le résultat à 1
+        Statement ste;
+        try {
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            if (rs.next()) {
+                derniereReservation = new Reservation(rs.getInt("id"),
+                    rs.getDate("date_debut"),
+                    rs.getDate("date_fin")
+                );
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return derniereReservation;
+    }    
+    
+    
     @Override
     public void supprimer(Reservation t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

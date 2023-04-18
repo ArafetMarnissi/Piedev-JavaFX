@@ -207,15 +207,37 @@ private void Addreservation(Abonnement ab) {
     } else if (ab.getDureeAbonnement().equalsIgnoreCase("Annuel")) {
         dateActuelle2 = dateActuelle2.plusYears(1);
     }
-    java.sql.Date finAbo = Date.valueOf(dateActuelle1);
+    java.sql.Date finAbo = Date.valueOf(dateActuelle2);
     ab.setCount(ab.getCount() + 1);
-    sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
-    abonnements.add(ab);
-    Reservation r = new Reservation(debutAbo, finAbo, abonnements);
-    rse.ajouter(r);
-    showReservation1();
-    //labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
-    
+
+    Reservation derniereReservation = rse.getDerniereReservation();
+    if (derniereReservation == null ) {
+        ab.setCount(ab.getCount() + 1);
+        sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
+        abonnements.add(ab);
+        Reservation r = new Reservation(debutAbo, finAbo, abonnements);        
+        rse.ajouter(r);
+        showReservation1();    
+        labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
+    }
+    else {
+        if(derniereReservation.getDateFin() != null && derniereReservation.getDateFin().after(Date.valueOf(dateActuelle1)))
+        {
+            labelReservation.setText("Vous êtes déjà abonné jusqu'a " + derniereReservation.getDateFin() );
+        }
+        else 
+        {
+        ab.setCount(ab.getCount() + 1);
+        sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
+        abonnements.add(ab);
+        Reservation r = new Reservation(debutAbo, finAbo, abonnements);        
+        rse.ajouter(r);
+        showReservation1();    
+        labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());           
+        }
+
+    }
+
 }
 
 public void afficherAB(){

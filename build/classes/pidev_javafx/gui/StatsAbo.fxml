@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane prefHeight="524.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.StatsAboController">
    <children>
@@ -15,7 +17,17 @@
             <PieChart fx:id="AboStat" layoutX="15.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="423.0" prefWidth="770.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="381.5" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="381.5" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BarChart fx:id="chart" legendVisible="false" prefHeight="457.0" prefWidth="1062.0" style="-fx-background-color: white;" title="Stats des Abonnements" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <xAxis>
+                  <CategoryAxis fx:id="CategoryAxis" label="type d'abonnement" side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="NumberAxis" autoRanging="false" label="Nombre de réservation" side="LEFT" style="nizar: white;" upperBound="50.0" />
+               </yAxis>
+            </BarChart>
+         </children></AnchorPane>
       <VBox alignment="CENTER" prefHeight="70.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <JFXButton fx:id="btnActualiser" onAction="#stat" prefHeight="40.0" prefWidth="143.0" style="-fx-background-radius: 25; -fx-background-color: #1372f4;" text="Actualiser" textFill="WHITE">

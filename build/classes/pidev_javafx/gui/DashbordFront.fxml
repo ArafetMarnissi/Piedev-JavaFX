@@ -207,7 +207,7 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Reservations">
+                  <JFXButton fx:id="BtnRes" alignment="BASELINE_LEFT" onAction="#ListReservation" prefHeight="38.0" prefWidth="179.0" text="Reservations">
                      <font>
                         <Font size="16.0" />
                      </font>

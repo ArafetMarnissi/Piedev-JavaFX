@@ -69,6 +69,8 @@ public class DashbordFrontController implements Initializable {
     private JFXButton btnCommandes;
     
     private BorderPane workPlace;
+    @FXML
+    private JFXButton BtnRes;
     
     /**
      * Initializes the controller class.
@@ -305,11 +307,26 @@ private void ConsulterMesCommandes(ActionEvent event) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
             PaneContent.getChildren().setAll(autreInterface);
+            autreInterface.setPadding(new Insets(0));
             
             
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void ListReservation(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
+            Pane autreInterface = loader.load();
+            autreInterface.setPadding(new Insets(0));
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }        
     }
 
 }

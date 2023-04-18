@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.gui.ReservationController">
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1487.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.gui.ReservationController">
    <children>
-      <StackPane layoutX="-2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="-240.0" prefHeight="844.0" prefWidth="1980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-240.0" AnchorPane.rightAnchor="-164.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="1820.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="900.0" fitWidth="1500.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/BackGround.jpg" />
+                  <Image url="@../../assets/wallpaperflare.com_wallpaper%20(4).jpg" />
                </image>
             </ImageView>
          </children>
@@ -27,9 +27,9 @@
             <Image url="@../../assets/logo1.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="253.0" layoutY="354.0" prefHeight="202.0" prefWidth="354.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="253.0">
+      <AnchorPane layoutX="253.0" layoutY="354.0" prefHeight="202.0" prefWidth="354.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="253.0">
          <children>
-            <TableView fx:id="tableRe" layoutX="32.0" layoutY="35.0" prefHeight="164.0" prefWidth="290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="tableRe" layoutX="32.0" layoutY="35.0" prefHeight="164.0" prefWidth="290.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columns>
                 <TableColumn fx:id="idr" minWidth="0.0" prefWidth="0.0" text="id" />
                 <TableColumn fx:id="debutr" prefWidth="172.80006408691406" text="Debut " />
@@ -44,11 +44,12 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label fx:id="labelReservation" layoutX="636.0" prefHeight="35.0" prefWidth="344.0" textFill="RED" AnchorPane.leftAnchor="636.0" AnchorPane.rightAnchor="1.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1.0" layoutY="38.0" prefHeight="290.0" prefWidth="843.0" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane layoutX="1.0" layoutY="38.0" prefHeight="290.0" prefWidth="843.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <GridPane fx:id="GridPAB" alignment="CENTER" prefHeight="288.0" prefWidth="843.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane fx:id="GridPAB" alignment="CENTER" layoutY="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="843.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
                </rowConstraints>

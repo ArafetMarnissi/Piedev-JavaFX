@@ -11,14 +11,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import pidev_javafx.entitie.Abonnement;
 import pidev_javafx.tools.MaConnection;
 
 /**
@@ -37,6 +44,16 @@ public class StatsAboController implements Initializable {
     ObservableList<PieChart.Data>data=FXCollections.observableArrayList();
     @FXML
     private Button btnActualiser;
+    
+    @FXML
+    private BarChart<?, ?> chart;
+    @FXML
+    private NumberAxis NumberAxis;
+    @FXML
+    private CategoryAxis CategoryAxis;
+    
+    ObservableList<Abonnement>data1=FXCollections.observableArrayList();
+    List<Integer> reservantList = new ArrayList<Integer>();
     /**
      * Initializes the controller class.
      */
@@ -73,6 +90,48 @@ public class StatsAboController implements Initializable {
         stat2();
     }
  private void stat2(){
- }  
+        try {
+            Connection cnx = MaConnection.getInstance().getCnx();
+            String query = "SELECT * FROM abonnement ;";
+            Statement st;
+            ResultSet rs;
+            st = cnx.createStatement();
+            rs = st.executeQuery(query);
+            Abonnement event;
+            data1.clear();
+            reservantList.clear();
+            chart.getData().clear();
+            
+            while (rs.next()) {
+                Abonnement a= new Abonnement(rs.getInt("id"),
+                    rs.getString("nom_abonnement"),
+                    rs.getFloat("prix_abonnement"),
+                    rs.getString("duree_abonnement"),
+                    rs.getInt("count"));
+                data1.add(a);
+            }
+            
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Error on Building Data");
+        }
+        
+        for (Abonnement e : data1){
+            int nbrparticipants = e.getCount();
+            reservantList.add(nbrparticipants);
+        }
+        XYChart.Series setl = new XYChart.Series<>();
+        for (int i = 0; i < data1.size(); i++){
+            String label = data1.get(i).getNomAbonnement() + "-" + data1.get(i).getDureeAbonnement();
+            setl.getData().add(new XYChart.Data(label, reservantList.get(i)));
+        }
+
+        
+            
+        NumberAxis yAxis = new NumberAxis(0, 100, 10);
+         
+        chart.getData().addAll(setl);     
+ } 
     
 }
