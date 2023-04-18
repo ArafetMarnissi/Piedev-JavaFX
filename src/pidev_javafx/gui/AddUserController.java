@@ -13,10 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.UserService;
 
@@ -47,6 +50,9 @@ public class AddUserController implements Initializable {
     private TextField confirmPassword;
     @FXML
     private Label confirmControl;
+    private Stage stage;
+    private  Parent root;
+    private Scene scene;
 
     /**
      * Initializes the controller class.
@@ -105,7 +111,7 @@ public class AddUserController implements Initializable {
            confirmControl.setText("les mots de passe doivent être identique");
             passwordControl.setText("les mots de passe doivent être identique");
        }
-       else if (!email.getText().isEmpty() && !mdp.getText().isEmpty() && !name.getText().isEmpty() && !lastname.getText().isEmpty() && confirmPassword.getText().equals(mdp.getText()) && mdp.getText().length()>=8)
+       else if (!email.getText().isEmpty() && !mdp.getText().isEmpty() && !name.getText().isEmpty() && !lastname.getText().isEmpty() && confirmPassword.getText().equals(mdp.getText()) && mdp.getText().length()>=8 && email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"))
       {
          
         String mail = email.getText();
@@ -142,6 +148,20 @@ public class AddUserController implements Initializable {
         
       }
     
+    }
+
+    @FXML
+    private void rediriger(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
     }
     
 }

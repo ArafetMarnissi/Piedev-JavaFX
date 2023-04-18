@@ -5,13 +5,18 @@
  */
 package pidev_javafx.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -20,6 +25,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.UserService;
 
@@ -61,6 +68,12 @@ public class AffichageController implements Initializable {
     private Label verifnom;
     @FXML
     private Label verifprenom;
+    private Stage stage;
+    private  Parent root;
+    private Scene scene;
+    @FXML
+    private Button btnmodifier1;
+    
 
     /**
      * Initializes the controller class.
@@ -89,6 +102,11 @@ public class AffichageController implements Initializable {
         
         us.supprimer(userTable.getSelectionModel().getSelectedItem());
         afficher();
+        emailtext.setText("");
+        passwordtext.setText("");
+        nomtext.setText("");
+        prenomtext.setText("");
+        
     }
 
     
@@ -106,8 +124,11 @@ public class AffichageController implements Initializable {
     @FXML
     private void modifierUser(ActionEvent event) {
        
-       us.modifier(Update(userTable.getSelectionModel().getSelectedItem()));
-        afficher();
+        
+            us.modifier(Update(userTable.getSelectionModel().getSelectedItem()));
+            afficher();
+        
+        
     }
 
     @FXML
@@ -120,12 +141,40 @@ public class AffichageController implements Initializable {
 
     @FXML
     private void checkemail(KeyEvent event) {
-        verifemail.setText("");
+       /* verifemail.setText("");
         
         if (!email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{1,}"))
         {
             verifemail.setText("L'email n'est pas valide.");
-        }
+        }*/
+    }
+
+    @FXML
+    private void changeUI(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
     }
     
+}
+
+    @FXML
+    private void sedeconnecter(MouseEvent event) {
+          try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+    }
 }

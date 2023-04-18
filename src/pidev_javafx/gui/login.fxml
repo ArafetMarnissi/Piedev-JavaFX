@@ -10,8 +10,9 @@
       <TextField fx:id="LoginEmail" layoutX="398.0" layoutY="109.0" onKeyTyped="#verifieremail" prefHeight="38.0" prefWidth="267.0" promptText="email" stylesheets="@../assets/stylesheet.css" />
       <TextField fx:id="LoginPassword" layoutX="398.0" layoutY="151.0" onKeyTyped="#verifiermdp" prefHeight="38.0" prefWidth="267.0" promptText="mot de passe" stylesheets="@../assets/stylesheet.css" />
       <Button fx:id="BtnLogin" layoutX="398.0" layoutY="193.0" mnemonicParsing="false" onAction="#loginUser" stylesheets="@../assets/stylesheet.css" text="Se connecter" />
-      <Button id="signup" layoutX="535.0" layoutY="193.0" mnemonicParsing="false" onAction="#clicksignup" stylesheets="@../assets/stylesheet.css" text="Créer un compte" textAlignment="RIGHT" />
+      <Button id="signup" fx:id="createaccount" layoutX="535.0" layoutY="193.0" mnemonicParsing="false" onAction="#clicksignup" stylesheets="@../assets/stylesheet.css" text="Créer un compte" textAlignment="RIGHT" />
       <Label fx:id="emailverif" layoutX="141.0" layoutY="119.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
       <Label fx:id="mdpverif" layoutX="141.0" layoutY="161.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
+      <Button layoutX="89.0" layoutY="96.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="26.0" prefWidth="142.0" text="send email" />
    </children>
 </AnchorPane>

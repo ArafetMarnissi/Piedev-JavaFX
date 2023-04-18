@@ -25,5 +25,6 @@
       </ImageView>
       <TextField fx:id="confirmPassword" layoutX="187.0" layoutY="148.0" promptText="confirmer mot de passe" stylesheets="@../assets/stylesheet.css" />
       <Label fx:id="confirmControl" layoutX="415.0" layoutY="157.0" prefHeight="18.0" prefWidth="314.0" textFill="RED" />
+      <Button layoutX="332.0" layoutY="282.0" mnemonicParsing="false" onAction="#rediriger" stylesheets="@../assets/stylesheet.css" text="se connecter" />
    </children>
 </AnchorPane>

@@ -21,7 +21,7 @@ public class JavaFXMain extends Application{
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().
-                    getResource("affichage.fxml"));
+                    getResource("login.fxml"));
              root.setStyle("-fx-background-color: #ffffff;");
              
 
