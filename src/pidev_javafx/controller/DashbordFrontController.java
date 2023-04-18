@@ -69,11 +69,11 @@ public class DashbordFrontController implements Initializable {
     @FXML
     private JFXButton btnCommandes;
     
-<<<<<<< HEAD
-    private BorderPane workPlace;
+
+
     @FXML
     private JFXButton BtnRes;
-=======
+
     private HashMap<Produit,HBox> mapHashbox = new HashMap<>();
     @FXML
     private VBox VBoxPanier;
@@ -81,7 +81,7 @@ public class DashbordFrontController implements Initializable {
     private Label LabelPrixTotal;
     @FXML
     private JFXButton btnPasserCommande;
->>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
+
     
   
     /**
@@ -336,11 +336,10 @@ private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
-<<<<<<< HEAD
+
             PaneContent.getChildren().setAll(autreInterface);
             autreInterface.setPadding(new Insets(0));
-=======
->>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
+
             
         Insets insets = new Insets(0);
         autreInterface.setPadding(insets);
@@ -353,15 +352,15 @@ private void ConsulterMesCommandes(ActionEvent event) {
         }
     }
 
-<<<<<<< HEAD
+
     @FXML
-    private void ListReservation(ActionEvent event) {
-        try {
+    private void ListReservation(ActionEvent event) throws IOException {
+        
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
             Pane autreInterface = loader.load();
             autreInterface.setPadding(new Insets(0));
             PaneContent.getChildren().setAll(autreInterface);
-=======
+    }
 @FXML
   private void PasserCommande(ActionEvent event) {
         try {
@@ -370,18 +369,17 @@ private void ConsulterMesCommandes(ActionEvent event) {
             PaneContent.getChildren().setAll(autreInterface);
             ListeCommandeClientController controller = loader.getController();
             controller.PanePasserCommande.toFront();
->>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
+
             
             
         } catch (IOException e) {
             e.printStackTrace();
-<<<<<<< HEAD
+
         }        
     }
 
-=======
-        }
-    }
+
+
 ///
   ///creation carteProdui de panier
   public HBox createCarteProduit(Produit produit){
@@ -446,6 +444,5 @@ private void ConsulterMesCommandes(ActionEvent event) {
     anchorPaneLast.setPrefWidth(152);
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
-}
->>>>>>> b9c67ec267e5e87014dcd39fab13bc063408a180
+ }
 }
