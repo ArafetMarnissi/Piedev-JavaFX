@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.UserService;
+import pidev_javafx.tools.JavaMail;
 
 /**
  * FXML Controller class
@@ -132,6 +133,14 @@ public class AddUserController implements Initializable {
             return;
             }
             us.ajouter(t);
+            try
+        {
+           String key =  String.valueOf(t.getPrivate_key());
+             JavaMail.sendMail(t.getEmail(),key);
+        } catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Félicitations");
             alert.setHeaderText(null);

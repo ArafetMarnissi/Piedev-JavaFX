@@ -28,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import pidev_javafx.entitie.User;
+import pidev_javafx.service.SessionManager;
 import pidev_javafx.service.UserService;
 
 /**
@@ -41,7 +42,6 @@ public class AffichageController implements Initializable {
     private TableView<User> userTable;
     @FXML
     private TableColumn<User, String> email;
-    @FXML
     private TableColumn<User, String> password;
     @FXML
     private TableColumn<User, String> nom;
@@ -72,7 +72,7 @@ public class AffichageController implements Initializable {
     private  Parent root;
     private Scene scene;
     @FXML
-    private Button btnmodifier1;
+    private Label connectedUsername;
     
 
     /**
@@ -90,11 +90,12 @@ public class AffichageController implements Initializable {
         nom.setCellValueFactory(new PropertyValueFactory<User, String>("nom"));
         prenom.setCellValueFactory(new PropertyValueFactory<User, String>("prenom"));
         email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-        password.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
 
         ObservableList<User>listU=FXCollections.observableArrayList();
         listU = us.afficher();
-        userTable.setItems(listU);        
+        userTable.setItems(listU); 
+        
+        connectedUsername.setText(SessionManager.getNom());
     }
 
     @FXML
@@ -149,7 +150,6 @@ public class AffichageController implements Initializable {
         }*/
     }
 
-    @FXML
     private void changeUI(ActionEvent event) {
         try {
             root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));

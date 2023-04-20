@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="133.0" prefWidth="195.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.CartPanierController">
+   <children>
+      <VBox layoutX="71.0" layoutY="-35.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="44.0" prefWidth="278.0">
+               <children>
+                  <Label fx:id="NomProduitCart" prefHeight="44.0" prefWidth="114.0" text="Nom de Produit">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PrixProduitCart" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="70.0" text="Prix">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="195.0">
+               <children>
+                  <ImageView fx:id="imageProduitCart" fitHeight="98.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/front-view-fit-woman-training-with-dumbells.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="4.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

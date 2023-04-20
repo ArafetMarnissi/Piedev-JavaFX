@@ -13,12 +13,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" onDragDetected="#sedeconnecter" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageController">
+<AnchorPane id="AnchorPane" onDragDetected="#sedeconnecter" prefHeight="1000.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageController">
    <children>
       <TableView fx:id="userTable" layoutX="504.0" layoutY="43.0" onMouseClicked="#fill" prefHeight="638.0" prefWidth="898.0">
         <columns>
           <TableColumn fx:id="email" prefWidth="166.4000244140625" text="email" />
-          <TableColumn fx:id="password" prefWidth="243.99993896484375" text="password" />
             <TableColumn fx:id="nom" minWidth="0.0" prefWidth="278.4000244140625" text="nom" />
             <TableColumn fx:id="prenom" prefWidth="272.800048828125" text="prenom" />
         </columns>
@@ -46,11 +45,8 @@
       <Label fx:id="verifmdp" layoutX="1622.0" layoutY="174.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
       <Label fx:id="verifnom" layoutX="1622.0" layoutY="214.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
       <Label fx:id="verifprenom" layoutX="1622.0" layoutY="255.0" prefHeight="18.0" prefWidth="252.0" textFill="RED" />
-      <VBox prefHeight="1240.0" prefWidth="262.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#changeUI" prefHeight="26.0" prefWidth="265.0" text="Button" />
-         </children>
-      </VBox>
-      <Button fx:id="btnmodifier1" layoutX="1740.0" layoutY="53.0" mnemonicParsing="false" onAction="#modifierUser" prefHeight="36.0" prefWidth="150.0" stylesheets="@../assets/stylesheet.css" text="Se déconnecter" />
+      <VBox prefHeight="1240.0" prefWidth="262.0" />
+      <Label fx:id="connectedUsername" layoutX="1734.0" layoutY="52.0" prefHeight="18.0" prefWidth="126.0" textFill="#3126ff" />
+      <Label layoutX="1640.0" layoutY="53.0" text="Bonjour" />
    </children>
 </AnchorPane>

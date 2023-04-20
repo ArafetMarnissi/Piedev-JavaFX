@@ -74,6 +74,7 @@ public class UserService implements CrudInterface<User> {
  public boolean login(String email,String password)
     {
        boolean exists = false;
+       
     try {
         PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM User WHERE email = ? and password = ?");
         stmt.setString(1,email);
@@ -81,16 +82,35 @@ public class UserService implements CrudInterface<User> {
         ResultSet rs = stmt.executeQuery();
         rs.next();
         if (rs.getInt(1) > 0) {
+            
             exists = true;
+            User us=getUserParEmail(email);
+            System.out.println(us.toString());
+            // Session Start
+            SessionManager.setId(us.getId());
+            SessionManager.setEmail(us.getEmail());
+            SessionManager.setNom(us.getNom());
+            SessionManager.setPrenom(us.getPrenom());
+            SessionManager.setPassword(us.getPassword());
+            SessionManager.setPrivate_key(us.getPrivate_key());
+            SessionManager.setStatus(us.isStatus());
+            SessionManager.setRole(us.getRole());
+            
         }
+                System.out.println(rs.getArray(email));
+
         rs.close();
         stmt.close();
+        
     } catch (SQLException e) {
         e.printStackTrace();
     }
         System.out.println(exists);
+        
     return exists; 
     }
+        
+    
 
     
 
@@ -107,8 +127,7 @@ public class UserService implements CrudInterface<User> {
             System.out.println(ex.getMessage());
         }
     }
-    
-   
+
 
     @Override
     public void modifier(User t) {
@@ -157,5 +176,60 @@ public class UserService implements CrudInterface<User> {
         return users;
         
     }    
+
+        ////optenir le user par id passer en parametre
+    
+        public User getUserParEmail(String email){
+        String sql="select * from user where email=?";
+        PreparedStatement ste;
+        try{
+            ste=cnx.prepareStatement(sql);
+            ste.setString(1, email);
+            ResultSet rs= ste.executeQuery();
+            if(rs.next()){
+                User u = new User(
+                    rs.getInt("id"),
+                    rs.getString("email"),
+                    rs.getString("roles"),
+                    rs.getString("password"),
+                    rs.getString("nom"),
+                    rs.getString("prenom"),
+                    rs.getInt("private_key"),
+                    rs.getBoolean("status"));
+                return u;
+            }
+            
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+         public User getUserParId(int id){
+        String sql="select * from user where id=?";
+        PreparedStatement ste;
+        try{
+            ste=cnx.prepareStatement(sql);
+            ste.setInt(1, id);
+            ResultSet rs= ste.executeQuery();
+            if(rs.next()){
+                User u = new User(
+                    rs.getInt("id"),
+                    rs.getString("email"),
+                    rs.getString("roles"),
+                    rs.getString("password"),
+                    rs.getString("nom"),
+                    rs.getString("prenom"),
+                    rs.getInt("private_key"),
+                    rs.getBoolean("status"));
+                return u;
+            }
+            
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
     
 }

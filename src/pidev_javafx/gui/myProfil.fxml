@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.MyProfilController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="268.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/monCompte.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="170.0" layoutY="200.0" prefHeight="18.0" prefWidth="54.0" text="Email" />
+      <Label layoutX="170.0" layoutY="242.0" prefHeight="18.0" prefWidth="54.0" text="Nom" />
+      <Label layoutX="170.0" layoutY="276.0" prefHeight="18.0" prefWidth="54.0" text="Prénom" />
+      <Label layoutX="170.0" layoutY="312.0" prefHeight="18.0" prefWidth="54.0" text="MDP" />
+      <Label layoutX="170.0" layoutY="343.0" prefHeight="18.0" prefWidth="54.0" text="Status" />
+      <TextField fx:id="emailtextfield" disable="true" layoutX="269.0" layoutY="197.0" prefHeight="27.0" prefWidth="151.0" />
+      <TextField fx:id="nomtextfield" layoutX="269.0" layoutY="238.0" />
+      <TextField fx:id="prenomtextfield" layoutX="269.0" layoutY="272.0" />
+      <TextField fx:id="mdptextfield" layoutX="269.0" layoutY="308.0" />
+      <Label fx:id="checkStatus" layoutX="269.0" layoutY="343.0" prefHeight="18.0" prefWidth="106.0" textFill="#2a5ffc" />
+      <Button layoutX="286.0" layoutY="399.0" mnemonicParsing="false" onAction="#modifiercoordonnee" prefHeight="33.0" prefWidth="100.0" text="Modifier" />
+      <Button fx:id="sendmail" layoutX="402.0" layoutY="399.0" mnemonicParsing="false" onAction="#sendmail" prefHeight="33.0" prefWidth="100.0" text="send mail" />
+   </children>
+</AnchorPane>

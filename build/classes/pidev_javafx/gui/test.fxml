@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="910.0" prefWidth="1770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GererPhotographiesFXMLController">
+   <children>
+      <Button fx:id="proposerContrat" mnemonicParsing="false" text="ProposerContrat" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="telechargerImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="130.0">
+         <image>
+            <Image url="http://localhost/myjcc/logos/download.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="grandimage" fitHeight="700.0" fitWidth="1500.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="105.0">
+         <image>
+            <Image url="http://localhost/myjcc/photographies/0.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="ajouter_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ImageView fx:id="ajouter_image_preview" fitHeight="616.0" fitWidth="560.0" layoutX="81.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="780.0" AnchorPane.topAnchor="51.0">
+               <image>
+                  <Image url="http://localhost/myjcc/photographies/0.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ajouter_close" fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="http://localhost/myjcc/logos/close.png" />
+               </image>
+            </ImageView>
+            <Label text="Nom :" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ajouter_nom" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="90.0" />
+            <Label text="Description :" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="ajouter_confirmer" mnemonicParsing="false" text="Confirmer" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="780.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="ajouter_annuler" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="950.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="ajouter_description" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="35.0" layoutY="402.0" text="Ajouter une photo :" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="choisiruneimage" mnemonicParsing="false" text="Choisir une image" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="390.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="blackpane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fx:id="left" fitHeight="100.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="480.0">
+         <image>
+            <Image url="http://localhost/myjcc/logos/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right" fitHeight="100.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="480.0">
+         <image>
+            <Image url="http://localhost/myjcc/logos/right.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="ajouterphoto" mnemonicParsing="false" text="Ajouter Une Photo" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label text="Galerie :" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="maGalerie" text="MaGalerie" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="modifierMaGalerie" mnemonicParsing="false" text="Modifier Ma Galerie" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <AnchorPane fx:id="modifier_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ImageView fx:id="modifier_photo" fitHeight="616.0" fitWidth="560.0" layoutX="81.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="780.0" AnchorPane.topAnchor="51.0">
+               <image>
+                  <Image url="http://localhost/myjcc/photographies/0.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="modifier_close" fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="http://localhost/myjcc/logos/close.png" />
+               </image>
+            </ImageView>
+            <Label text="Nom :" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="51.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="modifier_nom" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="90.0" />
+            <Label text="Description :" AnchorPane.leftAnchor="780.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="modifier_confirmer" mnemonicParsing="false" text="Confirmer" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="780.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="modifier_annuler" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="950.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="modifier_description" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="160.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="proposerContrat_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ImageView fx:id="proposerContratClose" fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="http://localhost/myjcc/logos/close.png" />
+               </image>
+            </ImageView>
+            <Label text="Proposer Un Contrat :" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="contratDateDebut" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="150.0" />
+            <DatePicker fx:id="ContratDateFin" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="250.0" />
+            <Label text="Date Debut" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="100.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Date Fin" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Type Contrat" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="typeContrat" prefWidth="150.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="350.0" />
+            <Label text="Salaire" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="salairecontrat" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="450.0" />
+            <Button fx:id="ajouterContrat" mnemonicParsing="false" text="Ajouter" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="25.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="annulerContrat" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="200.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="contratPhotoUser" fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0" />
+            <Label fx:id="contratNomPrenom" text="NomPrenom User" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="390.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="contratEmail" text="Email User" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="430.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="messageErr" text="Veulliez vérifier les champs !!" textFill="#fa0909" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="25.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Signature" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="90.0">
+               <font>
+                  <Font name="Segoe Script" size="24.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="208.0" prefWidth="290.0" style="-fx-background-color: lightgray;" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="126.0" />
+            <Canvas fx:id="canvasSignature" height="200.0" width="282.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="130.0" />
+            <Label fx:id="signatureObligatoire" text="La Signature est obligatoire" textFill="#e10808" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox fx:id="galerieBackgroundColor" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="200.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="576.0">
+               <children>
+                  <ImageView fx:id="photo1" fitHeight="500.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/photographies/0.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="Nom1" text="Label" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Description :" underline="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="415.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="delete1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="update1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/update.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="description1" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="460.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="576.0">
+               <children>
+                  <ImageView fx:id="photo2" fitHeight="400.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/photographies/0.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="Nom2" text="Label" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Description :" underline="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="415.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="delete2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="update2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/update.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="description2" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="460.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="576.0">
+               <children>
+                  <ImageView fx:id="photo3" fitHeight="400.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/photographies/0.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="Nom3" text="Label" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Description :" underline="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="415.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="delete3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/delete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="update3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="380.0">
+                     <image>
+                        <Image url="http://localhost/myjcc/logos/update.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea fx:id="description3" editable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="460.0" />
+               </children>
+            </AnchorPane>
+         </children></HBox>
+      <AnchorPane fx:id="galeriePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <ImageView fx:id="galerie_modifier_close" fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="http://localhost/myjcc/logos/close.png" />
+               </image>
+            </ImageView>
+            <Label text="Modifier Ma Galerie" underline="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Nom :" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="galerie_modifier_nom" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="70.0" />
+            <TextArea fx:id="galerie_modifier_description" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="170.0" />
+            <Label text="Description En bref :" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="galerie_modifier_couleur" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="70.0" />
+            <Label text="Couleur :" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="galerie_modifier_confirmer" mnemonicParsing="false" text="Confirmer" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="400.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="galerie_modifier_annuler" mnemonicParsing="false" text="Annuler" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="200.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

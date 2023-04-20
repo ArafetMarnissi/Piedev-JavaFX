@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.VerifyAccountController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="264.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/monCompte.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="177.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pour vérifier votre compte GoldenGym, veuillez entrer le code envoyé à " wrappingWidth="354.9367370605469" />
+      <Label fx:id="sentEmail" layoutX="282.0" layoutY="197.0" prefHeight="18.0" prefWidth="223.0" textFill="RED" />
+      <TextField fx:id="textfieldcode" layoutX="204.0" layoutY="245.0" onAction="#verifierCompte" prefHeight="26.0" prefWidth="246.0" promptText="code à 6 chiffres" />
+      <Button fx:id="button" layoutX="264.0" layoutY="310.0" mnemonicParsing="false" onAction="#verifyaccountmethod" prefHeight="26.0" prefWidth="150.0" text="Vérifier" />
+   </children>
+</AnchorPane>

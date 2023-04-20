@@ -28,15 +28,9 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import pidev_javafx.entitie.User;
-import pidev_javafx.gui.AddUserController;
+import pidev_javafx.service.SessionManager;
 import pidev_javafx.service.UserService;
+
 
 /**
  * FXML Controller class
@@ -103,16 +97,16 @@ public class LoginController implements Initializable {
         String password = LoginPassword.getText();
         UserService us = new UserService();
          boolean test= us.login(email, password);
+        
+             
         if (test)
         {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Félicitations");
-        alert.setHeaderText(null);
-        alert.setContentText("Vous serez redirigé vers votre page d'acceuil." );
-        alert.showAndWait();
-        
+            //verified
+             if (SessionManager.getRole().equals("[\"ROLE_CLIENT\"]") && SessionManager.isStatus()==true)
+             {
+                 
           try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/affichage.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -121,7 +115,37 @@ public class LoginController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
     }
-        }
+             }
+             //not verified
+             else if (SessionManager.getRole().equals("[\"ROLE_CLIENT\"]") && SessionManager.isStatus()==false)
+             {
+                 try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/verifyAccount.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+             }
+             else if (SessionManager.getRole().equals("[\"ROLE_ADMIN\"]"))
+             {
+                   try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordBack.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+             }
+             
+        }   
+             
         else {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Echec");
@@ -130,6 +154,7 @@ public class LoginController implements Initializable {
         alert.showAndWait();
         }
         
+    
     }
 
     @FXML
@@ -169,31 +194,5 @@ public class LoginController implements Initializable {
          }
     }
 
-    @FXML
-    private void sendEmail(ActionEvent event) {
-        String to = "recipient@example.com";
-      String from = "sender@example.com";
-      String host = "localhost";
-      Properties properties = System.getProperties();
-      properties.setProperty("mail.smtp.host", host);
-      Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-          
-         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication("username", "password");
-         }
-      });
-      try {
-         MimeMessage message = new MimeMessage(session);
-         message.setFrom(new InternetAddress(from));
-         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-         message.setSubject("Subject of the email");
-         message.setText("This is the message body");
-         Transport.send(message);
-         System.out.println("Email sent successfully");
-      } catch (MessagingException mex) {
-         mex.printStackTrace();
-      }
-   }
-    
-    
 }
+

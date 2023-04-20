@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.LigneCommande;
 import pidev_javafx.entitie.User;
@@ -26,12 +28,12 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
     public LigneCommandeService(){
     cnx = MaConnection.getInstance().getCnx();
     }
-/*
+
     @Override
     public void ajouter(LigneCommande t) {
 
             
-            String sql="insert into ligne_commande(commande_id,produit_id,quantite_produit,prix_unitaire)values(?,?,?,?)";
+            String sql="insert into ligne_commande(commande_id,produits_id,quantite_produit,prix_unitaire)values(?,?,?,?)";
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
@@ -51,8 +53,9 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
     }
 
     @Override
-    public List<LigneCommande> afficher() {
-        List<LigneCommande> Ligne_commandes =new ArrayList<>();
+    public ObservableList<LigneCommande> afficher() {
+        ObservableList <LigneCommande> Ligne_commandes = FXCollections.observableArrayList();
+        
         String sql ="select * from ligne_commande";
         Statement ste;
         CommandeService CS = new CommandeService();
@@ -75,24 +78,25 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
         return Ligne_commandes;
         
     }
-/*
+
     @Override
     public void supprimer(LigneCommande t) {
-        String sql = "delete from commande where id=?";
+        String sql = "delete from ligne_commande where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, t.getId());
             ste.executeUpdate();
-            System.out.println("commande supprimée");
+            System.out.println("Ligne commande supprimée");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-
+/// a utiliser sont on est besoin
+    
     @Override
     public void modifier(LigneCommande t) {
-            String sql = "UPDATE commande SET user_id=?, adresse_livraison=?, date_commande=?, prix_commande=?, methode_paiement=?, telephone=? WHERE id=?";
+      /*      String sql = "UPDATE commande SET user_id=?, adresse_livraison=?, date_commande=?, prix_commande=?, methode_paiement=?, telephone=? WHERE id=?";
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
@@ -109,54 +113,38 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+        */
     }
 
     
-       public List<Commande> afficherCommandesParClient(User u) {
-        List<Commande> commandes =new ArrayList<>();
+       public ObservableList<LigneCommande>  afficherLigneCommandesParCommande(Commande t) {
+        ObservableList <LigneCommande> Lignecommandes = FXCollections.observableArrayList();
         
-        String sql ="select * from commande where user_id="+u.getId();
+        String sql ="select * from ligne_commande where commande_id="+t.getId();
         PreparedStatement ste ;
+        CommandeService CS = new CommandeService();
+        ProduitService PS = new ProduitService();
         try {
             ste = cnx.prepareStatement(sql);
             //ste.setInt(1,u.getId());
             ResultSet rs = ste.executeQuery(sql);
             while(rs.next()){
-            Commande c = new Commande(rs.getInt("id"),
-                    rs.getInt("user_id"),
-                    rs.getString("date_commande"),
-                    rs.getString("adresse_livraison"),
-                    rs.getFloat("prix_commande"),
-                    rs.getString("methode_paiement"),
-                    rs.getInt("telephone"));
-            commandes.add(c);
+            LigneCommande c = new LigneCommande(rs.getInt("id"),
+                    CS.getCommandeParId(rs.getInt("commande_id")),
+                    PS.getProduitParId(rs.getInt("produits_id")),
+                    rs.getInt("quantite_produit"),
+                    rs.getFloat("prix_unitaire")
+                    );
+            Lignecommandes.add(c);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return commandes;
+        return Lignecommandes;
         
     }
-*/
 
-    @Override
-    public void supprimer(LigneCommande t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void modifier(LigneCommande t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void ajouter(LigneCommande t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public List<LigneCommande> afficher() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
