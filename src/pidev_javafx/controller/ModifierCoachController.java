@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -47,6 +48,10 @@ public class ModifierCoachController implements Initializable {
     @FXML
     private Button image_coach_modif;
      private File selectedFile = null;
+    @FXML
+    private Label erreur_nom_modif;
+    @FXML
+    private Label erreur_age_modif;
     /**
      * Initializes the controller class.
      */
@@ -62,10 +67,14 @@ public class ModifierCoachController implements Initializable {
        textfield_age_modifier.setText(chara);
        image_coach_modif_field.setText(t.getImage());
        c1=t;
+        System.out.println(t.getImage());
     }
     
     @FXML
     private void ModifierCoachOnClick(ActionEvent event) throws IOException {
+                erreur_age_modif.setText("");
+        erreur_nom_modif.setText("");
+         if(!textfield_age_modifier.getText().isEmpty()&&!textfield_nom_modifier.getText().isEmpty()&&Integer.parseInt(textfield_age_modifier.getText())>=18&&textfield_nom_modifier.getText().matches("[a-zA-Z ]+")){
          if(!image_coach_modif_field.getText().equals(c1.getImage())){
             int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
             String newFileName = random_int+"-"+selectedFile.getName();
@@ -83,6 +92,21 @@ public class ModifierCoachController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AfficherCoach.fxml"));
         Parent root = loader.load();
         btn_modifierCoach.getScene().setRoot(root);
+         }
+         else{
+             if(textfield_age_modifier.getText().isEmpty()){
+                erreur_age_modif.setText("l'age est obligatoire");
+            }
+            if(textfield_nom_modifier.getText().isEmpty()){
+                erreur_nom_modif.setText("le nom est obligatoire");
+            }
+            if(Integer.parseInt(textfield_age_modifier.getText())<18){
+                erreur_age_modif.setText("l'age doit être superieur à 18");
+            }
+            if(!textfield_nom_modifier.getText().matches("[a-zA-Z ]+")){
+                erreur_nom_modif.setText("le nom doit être alphabetique");
+            }
+         }
     }
 
     @FXML

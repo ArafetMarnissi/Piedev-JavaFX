@@ -12,6 +12,8 @@ import java.sql.Time;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pidev_javafx.entitie.Activite;
 import pidev_javafx.entitie.Coach;
@@ -58,6 +61,8 @@ public class AffichageActiviteController implements Initializable {
     private TableColumn<Activite, Time> fin_activite_column;
     @FXML
     private TableColumn<Activite, Integer> coach_activite_column;
+    @FXML
+    private TextField recherche_textfield;
 
     /**
      * Initializes the controller class.
@@ -66,6 +71,7 @@ public class AffichageActiviteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         affich();
+        
     }    
 
     @FXML
@@ -107,6 +113,29 @@ public class AffichageActiviteController implements Initializable {
         ActiviteService cs=new ActiviteService();
         listAc=cs.afficher();
         table_activite_affich.setItems(listAc);
+        
+        FilteredList<Activite> filteredData = new FilteredList<>(listAc, b -> true);
+        recherche_textfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(activite -> {
+                if(newValue.isEmpty() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if(activite.getNomActivite().toLowerCase().indexOf(searchKeyword) != -1){
+                    return true;
+                }else if(activite.getDescriptionActivite().toLowerCase().indexOf(searchKeyword) != -1){
+                    return true;
+                }else if(String.valueOf(activite.getNbrePlace()).indexOf(searchKeyword) != -1){
+                    return true;
+                }else if(String.valueOf(activite.getNbrePlace()).indexOf(searchKeyword) != -1){
+                    
+                }
+                return false;
+            });
+        });
+        SortedList<Activite> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table_activite_affich.comparatorProperty());
+        table_activite_affich.setItems(sortedData);
     }
     
 }

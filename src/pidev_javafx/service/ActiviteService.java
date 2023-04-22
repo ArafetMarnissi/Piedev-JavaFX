@@ -15,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Activite;
 import pidev_javafx.entitie.Coach;
+import pidev_javafx.entitie.Participation;
 import pidev_javafx.tools.MaConnection;
 
 /**
@@ -59,10 +60,11 @@ public class ActiviteService implements CrudInterface<Activite>{
             ste = cnx.createStatement();
             ResultSet res= ste.executeQuery(SQL);
             CoachService cs=new CoachService();
-            /*Coach a=new Coach();
-            a=cs.getCoachById(res.getInt("coach_id"));*/
+
             while(res.next()){
-                Activite co=new Activite(res.getInt(1),res.getInt("nbre_place"), res.getString("nom_acitivite"),res.getString("description_activite"),res.getString("image"),res.getDate("date_activite"),res.getTime("time_activite"),res.getTime("end"));
+            Coach a=new Coach();
+            a=cs.getCoachById(res.getInt("coach_id"));
+                Activite co=new Activite(res.getInt(1),res.getInt("nbre_place"), res.getString("nom_acitivite"),res.getString("description_activite"),res.getString("image"),res.getDate("date_activite"),res.getTime("time_activite"),res.getTime("end"),a);
                 c.add(co);
             }
         } catch (SQLException ex) {
@@ -105,6 +107,28 @@ public class ActiviteService implements CrudInterface<Activite>{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+        public ObservableList<Activite> findActsByCoach(int coach){
+        ObservableList<Activite> c=FXCollections.observableArrayList();
+        String SQL="SELECT a.* FROM activite a JOIN coach c ON a.coach_id = c.id WHERE a.coach_id = ?";
+         PreparedStatement ste;
+         try{
+             ste = cnx.prepareStatement(SQL);
+             ste.setInt(1, coach);
+             ResultSet res= ste.executeQuery();
+              CoachService cs=new CoachService();
+             
+             while(res.next()){
+                Coach a=new Coach();
+            a=cs.getCoachById(res.getInt("coach_id"));
+                Activite co=new Activite(res.getInt(1),res.getInt("nbre_place"), res.getString("nom_acitivite"),res.getString("description_activite"),res.getString("image"),res.getDate("date_activite"),res.getTime("time_activite"),res.getTime("end"),a);
+                c.add(co);
+            }
+         }catch (SQLException e){
+             System.out.println(e.getMessage());
+         }
+         return c;
     }
     
     

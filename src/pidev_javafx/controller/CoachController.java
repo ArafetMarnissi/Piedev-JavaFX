@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -47,6 +48,10 @@ public class CoachController implements Initializable {
     private TextField image_coach_field;
     @FXML
     private Button image_coach_btn;
+    @FXML
+    private Label erreur_nom_coach;
+    @FXML
+    private Label erreur_age_coach;
 
     /**
      * Initializes the controller class.
@@ -54,11 +59,15 @@ public class CoachController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        textfield_age_coach.setText("0");
         cs=new CoachService();
     }    
 
     @FXML
     private void addCoachOnClick(ActionEvent event) throws IOException {
+        erreur_age_coach.setText("");
+        erreur_nom_coach.setText("");
+        if(!textfield_age_coach.getText().isEmpty()&&!textfield_nom_coach.getText().isEmpty()&&Integer.parseInt(textfield_age_coach.getText())>=18&&textfield_nom_coach.getText().matches("[a-zA-Z ]+")){
          int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
         String newFileName = random_int+"-"+selectedFile.getName();
         Coach c=new Coach(Integer.parseInt(textfield_age_coach.getText()), textfield_nom_coach.getText(),newFileName);
@@ -76,7 +85,24 @@ public class CoachController implements Initializable {
             btn_AjoutCoach.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-        }*/
+        }*/}
+        else{
+            if(Integer.parseInt(textfield_age_coach.getText())==0){
+                erreur_age_coach.setText("l'age est obligatoire");
+            }
+            if(textfield_nom_coach.getText().isEmpty()){
+                erreur_nom_coach.setText("le nom est obligatoire");
+            }
+            if(Integer.parseInt(textfield_age_coach.getText())<18&&Integer.parseInt(textfield_age_coach.getText())>0){
+                erreur_age_coach.setText("l'age doit être superieur à 18");
+            }
+            if(Integer.parseInt(textfield_age_coach.getText())<0){
+                erreur_age_coach.setText("l'age doit être positif");
+            }
+            if(!textfield_nom_coach.getText().matches("[a-zA-Z ]+")){
+                erreur_nom_coach.setText("le nom doit être alphabetique");
+            }
+        }
     }
 
     @FXML

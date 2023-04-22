@@ -4,6 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/tools/MaConnection.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/ListeParticipationsUser.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Participation_back_test.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/Pidev_javaFX.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/tools/Statics.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/CoachController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Participation.java</file>
@@ -11,11 +14,18 @@
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/ActiviteService.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AjoutActivite.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AffichageActiviteFrontController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Activite_back_test.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AfficherCoachController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ModifierCoachController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/ListeCoachFront.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/DetailsActiviteFrontController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ListeCoachs.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Activite_Front_test.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ListeActsByCoachController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Coach_test.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageParticipation.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/CrudInterface.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/DetailsActiviteFront.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AjoutActiviteController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/Coach.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/CoachService.java</file>
@@ -23,11 +33,15 @@
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageActiviteFront.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AfficherCoach.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/service/ParticipationService.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ListeParticipationsUser.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Coach.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ModifierActiviteController.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ListeParticipationsUserController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/entitie/Activite.java</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ListeActsByCoach.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/AffichageActivite.fxml</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/GUI/ModifierActivite.fxml</file>
+            <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/ListeCoachsController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/controller/AffichageParticipationController.java</file>
             <file>file:/C:/Users/mmarr/Desktop/JavaFx/pidev%20javafx/src/pidev_javafx/test/Test.java</file>
         </group>

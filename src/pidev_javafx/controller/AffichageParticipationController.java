@@ -35,6 +35,7 @@ public class AffichageParticipationController implements Initializable {
     @FXML
     private TableColumn<Participation, Date> date_participation_column;
     ParticipationService cs;
+    ActiviteService ac;
     @FXML
     private TableColumn<Participation, Activite> activite_participation_column;
     @FXML
@@ -63,9 +64,16 @@ public class AffichageParticipationController implements Initializable {
     @FXML
     private void supprimer_participationOnClick(ActionEvent event) {
                  cs=new ParticipationService();
+                 ac=new ActiviteService();
         Participation c = new Participation(table_participation.getSelectionModel().getSelectedItem().getId());
         //c=(Coach)table_Coachs.getSelectionModel().getSelectedItem();
        //System.out.println(table_activite_affich.getSelectionModel().getSelectedItem());
+       //Activite a=cs.findbyid(c.getActivite().getId());
+       Participation c1=cs.findParticipationbyid(table_participation.getSelectionModel().getSelectedItem().getId());
+        System.out.println(c1.getActivite().getNbrePlace());
+        Activite a=cs.findbyid(c1.getActivite().getId());
+       a.setNbrePlace(a.getNbrePlace()+1);
+       ac.modifier(a);
         cs.supprimer(c);
        affich();
     }

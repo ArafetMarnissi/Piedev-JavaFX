@@ -30,8 +30,8 @@ public class Coach_test extends Application {
       
         try {
             //Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/AfficherCoach.fxml"));
-            Parent root=FXMLLoader.load(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
-            Scene scene = new Scene(root, 1480, 768);
+            Parent root=FXMLLoader.load(getClass().getResource("/pidev_javafx/GUI/AfficherCoach.fxml"));
+            Scene scene = new Scene(root, 1000, 600);
             primaryStage.setTitle("GoldenGym");
             primaryStage.setScene(scene);
             primaryStage.show();

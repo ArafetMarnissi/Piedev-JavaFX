@@ -35,7 +35,7 @@
       <Label fx:id="erreur_description_modif" layoutX="363.0" layoutY="100.0" textFill="RED" />
       <Label fx:id="erreur_nbreplace_modif" layoutX="410.0" layoutY="166.0" textFill="RED" />
       <Label fx:id="erreur_date_modif" layoutX="393.0" layoutY="351.0" textFill="RED" />
-      <ImageView fitHeight="150.0" fitWidth="357.0" layoutX="419.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="357.0" layoutX="385.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/logo1.png" />
          </image>

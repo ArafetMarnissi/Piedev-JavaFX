@@ -9,17 +9,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ModifierCoachController">
    <children>
-      <TextField fx:id="textfield_nom_modifier" layoutX="173.0" layoutY="60.0" style="-fx-background-radius: 25;" />
-      <TextField fx:id="textfield_age_modifier" layoutX="173.0" layoutY="128.0" style="-fx-background-radius: 25;" />
+      <TextField fx:id="textfield_nom_modifier" layoutX="141.0" layoutY="60.0" style="-fx-background-radius: 25;" />
+      <TextField fx:id="textfield_age_modifier" layoutX="141.0" layoutY="128.0" style="-fx-background-radius: 25;" />
       <Label layoutX="55.0" layoutY="65.0" text="Nom" />
       <Label layoutX="58.0" layoutY="133.0" text="Age" />
       <Button fx:id="btn_modifierCoach" layoutX="88.0" layoutY="294.0" mnemonicParsing="false" onAction="#ModifierCoachOnClick" prefHeight="31.0" prefWidth="218.0" style="-fx-background-radius: 25; -fx-background-color: #1372f4;" text="Modifier" textFill="WHITE" />
-      <TextField fx:id="image_coach_modif_field" layoutX="173.0" layoutY="200.0" style="-fx-background-radius: 25;" />
-      <Button fx:id="image_coach_modif" layoutX="368.0" layoutY="200.0" mnemonicParsing="false" onAction="#image_coach_modifOnClick" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 25; -fx-background-color: #1372f4;" text="Image" textFill="WHITE" />
+      <TextField fx:id="image_coach_modif_field" layoutX="141.0" layoutY="200.0" style="-fx-background-radius: 25;" />
+      <Button fx:id="image_coach_modif" layoutX="344.0" layoutY="200.0" mnemonicParsing="false" onAction="#image_coach_modifOnClick" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 25; -fx-background-color: #1372f4;" text="Image" textFill="WHITE" />
       <ImageView fitHeight="54.0" fitWidth="250.0" layoutX="317.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/logo1.png" />
          </image>
       </ImageView>
+      <Label fx:id="erreur_nom_modif" layoutX="344.0" layoutY="65.0" textFill="RED" />
+      <Label fx:id="erreur_age_modif" layoutX="344.0" layoutY="133.0" textFill="RED" />
    </children>
 </AnchorPane>

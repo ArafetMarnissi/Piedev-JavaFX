@@ -54,7 +54,7 @@ public class CoachService implements CrudInterface<Coach> {
             ste = cnx.createStatement();
             ResultSet res= ste.executeQuery(SQL);
             while(res.next()){
-                Coach co=new Coach(res.getInt(1), res.getInt("age_coach"),res.getString("nom_coach"));
+                Coach co=new Coach(res.getInt(1), res.getInt("age_coach"),res.getString("nom_coach"),res.getString("image"));
                 c.add(co);
             }
         } catch (SQLException ex) {

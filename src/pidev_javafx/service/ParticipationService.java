@@ -14,6 +14,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Activite;
+import pidev_javafx.entitie.Coach;
 import pidev_javafx.entitie.Participation;
 import pidev_javafx.tools.MaConnection;
 
@@ -45,8 +46,9 @@ public class ParticipationService implements CrudInterface<Participation>{
         }
     }
 
-    private Activite findbyid(int id)
+    public Activite findbyid(int id)
     {
+        CoachService cs=new CoachService();
          String SQL="SELECT * FROM activite where id=?";
     PreparedStatement ste;
     try {
@@ -54,6 +56,7 @@ public class ParticipationService implements CrudInterface<Participation>{
         ste.setInt(1, id);
         ResultSet rs = ste.executeQuery();
         if (rs.next()) {
+            Coach cc=cs.getCoachById(rs.getInt("coach_id"));
             Activite c = new Activite(
                     rs.getInt("id"),
                     rs.getInt("nbre_place"),
@@ -63,7 +66,8 @@ public class ParticipationService implements CrudInterface<Participation>{
                     rs.getString("image"),
                     rs.getDate("date_activite"),
                     rs.getTime("time_activite"),
-                    rs.getTime("end")
+                    rs.getTime("end"),
+                    cc
                    
             );
             return c;
@@ -73,6 +77,27 @@ public class ParticipationService implements CrudInterface<Participation>{
     }
     return null;
     }
+    
+    public ObservableList<Participation> findPartsByUser(int user){
+        ObservableList<Participation> c=FXCollections.observableArrayList();
+        String SQL="SELECT p.* FROM participation p JOIN activite a ON p.activite_id = a.id WHERE a.date_activite >= CURRENT_DATE() AND p.user_id = ?";
+         PreparedStatement ste;
+         try{
+             ste = cnx.prepareStatement(SQL);
+             ste.setInt(1, user);
+             ResultSet res= ste.executeQuery();
+             
+             while(res.next()){
+                Activite c1=findbyid(res.getInt("activite_id"));
+                Participation co=new Participation(res.getInt(1),res.getInt("user_id"),res.getDate("date_participation"),c1);
+                c.add(co);
+            }
+         }catch (SQLException e){
+             System.out.println(e.getMessage());
+         }
+         return c;
+    }
+    
     @Override
     public ObservableList<Participation> afficher() {
       ObservableList<Participation> c=FXCollections.observableArrayList();
@@ -108,7 +133,63 @@ public class ParticipationService implements CrudInterface<Participation>{
 
     @Override
     public void modifier(Participation t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
+    public Participation FindPartById(int id_a,int id_u)
+    {
+            
+         String SQL="SELECT * FROM participation where activite_id=? and user_id=?";
+    PreparedStatement ste;
+    try {
+        ste = cnx.prepareStatement(SQL);
+        System.out.println("1");
+        ste.setInt(1, id_a);
+        System.out.println("2");
+        ste.setInt(2, id_u);
+        System.out.println("3");
+        ResultSet rs = ste.executeQuery();
+        System.out.println("4");
+        if (rs.next()) {
+            Activite c1=findbyid(rs.getInt("activite_id"));
+            System.out.println("5");
+            Participation c = new Participation(
+                    rs.getInt("id"),
+                    rs.getInt("user_id"),
+                    rs.getDate("date_participation"),
+                    c1
+                   
+            );
+            return c;
+        }
+    } catch (SQLException ex) {
+        System.out.println("bonjour");
+    }
+    return null;
+    
+    }
+     public Participation findParticipationbyid(int id)
+    {
+         String SQL="SELECT * FROM participation where id=?";
+    PreparedStatement ste;
+    try {
+        ste = cnx.prepareStatement(SQL);
+        ste.setInt(1, id);
+        ResultSet rs = ste.executeQuery();
+        if (rs.next()) {
+            Activite c1=findbyid(rs.getInt("activite_id"));
+            Participation c = new Participation(
+                    rs.getInt("id"),
+                    rs.getInt("user_id"),
+                    rs.getDate("date_participation"),
+                    c1
+                   
+            );
+            return c;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return null;
+    }
 }

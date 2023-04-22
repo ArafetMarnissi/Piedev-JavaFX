@@ -40,6 +40,8 @@ public class AfficherCoachController implements Initializable {
     CoachService cs;
     @FXML
     private Button btn_ModifierCoach1;
+    @FXML
+    private Button btn_ajouter_coach;
     /**
      * Initializes the controller class.
      */
@@ -62,6 +64,12 @@ public class AfficherCoachController implements Initializable {
         //c=(Coach)table_Coachs.getSelectionModel().getSelectedItem();
        // System.out.println(table_Coachs.getSelectionModel().getSelectedItem());
         cs.supprimer(c);
+                colonne_nom.setCellValueFactory(new PropertyValueFactory<Coach, String>("nom_coach"));
+        colonne_age.setCellValueFactory(new PropertyValueFactory<Coach, Integer>("age_coach"));
+        ObservableList<Coach>listCoachs=FXCollections.observableArrayList();
+        CoachService cs=new CoachService();
+        listCoachs=cs.afficher();
+        table_Coachs.setItems(listCoachs);
     }
 
     @FXML
@@ -71,6 +79,13 @@ public class AfficherCoachController implements Initializable {
             ModifierCoachController mcc = loader.getController();
             mcc.recupData(table_Coachs.getSelectionModel().getSelectedItem());
             btn_ModifierCoach1.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void ajouter_coachOnClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/Coach.fxml"));
+        Parent root = loader.load();
+        btn_ajouter_coach.getScene().setRoot(root);
     }
     
 }

@@ -3,13 +3,29 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="1184.0" style="-fx-background-color: fffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageActiviteController">
    <children>
-      <TableView fx:id="table_activite_affich" layoutX="28.0" layoutY="30.0" prefHeight="200.0" prefWidth="1057.0" style="-fx-border-color: #1372f4;">
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="150.0" prefWidth="1200.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" style="-fx-border-radius: 38; -fx-border-color: #6f6f6f; -fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../external-search-user-interface-tanah-basah-detailed-outline-tanah-basah-2.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="recherche_textfield" prefHeight="31.0" prefWidth="194.0" promptText="Recherche" style="-fx-background-color: #FFFFFF;" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <TableView fx:id="table_activite_affich" layoutX="80.0" layoutY="210.0" prefHeight="200.0" prefWidth="1057.0" style="-fx-border-color: #1372f4;">
         <columns>
           <TableColumn fx:id="nom_activite_column" prefWidth="104.0" text="Nom" />
           <TableColumn fx:id="description_activite_column" prefWidth="191.0" text="Description" />
@@ -21,10 +37,10 @@
             <TableColumn fx:id="coach_activite_column" minWidth="0.0" prefWidth="0.0" text="Coach" />
         </columns>
       </TableView>
-      <Button fx:id="btn_ajouter_activite_affichage" layoutX="296.0" layoutY="301.0" mnemonicParsing="false" onAction="#Ajouter_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Ajouter" textFill="WHITE" />
-      <Button fx:id="btn_modif_activite_affichage" layoutX="296.0" layoutY="346.0" mnemonicParsing="false" onAction="#Modifier_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifier" textFill="WHITE" />
-      <Button fx:id="btn_supprimer_activite_affichage" layoutX="296.0" layoutY="394.0" mnemonicParsing="false" onAction="#Supprimer_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
-      <ImageView fitHeight="150.0" fitWidth="451.0" layoutX="543.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btn_ajouter_activite_affichage" layoutX="348.0" layoutY="481.0" mnemonicParsing="false" onAction="#Ajouter_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="btn_modif_activite_affichage" layoutX="348.0" layoutY="526.0" mnemonicParsing="false" onAction="#Modifier_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Modifier" textFill="WHITE" />
+      <Button fx:id="btn_supprimer_activite_affichage" layoutX="348.0" layoutY="574.0" mnemonicParsing="false" onAction="#Supprimer_activite_affichageOnClick" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
+      <ImageView fitHeight="150.0" fitWidth="451.0" layoutX="595.0" layoutY="485.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/logo1.png" />
          </image>

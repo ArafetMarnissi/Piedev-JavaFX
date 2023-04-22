@@ -136,7 +136,7 @@ public class ModifierActiviteController implements Initializable {
         erreur_nom_act_modif.setText("");
          erreur_date_modif.setText("");
          LocalDate date=date_activite_modif.getValue();
-         if(!nom_activite_modif_field.getText().isEmpty()&&!description_activite_modif_field.getText().isEmpty()&&!nbreplace_activite_modif.getText().isEmpty()&&nom_activite_modif_field.getText().matches("^[a-zA-Z ]+")&&description_activite_modif_field.getText().matches("^[a-zA-Z0-9 ]+")&&Integer.parseInt(nbreplace_activite_modif.getText())>0&&date.isAfter(LocalDate.now())){
+         if(!nom_activite_modif_field.getText().isEmpty()&&!description_activite_modif_field.getText().isEmpty()&&!nbreplace_activite_modif.getText().isEmpty()&&nom_activite_modif_field.getText().matches("[a-zA-Z ]+")&&description_activite_modif_field.getText().matches("[a-zA-Z0-9 ]+")&&Integer.parseInt(nbreplace_activite_modif.getText())>0&&date.isAfter(LocalDate.now())){
      if(!image_activite_modif.getText().equals(c1.getImage())){
             int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
             String newFileName = random_int+"-"+selectedFile.getName();
@@ -173,24 +173,25 @@ public class ModifierActiviteController implements Initializable {
         Parent root = loader.load();
         btn_modifier_activite.getScene().setRoot(root);
          }else{
+            if(!date.isAfter(LocalDate.now())){
+                erreur_date_modif.setText("la date doit être supérieure à celle d'aujourd'hui");
+            }
            if(nom_activite_modif_field.getText().isEmpty()){
             erreur_nom_act_modif.setText("Le nom est obligatoire");}
             if(description_activite_modif_field.getText().isEmpty()){
             erreur_description_modif.setText("La description est obligatoire");}
             if(nbreplace_activite_modif.getText().isEmpty()){
             erreur_nbreplace_modif.setText("Le nombre de places est obligatoire");}
-            if(!nom_activite_modif_field.getText().matches("[a-zA-Z]+")){
+            if(!nom_activite_modif_field.getText().matches("[a-zA-Z ]+")){
               erreur_nom_act_modif.setText("le nom doit contenir que des alphabets");
             }
-            if(!description_activite_modif_field.getText().matches("[a-zA-Z]+")){
+            if(!description_activite_modif_field.getText().matches("[a-zA-Z0-9 ]+")){
               erreur_description_modif.setText("la description ne doit pas contenir des caracteres speciaux");
             }
             if(Integer.parseInt(nbreplace_activite_modif.getText())<=0){
                erreur_nbreplace_modif.setText("le nombre de places doit être positif");
             }
-            if(!date.isAfter(LocalDate.now())){
-                erreur_date_modif.setText("la date doit être supérieure à celle d'aujourd'hui");
-            }
+
          }
     }
 

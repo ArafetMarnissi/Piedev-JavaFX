@@ -17,6 +17,7 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 //import java.util.Date;
@@ -88,6 +89,10 @@ public class AjoutActiviteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        date_activite.setValue(LocalDate.now());
+        deb_activite.setValue(LocalTime.now());
+        fin_activite.setValue(LocalTime.now());
+        nbreplaces_activite_ajout_field.setText("0");
         cs=new ActiviteService();
         cs1 = new CoachService();
         ObservableList<Coach> l= cs1.afficher();
@@ -123,7 +128,7 @@ public class AjoutActiviteController implements Initializable {
         erreur_nom_activite.setText("");
          erreur_date_act.setText("");
          LocalDate date=date_activite.getValue();
-        if(!nom_activite_ajout_field.getText().isEmpty()&&!description_activite_ajout_field.getText().isEmpty()&&!nbreplaces_activite_ajout_field.getText().isEmpty()&&nom_activite_ajout_field.getText().matches("^[a-zA-Z ]+")&&description_activite_ajout_field.getText().matches("^[a-zA-Z0-9 ]+")&&Integer.parseInt(nbreplaces_activite_ajout_field.getText())>0&&date.isAfter(LocalDate.now())){
+        if(!nom_activite_ajout_field.getText().isEmpty()&&!description_activite_ajout_field.getText().isEmpty()&&!nbreplaces_activite_ajout_field.getText().isEmpty()&&nom_activite_ajout_field.getText().matches("[a-zA-Z ]+")&&description_activite_ajout_field.getText().matches("[a-zA-Z0-9 ]+")&&Integer.parseInt(nbreplaces_activite_ajout_field.getText())>0&&date.isAfter(LocalDate.now())){
         int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
         String newFileName = random_int+"-"+selectedFile.getName();
         String chaine = comb.getValue();
@@ -146,24 +151,25 @@ public class AjoutActiviteController implements Initializable {
         Parent root = loader.load();
         btn_image_activite_ajout.getScene().setRoot(root);}
         else{
+            if(!date.isAfter(LocalDate.now())){
+                erreur_date_act.setText("la date doit être supérieure à celle d'aujourd'hui");
+            }
             if(nom_activite_ajout_field.getText().isEmpty()){
             erreur_nom_activite.setText("Le nom est obligatoire");}
             if(description_activite_ajout_field.getText().isEmpty()){
             erreur_description_activite.setText("La description est obligatoire");}
-            if(nbreplaces_activite_ajout_field.getText().isEmpty()){
+            if(Integer.parseInt(nbreplaces_activite_ajout_field.getText())==0){
             erreur_nbre_place.setText("Le nombre de places est obligatoire");}
-            if(!nom_activite_ajout_field.getText().matches("[a-zA-Z]+")){
+            if(!nom_activite_ajout_field.getText().matches("[a-zA-Z ]+")){
               erreur_nom_activite.setText("le nom doit contenir que des alphabets");
             }
-            if(!description_activite_ajout_field.getText().matches("[a-zA-Z]+")){
+            if(!description_activite_ajout_field.getText().matches("[a-zA-Z0-9 ]+")){
               erreur_description_activite.setText("la description ne doit pas contenir des caracteres speciaux");
             }
-            if(Integer.parseInt(nbreplaces_activite_ajout_field.getText())<=0){
+            if(Integer.parseInt(nbreplaces_activite_ajout_field.getText())<0){
                erreur_nbre_place.setText("le nombre de places doit être positif");
             }
-            if(!date.isAfter(LocalDate.now())){
-                erreur_date_act.setText("la date doit être supérieure à celle d'aujourd'hui");
-            }
+
         }
     }
 

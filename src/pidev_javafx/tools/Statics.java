@@ -12,4 +12,8 @@ package pidev_javafx.tools;
 public class Statics {
         public static String imgPath = "File:/C:/Users/mmarr/Desktop/test/PIDEV-Golden-Gym/Pidev/public/img/activite/";
         public static String uploadDirectory = "C:/Users/mmarr/Desktop/test/PIDEV-Golden-Gym/Pidev/public/img/activite//";
+        
+        public static String imgPath1 = "File:/C:/Users/mmarr/Desktop/test/PIDEV-Golden-Gym/Pidev/public/img/qr-code/";
+        public static String uploadDirectory1 = "C:/Users/mmarr/Desktop/test/PIDEV-Golden-Gym/Pidev/public/img/qr-code//";
+        public static String URL= "https://www.google.com/search?q=";
 }
