@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pidev_javafx.entitie.User;
 import pidev_javafx.service.SessionManager;
+import pidev_javafx.service.UserService;
 import pidev_javafx.tools.JavaMail;
 
 /**
@@ -41,7 +43,15 @@ public class MyProfilController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        emailtextfield.setText(SessionManager.getEmail());
+         
+        
+        refresh();
+       
+    }    
+    
+    public void refresh()
+    {
+         emailtextfield.setText(SessionManager.getEmail());
         nomtextfield.setText(SessionManager.getNom());
         prenomtextfield.setText(SessionManager.getPrenom());
         mdptextfield.setText(SessionManager.getPassword());
@@ -53,13 +63,31 @@ public class MyProfilController implements Initializable {
        {
            checkStatus.setText("non vérifié");
        }
-    }    
+    }
 
     @FXML
     private void modifiercoordonnee(ActionEvent event) {
         
-        
+        UserService us = new UserService();
+         
+         us.modifier(Update(us.getUserParId(SessionManager.getId())));
+         refresh();
+         
     }
+     private User Update(User t)
+     {
+         
+         t.setPassword(mdptextfield.getText());
+        
+         t.setNom(nomtextfield.getText());
+         t.setPrenom(prenomtextfield.getText());
+          SessionManager.setNom(t.getNom());
+          SessionManager.setPrenom(t.getPrenom());
+          SessionManager.setPassword(t.getPassword());
+         
+         return t;
+         
+     }
 
     @FXML
     private void sendmail(ActionEvent event) {

@@ -7,6 +7,7 @@ package pidev_javafx.controller;
 
 import java.io.IOException;
 import java.net.PasswordAuthentication;
+import java.net.URI;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -30,6 +31,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pidev_javafx.service.SessionManager;
 import pidev_javafx.service.UserService;
+import java.net.HttpURLConnection;
+
 
 
 /**
@@ -193,6 +196,8 @@ public class LoginController implements Initializable {
              mdpverif.setText("mdp doit être > 8");
          }
     }
+
+   
 
 }
 

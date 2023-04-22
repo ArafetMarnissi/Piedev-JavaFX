@@ -3,13 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/JavaFXMain.java</file>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/dashbord.css</file>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/service/UserService.java</file>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/MonCompteController.java</file>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/dashbordback.css</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/DashbordFrontController.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/entitie/Commande.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/MyProfilController.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/service/CommandeService.java</file>
             <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/DashbordBackController.java</file>
-            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/monCompte.fxml</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/verifyAccount.fxml</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/tools/JavaMail.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/entitie/User.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/VerifyAccountController.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/service/UserService.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/entitie/PanierSession.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/gui/AddUserController.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/entitie/LigneCommande.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/service/SessionManager.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/LoginController.java</file>
+            <file>file:/C:/Users/khali/Desktop/JavaFX/Workshop%20Java%20natif/src/pidev_javafx/controller/AffichageController.java</file>
         </group>
     </open-files>
 </project-private>

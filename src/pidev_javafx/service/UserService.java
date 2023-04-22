@@ -131,7 +131,7 @@ public class UserService implements CrudInterface<User> {
 
     @Override
     public void modifier(User t) {
-            String sql = "UPDATE User SET nom=?, prenom=?, email=? , password=? WHERE id=?";
+            String sql = "UPDATE User SET nom=?, prenom=?, email=? , password=?, status=? WHERE id=?";
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
@@ -139,7 +139,8 @@ public class UserService implements CrudInterface<User> {
             ste.setString(2,t.getPrenom());
             ste.setString(3, t.getEmail());
             ste.setString(4, t.getPassword());
-            ste.setInt(5, t.getId());
+            ste.setBoolean(5, t.isStatus());
+            ste.setInt(6, t.getId());
             ste.executeUpdate();
             System.out.println("User modifiée");
 

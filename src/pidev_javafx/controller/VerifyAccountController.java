@@ -22,7 +22,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pidev_javafx.entitie.User;
 import pidev_javafx.service.SessionManager;
+import pidev_javafx.service.UserService;
 
 /**
  * FXML Controller class
@@ -57,9 +59,16 @@ public class VerifyAccountController implements Initializable {
     @FXML
     private void verifyaccountmethod(ActionEvent event) {
             String key = String.valueOf(SessionManager.getPrivate_key());
+            UserService us = new UserService();
         if (textfieldcode.getText().equals(key))
         {
             SessionManager.setStatus(true);
+            User user = us.getUserParId(SessionManager.getId());
+            user.setStatus(true);
+            us.modifier(user);
+            
+            System.out.println(SessionManager.getId());
+            System.out.println(user.toString());
              Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Félicitations");
             alert.setHeaderText(null);

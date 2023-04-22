@@ -232,16 +232,11 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Mon Compte">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
                </children>
             </VBox>
             <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="logoutButton" alignment="BASELINE_LEFT" onAction="#logout" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -25,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -37,6 +39,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
@@ -76,6 +79,11 @@ public class DashbordFrontController implements Initializable {
     private Label LabelPrixTotal;
     @FXML
     private JFXButton btnPasserCommande;
+    @FXML
+    private JFXButton logoutButton;
+    private Stage stage;
+    private  Parent root;
+    private Scene scene;
     
   
     /**
@@ -421,4 +429,19 @@ private void ConsulterMesCommandes(ActionEvent event) {
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
 }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+    }
 }

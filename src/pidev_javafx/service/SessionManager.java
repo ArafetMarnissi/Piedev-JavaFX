@@ -18,6 +18,10 @@ public class SessionManager {
     private static int private_key;
     private static boolean status;
 
+    
+    
+    
+    
     public static int getId() {
         return id;
     }
