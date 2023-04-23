@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1543.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLreclamationadminController">
+   <children>
+      <TableView fx:id="tvreclamation" layoutX="797.0" layoutY="116.0" prefHeight="455.0" prefWidth="732.0">
+        <columns>
+          <TableColumn fx:id="tctype" prefWidth="157.0" text="Type Reclamation" />
+          <TableColumn fx:id="tcdescription" prefWidth="382.0" text="Description" />
+            <TableColumn fx:id="tcdate" prefWidth="192.0" text="Date" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="tfreponse" layoutX="353.0" layoutY="198.0" prefHeight="234.0" prefWidth="414.0" />
+      <Button layoutX="518.0" layoutY="546.0" mnemonicParsing="false" onAction="#repondre" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Repondre" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="1142.0" layoutY="583.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label layoutX="353.0" layoutY="165.0" text="Reponse">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfrecherche" layoutX="910.0" layoutY="60.0" promptText="Recherche" />
+      <Button layoutX="1148.0" layoutY="60.0" mnemonicParsing="false" onAction="#tri" text="Tri" />
+      <Button layoutX="1290.0" layoutY="60.0" mnemonicParsing="false" onAction="#stat" text="Stat" />
+   </children>
+</AnchorPane>
