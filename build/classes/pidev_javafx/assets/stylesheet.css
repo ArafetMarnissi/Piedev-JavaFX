@@ -1,0 +1,70 @@
+.button {
+    -fx-background-color: #007FFF;
+    -fx-background-radius: 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+}
+
+.button:signup {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+}
+
+.label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 16px;
+}
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 24px;
+    -fx-border-color: #E1E8ED;
+    -fx-border-radius: 24px;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #1DA1F2;
+    -fx-box-shadow: 0 0 0 2px #1DA1F2;
+}
+
+
+
+
+
+
+
+/* Set background color to dark gray */
+.root {
+    -fx-background-color: #333333;
+}
+
+/* Set font size and color for all labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+
+
+/* Set padding and spacing for all panes */
+.pane {
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+}
+
+/* Set border and padding for titled panes */
+.titled-pane {
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+}
+

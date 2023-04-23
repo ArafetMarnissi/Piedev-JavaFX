@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,6 @@
         <URL value="@dashbordback.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="PaneContent" prefHeight="554.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
       <AnchorPane prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #002d40;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <ImageView fx:id="profile" fitHeight="24.0" fitWidth="24.0" layoutX="761.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="11.0">
@@ -29,6 +29,7 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="PaneContent" prefHeight="554.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
       <AnchorPane layoutY="46.0" prefHeight="553.0" prefWidth="44.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.39999999999998">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="11.0" AnchorPane.topAnchor="20.0">
@@ -65,11 +66,6 @@
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../pidev/javafx/assets/reservation.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../pidev/javafx/assets/sabonner.png" />
                      </image>
                   </ImageView>
@@ -81,6 +77,16 @@
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../../pidev/javafx/assets/se-deconnecter.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/monCompte.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/support.png" />
                      </image>
                   </ImageView>
                </children>
@@ -141,17 +147,22 @@
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../pidev/javafx/assets/reservation.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../pidev/javafx/assets/sabonner.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/fichier.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/monCompte.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/support.png" />
                      </image>
                   </ImageView>
                </children>
@@ -179,7 +190,7 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Utilisateurs">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#GestionUtilisateurs" prefHeight="38.0" prefWidth="179.0" text="Utilisateurs">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -204,11 +215,6 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Réservations">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
                   <JFXButton fx:id="BtnAB" alignment="BASELINE_LEFT" onAction="#Listabonnement" prefHeight="38.0" prefWidth="179.0" text="Abonnements">
                      <font>
                         <Font size="16.0" />
@@ -219,15 +225,43 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-               </children>
-            </VBox>
-            <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
-               <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="consultProfilButton" alignment="BASELINE_LEFT" onAction="#consulterProfil" prefHeight="38.0" prefWidth="179.0" text="Mon Compte">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="consultProfilButton1" alignment="BASELINE_LEFT" onAction="#aiderClient" prefHeight="38.0" prefWidth="179.0" text="Aider les clients">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#logoutBack" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneProfil" layoutY="47.0" prefHeight="182.0" prefWidth="240.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="142.0" prefWidth="178.0" spacing="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Label fx:id="LabelAdresse" prefHeight="34.0" prefWidth="192.0" text="Adresse">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LabelNomPrenom" prefHeight="34.0" prefWidth="192.0" text="nom">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

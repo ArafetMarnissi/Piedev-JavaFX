@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ChatUIController">
+    <center>
+        <TextArea fx:id="chatLog" editable="false" />
+    </center>
+    <bottom>
+        <BorderPane>
+            <center>
+                <TextField fx:id="messageInput" />
+            </center>
+            <right>
+                <Button fx:id="sendButton" text="Send" />
+            </right>
+        </BorderPane>
+    </bottom>
+</BorderPane>
