@@ -154,6 +154,9 @@ private void hideProfilPane() {
                 try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeback.fxml"));
             Pane autreInterface = loader.load();
+            Region parent = (Region) loader.getRoot();
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
             PaneContent.getChildren().setAll(autreInterface);
             
             
