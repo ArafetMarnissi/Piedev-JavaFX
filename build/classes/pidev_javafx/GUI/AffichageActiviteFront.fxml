@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1480.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageActiviteFrontController">
+<AnchorPane id="AnchorPane" prefHeight="848.0" prefWidth="1480.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AffichageActiviteFrontController">
    <children>
-      <FlowPane fx:id="flowpane_front" layoutY="170.0" prefHeight="440.0" prefWidth="518.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <AnchorPane fx:id="anchorPane_affich_details_acts_front" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane prefHeight="848.0" prefWidth="1480.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <HBox prefHeight="835.0" prefWidth="1455.0">
+                     <children>
+                        <VBox fx:id="v2" alignment="TOP_CENTER" prefHeight="835.0" prefWidth="1610.0" spacing="2.0" style="-fx-background-color: #FFFFFF;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fx:id="image_act_details" fitHeight="400.0" fitWidth="1139.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="espace1" text="label" />
+                              <Label fx:id="nom_act_details" text="label" />
+                              <Label fx:id="espace" text="label" />
+                              <Label fx:id="desc_act_details" text="label" />
+                              <Label fx:id="espace2" text="label" />
+                              <ImageView fx:id="image_qrcode" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="btn_retour_details" mnemonicParsing="false" onAction="#Retour_detailsOnClick" prefHeight="31.0" prefWidth="197.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Toutes les activités" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Label fx:id="espace4" text="label" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <Region prefHeight="859.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="835.0" prefWidth="641.0" spacing="2.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fx:id="image_coach_detail" fitHeight="204.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="200.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label fx:id="espace_c1" text="Label" />
+                              <Label fx:id="nom_coach" text="Label" />
+                              <Label fx:id="age_coach" text="Label" />
+                              <Label fx:id="espace_c2" text="Label" />
+                              <Label fx:id="espace_c3" text="Label" />
+                              <Label fx:id="date_act_vbox" text="Label" />
+                              <Label fx:id="espace_c4" text="Label" />
+                              <Label fx:id="deb_act_detail" text="Label" />
+                              <Label fx:id="espace_c5" text="Label" />
+                              <Label fx:id="fin_act_detail" text="Label" />
+                              <Label fx:id="espace_c6" text="Label" />
+                              <ImageView fx:id="image_qrcode_coach" fitHeight="200.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPane_affich_acts_front" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FlowPane fx:id="flowpane_front" prefHeight="440.0" prefWidth="518.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -48,6 +48,7 @@ public class AfficherCoachController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
         //id.setCellValueFactory(new PropertyValueFactory<Coach,Integer>("id"));
         colonne_nom.setCellValueFactory(new PropertyValueFactory<Coach, String>("nom_coach"));
         colonne_age.setCellValueFactory(new PropertyValueFactory<Coach, Integer>("age_coach"));

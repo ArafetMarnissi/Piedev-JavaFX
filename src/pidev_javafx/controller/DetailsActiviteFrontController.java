@@ -22,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -81,6 +83,12 @@ public class DetailsActiviteFrontController implements Initializable {
     private ImageView image_qrcode_coach;
     @FXML
     private Label nom_coach;
+    @FXML
+    private AnchorPane anchorPane_affich_details_acts_front;
+    @FXML
+    private AnchorPane anchorPane_affich_acts_front;
+    @FXML
+    private FlowPane flowpane_front;
 
     /**
      * Initializes the controller class.

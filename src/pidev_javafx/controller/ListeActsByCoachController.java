@@ -294,10 +294,11 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             System.out.println(ex.getMessage());
                         }
                         
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/DetailsActiviteFront.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
                         Parent root = loader.load();
-                        DetailsActiviteFrontController mcc = loader.getController();
+                        AffichageActiviteFrontController mcc = loader.getController();
                         mcc.recupDataD(a,newFileName);
+                        mcc.anchorPane_affich_details_acts_front.toFront();
                         flowpane_acts_coach.getScene().setRoot(root);
                         
                     }catch(IOException ex){

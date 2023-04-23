@@ -57,8 +57,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import java.util.Optional;
+import javafx.event.ActionEvent;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Line;
 
@@ -75,7 +77,55 @@ ActiviteService cs;
 ParticipationService ps;
 CoachService coachS;
     @FXML
-    private TextField recherche_textfield;
+    public AnchorPane anchorPane_affich_details_acts_front;
+    @FXML
+    private VBox v2;
+    @FXML
+    private ImageView image_act_details;
+    @FXML
+    private Label espace1;
+    @FXML
+    private Label nom_act_details;
+    @FXML
+    private Label espace;
+    @FXML
+    private Label desc_act_details;
+    @FXML
+    private Label espace2;
+    @FXML
+    private ImageView image_qrcode;
+    @FXML
+    private Button btn_retour_details;
+    @FXML
+    private Label espace4;
+    @FXML
+    private ImageView image_coach_detail;
+    @FXML
+    private Label espace_c1;
+    @FXML
+    private Label nom_coach;
+    @FXML
+    private Label age_coach;
+    @FXML
+    private Label espace_c2;
+    @FXML
+    private Label espace_c3;
+    @FXML
+    private Label date_act_vbox;
+    @FXML
+    private Label espace_c4;
+    @FXML
+    private Label deb_act_detail;
+    @FXML
+    private Label espace_c5;
+    @FXML
+    private Label fin_act_detail;
+    @FXML
+    private Label espace_c6;
+    @FXML
+    private ImageView image_qrcode_coach;
+    @FXML
+    private AnchorPane anchorPane_affich_acts_front;
     /**
      * Initializes the controller class.
      */
@@ -281,7 +331,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
             }
             v1.setOnMouseClicked(e -> {
                
-                    try{
+                   // try{
                         
                         int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
                         String newFileName = random_int+"-qrCode.png";
@@ -300,15 +350,23 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                             System.out.println(ex.getMessage());
                         }
                         
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/DetailsActiviteFront.fxml"));
-                        Parent root = loader.load();
-                        DetailsActiviteFrontController mcc = loader.getController();
-                        mcc.recupDataD(a,newFileName);
-                        flowpane_front.getScene().setRoot(root);
                         
-                    }catch(IOException ex){
-                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                        anchorPane_affich_details_acts_front.toFront();
+                        
+                try {
+                    recupDataD(a,newFileName);
+                    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/DetailsActiviteFront.fxml"));
+                    Parent root = loader.load();
+                    DetailsActiviteFrontController mcc = loader.getController();
+                    mcc.recupDataD(a,newFileName);
+                    flowpane_front.getScene().setRoot(root);*/
+                    
+                    /*}catch(IOException ex){
+                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    }*/
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                }
 
             });
 
@@ -329,5 +387,63 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
         
         MatrixToImageWriter.writeToPath(bm, "PNG", new File("C:/Users/mmarr/Desktop/test/PIDEV-Golden-Gym/Pidev/public/img/qr-code/"+nom).toPath());
     }
+
+    @FXML
+    private void Retour_detailsOnClick(ActionEvent event){
+       anchorPane_affich_acts_front.toFront();
+    }
     
+    public void recupDataD(Activite t,String s) throws FileNotFoundException{
+             LocalDate ld=t.getDateActivite().toLocalDate();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+                        String formattedDate = ld.format(formatter);
+       nom_act_details.setText(t.getNomActivite());
+       desc_act_details.setText(t.getDescriptionActivite());
+       nom_coach.setText(t.getCoach().getNom_coach());
+       age_coach.setText("Coach");
+       date_act_vbox.setText("Date: "+formattedDate);
+       deb_act_detail.setText("Commence à: "+String.valueOf(t.getTimeActivite()));
+       fin_act_detail.setText("Se termine à: "+String.valueOf(t.getEnd()));
+       
+      espace.setText("\n");
+       espace1.setText("\n");
+       espace2.setText("\n");
+       espace4.setText("\n");
+       espace_c1.setText("\n");
+       espace_c2.setText("\n");
+       espace_c3.setText("\n");
+       espace_c4.setText("\n");
+       espace_c5.setText("\n");
+       espace_c6.setText("\n");
+       
+       /*String chara = Integer.toString(t.getNbrePlace());
+       nbreplace_activite_modif.setText(chara);*/
+            System.out.println(t.getCoach());
+       image_act_details.setImage(new Image(new FileInputStream(Statics.uploadDirectory+t.getImage())));
+       //image_qrcode.setImage(new Image(new FileInputStream(Statics.uploadDirectory1+s)));
+       image_qrcode_coach.setImage(new Image(new FileInputStream(Statics.uploadDirectory1+s)));
+       image_coach_detail.setImage(new Image(new FileInputStream(Statics.uploadDirectory+t.getCoach().getImage())));
+       
+            //System.out.println(t);
+        image_act_details.setFitHeight(1550);
+        image_act_details.setFitWidth(850);
+        image_act_details.setStyle("-fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        nom_act_details.setFont(Font.font("Verdana",FontWeight.BOLD, 24));
+        nom_act_details.setAlignment(Pos.CENTER);
+        desc_act_details.setFont(Font.font("Verdana",FontWeight.NORMAL, 20));
+        desc_act_details.setAlignment(Pos.CENTER);
+        nom_coach.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
+        nom_coach.setAlignment(Pos.CENTER);
+        age_coach.setFont(Font.font("Verdana",FontWeight.NORMAL, 14));
+        age_coach.setAlignment(Pos.CENTER);
+        date_act_vbox.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
+        date_act_vbox.setAlignment(Pos.CENTER);
+        deb_act_detail.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
+        deb_act_detail.setAlignment(Pos.CENTER);
+        fin_act_detail.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
+        fin_act_detail.setAlignment(Pos.CENTER);
+        
+    }    
+
+
 }
