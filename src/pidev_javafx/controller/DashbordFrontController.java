@@ -336,17 +336,12 @@ private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
-
-            PaneContent.getChildren().setAll(autreInterface);
-            autreInterface.setPadding(new Insets(0));
-
-            
-        Insets insets = new Insets(0);
-        autreInterface.setPadding(insets);
+        Region parent = (Region) loader.getRoot();
+        parent.prefWidthProperty().bind(PaneContent.widthProperty());
+        parent.prefHeightProperty().bind(PaneContent.heightProperty());
             
             PaneContent.getChildren().setAll(autreInterface);
-            PaneContent.setPadding(insets);
-            
+ 
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -358,7 +353,9 @@ private void ConsulterMesCommandes(ActionEvent event) {
         
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
             Pane autreInterface = loader.load();
-            autreInterface.setPadding(new Insets(0));
+         Region parent = (Region) loader.getRoot();
+        parent.prefWidthProperty().bind(PaneContent.widthProperty());
+        parent.prefHeightProperty().bind(PaneContent.heightProperty());
             PaneContent.getChildren().setAll(autreInterface);
     }
 @FXML
@@ -366,9 +363,15 @@ private void ConsulterMesCommandes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
             Pane autreInterface = loader.load();
+            
+        Region parent = (Region) loader.getRoot();
+        parent.prefWidthProperty().bind(PaneContent.widthProperty());
+        parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            
             PaneContent.getChildren().setAll(autreInterface);
             ListeCommandeClientController controller = loader.getController();
             controller.PanePasserCommande.toFront();
+
 
             
             

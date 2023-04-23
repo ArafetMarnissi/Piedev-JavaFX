@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -43,6 +44,12 @@ public class DashbordBackController implements Initializable {
     private JFXButton BtnAB;
     @FXML
     private JFXButton StatAbDa;
+    @FXML
+    private AnchorPane paneProfil;
+    @FXML
+    private Label LabelAdresse;
+    @FXML
+    private Label LabelNomPrenom;
 
     /**
      * Initializes the controller class.
@@ -50,9 +57,79 @@ public class DashbordBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        SlideBar();
+        //SlideBar();
+        
+        /////////all Slide Bar//////////       
+pane1.setVisible(false);
+hideMenuPane();
+hideProfilPane();
 
-    }    
+menu.setOnMouseClicked(event -> {
+ 
+    showMenuPane();
+
+});
+
+profile.setOnMouseClicked(event -> {
+    showProfilPane();
+    
+});
+
+pane1.setOnMouseClicked(event -> {
+    hidePane1();
+    if (pane2.getTranslateX() == 0) {
+        hideMenuPane();
+    }else  if (paneProfil.getTranslateX() == 0) {
+        hideProfilPane();
+    }
+});
+
+    }
+   private void hidePane1() {
+    FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
+    fadeTransition1.setFromValue(0.15);
+    fadeTransition1.setToValue(0);
+    fadeTransition1.play();
+    fadeTransition1.setOnFinished(event1 -> {
+        pane1.setVisible(false);
+    });
+}
+
+private void showMenuPane() {
+    pane1.setVisible(true);
+    FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
+    fadeTransition1.setFromValue(0);
+    fadeTransition1.setToValue(0.15);
+    fadeTransition1.play();
+    TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), pane2);
+    translateTransition1.setByX(+600);
+    translateTransition1.play();
+}
+
+private void showProfilPane() {
+    pane1.setVisible(true);
+    FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
+    fadeTransition1.setFromValue(0);
+    fadeTransition1.setToValue(0.15);
+    fadeTransition1.play();
+    TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), paneProfil);
+    translateTransition1.setByY(-1000);
+    translateTransition1.play();
+}
+
+private void hideMenuPane() {
+    hidePane1();
+    TranslateTransition translateTransition2 = new TranslateTransition(Duration.seconds(0.5), pane2);
+    translateTransition2.setByX(-600);
+    translateTransition2.play();
+}
+
+private void hideProfilPane() {
+    hidePane1();
+    TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), paneProfil);
+    translateTransition1.setByY(+1000);
+    translateTransition1.play();
+}    
 
     @FXML
     private void ListeCommandeBack(ActionEvent event) {
@@ -66,6 +143,7 @@ public class DashbordBackController implements Initializable {
             e.printStackTrace();
         }
     }
+    /*
     public void SlideBar(){
     
         pane1.setVisible(false);
@@ -109,7 +187,7 @@ public class DashbordBackController implements Initializable {
         translateTransition1.play();
         });
     }
-
+*/
     @FXML
     private void Listabonnement(ActionEvent event) {
         try {
@@ -135,5 +213,5 @@ public class DashbordBackController implements Initializable {
             e.printStackTrace();
         }        
     }
-    
+ 
 }
