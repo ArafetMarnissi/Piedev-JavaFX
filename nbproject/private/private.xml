@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Pidev_javaFX.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/DashbordBack.fxml</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/HomeAboController.java</file>
@@ -34,6 +35,11 @@
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CategoryService.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/PanierSession.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandeClientController.java</file>
+=======
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/gui/ReservationController.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/tools/Vocal.java</file>
+>>>>>>> 3c59326a6391e30ac4101e4f06cdecf516d0ec11
         </group>
     </open-files>
 </project-private>

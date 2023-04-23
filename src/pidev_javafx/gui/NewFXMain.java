@@ -28,7 +28,9 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().
-                    getResource("DashbordBack.fxml"));
+
+                    getResource("DashbordFront.fxml"));
+
             Scene scene = new Scene(root);
             
             primaryStage.setTitle("Reservation");
