@@ -31,10 +31,12 @@ public class NewFXMain extends Application {
 
                     getResource("DashbordFront.fxml"));
 
-            Scene scene = new Scene(root);
+                  Scene scene = new Scene(root, 1095, 665);
             
             primaryStage.setTitle("Reservation");
             primaryStage.setScene(scene);
+            primaryStage.setMinHeight(665);
+            primaryStage.setMinWidth(1095);
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

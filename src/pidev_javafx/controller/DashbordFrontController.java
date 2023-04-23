@@ -25,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -37,6 +39,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
@@ -71,8 +74,6 @@ public class DashbordFrontController implements Initializable {
     
 
 
-    @FXML
-    private JFXButton BtnRes;
 
     private HashMap<Produit,HBox> mapHashbox = new HashMap<>();
     @FXML
@@ -81,7 +82,17 @@ public class DashbordFrontController implements Initializable {
     private Label LabelPrixTotal;
     @FXML
     private JFXButton btnPasserCommande;
+    @FXML
+    private JFXButton profilid;
+    @FXML
+    private JFXButton profilid1;
+    @FXML
+    private JFXButton logoutButton;
 
+    
+        private Stage stage;
+    private  Parent root;
+    private Scene scene;
     
   
     /**
@@ -347,8 +358,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
         }
     }
 
-
-    @FXML
+@FXML
     private void ListReservation(ActionEvent event) throws IOException {
         
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
@@ -450,4 +460,56 @@ private void ConsulterMesCommandes(ActionEvent event) {
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
  }
+
+  
+    @FXML
+    private void logout(ActionEvent event) {
+        
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void myprofil(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/myProfil.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void getSupport(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/support.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 }

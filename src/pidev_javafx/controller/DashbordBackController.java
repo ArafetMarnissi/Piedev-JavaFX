@@ -15,16 +15,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 
 import javafx.scene.control.Label;
 
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import pidev_javafx.service.SessionManager;
 
 /**
  * FXML Controller class
@@ -55,14 +60,22 @@ public class DashbordBackController implements Initializable {
     private Label LabelAdresse;
     @FXML
     private Label LabelNomPrenom;
+    @FXML
+    private JFXButton consultProfilButton;
+    @FXML
+    private JFXButton consultProfilButton1;
+    
+        private Stage stage;
+    private  Parent root;
+    private Scene scene;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        //SlideBar();
+        LabelAdresse.setText(SessionManager.getEmail());
+        LabelNomPrenom.setText(SessionManager.getNom()+ " " + SessionManager.getPrenom());
         
         /////////all Slide Bar//////////       
 pane1.setVisible(false);
@@ -148,51 +161,7 @@ private void hideProfilPane() {
             e.printStackTrace();
         }
     }
-    /*
-    public void SlideBar(){
-    
-        pane1.setVisible(false);
-        
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), pane1);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-        fadeTransition.play();
 
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), pane2);
-        translateTransition.setByX(-600);
-        translateTransition.play();
-        
-        menu.setOnMouseClicked(event -> {
-            pane1.setVisible(true);
-            
-            FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
-            fadeTransition1.setFromValue(0);
-            fadeTransition1.setToValue(0.15);
-            fadeTransition1.play();
-
-
-
-            TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), pane2);
-            translateTransition1.setByX(+600);
-            translateTransition1.play();
-        });
-        
-        pane1.setOnMouseClicked(event -> {
-        FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
-        fadeTransition1.setFromValue(0.15);
-        fadeTransition1.setToValue(0);
-        fadeTransition1.play();
-        
-         fadeTransition1.setOnFinished(event1 -> {
-            pane1.setVisible(false);
-        });
-
-        TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), pane2);
-        translateTransition1.setByX(-600);
-        translateTransition1.play();
-        });
-    }
-*/
 
 
 @FXML
@@ -229,6 +198,67 @@ private void Listabonnement(ActionEvent event) {
         } catch (IOException e) {
             e.printStackTrace();
         }        
+    }
+
+      @FXML
+    private void GestionUtilisateurs(ActionEvent event) {
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/affichage.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void consulterProfil(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/myProfil.fxml"));
+            Pane autreInterface = loader.load();
+            PaneContent.getChildren().setAll(autreInterface);
+            
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void logoutBack(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void aiderClient(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/support.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
     }
  
 }

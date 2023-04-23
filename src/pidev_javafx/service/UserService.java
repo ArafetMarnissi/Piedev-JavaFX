@@ -48,8 +48,69 @@ public class UserService implements CrudInterface<User> {
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+          
         }
     }
+    
+   public boolean userExists(User t ) {
+    boolean exists = false;
+    try {
+        // Assuming you have a connection object called "conn" to the database
+        PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM User WHERE email = ?");
+        stmt.setString(1, t.getEmail());
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        if (rs.getInt(1) > 0) {
+            exists = true;
+        }
+        rs.close();
+        stmt.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle the exception here, e.g. log it or display an error message to the user
+    }
+    return exists;
+}
+ public boolean login(String email,String password)
+    {
+       boolean exists = false;
+       
+    try {
+        PreparedStatement stmt = cnx.prepareStatement("SELECT COUNT(*) FROM User WHERE email = ? and password = ?");
+        stmt.setString(1,email);
+        stmt.setString(2, password);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        if (rs.getInt(1) > 0) {
+            
+            exists = true;
+            User us=getUserParEmail(email);
+            System.out.println(us.toString());
+            // Session Start
+            SessionManager.setId(us.getId());
+            SessionManager.setEmail(us.getEmail());
+            SessionManager.setNom(us.getNom());
+            SessionManager.setPrenom(us.getPrenom());
+            SessionManager.setPassword(us.getPassword());
+            SessionManager.setPrivate_key(us.getPrivate_key());
+            SessionManager.setStatus(us.isStatus());
+            SessionManager.setRole(us.getRole());
+            
+        }
+                System.out.println(rs.getArray(email));
+
+        rs.close();
+        stmt.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        System.out.println(exists);
+        
+    return exists; 
+    }
+        
+    
 
     
 
@@ -67,9 +128,10 @@ public class UserService implements CrudInterface<User> {
         }
     }
 
+
     @Override
     public void modifier(User t) {
-            String sql = "UPDATE User SET nom=?, prenom=?, email=? , password=? WHERE id=?";
+            String sql = "UPDATE User SET nom=?, prenom=?, email=? , password=?, status=? WHERE id=?";
             PreparedStatement ste ;
             try {
             ste = cnx.prepareStatement(sql);
@@ -77,7 +139,8 @@ public class UserService implements CrudInterface<User> {
             ste.setString(2,t.getPrenom());
             ste.setString(3, t.getEmail());
             ste.setString(4, t.getPassword());
-            ste.setInt(5, t.getId());
+            ste.setBoolean(5, t.isStatus());
+            ste.setInt(6, t.getId());
             ste.executeUpdate();
             System.out.println("User modifiée");
 
@@ -114,10 +177,36 @@ public class UserService implements CrudInterface<User> {
         return users;
         
     }    
-    
+
         ////optenir le user par id passer en parametre
     
-        public User getUserParId(int id){
+        public User getUserParEmail(String email){
+        String sql="select * from user where email=?";
+        PreparedStatement ste;
+        try{
+            ste=cnx.prepareStatement(sql);
+            ste.setString(1, email);
+            ResultSet rs= ste.executeQuery();
+            if(rs.next()){
+                User u = new User(
+                    rs.getInt("id"),
+                    rs.getString("email"),
+                    rs.getString("roles"),
+                    rs.getString("password"),
+                    rs.getString("nom"),
+                    rs.getString("prenom"),
+                    rs.getInt("private_key"),
+                    rs.getBoolean("status"));
+                return u;
+            }
+            
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+         public User getUserParId(int id){
         String sql="select * from user where id=?";
         PreparedStatement ste;
         try{
