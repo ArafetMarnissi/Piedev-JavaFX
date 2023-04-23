@@ -15,9 +15,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -41,6 +45,11 @@ public class DashbordBackController implements Initializable {
     private JFXButton btnListeCommande;
     @FXML
     private JFXButton consultProfilButton;
+    private Stage stage;
+    private  Parent root;
+    private Scene scene;
+    @FXML
+    private JFXButton consultProfilButton1;
 
     /**
      * Initializes the controller class.
@@ -133,6 +142,37 @@ public class DashbordBackController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void logoutBack(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    }
+    }
+
+    @FXML
+    private void aiderClient(ActionEvent event) {
+        
+       try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/support.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+    } 
+        
+        
     }
 
    

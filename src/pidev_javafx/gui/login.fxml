@@ -3,15 +3,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.LoginController">
    <children>
-      <TextField fx:id="LoginEmail" layoutX="398.0" layoutY="109.0" onKeyTyped="#verifieremail" prefHeight="38.0" prefWidth="267.0" promptText="email" stylesheets="@../assets/stylesheet.css" />
-      <TextField fx:id="LoginPassword" layoutX="398.0" layoutY="151.0" onKeyTyped="#verifiermdp" prefHeight="38.0" prefWidth="267.0" promptText="mot de passe" stylesheets="@../assets/stylesheet.css" />
-      <Button fx:id="BtnLogin" layoutX="398.0" layoutY="193.0" mnemonicParsing="false" onAction="#loginUser" stylesheets="@../assets/stylesheet.css" text="Se connecter" />
-      <Button id="signup" fx:id="createaccount" layoutX="535.0" layoutY="193.0" mnemonicParsing="false" onAction="#clicksignup" stylesheets="@../assets/stylesheet.css" text="Créer un compte" textAlignment="RIGHT" />
-      <Label fx:id="emailverif" layoutX="141.0" layoutY="119.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
-      <Label fx:id="mdpverif" layoutX="141.0" layoutY="161.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../assets/login.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="LoginEmail" alignment="TOP_LEFT" layoutX="564.0" layoutY="175.0" onKeyTyped="#verifieremail" prefHeight="38.0" prefWidth="267.0" promptText="email" stylesheets="@../assets/stylesheet.css" AnchorPane.leftAnchor="564.0" />
+      <TextField fx:id="LoginPassword" alignment="TOP_LEFT" layoutX="564.0" layoutY="232.0" onKeyTyped="#verifiermdp" prefHeight="38.0" prefWidth="267.0" promptText="mot de passe" stylesheets="@../assets/stylesheet.css" AnchorPane.leftAnchor="564.0" />
+      <Button fx:id="BtnLogin" alignment="TOP_LEFT" layoutX="564.0" layoutY="329.0" mnemonicParsing="false" onAction="#loginUser" stylesheets="@../assets/stylesheet.css" text="Se connecter" AnchorPane.leftAnchor="564.0" />
+      <Button id="signup" fx:id="createaccount" alignment="TOP_LEFT" layoutX="698.0" layoutY="328.0" mnemonicParsing="false" onAction="#clicksignup" stylesheets="@../assets/stylesheet.css" text="Créer un compte" textAlignment="RIGHT" AnchorPane.leftAnchor="698.0" />
+      <Label fx:id="emailverif" layoutX="576.0" layoutY="213.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
+      <Label fx:id="mdpverif" layoutX="576.0" layoutY="270.0" prefHeight="18.0" prefWidth="244.0" textFill="RED" />
    </children>
 </AnchorPane>

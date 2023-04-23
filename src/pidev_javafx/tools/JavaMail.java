@@ -49,7 +49,8 @@ private static Message prepareMessage(Session session,String myAccountEmail, Str
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("Reservation confirmée");
+            message.setSubject("Code de confirmation de votre compte GoldenGym");
+            
             message.setText(sms);
             return message;
         } catch (Exception ex) {

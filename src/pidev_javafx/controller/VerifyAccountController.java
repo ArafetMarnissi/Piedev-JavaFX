@@ -76,7 +76,7 @@ public class VerifyAccountController implements Initializable {
             alert.showAndWait();
             
           try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordBack.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

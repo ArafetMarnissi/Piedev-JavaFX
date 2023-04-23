@@ -84,6 +84,10 @@ public class DashbordFrontController implements Initializable {
     private Stage stage;
     private  Parent root;
     private Scene scene;
+    @FXML
+    private JFXButton profilid;
+    @FXML
+    private JFXButton profilid1;
     
   
     /**
@@ -444,4 +448,41 @@ private void ConsulterMesCommandes(ActionEvent event) {
             System.out.println(ex.getMessage());
     }
     }
+
+    @FXML
+    private void myprofil(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/myProfil.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void getSupport(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/support.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
 }

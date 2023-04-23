@@ -159,6 +159,11 @@
                         <Image url="@../assets/monCompte.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/support.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="44.0" AnchorPane.bottomAnchor="20.0">
@@ -229,11 +234,16 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="consultProfilButton1" alignment="BASELINE_LEFT" onAction="#aiderClient" prefHeight="38.0" prefWidth="179.0" text="Aider les clients">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </VBox>
             <VBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="483.20000000000005">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#logoutBack" prefHeight="38.0" prefWidth="179.0" text="Déconnexion" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>

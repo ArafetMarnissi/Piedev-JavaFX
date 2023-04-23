@@ -7,8 +7,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.gui.AddUserController">
+<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.gui.AddUserController">
    <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/signup.png" />
+         </image>
+      </ImageView>
       <TextField fx:id="email" layoutX="187.0" layoutY="66.0" promptText="email" stylesheets="@../assets/stylesheet.css" />
       <TextField fx:id="mdp" layoutX="187.0" layoutY="106.0" promptText="mot de passe" stylesheets="@../assets/stylesheet.css" />
       <TextField fx:id="name" layoutX="187.0" layoutY="189.0" promptText="nom" stylesheets="@../assets/stylesheet.css" />
@@ -18,7 +23,7 @@
       <Label fx:id="emailControl" layoutX="405.0" layoutY="69.0" prefHeight="18.0" prefWidth="314.0" textFill="RED" />
       <Label fx:id="nomControl" layoutX="400.0" layoutY="198.0" prefHeight="18.0" prefWidth="314.0" textFill="RED" />
       <Label fx:id="prenomControl" layoutX="392.0" layoutY="243.0" prefHeight="18.0" prefWidth="291.0" textFill="RED" />
-      <ImageView fitHeight="230.0" fitWidth="236.0" layoutX="490.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="230.0" fitWidth="236.0" layoutX="1134.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/logo.png" />
          </image>
