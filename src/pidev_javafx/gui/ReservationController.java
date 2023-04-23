@@ -5,6 +5,7 @@
  */
 package pidev_javafx.gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -49,12 +50,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import pidev_javafx.Controller.CarteAbonnementController;
 import pidev_javafx.entitie.Abonnement;
 import pidev_javafx.service.AbonnementService;
 import pidev_javafx.tools.MaConnection;
 import pidev_javafx.entitie.Reservation;
 import pidev_javafx.service.ReservationService;
+import pidev_javafx.tools.JavaMail;
 
 /**
  * FXML Controller class
@@ -199,6 +203,11 @@ private void Addreservation(Abonnement ab) {
 
     ab.getId();
     
+    // Ajout de la création de l'objet Media et MediaPlayer
+    /*String path = "C:/Users/saifz/Documents/vocalCS.mp3";
+    Media media = new Media(new File(path).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(media); */   
+    
     LocalDate dateActuelle1 = LocalDate.now(); // Date actuelle 
     java.sql.Date debutAbo = Date.valueOf(dateActuelle1);
     LocalDate dateActuelle2 = LocalDate.now();
@@ -219,11 +228,21 @@ private void Addreservation(Abonnement ab) {
         rse.ajouter(r);
         showReservation1();    
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
-    }
+        String recepient = "saifzrb@gmail.com";
+        JavaMail mail = new JavaMail();
+        
+        /*try {
+            //mail.sendMail(recepient);
+            mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
+        } catch (Exception ex) {
+            Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
+        }*/ 
+        }
     else {
         if(derniereReservation.getDateFin() != null && derniereReservation.getDateFin().after(Date.valueOf(dateActuelle1)))
         {
             labelReservation.setText("Vous êtes déjà abonné jusqu'a " + derniereReservation.getDateFin() );
+            //mediaPlayer.play(); // ajout de la lecture du son
         }
         else 
         {
@@ -233,7 +252,15 @@ private void Addreservation(Abonnement ab) {
         Reservation r = new Reservation(debutAbo, finAbo, abonnements);        
         rse.ajouter(r);
         showReservation1();    
-        labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());           
+        labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());          
+        String recepient = "saifzrb@gmail.com";
+        JavaMail mail = new JavaMail();
+        /*try {
+            //mail.sendMail(recepient);
+            mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
+        } catch (Exception ex) {
+            Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
+        }*/     
         }
 
     }

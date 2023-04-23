@@ -358,7 +358,9 @@ private void ConsulterMesCommandes(ActionEvent event) {
         
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
             Pane autreInterface = loader.load();
-            autreInterface.setPadding(new Insets(0));
+            Region parent = (Region) loader.getRoot();
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
             PaneContent.getChildren().setAll(autreInterface);
     }
 @FXML

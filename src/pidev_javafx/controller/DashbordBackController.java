@@ -15,9 +15,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.util.Duration;
 
 /**
@@ -110,25 +112,34 @@ public class DashbordBackController implements Initializable {
         });
     }
 
-    @FXML
-    private void Listabonnement(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/HomeAbo.fxml"));
-            Pane autreInterface = loader.load();
-            PaneContent.getChildren().setAll(autreInterface);
-            
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+@FXML
+private void Listabonnement(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/HomeAbo.fxml"));
+        Pane autreInterface = loader.load();
+        Region parent = (Region) loader.getRoot();
+        parent.prefWidthProperty().bind(PaneContent.widthProperty());
+        parent.prefHeightProperty().bind(PaneContent.heightProperty());
+        PaneContent.getChildren().setAll(autreInterface);
+        
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
+
+
+
 
     @FXML
     private void StatAboDashboard(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/StatsAbo.fxml"));
-            Pane autreInterface = loader.load();
-            PaneContent.getChildren().setAll(autreInterface);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/StatsAbo.fxml"));
+        Pane autreInterface = loader.load();
+        Region parent = (Region) loader.getRoot();
+        parent.prefWidthProperty().bind(PaneContent.widthProperty());
+        parent.prefHeightProperty().bind(PaneContent.heightProperty());
+        PaneContent.getChildren().setAll(autreInterface);
             
             
         } catch (IOException e) {

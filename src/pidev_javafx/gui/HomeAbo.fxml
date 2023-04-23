@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -19,22 +18,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="612.0" prefWidth="872.0" style="-fx-background-color: #05071F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.HomeAboController">
    <children>
-      <AnchorPane prefHeight="612.0" prefWidth="872.0">
+      <AnchorPane prefHeight="716.0" prefWidth="1180.0">
          <children>
-            <VBox layoutY="-1.0" prefHeight="612.0" prefWidth="214.0" style="-fx-background-color: #05071F;">
+            <StackPane layoutX="356.0" layoutY="160.0" prefHeight="711.0" prefWidth="879.0">
                <children>
-                  <ImageView fitHeight="76.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/logo1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </VBox>
-            <StackPane layoutX="218.0" prefHeight="612.0" prefWidth="654.0">
-               <children>
-                  <Pane prefHeight="546.0" prefWidth="559.0">
+                  <Pane prefHeight="556.0" prefWidth="862.0">
                      <children>
-                        <TableView fx:id="table" layoutX="299.0" layoutY="52.0" prefHeight="440.0" prefWidth="341.0">
+                        <TableView fx:id="table" layoutX="462.0" layoutY="52.0" prefHeight="440.0" prefWidth="340.0">
                           <columns>
                             <TableColumn fx:id="idAbonnement" prefWidth="45.5999755859375" text="id" />
                               <TableColumn fx:id="nomAbonnement" prefWidth="100.0" text="Nom" />
@@ -50,7 +40,7 @@
                            </image>
                         </ImageView>
                         <TextArea fx:id="prixa" layoutX="85.0" layoutY="300.0" prefHeight="25.0" prefWidth="165.0" promptText="Prix" />
-                        <TextArea fx:id="noma" layoutX="85.0" layoutY="221.0" prefHeight="39.0" prefWidth="165.0" promptText="Basic / Pro / Premium" />
+                        <TextArea fx:id="noma" layoutX="85.0" layoutY="207.0" prefHeight="28.0" prefWidth="165.0" promptText="Basic / Pro / Premium" />
                         <TextArea fx:id="dureea" layoutX="85.0" layoutY="380.0" prefHeight="39.0" prefWidth="165.0" promptText="Mensuel / Annuel" />
                         <Button fx:id="ajouterabo" layoutX="54.0" layoutY="481.0" mnemonicParsing="false" onAction="#ajoutAbo" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="      Ajouter" textFill="WHITE" />
                         <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="51.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
@@ -85,11 +75,11 @@
                               </LinearGradient>
                            </stroke>
                         </Text>
-                        <Label fx:id="formulaire_erreur" layoutX="64.0" layoutY="541.0" prefHeight="62.0" prefWidth="413.0" textFill="RED" />
-                        <Label fx:id="erreurNom" layoutX="12.0" layoutY="272.0" prefHeight="17.0" prefWidth="277.0" textFill="RED" />
+                        <Label fx:id="formulaire_erreur" layoutX="64.0" layoutY="591.0" prefHeight="63.0" prefWidth="492.0" textFill="RED" />
+                        <Label fx:id="erreurNom" layoutX="12.0" layoutY="251.0" prefHeight="38.0" prefWidth="401.0" textFill="RED" />
                         <Label fx:id="erreurPrix" layoutX="8.0" layoutY="343.0" prefHeight="28.0" prefWidth="286.0" textFill="RED" />
                         <Label fx:id="erreurDuree" layoutX="88.0" layoutY="429.0" prefHeight="39.0" prefWidth="187.0" textFill="RED" />
-                        <Label layoutX="7.0" layoutY="221.0" prefHeight="39.0" prefWidth="48.0" text="Nom :" textFill="#1372f4">
+                        <Label layoutX="7.0" layoutY="198.0" prefHeight="46.0" prefWidth="48.0" text="Nom :" textFill="#1372f4">
                            <font>
                               <Font name="Bell MT" size="19.0" />
                            </font>
@@ -108,6 +98,11 @@
                   </Pane>
                </children>
             </StackPane>
+            <ImageView fitHeight="107.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/logo1.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
    </children>
 </AnchorPane>
