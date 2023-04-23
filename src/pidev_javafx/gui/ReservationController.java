@@ -58,7 +58,7 @@ import pidev_javafx.service.AbonnementService;
 import pidev_javafx.tools.MaConnection;
 import pidev_javafx.entitie.Reservation;
 import pidev_javafx.service.ReservationService;
-import pidev_javafx.tools.JavaMail;
+import pidev_javafx.tools.JavaMailReservation;
 
 /**
  * FXML Controller class
@@ -229,7 +229,7 @@ private void Addreservation(Abonnement ab) {
         showReservation1();    
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
         String recepient = "saifzrb@gmail.com";
-        JavaMail mail = new JavaMail();
+        JavaMailReservation mail = new JavaMailReservation();
         
         /*try {
             //mail.sendMail(recepient);
@@ -254,7 +254,7 @@ private void Addreservation(Abonnement ab) {
         showReservation1();    
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());          
         String recepient = "saifzrb@gmail.com";
-        JavaMail mail = new JavaMail();
+        JavaMailReservation mail = new JavaMailReservation();
         /*try {
             //mail.sendMail(recepient);
             mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
@@ -262,7 +262,6 @@ private void Addreservation(Abonnement ab) {
             Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }*/     
         }
-
     }
 
 }
