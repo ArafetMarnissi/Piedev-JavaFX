@@ -44,6 +44,7 @@ import javafx.stage.Stage;
 import javax.smartcardio.Card;
 import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.Produit;
+import pidev_javafx.entitie.SMS;
 import pidev_javafx.service.ProduitService;
 import pidev_javafx.tools.Statics;
 
@@ -83,9 +84,17 @@ ObservableList<Produit>listprod=FXCollections.observableArrayList();
         ProduitService ps=new ProduitService();
         
         listprod=ps.afficher();
+        SMS ss=new SMS();
+        for(Produit p:listprod){
+            if(p.getQuantite_produit()==0){
+                ss.sms(p.getNom());
+            }
+        }
         //System.out.println(listprod);
         for(Produit produit:listprod){
             VBox card=new VBox();
+            
+            
 //            card.setMinHeight(200);
 //        card.setMaxHeight(200);
 //        card.setMinWidth(150);

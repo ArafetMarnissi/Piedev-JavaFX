@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -44,6 +45,8 @@ public class DisplaycatfrontController implements Initializable {
 
     @FXML
     private FlowPane flowcatfront;
+    @FXML
+    private ScrollPane scrolcat;
 
     /**
      * Initializes the controller class.
@@ -63,6 +66,7 @@ public class DisplaycatfrontController implements Initializable {
 //                card.setMinWidth(150);
 //                card.setMaxWidth(150);
                 card.setPrefSize(150, 150);
+                scrolcat.setContent(flowcatfront);
                 //card.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
                 card.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
                 ImageView imageView;
@@ -98,6 +102,7 @@ public class DisplaycatfrontController implements Initializable {
             });
             flowcatfront.getChildren().add(card);
             flowcatfront.setMargin(card, new Insets(5, 5, 5, 5));
+          
                     
         }
     }    

@@ -6,11 +6,7 @@
 package pidev_javafx.test;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,36 +15,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pidev_javafx.entitie.Produit;
-import pidev_javafx.entitie.SMS;
-import pidev_javafx.service.CategoryService;
-import pidev_javafx.service.ProduitService;
 
 /**
  *
  * @author damma
  */
-public class NewFXMain extends Application {
-    
-   // CategoryService sc;
+public class NewFXMain1 extends Application {
     
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/acceuil.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/AllProduct.fxml"));
             Scene scene = new Scene(root, 1000, 700);
-            primaryStage.setTitle("Acceuil");
+            primaryStage.setTitle("Categories");
             primaryStage.setScene(scene);
             primaryStage.show();
-            ProduitService ps=new ProduitService();
-        ObservableList<Produit>listprod=FXCollections.observableArrayList();
-        listprod=ps.afficher();
-//        SMS ss=new SMS();
-//        for(Produit p:listprod){
-//            if(p.getQuantite_produit()==0){
-//                ss.sms(p.getNom());
-//            }
-//        }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

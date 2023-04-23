@@ -26,8 +26,10 @@
               <Label fx:id="prixprodlabel" layoutX="20.0" layoutY="70.0" prefHeight="17.0" prefWidth="250.0" translateY="80.0" />
               <Label fx:id="descriptionprodlabel" layoutY="160.0" prefHeight="17.0" prefWidth="250.0" translateY="120.0" />
                   <Label text="Description:" translateY="85.0" />
-              <Label fx:id="dispoprodlabel" layoutY="210.0" prefHeight="17.0" prefWidth="250.0" translateY="120.0" />
-                  <Rating fx:id="ratingstar" onMouseClicked="#ratted" rating="0.0" translateY="135.0" updateOnHover="true">
+                  <Label text="Note:" translateY="140.0" />
+                  <Label fx:id="notelabel" translateY="140.0" />
+              <Label fx:id="dispoprodlabel" layoutY="210.0" prefHeight="17.0" prefWidth="250.0" translateY="80.0" />
+                  <Rating fx:id="ratingstar" onMouseClicked="#ratted" rating="0.0" translateY="140.0">
                      <effect>
                         <DropShadow color="#1372f4" />
                      </effect>

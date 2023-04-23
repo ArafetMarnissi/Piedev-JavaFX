@@ -35,7 +35,26 @@ public class ProduitService implements CrudInterface<Produit>{
     @Override
     public ObservableList<Produit> afficher() {
         ObservableList<Produit>prod=FXCollections.observableArrayList(); 
-        String sql="select * from produit";
+        String sql="select * from produit where date_expiration>=sysdate()";
+        //  Category cat=new Category();
+        CategoryService cs=new CategoryService();
+        //cat=cs.getCatParId(0);
+        try {
+            Statement ste=cnx.createStatement();
+            ResultSet rs= ste.executeQuery(sql);
+            while(rs.next()){
+                Produit c=new Produit(rs.getInt(1),cs.getCatParId(rs.getInt(2)),rs.getString(3), rs.getString(4),rs.getFloat(5),rs.getInt(6),rs.getString(7),rs.getDate(8),rs.getFloat(9));
+                prod.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return prod;
+    }
+    
+    public ObservableList<Produit> afficherarchive() {
+        ObservableList<Produit>prod=FXCollections.observableArrayList(); 
+        String sql="select * from produit where date_expiration<sysdate()";
         //  Category cat=new Category();
         CategoryService cs=new CategoryService();
         //cat=cs.getCatParId(0);

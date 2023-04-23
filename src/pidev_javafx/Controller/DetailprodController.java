@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +71,8 @@ public class DetailprodController implements Initializable {
     Produit pr;
     @FXML
     private Rating ratingstar;
+    @FXML
+    private Label notelabel;
 
     /**
      * Initializes the controller class.
@@ -97,7 +100,8 @@ public class DetailprodController implements Initializable {
         descriptionprodlabel.setText(p.getDescription());
         descriptionprodlabel.setWrapText(true);
         descriptionprodlabel.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
-        ratingstar.setRating(p.getNote());
+        notelabel.setText(Math.round(p.getNote())+"/5");
+        //ratingstar.setRating(p.getNote());
         if(p.getQuantite_produit()==0){
             dispoprodlabel.setText("Out Of Stock");
             dispoprodlabel.setTextFill(Color.RED);
@@ -142,6 +146,13 @@ public class DetailprodController implements Initializable {
         System.out.println(ratingstar.getRating());
         ProduitService ps=new ProduitService();
         ps.updaterate(pr.getId(), (float)ratingstar.getRating());
+        Produit pp=new Produit();
+        try {
+            pp=ps.findprodbyid(pr.getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailprodController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        notelabel.setText(Math.round(pp.getNote())+"/5");
         
     }
     

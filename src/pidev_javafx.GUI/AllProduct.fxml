@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.AllProductController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="anchorupdateprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="textnommodif" layoutX="108.0" layoutY="97.0" />
+            <TextField fx:id="textprixmodif" layoutX="108.0" layoutY="161.0" />
+            <TextField fx:id="textquantmodif" layoutX="108.0" layoutY="228.0" />
+            <TextField fx:id="textimgmodif" layoutX="108.0" layoutY="304.0" />
+            <TextArea fx:id="textdescmodif" layoutX="493.0" layoutY="46.0" prefHeight="109.0" prefWidth="115.0" />
+            <DatePicker fx:id="datemodif" layoutX="469.0" layoutY="185.0" />
+            <Button fx:id="btnimgmofig" layoutX="283.0" layoutY="304.0" mnemonicParsing="false" onAction="#addimgonclickmodif" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="choisir un fichier" textFill="WHITE" />
+            <Button fx:id="btnmodif" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnmodifonclick" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier " textFill="WHITE" />
+            <Label layoutX="40.0" layoutY="101.0" text="Nom" />
+            <Label layoutX="40.0" layoutY="165.0" text="Prix" />
+            <Label layoutX="40.0" layoutY="232.0" text="Quantite" />
+            <Label layoutX="40.0" layoutY="308.0" text="image" />
+            <Label layoutX="412.0" layoutY="86.0" text="Description" />
+            <Label layoutX="398.0" layoutY="189.0" text="Date" />
+            <Label layoutX="398.0" layoutY="255.0" text="Category" />
+            <ComboBox fx:id="textcatmodif" layoutX="481.0" layoutY="251.0" prefWidth="150.0" />
+            <FontAwesomeIconView fx:id="closeicon" glyphName="CLOSE" layoutX="661.0" layoutY="31.0" onMouseClicked="#closemodif" size="20" wrappingWidth="33.000004291534424" />
+            <Label fx:id="errprix" layoutX="108.0" layoutY="122.0" textFill="RED" />
+            <Label fx:id="errprix" layoutX="108.0" layoutY="189.0" textFill="RED" />
+            <Label layoutX="108.0" layoutY="255.0" textFill="RED" />
+            <Label fx:id="errdesc" layoutX="493.0" layoutY="157.0" textFill="RED" />
+            <Label fx:id="errdate" layoutX="467.0" layoutY="210.0" textFill="RED" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="anchorajoutprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="addprod" layoutX="413.0" layoutY="532.0" mnemonicParsing="false" onAction="#addprod" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" textFill="WHITE" />
+            <Button fx:id="btnaff" layoutX="603.0" layoutY="27.0" mnemonicParsing="false" onAction="#affonclick" style="-fx-background-radius: 25px; -fx-background-color: #1372f4;" text="Retour vers affichage" textFill="WHITE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/logo1.png" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="74.0" layoutY="87.0" prefHeight="339.0" prefWidth="591.0" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="87.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="nomprod" GridPane.columnIndex="1" GridPane.valignment="CENTER" />
+                  <Label text="Nom" />
+                  <Label text="Quantite" GridPane.columnIndex="2" />
+                  <TextField fx:id="quantprod" GridPane.columnIndex="3" GridPane.valignment="CENTER" />
+                  <TextField fx:id="prixprod" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label text="Prix" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextArea fx:id="descprod" maxHeight="-Infinity" prefHeight="42.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label text="Description" GridPane.rowIndex="1" />
+                  <Label text="Date d'expiration" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="dateprod" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="catprod" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Categorie" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="Image " GridPane.rowIndex="3" />
+                  <TextField fx:id="imgprod" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="imgfileprod" mnemonicParsing="false" onAction="#addimfprod" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Choose file" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label fx:id="erreurnom" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label fx:id="erreurdesc" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label fx:id="erreurquant" GridPane.columnIndex="3" GridPane.valignment="BOTTOM" />
+                  <Label fx:id="erreurdate" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                  <Label fx:id="erreurprix" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label fx:id="erreurimg" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancherarchiveprod" layoutX="124.0" layoutY="14.0" prefHeight="684.0" prefWidth="870.0" style="-fx-background-color: white;">
+         <children>
+            <FlowPane fx:id="flowarchiveprod" layoutX="16.0" layoutY="6.0" prefHeight="673.0" prefWidth="849.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="anchoraffichageprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;">
+         <children>
+            <FlowPane fx:id="panaff" layoutX="124.0" layoutY="83.0" prefHeight="664.0" prefWidth="849.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="versacceuilbtn" layoutX="3.0" layoutY="228.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Tout les produits" textFill="WHITE" />
+            <Button fx:id="versajoutbtn" layoutX="14.0" layoutY="156.0" mnemonicParsing="false" onAction="#versajouonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="ajouter" textFill="WHITE" />
+            <Button fx:id="archivebtn" layoutX="13.0" layoutY="290.0" mnemonicParsing="false" onAction="#archiveonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Archive" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pidev_javafx.Controller.AllCategoryController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="anchorajoutcat" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="28.0" layoutY="81.0" text="Nom categorie" />
+            <Label layoutX="25.0" layoutY="148.0" text="image categorie" />
+            <TextField fx:id="nomfiled" layoutX="121.0" layoutY="77.0" stylesheets="@../../../../css.css" />
+            <TextField fx:id="imagefiled" layoutX="124.0" layoutY="143.0" stylesheets="@../../../../css.css" />
+            <Button fx:id="imagebutton" layoutX="296.0" layoutY="143.0" mnemonicParsing="false" onAction="#addimage" style="-fx-background-color: #1372f4; -fx-background-radius: 10px;" text="choisir un fichier" textFill="WHITE" />
+            <Button fx:id="submitbutton" layoutX="247.0" layoutY="193.0" mnemonicParsing="false" onAction="#addcat" style="-fx-background-color: #1372f4; -fx-background-radius: 10px;" text="Submit" textFill="WHITE" />
+            <Label fx:id="erreurnomcat" layoutX="124.0" layoutY="102.0" onInputMethodTextChanged="#test3" onKeyPressed="#test1" onKeyReleased="#test2" onKeyTyped="#testnomcat" prefHeight="25.0" prefWidth="40.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="68.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/logo1.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btncataff" layoutX="348.0" layoutY="27.0" mnemonicParsing="false" onAction="#cataffonclick" style="-fx-background-radius: 25px; -fx-background-color: #1372f4;" text="Vers affichage" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="anchorupdatecat" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="filebutton" layoutX="324.0" layoutY="147.0" mnemonicParsing="false" onAction="#choosefile" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Choose file" textFill="WHITE" />
+            <TextField fx:id="nomupdate" layoutX="150.0" layoutY="91.0" />
+            <TextField fx:id="imgupdate" layoutX="150.0" layoutY="147.0" />
+            <Label layoutX="41.0" layoutY="95.0" text="Nom" />
+            <Label layoutX="41.0" layoutY="151.0" text="Image" />
+            <Button fx:id="updatecat" layoutX="202.0" layoutY="209.0" mnemonicParsing="false" onAction="#catupdate" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Update" textFill="WHITE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="116.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/logo1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nomerrur" layoutX="150.0" layoutY="116.0" />
+            <FontAwesomeIconView fx:id="closebtn" glyphName="CLOSE" layoutX="387.0" layoutY="37.0" onMouseClicked="#verscataffonclick" size="20" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="anchoraffichagecat" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="versajouter" layoutY="113.0" mnemonicParsing="false" onAction="#afficherajouter" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Ajouter" />
+            <FlowPane fx:id="catflow" layoutX="102.0" layoutY="67.0" prefHeight="380.0" prefWidth="488.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="versacceuilbtn" layoutY="176.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Vers acceuil" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

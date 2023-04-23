@@ -32,6 +32,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.Produit;
 import pidev_javafx.service.ProduitService;
@@ -90,6 +91,11 @@ public class ProdByCatController implements Initializable {
             prixLabel.setWrapText(true);
             prixLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(prixLabel);
+            Rating rateprod=new Rating();
+            rateprod.setDisable(true);
+            rateprod.setPrefSize(50, 50);
+            rateprod.setRating(Math.floor(produit.getNote()));
+            card.getChildren().add(rateprod);
             if(produit.getQuantite_produit()==0){
                 Label dispo=new Label("Out Of Stock");
                 dispo.setAlignment(Pos.CENTER);
