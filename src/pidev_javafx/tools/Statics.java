@@ -13,5 +13,6 @@ public class Statics {
     public static String imgPath = "File:/C:/Users/damma/OneDrive/Bureau/testpidev/PIDEV-Golden-Gym/Pidev/public/uploads/categorie/";
     public static String uploadDirectory = "C:/Users/damma/OneDrive/Bureau/testpidev/PIDEV-Golden-Gym/Pidev/public/uploads/categorie//";
     public static String uploadDirectory1 = "C:/Users/damma/OneDrive/Bureau/testpidev/PIDEV-Golden-Gym/Pidev/public/uploads/produits//";
+    public static String uploadDiractory2 ="C:/Users/damma/OneDrive/Bureau/symfony final/PIDEV-Golden-Gym/Pidev/public/img/qr-code//";
     
 }

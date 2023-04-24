@@ -265,6 +265,7 @@ public class AllCategoryController implements Initializable {
             Path targetFile = Paths.get(Statics.uploadDirectory+newFileName);
 
             Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
+            notif2("GOLDEN GYM","Categorie modifier");
             display();
             anchoraffichagecat.toFront();
         }else if(!estAlpha(nomupdate.getText())){
@@ -273,6 +274,7 @@ public class AllCategoryController implements Initializable {
         {
             Category cat=new Category(c1.getId(),nomupdate.getText(),imgupdate.getText());
             sc.modifier(cat);
+            notif2("GOLDEN GYM","Categorie modifier");
             display();
             anchoraffichagecat.toFront();
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx.GUI/CategoryDisplay.fxml"));
@@ -360,6 +362,7 @@ public class AllCategoryController implements Initializable {
                listprod=ps.findprodbycat(cat.getId());
                if(listprod.isEmpty()){
                  sc.supprimer(cat);
+                 notif2("GOLDEN GYM","Categorie supprimer");
                 display();  
                }else{
                     Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -392,6 +395,7 @@ public class AllCategoryController implements Initializable {
                 if (result.get() == buttonTypeYes){
                     CategoryService sc=new CategoryService();
                     sc.supprimer(cat);
+                    notif2("GOLDEN GYM","Categorie supprimer");
                     display();
                     alert.close();
                 }else if(result.get()==buttonTypeNo){

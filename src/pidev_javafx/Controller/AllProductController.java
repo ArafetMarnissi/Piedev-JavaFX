@@ -5,6 +5,11 @@
  */
 package pidev_javafx.Controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +23,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +39,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -48,7 +55,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.Produit;
 import pidev_javafx.service.CategoryService;
@@ -211,13 +220,40 @@ public class AllProductController implements Initializable {
             
         }
     
-    private void showProductDetails(Produit product) {
+    private void showProductDetail(Produit product,String name) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Product Details");
     alert.setHeaderText(product.getNom());
     alert.setContentText("Description: " + product.getDescription() + "\nPrix: " + product.getPrix_produit()+"DT"+"\nQuantite:"+product.getQuantite_produit()+"\nNote:"+product.getNote());
     alert.show();
 }
+    public static void showProductDetails(Produit product, String name) throws FileNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initStyle(StageStyle.TRANSPARENT);
+        alert.setTitle("Product Details");
+
+        // Créer une image et un ImageView
+        Image image = new Image(new FileInputStream(Statics.uploadDiractory2+name));
+        ImageView imageView = new ImageView(image);
+       imageView.setFitWidth(200);
+       imageView.setFitHeight(200);
+
+        // Définir le contenu de l'alerte avec l'image et les informations du produit
+        alert.getDialogPane().setContent(imageView);
+        alert.setHeaderText(product.getNom());
+        //alert.setContentText("Description: " + product.getDescription() + "\nPrix: " + product.getPrix_produit() + "DT" + "\nQuantite:" + product.getQuantite_produit() + "\nNote:" + product.getNote());
+
+        // Ajouter un bouton "OK"
+        ButtonType okButton = new ButtonType("OK", ButtonType.OK.getButtonData());
+        alert.getButtonTypes().add(okButton);
+
+        // Afficher l'alerte et attendre la réponse de l'utilisateur
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == okButton) {
+            // Code à exécuter lorsque l'utilisateur clique sur "OK"
+        }
+    }
 
     @FXML
     private void addprod(ActionEvent event) {
@@ -392,7 +428,22 @@ public class AllProductController implements Initializable {
             });
             card.getChildren().add(bb);
             card.setOnMouseClicked(e->{
-                showProductDetails(p);
+                int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+                        String newFileName = random_int+"-qrCode.png";
+                        String data="Le nom du produit "+p.getNom()+" description "+p.getDescription();
+                try {
+                    generateQRCode(data,newFileName);
+                } catch (IOException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (WriterException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                        System.out.println("done");
+                try {
+                    showProductDetails(p,newFileName);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         });
             panaff.getChildren().add(card);
             panaff.setMargin(card, new Insets(5, 5, 5, 5));
@@ -441,7 +492,22 @@ public class AllProductController implements Initializable {
             catLabel.setAlignment(Pos.CENTER);
             card1.getChildren().add(catLabel);
             card1.setOnMouseClicked(e->{
-                showProductDetails(p);
+                int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+                        String newFileName = random_int+"-qrCode.png";
+                        String data="Le nom du produit "+p.getNom()+" description "+p.getDescription();
+                try {
+                    generateQRCode(data,newFileName);
+                } catch (IOException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (WriterException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                        System.out.println("done");
+                try {
+                    showProductDetails(p,newFileName);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(AllProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             flowarchiveprod.getChildren().add(card1);
             flowarchiveprod.setMargin(card1, new Insets(5, 5, 5, 5));
@@ -453,5 +519,10 @@ public class AllProductController implements Initializable {
         dispalyarchiev();
         ancherarchiveprod.toFront();
     }
-    
+    private static void generateQRCode(String text,String nom) throws IOException, WriterException{
+        QRCodeWriter writer= new QRCodeWriter();
+        BitMatrix bm = writer.encode(text, BarcodeFormat.QR_CODE, 300, 300);
+        
+        MatrixToImageWriter.writeToPath(bm, "PNG", new File("C:/Users/damma/OneDrive/Bureau/symfony final/PIDEV-Golden-Gym/Pidev/public/img/qr-code/"+nom).toPath());
+    }
 }
