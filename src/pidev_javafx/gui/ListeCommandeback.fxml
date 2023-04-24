@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.ListeCommandebackController">
    <children>
       <AnchorPane fx:id="PaneDetaisCommandeBack" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -127,8 +128,6 @@
                <bottom>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="35.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="btnPdf" mnemonicParsing="false" onAction="#GenererPdf" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Facture" textFill="WHITE" />
-                        <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
                         <Button fx:id="btnDetaisCommande" mnemonicParsing="false" onAction="#DetailsCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Détais" textFill="WHITE" />
                         <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
                         <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#SupprimerCommande" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Supprimer" textFill="WHITE" />
