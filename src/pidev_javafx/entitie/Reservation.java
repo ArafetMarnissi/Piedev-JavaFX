@@ -42,6 +42,13 @@ public class Reservation {
         this.DateFin = DateFin;
     }
 
+    public Reservation(Date DateDebut, Date DateFin, ArrayList<Abonnement> abonnements, int user) {
+        this.DateDebut = DateDebut;
+        this.DateFin = DateFin;
+        this.abonnements = abonnements;
+        this.user = user;
+    }
+
     
     
     
