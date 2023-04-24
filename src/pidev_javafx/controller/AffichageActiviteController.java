@@ -127,9 +127,7 @@ public class AffichageActiviteController implements Initializable {
                     return true;
                 }else if(String.valueOf(activite.getNbrePlace()).indexOf(searchKeyword) != -1){
                     return true;
-                }else if(String.valueOf(activite.getNbrePlace()).indexOf(searchKeyword) != -1){
-                    
-                }
+                }else
                 return false;
             });
         });

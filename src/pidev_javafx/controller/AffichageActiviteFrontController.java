@@ -63,6 +63,27 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Line;
+   import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javax.swing.JOptionPane;
+import org.controlsfx.control.Notifications;
+import javafx.scene.Node;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -199,6 +220,9 @@ CoachService coachS;
                     a1.setNbrePlace(a1.getNbrePlace()-1);
                     cs.modifier(a1);
                     ps.ajouter(p);
+                    notif2("GoldenGym","Dés maintenant, Vous participez à cette activité ");
+                    
+                            //************,dkonbonidbnibdfibgdgndbgndjkbgdgdhgdgbvdfvguyebubgtebgfjdfbgdeSystem.out.println("reclamation ajoutée");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
                     Parent root = loader.load();
                     flowpane_front.getScene().setRoot(root);
@@ -256,6 +280,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                     a1.setNbrePlace(a1.getNbrePlace()+1);
                     cs.modifier(a1);
                     ps.supprimer(test);
+                     notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
                     Parent root = loader.load();
                     flowpane_front.getScene().setRoot(root);
@@ -313,6 +338,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                                         a1.setNbrePlace(a1.getNbrePlace()+1);
                                         cs.modifier(a1);
                                         ps.supprimer(test);
+                                        notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
                                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
                                         Parent root = loader.load();
                                         flowpane_front.getScene().setRoot(root);
@@ -443,7 +469,38 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
         fin_act_detail.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
         fin_act_detail.setAlignment(Pos.CENTER);
         
-    }    
+    } 
+    
+  public void notif2(String title, String text){
+   Image img = new Image("/pidev_javafx/assets/logo1.png");
+   
+   ImageView img1= new ImageView(img);
+                img1.setFitWidth(200);
+                img1.setFitHeight(200);
+                img1.setPreserveRatio(true);
+                img1.setStyle("-fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+
+        Label titleLabel = new Label(title);
+        titleLabel.setFont(Font.font("Verdana",FontWeight.NORMAL, 14));
+
+        // create a label with the message and the Verdana font
+        Label messageLabel = new Label(text);
+        messageLabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
+                StackPane customRegion = new StackPane(img1,titleLabel,messageLabel);
+        customRegion.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        customRegion.setAlignment(Pos.CENTER);
+            //customRegion.getChildrenUnmodifiable().add(img1);
+    Notifications notificationBuilder = Notifications.create()
+    .title(title)
+    .text(text)
+            .graphic(img1)
+            .hideAfter(Duration.seconds(5))
+            //.darkStyle()
+            .position(Pos.BOTTOM_RIGHT);
+   
+    notificationBuilder.show();
+         
+}
 
 
 }

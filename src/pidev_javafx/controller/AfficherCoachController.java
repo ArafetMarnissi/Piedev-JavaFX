@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import pidev_javafx.entitie.Activite;
 import pidev_javafx.entitie.Coach;
 import pidev_javafx.service.CoachService;
 
@@ -42,6 +47,10 @@ public class AfficherCoachController implements Initializable {
     private Button btn_ModifierCoach1;
     @FXML
     private Button btn_ajouter_coach;
+    @FXML
+    private AnchorPane anchorPane_affich_coach;
+    @FXML
+    private TextField recherche_textfield_coach;
     /**
      * Initializes the controller class.
      */
@@ -56,6 +65,25 @@ public class AfficherCoachController implements Initializable {
         CoachService cs=new CoachService();
         listCoachs=cs.afficher();
         table_Coachs.setItems(listCoachs);
+        
+         FilteredList<Coach> filteredData = new FilteredList<>(listCoachs, b -> true);
+        recherche_textfield_coach.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(activite -> {
+                if(newValue.isEmpty() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if(activite.getNom_coach().toLowerCase().indexOf(searchKeyword) != -1){
+                    return true;
+                }else if(String.valueOf(activite.getAge_coach()).indexOf(searchKeyword) != -1){
+                    return true;
+                }else
+                return false;
+            });
+        });
+        SortedList<Coach> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table_Coachs.comparatorProperty());
+        table_Coachs.setItems(sortedData);
     }    
 
     @FXML
@@ -71,6 +99,25 @@ public class AfficherCoachController implements Initializable {
         CoachService cs=new CoachService();
         listCoachs=cs.afficher();
         table_Coachs.setItems(listCoachs);
+        
+         FilteredList<Coach> filteredData = new FilteredList<>(listCoachs, b -> true);
+        recherche_textfield_coach.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(activite -> {
+                if(newValue.isEmpty() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if(activite.getNom_coach().toLowerCase().indexOf(searchKeyword) != -1){
+                    return true;
+                }else if(String.valueOf(activite.getAge_coach()).indexOf(searchKeyword) != -1){
+                    return true;
+                }else
+                return false;
+            });
+        });
+        SortedList<Coach> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table_Coachs.comparatorProperty());
+        table_Coachs.setItems(sortedData);
     }
 
     @FXML

@@ -38,6 +38,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pidev_javafx.entitie.Activite;
 import pidev_javafx.entitie.Coach;
+import pidev_javafx.entitie.SMS;
 import pidev_javafx.service.ActiviteService;
 import pidev_javafx.service.CoachService;
 import pidev_javafx.tools.Statics;
@@ -142,6 +143,10 @@ public class AjoutActiviteController implements Initializable {
         Time t2=java.sql.Time.valueOf(fin_activite.getValue());
         Activite a=new Activite(Integer.parseInt(nbreplaces_activite_ajout_field.getText()), nom_activite_ajout_field.getText(),description_activite_ajout_field.getText(),newFileName,d,t1,t2,cat1);
         cs.ajouter(a);
+        SMS ss=new SMS();
+
+                //ss.sms(a.getNomActivite());
+
         Path sourceFile = Paths.get(selectedFile.toPath().toString());
         Path targetFile = Paths.get(Statics.uploadDirectory+newFileName);
         
