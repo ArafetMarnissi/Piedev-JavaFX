@@ -5,6 +5,8 @@
  */
 package pidev_javafx.controller;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -158,10 +160,11 @@ private void DetailsCommande(ActionEvent event) throws IOException {
         PaneListCommandeBack.toFront();
     }
     @FXML
-    private void GenererPdf(ActionEvent event) {
+    private void GenererPdf(ActionEvent event) throws IOException {
        Commande commande=tableCommande.getSelectionModel().getSelectedItem();
         PdfService PdfS = new PdfService();
         PdfS.genererPdf(commande);
+        Desktop.getDesktop().open(new File("C:\\Users\\marni\\OneDrive\\Bureau\\Facture_N°"+commande.getId()+".pdf"));
     }
 
 

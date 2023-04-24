@@ -193,7 +193,7 @@ public class PdfService {
             
             doc.close();
 
-            Desktop.getDesktop().open(new File("C:\\Users\\marni\\OneDrive\\Bureau\\Facture_N°"+c.getId()+".pdf"));
+            //Desktop.getDesktop().open(new File("C:\\Users\\marni\\OneDrive\\Bureau\\Facture_N°"+c.getId()+".pdf"));
             
         } catch (DocumentException ex) {
                Logger.getLogger(PdfService.class.getName()).log(Level.SEVERE, null, ex);

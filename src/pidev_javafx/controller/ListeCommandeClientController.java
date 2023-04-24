@@ -5,10 +5,14 @@
  */
 package pidev_javafx.controller;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -44,6 +48,8 @@ import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
 import pidev_javafx.service.PdfService;
 import pidev_javafx.service.ProduitService;
+import pidev_javafx.test.Test;
+import pidev_javafx.tools.MailFacture;
 
 /**
  * FXML Controller class
@@ -261,6 +267,16 @@ public class ListeCommandeClientController implements Initializable {
 
                     afficher();
                     PaneListeCommandeClient.toFront();
+                    PdfService PdfS =new PdfService();
+                    PdfS.genererPdf(ps.getLatestCommande());
+                    ///Send Email 
+                    try {
+
+            MailFacture.sendMail("marnissiarafet@gmail.com", ps.getLatestCommande());
+        } catch (Exception ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    ///
 
          }else{
            if(txtAdresseLivraison.getText().isEmpty()){
@@ -357,10 +373,11 @@ public class ListeCommandeClientController implements Initializable {
     }
 
     @FXML
-    private void GenererPdf(ActionEvent event) {
+    private void GenererPdf(ActionEvent event) throws IOException {
         Commande commande=tableCommande.getSelectionModel().getSelectedItem();
         PdfService PdfS = new PdfService();
         PdfS.genererPdf(commande);
+        Desktop.getDesktop().open(new File("C:\\Users\\marni\\OneDrive\\Bureau\\Facture_N°"+commande.getId()+".pdf"));
 
     }
 
