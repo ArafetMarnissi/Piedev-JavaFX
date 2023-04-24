@@ -3,50 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/DashbordBack.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/SupportController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/HomeAboController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/DashbordFrontController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ChatClient.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/SessionManager.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/FxmlLoader.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AddUserController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/JavaMail.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/LigneCommandeService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ProduitService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/CartPanierController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CrudInterface.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/MyProfilController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/CartPanier.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ChatUIController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/MaConnection.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/LigneCommande.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AfficherusersController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AffichageController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/DashbordBackController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Category.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/DashbordFront.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/User.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/NewFXMain.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/test.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/ChatServer.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Commande.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/addUser.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/test/Test.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandebackController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/dashbord.css</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ListeCommandeback.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Produit.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ListeCommandeClient.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/UserService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CommandeService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/dashbordback.css</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CategoryService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/PanierSession.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/LoginController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/VerifyAccountController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/JavaMailUser.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandeClientController.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/Controller/MyProfilController.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/entitie/Reservation.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/Controller/HomeAboController.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/gui/ReservationController.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/entitie/User.java</file>
+            <file>file:/C:/Users/saifz/OneDrive/Documents/NetBeansProjects/PiJava/Piedev-JavaFX/src/pidev_javafx/service/ReservationService.java</file>
         </group>
     </open-files>
 </project-private>

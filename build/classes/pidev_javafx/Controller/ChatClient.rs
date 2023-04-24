@@ -1,0 +1,2 @@
+pidev_javafx.controller.ChatClient$IncomingReader
+pidev_javafx.controller.ChatClient

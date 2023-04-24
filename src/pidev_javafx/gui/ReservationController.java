@@ -58,7 +58,8 @@ import pidev_javafx.service.AbonnementService;
 import pidev_javafx.tools.MaConnection;
 import pidev_javafx.entitie.Reservation;
 import pidev_javafx.service.ReservationService;
-import pidev_javafx.tools.JavaMailReservation;
+import pidev_javafx.service.SessionManager;
+import pidev_javafx.tools.JavaMail;
 
 /**
  * FXML Controller class
@@ -135,67 +136,81 @@ public class ReservationController implements Initializable {
     
     
     
-        public void showReservation() {
+public void showReservation() {
+    if (SessionManager.isStatus()) {
         try {
             Connection cnx = MaConnection.getInstance().getCnx();
-            String query = "select * from reservation";
-            Statement st;
-            ResultSet rs;
-            st = cnx.createStatement();
-            rs = st.executeQuery(query);
-            Reservation Reservation;
+            String query = "SELECT * FROM reservation WHERE user_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, SessionManager.getId());
+            ResultSet rs = ps.executeQuery();
+            
+            reList.clear();
             while (rs.next()) {
-                Reservation = new Reservation(rs.getInt("id"),
+                Reservation reservation = new Reservation(
+                    rs.getInt("id"),
                     rs.getDate("date_debut"),
                     rs.getDate("date_fin")
-            );
-                reList.add(Reservation);
+                );
+                reList.add(reservation);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Error on Building Data");
         }
+        
         idr.setCellValueFactory(new PropertyValueFactory<>("id"));
         debutr.setCellValueFactory(new PropertyValueFactory<>("DateDebut"));
         finr.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
-        
 
         tableRe.setItems(reList);
-    }  
+    } else {
+        tableRe.setVisible(false);
+    }
+}
+
+     
         
      public void showReservation1() {
-         reList.removeAll(reList);
+    if (SessionManager.isStatus()) {
+        reList.removeAll(reList);
         try {
             Connection cnx = MaConnection.getInstance().getCnx();
-            String query = "select * from reservation";
-            Statement st;
-            ResultSet rs;
-            st = cnx.createStatement();
-            rs = st.executeQuery(query);
-            Reservation Reservation;
+            String query = "SELECT * FROM reservation WHERE user_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, SessionManager.getId());
+            ResultSet rs = ps.executeQuery();
+            
+            reList.clear();
             while (rs.next()) {
-                Reservation = new Reservation(rs.getInt("id"),
+                Reservation reservation = new Reservation(
+                    rs.getInt("id"),
                     rs.getDate("date_debut"),
                     rs.getDate("date_fin")
-            );
-                reList.add(Reservation);
+                );
+                reList.add(reservation);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Error on Building Data");
         }
+        
         idr.setCellValueFactory(new PropertyValueFactory<>("id"));
         debutr.setCellValueFactory(new PropertyValueFactory<>("DateDebut"));
         finr.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
-        
 
         tableRe.setItems(reList);
-    }     
-        
+    } else {
+        tableRe.setVisible(false);
+    }
+} 
     
 private void Addreservation(Abonnement ab) {
+    if (SessionManager.isStatus()) {
+        // Le code pour ajouter une réservation ici
+        
     ArrayList<Abonnement> abonnements = new ArrayList<>();
     AbonnementService sv = new AbonnementService();
 
@@ -203,33 +218,33 @@ private void Addreservation(Abonnement ab) {
 
     ab.getId();
     
-    // Ajout de la création de l'objet Media et MediaPlayer
-    /*String path = "C:/Users/saifz/Documents/vocalCS.mp3";
-    Media media = new Media(new File(path).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(media); */   
+ 
     
     LocalDate dateActuelle1 = LocalDate.now(); // Date actuelle 
-    java.sql.Date debutAbo = Date.valueOf(dateActuelle1);
+    java.sql.Date debutAbo = Date.valueOf(dateActuelle1); // Date debut de l'abonnement 
     LocalDate dateActuelle2 = LocalDate.now();
+                /* ********        date fin de l'abonnement      ************** */
     if (ab.getDureeAbonnement().equalsIgnoreCase("Mensuel")) {
         dateActuelle2 = dateActuelle2.plusMonths(1);
     } else if (ab.getDureeAbonnement().equalsIgnoreCase("Annuel")) {
         dateActuelle2 = dateActuelle2.plusYears(1);
     }
     java.sql.Date finAbo = Date.valueOf(dateActuelle2);
-    ab.setCount(ab.getCount() + 1);
-
+                /**************************************************/
+    //ab.setCount(ab.getCount() + 1);      //incrémentation de combien de fois l abonnement est réservé 
+                        /*  la reservation de l'abonnement dans le cas ou la duree de reservation est fini      */
     Reservation derniereReservation = rse.getDerniereReservation();
+    
     if (derniereReservation == null ) {
         ab.setCount(ab.getCount() + 1);
         sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
         abonnements.add(ab);
-        Reservation r = new Reservation(debutAbo, finAbo, abonnements);        
+        Reservation r = new Reservation(debutAbo, finAbo, abonnements , SessionManager.getId());        
         rse.ajouter(r);
         showReservation1();    
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());
         String recepient = "saifzrb@gmail.com";
-        JavaMailReservation mail = new JavaMailReservation();
+        JavaMail mail = new JavaMail();
         
         /*try {
             //mail.sendMail(recepient);
@@ -242,19 +257,19 @@ private void Addreservation(Abonnement ab) {
         if(derniereReservation.getDateFin() != null && derniereReservation.getDateFin().after(Date.valueOf(dateActuelle1)))
         {
             labelReservation.setText("Vous êtes déjà abonné jusqu'a " + derniereReservation.getDateFin() );
-            //mediaPlayer.play(); // ajout de la lecture du son
+
         }
         else 
         {
         ab.setCount(ab.getCount() + 1);
         sv.modifier(ab); // Mettre à jour l'abonnement dans la base de données
         abonnements.add(ab);
-        Reservation r = new Reservation(debutAbo, finAbo, abonnements);        
+        Reservation r = new Reservation(debutAbo, finAbo, abonnements , derniereReservation.getUser());        
         rse.ajouter(r);
         showReservation1();    
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());          
         String recepient = "saifzrb@gmail.com";
-        JavaMailReservation mail = new JavaMailReservation();
+        JavaMail mail = new JavaMail();
         /*try {
             //mail.sendMail(recepient);
             mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
@@ -262,8 +277,10 @@ private void Addreservation(Abonnement ab) {
             Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }*/     
         }
+    }        
+    } else {
+        labelReservation.setText("Vous devez être connecté pour effectuer une réservation.");
     }
-
 }
 
 public void afficherAB(){

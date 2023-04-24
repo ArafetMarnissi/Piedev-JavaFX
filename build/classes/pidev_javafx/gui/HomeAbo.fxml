@@ -24,9 +24,8 @@
                <children>
                   <Pane prefHeight="556.0" prefWidth="862.0">
                      <children>
-                        <TableView fx:id="table" layoutX="462.0" layoutY="52.0" prefHeight="440.0" prefWidth="340.0">
+                        <TableView fx:id="table" layoutX="462.0" layoutY="52.0" prefHeight="440.0" prefWidth="374.0">
                           <columns>
-                            <TableColumn fx:id="idAbonnement" prefWidth="45.5999755859375" text="id" />
                               <TableColumn fx:id="nomAbonnement" prefWidth="100.0" text="Nom" />
                             <TableColumn fx:id="prixAbonnement" prefWidth="95.199951171875" text="Prix" />
                               <TableColumn fx:id="dureeAbonnement" prefWidth="100.7999267578125" text="Duree" />

@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -32,7 +33,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -133,7 +136,7 @@ public class HomeAboController implements Initializable {
             ex.printStackTrace();
             System.out.println("Error on Building Data");
         }
-        idAbonnement.setCellValueFactory(new PropertyValueFactory<>("id"));
+        //idAbonnement.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomAbonnement.setCellValueFactory(new PropertyValueFactory<>("nomAbonnement"));
         prixAbonnement.setCellValueFactory(new PropertyValueFactory<>("prixAbonnement"));
         dureeAbonnement.setCellValueFactory(new PropertyValueFactory<>("dureeAbonnement"));
@@ -240,18 +243,30 @@ public class HomeAboController implements Initializable {
  }       
     
 
-    @FXML
-    private void SupprimerAbonnementOnClick(ActionEvent event) {
-        AbonnementService cs=new AbonnementService();
-        Abonnement c = new Abonnement(table.getSelectionModel().getSelectedItem().getId());
-        //c=(Coach)table_Coachs.getSelectionModel().getSelectedItem();
-       // System.out.println(table_Coachs.getSelectionModel().getSelectedItem());
+@FXML
+private void SupprimerAbonnementOnClick(ActionEvent event) {
+    AbonnementService cs = new AbonnementService();
+    Abonnement c = new Abonnement(table.getSelectionModel().getSelectedItem().getId());
+    
+    // Créer une boîte de dialogue de confirmation
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation de suppression");
+    alert.setHeaderText("Êtes-vous sûr de vouloir supprimer cet abonnement ?");
+    alert.setContentText("Cette action est irréversible.");
+    
+    // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+    Optional<ButtonType> result = alert.showAndWait();
+    
+    // Si l'utilisateur a cliqué sur le bouton OK, supprimer l'abonnement
+    if (result.get() == ButtonType.OK){
         cs.supprimer(c);
         showabo2();
         noma.clear();
         prixa.clear();
-        dureea.clear();          
+        dureea.clear();  
     }
+}
+
     
     @FXML
     private void ModAbo(ActionEvent event) {
