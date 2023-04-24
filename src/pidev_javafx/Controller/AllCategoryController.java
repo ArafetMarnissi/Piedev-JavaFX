@@ -338,6 +338,8 @@ public class AllCategoryController implements Initializable {
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
+            Label lll =new Label("\n");
+            card.getChildren().add(lll);
             Button btn=new Button("Edit");
             FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE_ALT);
             icon.getStyleClass().add("icon");
@@ -351,6 +353,8 @@ public class AllCategoryController implements Initializable {
                 
             });
             card.getChildren().add(btn);
+            Label llll =new Label("\n");
+            card.getChildren().add(llll);
             Button btn1=new Button("Supprimer");
             btn1.setAlignment(Pos.TOP_RIGHT);
             FontAwesomeIconView icon1 = new FontAwesomeIconView(FontAwesomeIcon.ERASER);

@@ -409,15 +409,15 @@ public class AllProductController implements Initializable {
             
             Label l1=new Label("\n");
             card.getChildren().add(l1);
-            Label namelabel=new Label("Nom produit:"+p.getNom());     
+            Label namelabel=new Label("Nom produit: "+p.getNom());     
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
             card.getChildren().add(namelabel);
-            Label prixLabel=new Label("Prix"+Float.toString(p.getPrix_produit())+"DT");
+            Label prixLabel=new Label("Prix: "+Float.toString(p.getPrix_produit())+"DT");
             prixLabel.setWrapText(true);
             prixLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(prixLabel);
-            Label catLabel=new Label("Categorie"+p.getCategory().getNomCategory());
+            Label catLabel=new Label("Categorie: "+p.getCategory().getNomCategory());
             catLabel.setAlignment(Pos.CENTER);
             card.getChildren().add(catLabel);
             Button bb=new Button("EDIT");
@@ -430,7 +430,7 @@ public class AllProductController implements Initializable {
             card.setOnMouseClicked(e->{
                 int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
                         String newFileName = random_int+"-qrCode.png";
-                        String data="Le nom du produit "+p.getNom()+" description "+p.getDescription();
+                        String data="Le nom du produit: "+p.getNom()+"\nDescription: "+p.getDescription()+"\nPrix: "+p.getPrix_produit()+"DT"+"\nDate expiration: "+p.getDate_expiration()+"\nNote: "+Math.round(p.getNote())+"\nQuantite: "+p.getQuantite_produit();
                 try {
                     generateQRCode(data,newFileName);
                 } catch (IOException ex) {

@@ -37,7 +37,7 @@
          <children>
             <Button fx:id="versajouter" layoutY="113.0" mnemonicParsing="false" onAction="#afficherajouter" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Ajouter" />
             <FlowPane fx:id="catflow" layoutX="102.0" layoutY="67.0" prefHeight="380.0" prefWidth="488.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="versacceuilbtn" layoutY="176.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Vers acceuil" />
+            <!--<Button fx:id="versacceuilbtn" layoutY="176.0" mnemonicParsing="false" onAction="#versacceuilonclick" style="-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: #FFFFFF;" text="Vers acceuil" />-->
          </children>
       </AnchorPane>
    </children>

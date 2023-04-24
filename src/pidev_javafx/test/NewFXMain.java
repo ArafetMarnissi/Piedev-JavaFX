@@ -43,12 +43,12 @@ public class NewFXMain extends Application {
             ProduitService ps=new ProduitService();
         ObservableList<Produit>listprod=FXCollections.observableArrayList();
         listprod=ps.afficher();
-//        SMS ss=new SMS();
-//        for(Produit p:listprod){
-//            if(p.getQuantite_produit()==0){
-//                ss.sms(p.getNom());
-//            }
-//        }
+        SMS ss=new SMS();
+        for(Produit p:listprod){
+            if(p.getQuantite_produit()>0 && p.getQuantite_produit()<5){
+                ss.sms(p.getNom());
+            }
+        }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
