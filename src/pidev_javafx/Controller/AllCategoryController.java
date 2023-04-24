@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -46,9 +51,23 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pidev_javafx.entitie.Category;
+import pidev_javafx.entitie.Produit;
 import pidev_javafx.service.CategoryService;
+import pidev_javafx.service.ProduitService;
 import pidev_javafx.tools.Statics;
-
+  import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javax.swing.JOptionPane;
+import org.controlsfx.control.Notifications;
+import javafx.scene.Node;
 /**
  * FXML Controller class
  *
@@ -95,6 +114,8 @@ public class AllCategoryController implements Initializable {
     private File selectedFile = null;
     
     CategoryService sc=new CategoryService();
+    ProduitService ps=new ProduitService();
+            ObservableList<Produit>listprod=FXCollections.observableArrayList();
     private Category c1;
 
     /**
@@ -106,6 +127,17 @@ public class AllCategoryController implements Initializable {
         anchoraffichagecat.toFront();
         display();
     }    
+    
+     public void notif2(String title, String text){
+   Image img = new Image("/pidev_javafx.GUI/logo1.png");
+    Notifications notificationBuilder = Notifications.create()
+    .title(title)
+    .text(text)
+            .graphic(new ImageView(img))
+            .hideAfter(Duration.seconds(15))
+            .position(Pos.BOTTOM_RIGHT);
+    notificationBuilder.show();
+}
 
     @FXML
     private void addimage(ActionEvent event) {
@@ -142,6 +174,7 @@ public class AllCategoryController implements Initializable {
         Path targetFile = Paths.get(Statics.uploadDirectory+newFileName);
 //
         Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
+        notif2("GOLDEN GYM","Categorie ajouter");
 //        
         display();
         anchoraffichagecat.toFront();
@@ -324,9 +357,50 @@ public class AllCategoryController implements Initializable {
             btn1.setGraphic(icon1);
              btn1.setStyle("-fx-background-color: #1372f4; -fx-background-radius: 25px; -fx-text-fill: white;");
             btn1.setOnAction(e->{
-                CategoryService sc=new CategoryService();
-                sc.supprimer(cat);
-                display();
+               listprod=ps.findprodbycat(cat.getId());
+               if(listprod.isEmpty()){
+                 sc.supprimer(cat);
+                display();  
+               }else{
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("");
+                alert.setContentText("Voulez-vous vraiment supprimer cette categorie ?");
+                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
+                ButtonType buttonTypeYes = new ButtonType("Oui");
+                ButtonType buttonTypeNo = new ButtonType("Non", ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+                alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+                Button buttonYes = (Button) alert.getDialogPane().lookupButton(buttonTypeYes);
+                Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+                buttonYes.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+                    "    -fx-max-width: 130px;\n" +
+                    "    -fx-min-height: 40px;\n" +
+                    "    -fx-max-height: 40px;");
+                buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                        + " -fx-min-width: 130px;\n" +
+                    "    -fx-max-width: 130px;\n" +
+                    "    -fx-min-height: 40px;\n" +
+                    "    -fx-max-height: 40px;");
+                 alert.setContentText(null);
+                Label headerLabel1 = new Label("Voulez-vous vraiment annuler votre participation ?");
+                headerLabel1.setFont(font);
+                alert.getDialogPane().setContent(headerLabel1);
+
+            Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeYes){
+                    CategoryService sc=new CategoryService();
+                    sc.supprimer(cat);
+                    display();
+                    alert.close();
+                }else if(result.get()==buttonTypeNo){
+                    alert.close();
+                }
+               }
+//                CategoryService sc=new CategoryService();
+//                sc.supprimer(cat);
+//                display();
             });
             card.getChildren().add(btn1);
             catflow.getChildren().add(card);

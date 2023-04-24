@@ -25,7 +25,7 @@ public class gestioncat extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Category.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/AllCategory.fxml"));
             Scene scene = new Scene(root, 1000, 700);
             primaryStage.setTitle("Categories");
             primaryStage.setScene(scene);

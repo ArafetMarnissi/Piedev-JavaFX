@@ -24,6 +24,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -50,6 +51,8 @@ public class ProdByCatController implements Initializable {
     public int idc;
     @FXML
     private FontAwesomeIconView returntocat;
+    @FXML
+    private TextField rechercherfield;
 
     /**
      * Initializes the controller class.
