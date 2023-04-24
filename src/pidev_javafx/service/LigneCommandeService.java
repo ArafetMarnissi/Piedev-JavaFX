@@ -143,6 +143,32 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
         return Lignecommandes;
         
     }
+        public List <LigneCommande>  getLigneCommandesParCommande(Commande t) {
+        List <LigneCommande> Lignecommandes = new ArrayList<>();
+        
+        String sql ="select * from ligne_commande where commande_id="+t.getId();
+        PreparedStatement ste ;
+        CommandeService CS = new CommandeService();
+        ProduitService PS = new ProduitService();
+        try {
+            ste = cnx.prepareStatement(sql);
+            //ste.setInt(1,u.getId());
+            ResultSet rs = ste.executeQuery(sql);
+            while(rs.next()){
+            LigneCommande c = new LigneCommande(rs.getInt("id"),
+                    CS.getCommandeParId(rs.getInt("commande_id")),
+                    PS.getProduitParId(rs.getInt("produits_id")),
+                    rs.getInt("quantite_produit"),
+                    rs.getFloat("prix_unitaire")
+                    );
+            Lignecommandes.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return Lignecommandes;
+        
+    }
 
 
 

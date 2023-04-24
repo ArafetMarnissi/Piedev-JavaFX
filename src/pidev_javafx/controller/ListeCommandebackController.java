@@ -32,6 +32,7 @@ import pidev_javafx.entitie.Produit;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
+import pidev_javafx.service.PdfService;
 
 /**
  * FXML Controller class
@@ -76,6 +77,8 @@ public class ListeCommandebackController implements Initializable {
     private TableView<LigneCommande> tableLigneCommande;
     @FXML
     private AnchorPane PaneListCommandeBack;
+    @FXML
+    private Button btnPdf;
     
 
     
@@ -153,6 +156,12 @@ private void DetailsCommande(ActionEvent event) throws IOException {
     private void retourner(ActionEvent event) {
         afficher();
         PaneListCommandeBack.toFront();
+    }
+    @FXML
+    private void GenererPdf(ActionEvent event) {
+       Commande commande=tableCommande.getSelectionModel().getSelectedItem();
+        PdfService PdfS = new PdfService();
+        PdfS.genererPdf(commande);
     }
 
 

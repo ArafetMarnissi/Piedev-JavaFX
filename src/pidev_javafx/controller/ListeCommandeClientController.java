@@ -42,6 +42,7 @@ import pidev_javafx.entitie.Produit;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
+import pidev_javafx.service.PdfService;
 import pidev_javafx.service.ProduitService;
 
 /**
@@ -135,6 +136,8 @@ public class ListeCommandeClientController implements Initializable {
     private TableColumn<LigneCommande, Integer> colQuantite;
     @FXML
     private TableColumn<LigneCommande, Float> colPrixUnitaire;
+    @FXML
+    private Button btnPdf;
 
 
 
@@ -351,6 +354,14 @@ public class ListeCommandeClientController implements Initializable {
     private void RetourDetails(ActionEvent event) {
                 afficher();
         PaneListeCommandeClient.toFront();
+    }
+
+    @FXML
+    private void GenererPdf(ActionEvent event) {
+        Commande commande=tableCommande.getSelectionModel().getSelectedItem();
+        PdfService PdfS = new PdfService();
+        PdfS.genererPdf(commande);
+
     }
 
 }
