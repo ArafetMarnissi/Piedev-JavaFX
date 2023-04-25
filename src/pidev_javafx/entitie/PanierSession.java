@@ -33,6 +33,7 @@ public class PanierSession {
     }
     public static PanierSession EndSession(){
         instance =null;
+        panier.clear();
         return instance;
     }
     public static HashMap<Produit, Integer> getPanier() {

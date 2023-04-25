@@ -120,8 +120,8 @@ public class CommandeService implements CrudInterface<Commande> {
         }
         
     }
-       public List<Commande> afficherCommandesParClient(User u) {
-        List<Commande> commandes =new ArrayList<>();
+       public ObservableList<Commande> afficherCommandesParClient(User u) {
+        ObservableList <Commande> commandes = FXCollections.observableArrayList();
         
         String sql ="select * from commande where user_id="+u.getId();
         PreparedStatement ste ;

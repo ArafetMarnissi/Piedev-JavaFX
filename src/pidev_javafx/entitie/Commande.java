@@ -25,7 +25,7 @@ public class Commande {
     private int telephone;
 
     public Commande() {
-       this.date_commande = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+       this.date_commande = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
     public Commande(int id, User user, String date_commande, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
@@ -40,7 +40,7 @@ public class Commande {
        public Commande(int id, User user, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
         this.id = id;
         this.user = user;
-        this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.adresse_livraison = adresse_livraison;
         this.prix_commande = prix_commande;
         this.methode_paiement = methode_paiement;
@@ -49,7 +49,7 @@ public class Commande {
 
     public Commande(User user, String adresse_livraison, float prix_commande, String methode_paiement, int telephone) {
         this.user = user;
-        this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.date_commande = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.adresse_livraison = adresse_livraison;
         this.prix_commande = prix_commande;
         this.methode_paiement = methode_paiement;

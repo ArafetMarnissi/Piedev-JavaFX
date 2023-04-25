@@ -29,13 +29,13 @@ public class NewFXMain extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().
 
-                    getResource("DashbordBack.fxml"));
+                    getResource("Acceuil.fxml"));
 
-                  Scene scene = new Scene(root, 1095, 665);
+                  Scene scene = new Scene(root, 1095, 700);
             
             primaryStage.setTitle("Reservation");
             primaryStage.setScene(scene);
-            primaryStage.setMinHeight(665);
+            primaryStage.setMinHeight(700);
             primaryStage.setMinWidth(1095);
             primaryStage.show();
         } catch (IOException ex) {

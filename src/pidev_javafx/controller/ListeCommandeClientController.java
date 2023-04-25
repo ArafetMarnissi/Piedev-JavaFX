@@ -9,6 +9,9 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -37,6 +40,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import pidev_javafx.entitie.Commande;
@@ -48,6 +52,7 @@ import pidev_javafx.service.CommandeService;
 import pidev_javafx.service.LigneCommandeService;
 import pidev_javafx.service.PdfService;
 import pidev_javafx.service.ProduitService;
+import pidev_javafx.service.SessionManager;
 import pidev_javafx.test.Test;
 import pidev_javafx.tools.MailFacture;
 
@@ -144,6 +149,10 @@ public class ListeCommandeClientController implements Initializable {
     private TableColumn<LigneCommande, Float> colPrixUnitaire;
     @FXML
     private Button btnPdf;
+    
+    private Stage stage;
+    private  Parent root;
+    private Scene scene;
 
 
 
@@ -154,6 +163,7 @@ public class ListeCommandeClientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         PaneListeCommandeClient.toFront();
         afficher();
+        
     }    
 
 
@@ -166,7 +176,7 @@ public class ListeCommandeClientController implements Initializable {
         colprix.setCellValueFactory(new PropertyValueFactory<Commande, Float>("prix_commande"));
         ObservableList<Commande>listCommande=FXCollections.observableArrayList();
         
-        listCommande=cs.afficher();
+        listCommande=cs.afficherCommandesParClient(new User(SessionManager.getId(), "test", "test", "test", "test", "test", 0, true));
         tableCommande.setItems(listCommande);
         
     }
@@ -192,11 +202,27 @@ public class ListeCommandeClientController implements Initializable {
 
 @FXML
     private void ModiferCommandeClient(ActionEvent event) throws IOException {
+        String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+        String dateCommande=tableCommande.getSelectionModel().getSelectedItem().getDate_commande();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+        LocalDateTime currentDateTime = LocalDateTime.parse(currentTime, formatter);
+        LocalDateTime commandDateTime = LocalDateTime.parse(dateCommande, formatter);
+        Duration duration = Duration.between(commandDateTime, currentDateTime);
+        long diffInMinutes = duration.toMinutes();
 
-       setDataCommandeModifer(tableCommande.getSelectionModel().getSelectedItem());
-       PaneModiferCommande.toFront();
-        
+if (Math.abs(diffInMinutes) > 60) {
+    
+        Alert confirmation = new Alert(Alert.AlertType.ERROR);
+        confirmation.setTitle("Erreur");
+        confirmation.setHeaderText(" Vous ne pouvez pas modifer cette commande");
+        Optional<ButtonType> result = confirmation.showAndWait();    
     }
+    else{
+        setDataCommandeModifer(tableCommande.getSelectionModel().getSelectedItem());
+       PaneModiferCommande.toFront();
+}
+
+}
 
     @FXML
     private void DetailsCommande(ActionEvent event) throws IOException {
@@ -247,7 +273,9 @@ public class ListeCommandeClientController implements Initializable {
                     LigneCommandeService lcs = new LigneCommandeService();
                     
                     Produit p1= pserv.getProduitParId(20); 
-                    User u =new User(1, "test", "test", "test", "test", "test", 0, true);
+                    User u =new User(SessionManager.getId(), "test", "test", "test", "test", "test", 0, true);
+                    
+
                     ///
                     Commande t =new Commande(u, AdresseLivarison,PanierSession.getInstance().calculTotale(), MethodedePaiement, telephone) ;
                     ///
@@ -272,10 +300,31 @@ public class ListeCommandeClientController implements Initializable {
                     ///Send Email 
                     try {
 
-            MailFacture.sendMail("marnissiarafet@gmail.com", ps.getLatestCommande());
-        } catch (Exception ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                        MailFacture.sendMail(SessionManager.getEmail(), ps.getLatestCommande());
+                    } catch (Exception ex) {
+                        Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    ///vider la panier
+                    PanierSession.EndSession();
+        
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
+                    Parent root = loader.load();
+                    DashbordFrontController controller = loader.getController();
+                    try {
+                    FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
+                    Pane autreInterface = loader2.load();
+                    Region parent = (Region) loader2.getRoot();
+                    parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                    parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+
+                        controller.PaneContent.getChildren().setAll(autreInterface);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    btnSupprimer.getScene().setRoot(root);
+                
+                    
                     ///
 
          }else{

@@ -5,6 +5,9 @@
  */
 package pidev_javafx.test;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pidev_javafx.entitie.Abonnement;
@@ -28,8 +31,19 @@ public class Test {
     public static void main(String[] args) {
 
         CommandeService CS =new CommandeService();
-        Commande c =CS.getCommandeParId(43);
+        Commande c =CS.getCommandeParId(66);
         
+        
+        String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+        String dateCommande=c.getDate_commande();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+        LocalDateTime currentDateTime = LocalDateTime.parse(currentTime, formatter);
+        LocalDateTime commandDateTime = LocalDateTime.parse(dateCommande, formatter);
+        Duration duration = Duration.between(commandDateTime, currentDateTime);
+        long diffInMinutes = duration.toMinutes();
+
+if (Math.abs(diffInMinutes) > 3) {
+    System.out.println("La différence entre les deux dates est supérieure à l'erreur.");}
         /*
         try {
             MailFacture.sendMail("marnissiarafet@gmail.com", c);
@@ -38,6 +52,8 @@ public class Test {
         }
        
 */
+       // System.out.println(commandDateTime);
+        System.out.println(diffInMinutes);
         
     }
     

@@ -11,8 +11,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
@@ -27,14 +27,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -50,8 +49,12 @@ import pidev_javafx.service.SessionManager;
  *
  * @author marni
  */
-public class DashbordFrontController implements Initializable {
+public class AcceuilController implements Initializable {
 
+    @FXML
+    private AnchorPane PaneContent;
+    @FXML
+    private ImageView Panier;
     @FXML
     private ImageView menu;
     @FXML
@@ -59,60 +62,51 @@ public class DashbordFrontController implements Initializable {
     @FXML
     private AnchorPane pane2;
     @FXML
-    private ImageView Panier;
+    private JFXButton loginButton;
     @FXML
     private AnchorPane panePanier1;
     @FXML
-    public AnchorPane PaneContent;
-    
-    @FXML
     private ScrollPane ScrollPanePanierContent;
-    private GridPane GridPanier;
-    
-    private List<Produit> produits = new ArrayList<>();
     @FXML
-    private JFXButton btnCommandes;
-    
-
-
-
-    private HashMap<Produit,HBox> mapHashbox = new HashMap<>();
-    @FXML
-    public VBox VBoxPanier;
+    private VBox VBoxPanier;
     @FXML
     private Label LabelPrixTotal;
     @FXML
     private JFXButton btnPasserCommande;
-    @FXML
-    private JFXButton profilid;
-    @FXML
-    private JFXButton profilid1;
-    @FXML
-    private JFXButton logoutButton;
-
     
+        private HashMap<Produit,HBox> mapHashbox = new HashMap<>();
+            
         private Stage stage;
     private  Parent root;
     private Scene scene;
-    
-  
+
     /**
      * Initializes the controller class.
-     * 
-     * 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
 ///Panier///
-      //  getData();
+    getData();
     afficherPanier();
     if(PanierSession.getPanier().isEmpty()){
         btnPasserCommande.setVisible(false);
     }else{
         btnPasserCommande.setVisible(true);
     }
- 
+    
+    
+    ///tester ajouter Produit
+        Produit produit =new Produit();
+        produit.setId(20);
+        produit.setNom("Vitamin");
+        produit.setPrix_produit(170);
+        produit.setImage_produit("/pidev_javafx/assets/front-view-fit-woman-training-with-dumbells.jpg");
+        try {
+            AjouterProduitPanier(produit);
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
 /////////all Slide Bar//////////       
@@ -211,15 +205,11 @@ private List<Produit> getData(){
 }
 
 public void afficherPanier(){
-    if(PanierSession.getPanier().isEmpty()){
-        btnPasserCommande.setVisible(false);
-    }else{
-        btnPasserCommande.setVisible(true);
-    }
-        VBoxPanier.getChildren().clear();
+
+        
         HashMap<Produit,Integer> panier =PanierSession.getPanier();
         List<Produit> produitsPanier = new ArrayList<>(panier.keySet());
-
+        
 
       
             for(int i=0;i<produitsPanier.size();i++){
@@ -254,12 +244,6 @@ public void RemoveItemPanier(Produit produit) throws IOException {
     anchorPaneLast.setPrefWidth(152);
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
-        if(PanierSession.getPanier().isEmpty()){
-        btnPasserCommande.setVisible(false);
-    }else{
-        btnPasserCommande.setVisible(true);
-    }
-   
 }
 public VBox creatHboxBtn(Produit produit){
                 HashMap<Produit,Integer> panier =PanierSession.getPanier();
@@ -341,38 +325,12 @@ public VBox creatHboxBtn(Produit produit){
                 return vboxallBtn;
 }
 
-@FXML
-private void ConsulterMesCommandes(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
-            Pane autreInterface = loader.load();
-        Region parent = (Region) loader.getRoot();
-        parent.prefWidthProperty().bind(PaneContent.widthProperty());
-        parent.prefHeightProperty().bind(PaneContent.heightProperty());
-            
-            PaneContent.getChildren().setAll(autreInterface);
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-@FXML
-    private void ListReservation(ActionEvent event) throws IOException {
-        
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
-            Pane autreInterface = loader.load();
 
-         Region parent = (Region) loader.getRoot();
 
-            parent.prefWidthProperty().bind(PaneContent.widthProperty());
-            parent.prefHeightProperty().bind(PaneContent.heightProperty());
-            PaneContent.getChildren().setAll(autreInterface);
-    }
 @FXML
   private void PasserCommande(ActionEvent event) {
-        
-      if(SessionManager.isStatus()){
+      if(SessionManager.isStatus()){  
             try {
                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
                   Pane autreInterface = loader.load();
@@ -391,10 +349,43 @@ private void ConsulterMesCommandes(ActionEvent event) {
               } catch (IOException e) {
                   e.printStackTrace();
 
-              }
+              } 
+      }else{
+          Alert confirmation = new Alert(Alert.AlertType.ERROR);
+        confirmation.setTitle("Probléme de connection");
+        confirmation.setHeaderText("Vous n'êtes pas connecté");
+
+        Optional<ButtonType> result = confirmation.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK){
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        } 
+      
       }
     }
+@FXML
+    private void ListReservation(ActionEvent event) throws IOException {
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Reservation.fxml"));
+            Pane autreInterface = loader.load();
 
+         Region parent = (Region) loader.getRoot();
+
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+    }
 
 
 ///
@@ -464,54 +455,25 @@ private void ConsulterMesCommandes(ActionEvent event) {
  }
 
   
+
+
+
     @FXML
-    private void logout(ActionEvent event) {
-        
+    private void login(ActionEvent event) {
+ 
         try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-    }
-    }
-
-    @FXML
-    private void myprofil(ActionEvent event) {
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/myProfil.fxml"));
-            Pane autreInterface = loader.load();
-            
-        Insets insets = new Insets(0);
-        autreInterface.setPadding(insets);
-            
-            PaneContent.getChildren().setAll(autreInterface);
-            PaneContent.setPadding(insets);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
-    @FXML
-    private void getSupport(ActionEvent event) {
-        
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/support.fxml"));
-            Pane autreInterface = loader.load();
-            
-        Insets insets = new Insets(0);
-        autreInterface.setPadding(insets);
-            
-            PaneContent.getChildren().setAll(autreInterface);
-            PaneContent.setPadding(insets);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
     }
+    
 }
