@@ -122,7 +122,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Activités">
+                  <JFXButton fx:id="BtnActivite" alignment="BASELINE_LEFT" onAction="#CosulterActivite" prefHeight="38.0" prefWidth="179.0" text="Activités">
                      <font>
                         <Font size="16.0" />
                      </font>

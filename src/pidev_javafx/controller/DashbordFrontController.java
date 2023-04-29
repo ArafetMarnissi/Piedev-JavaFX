@@ -94,6 +94,12 @@ public class DashbordFrontController implements Initializable {
         private Stage stage;
     private  Parent root;
     private Scene scene;
+    @FXML
+    private JFXButton btnActivite;
+    @FXML
+    private JFXButton btnCoach;
+    @FXML
+    private JFXButton btnConsulterParticipation;
     
   
     /**
@@ -513,5 +519,55 @@ private void ConsulterMesCommandes(ActionEvent event) {
             e.printStackTrace();
         }
         
+    }
+
+    @FXML
+    private void consulterActivite(ActionEvent event) {
+        
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void consulterCoach(ActionEvent event) {
+      try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCoachs.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ConsulterMesParticipation(ActionEvent event) {
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeParticipationsUser.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

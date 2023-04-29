@@ -79,6 +79,8 @@ public class AcceuilController implements Initializable {
         private Stage stage;
     private  Parent root;
     private Scene scene;
+    @FXML
+    private JFXButton BtnActivite;
 
     /**
      * Initializes the controller class.
@@ -474,6 +476,25 @@ public VBox creatHboxBtn(Produit produit){
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @FXML
+    private void CosulterActivite(ActionEvent event) {
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
     }
     
 }

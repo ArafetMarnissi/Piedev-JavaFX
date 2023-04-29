@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -47,7 +49,7 @@ public class DashbordBackController implements Initializable {
     @FXML
     private ImageView menu;
     @FXML
-    private AnchorPane PaneContent;
+    public AnchorPane PaneContent;
     @FXML
     private JFXButton btnListeCommande;
     @FXML
@@ -68,6 +70,10 @@ public class DashbordBackController implements Initializable {
         private Stage stage;
     private  Parent root;
     private Scene scene;
+    @FXML
+    private JFXButton btnCoach;
+    @FXML
+    private JFXButton btnActivite;
 
     /**
      * Initializes the controller class.
@@ -262,6 +268,40 @@ private void Listabonnement(ActionEvent event) {
         }
         
         
+    }
+
+    @FXML
+    private void ConsulterCoach(ActionEvent event) {
+      
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CRUD_Coach.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ConsulterActivite(ActionEvent event) {
+              
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CRUD_Activite.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
  
 }

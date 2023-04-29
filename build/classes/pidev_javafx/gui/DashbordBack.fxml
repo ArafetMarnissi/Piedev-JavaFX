@@ -49,6 +49,11 @@
                         <Image url="@../../pidev/javafx/assets/activites.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="16.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/male.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/produit.png" />
@@ -130,6 +135,11 @@
                         <Image url="@../../pidev/javafx/assets/activites.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="16.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pidev/javafx/assets/male.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/produit.png" />
@@ -195,7 +205,12 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Activités">
+                  <JFXButton fx:id="btnActivite" alignment="BASELINE_LEFT" onAction="#ConsulterActivite" prefHeight="38.0" prefWidth="179.0" text="Activités">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCoach" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="96.0" onAction="#ConsulterCoach" prefHeight="38.0" prefWidth="179.0" text="Coach">
                      <font>
                         <Font size="16.0" />
                      </font>
