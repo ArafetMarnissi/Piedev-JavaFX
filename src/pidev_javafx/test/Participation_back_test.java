@@ -25,8 +25,8 @@ public class Participation_back_test extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            //Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/AfficherCoach.fxml"));
-            Parent root=FXMLLoader.load(getClass().getResource("/pidev_javafx/GUI/AffichageParticipation.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.gui/AfficherCoach.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/AffichageParticipation.fxml"));
             Scene scene = new Scene(root, 1000, 600);
             primaryStage.setTitle("GoldenGym");
             primaryStage.setScene(scene);

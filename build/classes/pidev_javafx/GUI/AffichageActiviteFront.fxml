@@ -72,9 +72,16 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="anchorpane_affich_date" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FlowPane fx:id="flowpane_affich_date" layoutX="85.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="anchorPane_affich_acts_front" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <FlowPane fx:id="flowpane_front" prefHeight="440.0" prefWidth="518.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="btn_affich_date" alignment="CENTER" mnemonicParsing="false" onAction="#afficher_dateOnClick" prefHeight="31.0" prefWidth="192.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25;" text="Activités Disponibles" textFill="WHITE" AnchorPane.bottomAnchor="812.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="688.0" AnchorPane.topAnchor="0.0" />
+            <Label fx:id="espace_label" layoutX="672.0" layoutY="43.0" AnchorPane.bottomAnchor="784.0" AnchorPane.leftAnchor="672.0" AnchorPane.rightAnchor="808.0" AnchorPane.topAnchor="43.0" />
+            <FlowPane fx:id="flowpane_front" layoutY="82.0" prefHeight="756.0" prefWidth="1460.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="82.0" />
          </children>
       </AnchorPane>
    </children>

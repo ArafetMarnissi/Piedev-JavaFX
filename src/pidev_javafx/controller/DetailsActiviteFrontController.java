@@ -151,7 +151,7 @@ public class DetailsActiviteFrontController implements Initializable {
 
     @FXML
     private void Retour_detailsOnClick(ActionEvent event) throws IOException {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
         Parent root = loader.load();
         btn_retour_details.getScene().setRoot(root);
     }

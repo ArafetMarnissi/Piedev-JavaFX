@@ -181,7 +181,7 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     a1.setNbrePlace(a1.getNbrePlace()+1);
                     as.modifier(a1);
                     ps.supprimer(p);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ListeParticipationsUser.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeParticipationsUser.fxml"));
                     Parent root = loader.load();
                     flowpane_part.getScene().setRoot(root);
                 } catch (IOException ex) {

@@ -147,12 +147,28 @@ CoachService coachS;
     private ImageView image_qrcode_coach;
     @FXML
     private AnchorPane anchorPane_affich_acts_front;
+    @FXML
+    private Button btn_affich_date;
+    @FXML
+    private AnchorPane anchorpane_affich_date;
+    @FXML
+    private FlowPane flowpane_affich_date;
+    @FXML
+    private Label espace_label;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        btn_affich_date.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+        espace_label.setText("\n");
+        anchorPane_affich_acts_front.toFront();
+        
         int i=0;
        ObservableList<Activite>listAc=FXCollections.observableArrayList();
         ActiviteService cs=new ActiviteService();
@@ -223,7 +239,7 @@ CoachService coachS;
                     notif2("GoldenGym","Dés maintenant, Vous participez à cette activité ");
                     
                             //************,dkonbonidbnibdfibgdgndbgndjkbgdgdhgdgbvdfvguyebubgtebgfjdfbgdeSystem.out.println("reclamation ajoutée");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
                     Parent root = loader.load();
                     flowpane_front.getScene().setRoot(root);
                 } catch (IOException ex) {
@@ -281,7 +297,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                     cs.modifier(a1);
                     ps.supprimer(test);
                      notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
                     Parent root = loader.load();
                     flowpane_front.getScene().setRoot(root);
                 } catch (IOException ex) {
@@ -339,7 +355,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                                         cs.modifier(a1);
                                         ps.supprimer(test);
                                         notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
                                         Parent root = loader.load();
                                         flowpane_front.getScene().setRoot(root);
                                     } catch (IOException ex) {
@@ -381,7 +397,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                         
                 try {
                     recupDataD(a,newFileName);
-                    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/DetailsActiviteFront.fxml"));
+                    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DetailsActiviteFront.fxml"));
                     Parent root = loader.load();
                     DetailsActiviteFrontController mcc = loader.getController();
                     mcc.recupDataD(a,newFileName);
@@ -501,6 +517,262 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
     notificationBuilder.show();
          
 }
+
+    @FXML
+    private void afficher_dateOnClick(ActionEvent event) {
+                int i=0;
+       ObservableList<Activite>listAc=FXCollections.observableArrayList();
+        ActiviteService cs=new ActiviteService();
+        ParticipationService ps=new ParticipationService();
+        CoachService coachS=new CoachService();
+        listAc=cs.afficher_avecDate();
+        flowpane_affich_date.setOrientation(Orientation.HORIZONTAL);
+            flowpane_affich_date.setAlignment(Pos.CENTER);
+            flowpane_affich_date.setHgap(10);
+            flowpane_affich_date.setVgap(10);
+                       
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            
+        for(Activite a:listAc)
+        {
+            
+            VBox v1=new VBox();
+            /*v1.setMinHeight(210);
+            v1.setMaxHeight(210);
+            v1.setMinWidth(210);
+            v1.setMaxWidth(210);*/
+            v1.setPrefSize(300, 350);
+            
+            v1.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+            ImageView imageView;
+            try {
+                imageView = new ImageView(new Image(new FileInputStream(Statics.uploadDirectory+a.getImage())));
+                imageView.setFitWidth(300);
+                imageView.setFitHeight(300);
+                imageView.setPreserveRatio(true);
+                imageView.setStyle("-fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+                v1.getChildren().add(imageView);
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex.getMessage());
+            }
+            Label nom_act1=new Label("\n");
+            v1.getChildren().add(nom_act1);
+            Label nom_act=new Label(a.getNomActivite());
+            nom_act.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
+            nom_act.setAlignment(Pos.CENTER);
+            v1.getChildren().add(nom_act);
+            LocalDate ld1=a.getDateActivite().toLocalDate();     
+            String formattedDate1 = ld1.format(formatter);
+            Label nom_act3=new Label("La date: "+formattedDate1);
+            nom_act3.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
+            nom_act3.setAlignment(Pos.CENTER);
+            v1.getChildren().add(nom_act3);
+            Label nom_act4=new Label("Nombre de places: "+a.getNbrePlace());
+            nom_act4.setFont(Font.font("Verdana",FontWeight.NORMAL, 16));
+            nom_act4.setAlignment(Pos.CENTER);
+            v1.getChildren().add(nom_act4);
+            Label nom_act2=new Label("\n");
+            v1.getChildren().add(nom_act2);
+            Participation test=ps.FindPartById(a.getId(), 126);
+            if(a.getNbrePlace()>0){
+           if(test==null){
+            Button btn=new Button("Participer");
+            btn.setOnAction(e->{
+                try {
+                    //a.setNbrePlace(a.getNbrePlace()-1);
+                    LocalDate today=LocalDate.now();
+                    Date d=java.sql.Date.valueOf(today);
+                    Participation p = new Participation(126,d,a);
+                    Activite a1=ps.findbyid(p.getActivite().getId());
+                    a1.setNbrePlace(a1.getNbrePlace()-1);
+                    cs.modifier(a1);
+                    ps.ajouter(p);
+                    notif2("GoldenGym","Dés maintenant, Vous participez à cette activité ");
+                    
+                            //************,dkonbonidbnibdfibgdgndbgndjkbgdgdhgdgbvdfvguyebubgtebgfjdfbgdeSystem.out.println("reclamation ajoutée");
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+                    Parent root = loader.load();
+                    flowpane_affich_date.getScene().setRoot(root);
+                } catch (IOException ex) {
+                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            });
+            btn.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            v1.getChildren().add(btn);
+           }else{
+            Button btn1=new Button("Annuler");
+            btn1.setOnAction(e->{
+Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("");
+                alert.setContentText("Voulez-vous vraiment annuler votre participation ?");
+                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
+
+            ButtonType buttonTypeYes = new ButtonType("Oui");
+            ButtonType buttonTypeNo = new ButtonType("Non", ButtonData.CANCEL_CLOSE);
+            //ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+            Button buttonYes = (Button) alert.getDialogPane().lookupButton(buttonTypeYes);
+            Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+            //Button buttonCancel = (Button) alert.getDialogPane().lookupButton(buttonTypeCancel);
+
+            buttonYes.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            //buttonCancel.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+                alert.setContentText(null);
+                Label headerLabel1 = new Label("Voulez-vous vraiment annuler votre participation ?");
+                headerLabel1.setFont(font);
+                alert.getDialogPane().setContent(headerLabel1);
+
+            Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeYes){
+    // code pour le bouton "Oui"
+                    
+                try {
+                    Activite a1=ps.findbyid(a.getId());
+                    a1.setNbrePlace(a1.getNbrePlace()+1);
+                    cs.modifier(a1);
+                    ps.supprimer(test);
+                     notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+                    Parent root = loader.load();
+                    flowpane_affich_date.getScene().setRoot(root);
+                } catch (IOException ex) {
+                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
+            });
+            btn1.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            v1.getChildren().add(btn1);
+           }
+            }else{
+                if(test!=null){
+                                Button btn2=new Button("Annuler");
+            btn2.setOnAction(e->{
+                                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("");
+                alert.setContentText("Voulez-vous vraiment annuler votre participation ?");
+                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
+
+            ButtonType buttonTypeYes = new ButtonType("Oui");
+            ButtonType buttonTypeNo = new ButtonType("Non", ButtonData.CANCEL_CLOSE);
+            //ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+            Button buttonYes = (Button) alert.getDialogPane().lookupButton(buttonTypeYes);
+            Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+            //Button buttonCancel = (Button) alert.getDialogPane().lookupButton(buttonTypeCancel);
+
+            buttonYes.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            //buttonCancel.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+                alert.setContentText(null);
+                Label headerLabel1 = new Label("Voulez-vous vraiment annuler votre participation ?");
+                headerLabel1.setFont(font);
+                alert.getDialogPane().setContent(headerLabel1);
+
+            Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeYes){
+                                    try {
+                                        Activite a1=ps.findbyid(a.getId());
+                                        a1.setNbrePlace(a1.getNbrePlace()+1);
+                                        cs.modifier(a1);
+                                        ps.supprimer(test);
+                                        notif2("GoldenGym","Dés maintenant, Vous ne participez plus à cette activité ");
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+                                        Parent root = loader.load();
+                                        flowpane_affich_date.getScene().setRoot(root);
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                }
+            });
+            btn2.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                    + " -fx-min-width: 130px;\n" +
+"    -fx-max-width: 130px;\n" +
+"    -fx-min-height: 40px;\n" +
+"    -fx-max-height: 40px;");
+            v1.getChildren().add(btn2);
+                }
+            }
+            v1.setOnMouseClicked(e -> {
+               
+                   // try{
+                        
+                        int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+                        String newFileName = random_int+"-qrCode.png";
+                        //String path=Statics.uploadDirectory1+newFileName;
+                        
+                        Coach c=coachS.getCoachById(a.getCoach().getId());
+                        //System.out.println(Paths.get(path));
+                        String data=Statics.URL+"Le nom du coach est "+c.getNom_coach()+" agé de "+c.getAge_coach();
+                        String text="hello";
+                        try{
+                            generateQRCode(data,newFileName);
+                            System.out.println("done");
+                        }catch(WriterException e1){
+                            System.out.println(e1.getMessage());
+                        }catch(IOException ex){
+                            System.out.println(ex.getMessage());
+                        }
+                        
+                        
+                        anchorPane_affich_details_acts_front.toFront();
+                        
+                try {
+                    recupDataD(a,newFileName);
+                    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DetailsActiviteFront.fxml"));
+                    Parent root = loader.load();
+                    DetailsActiviteFrontController mcc = loader.getController();
+                    mcc.recupDataD(a,newFileName);
+                    flowpane_front.getScene().setRoot(root);*/
+                    
+                    /*}catch(IOException ex){
+                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    }*/
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            });
+
+            flowpane_affich_date.getChildren().add(v1);
+                           /* if ((i + 1) % 4 == 0) { // ajoute une nouvelle ligne après chaque 4ème élément
+        flowpane_front.getChildren().add(new Region());
+                }
+        i=i+1;*/
+            flowpane_affich_date.setMargin(v1,new Insets(5,5,5,5));
+
+        }
+        anchorpane_affich_date.toFront();
+    }
 
 
 }

@@ -122,7 +122,7 @@ public class AfficherCoachController implements Initializable {
 
     @FXML
     private void ModifierCoachOnClick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ModifierCoach.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ModifierCoach.fxml"));
             Parent root = loader.load();
             ModifierCoachController mcc = loader.getController();
             mcc.recupData(table_Coachs.getSelectionModel().getSelectedItem());
@@ -131,7 +131,7 @@ public class AfficherCoachController implements Initializable {
 
     @FXML
     private void ajouter_coachOnClick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/Coach.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Coach.fxml"));
         Parent root = loader.load();
         btn_ajouter_coach.getScene().setRoot(root);
     }

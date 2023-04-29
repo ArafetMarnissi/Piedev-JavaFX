@@ -122,7 +122,7 @@ public class ListeCoachsController implements Initializable {
                  /*ObservableList<Activite>listAc1=FXCollections.observableArrayList();
                     listAc1=as.findActsByCoach(c.getId());*/
                     
-                   /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ListeActsByCoach.fxml"));
+                   /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeActsByCoach.fxml"));
                         Parent root = loader.load();
                         ListeActsByCoachController mcc = loader.getController();
                         mcc.recupDataD(c.getId());
@@ -204,7 +204,7 @@ public class ListeCoachsController implements Initializable {
                     a1.setNbrePlace(a1.getNbrePlace()-1);
                     ac.modifier(a1);
                     ps.ajouter(p);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ListeActsByCoach.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeActsByCoach.fxml"));
                     Parent root = loader.load();
                         ListeActsByCoachController mcc = loader.getController();
                         mcc.recupDataD(a.getCoach().getId());
@@ -263,7 +263,7 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     a1.setNbrePlace(a1.getNbrePlace()+1);
                     ac.modifier(a1);
                     ps.supprimer(test);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ListeActsByCoach.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeActsByCoach.fxml"));
                     Parent root = loader.load();
                         ListeActsByCoachController mcc = loader.getController();
                         mcc.recupDataD(a.getCoach().getId());
@@ -322,7 +322,7 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                         a1.setNbrePlace(a1.getNbrePlace()+1);
                                         ac.modifier(a1);
                                         ps.supprimer(test);
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ListeActsByCoach.fxml"));
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeActsByCoach.fxml"));
                                         Parent root = loader.load();
                                         ListeActsByCoachController mcc = loader.getController();
                                         mcc.recupDataD(a.getCoach().getId());
@@ -361,7 +361,7 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             System.out.println(ex.getMessage());
                         }
                         
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActiviteFront.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
                         Parent root = loader.load();
                         AffichageActiviteFrontController mcc = loader.getController();
                         mcc.recupDataD(a,newFileName);

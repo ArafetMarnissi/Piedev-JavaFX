@@ -75,6 +75,29 @@ public class ActiviteService implements CrudInterface<Activite>{
         return c;
     }
 
+        public ObservableList<Activite> afficher_avecDate() {
+                ObservableList<Activite> c=FXCollections.observableArrayList();
+        String SQL="SELECT * FROM activite WHERE date_activite >= CURRENT_DATE() AND nbre_place>0";
+        Statement ste;
+        try {
+            ste = cnx.createStatement();
+            ResultSet res= ste.executeQuery(SQL);
+            CoachService cs=new CoachService();
+
+            while(res.next()){
+            Coach a=new Coach();
+            a=cs.getCoachById(res.getInt("coach_id"));
+                Activite co=new Activite(res.getInt(1),res.getInt("nbre_place"), res.getString("nom_acitivite"),res.getString("description_activite"),res.getString("image"),res.getDate("date_activite"),res.getTime("time_activite"),res.getTime("end"),a);
+                c.add(co);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+        return c;
+    }
+    
     @Override
     public void supprimer(Activite t) {
                 String SQL="delete from activite where id=?";

@@ -152,7 +152,7 @@ public class AjoutActiviteController implements Initializable {
         
 
         Files.copy(sourceFile, targetFile,StandardCopyOption.REPLACE_EXISTING);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActivite.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActivite.fxml"));
         Parent root = loader.load();
         btn_image_activite_ajout.getScene().setRoot(root);}
         else{
@@ -186,7 +186,7 @@ public class AjoutActiviteController implements Initializable {
 
     @FXML
     private void retour_activiteOnClick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AffichageActivite.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActivite.fxml"));
         Parent root = loader.load();
         btn_retour_activite.getScene().setRoot(root);
     }

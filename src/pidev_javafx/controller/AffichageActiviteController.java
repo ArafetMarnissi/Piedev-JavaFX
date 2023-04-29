@@ -76,14 +76,14 @@ public class AffichageActiviteController implements Initializable {
 
     @FXML
     private void Ajouter_activite_affichageOnClick(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/AjoutActivite.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AjoutActivite.fxml"));
         Parent root = loader.load();
         btn_ajouter_activite_affichage.getScene().setRoot(root);
     }
 
     @FXML
     private void Modifier_activite_affichageOnClick(ActionEvent event) throws IOException {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/GUI/ModifierActivite.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ModifierActivite.fxml"));
             Parent root = loader.load();
             ModifierActiviteController mcc = loader.getController();
             mcc.recupData(table_activite_affich.getSelectionModel().getSelectedItem());
