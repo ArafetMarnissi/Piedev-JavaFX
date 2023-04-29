@@ -263,8 +263,9 @@ public class AllProductController implements Initializable {
         erreurprix.setText("");
         erreurquant.setText("");
         //System.out.println(cat1);
-        if(estAlpha(nomprod.getText()) && estAlpha(descprod.getText()) && descprod.getText().length()>=10 && testdate(dateprod.getValue()) && testpos(Float.parseFloat(prixprod.getText())) && testpos(Float.parseFloat(quantprod.getText())) && Integer.parseInt(quantprod.getText())!=0 && !imgprod.getText().isEmpty()){
-           String chaine = catprod.getValue();
+        if(estAlpha(nomprod.getText()) && estAlpha(descprod.getText()) && descprod.getText().length()>=10 && testdate(dateprod.getValue()) && testpos(Float.parseFloat(prixprod.getText())) && testpos(Float.parseFloat(quantprod.getText())) && Integer.parseInt(quantprod.getText())!=0 ){
+           //&& !imgprod.getText().isEmpty()
+            String chaine = catprod.getValue();
         int index = chaine.indexOf(":");
         String sousChaine = chaine.substring(0, index);
         System.out.println(sousChaine);
@@ -286,9 +287,9 @@ public class AllProductController implements Initializable {
         anchoraffichageprod.toFront();
         }
         else{
-            if(imgprod.getText().isEmpty()){
-                erreurimg.setText("veuillez choisir une image");
-            }
+//            if(imgprod.getText().isEmpty()){
+//                erreurimg.setText("veuillez choisir une image");
+//            }
             if(!estAlpha(nomprod.getText())&&nomprod.getText().isEmpty()){
                 erreurnom.setText("seulement des alphabets");
             }

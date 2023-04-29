@@ -40,7 +40,7 @@ public class NewFXMain1 extends Application {
         SMS ss=new SMS();
         for(Produit p:listprod){
             if(p.getQuantite_produit()>0 && p.getQuantite_produit()<5){
-                ss.sms(p.getNom());
+               // ss.sms(p.getNom());
             }
         }
             primaryStage.show();

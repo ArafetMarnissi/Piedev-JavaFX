@@ -28,6 +28,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -102,7 +105,8 @@ public class ProdByCatController implements Initializable {
             if(produit.getQuantite_produit()==0){
                 Label dispo=new Label("Out Of Stock");
                 dispo.setAlignment(Pos.CENTER);
-                dispo.setTextFill(Color.RED);
+                dispo.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+                dispo.setTextFill(Color.WHITE);
                 card.getChildren().add(dispo);
             }else{
                 Label dispo=new Label("In Stock");

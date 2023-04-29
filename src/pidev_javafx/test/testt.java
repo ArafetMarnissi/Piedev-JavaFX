@@ -25,8 +25,8 @@ public class testt extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/AllCategory.fxml"));
-            Scene scene = new Scene(root, 1000, 700);
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Frontmag.fxml"));
+            Scene scene = new Scene(root, 800, 650);
             primaryStage.setTitle("Categories");
             primaryStage.setScene(scene);
             primaryStage.show();
