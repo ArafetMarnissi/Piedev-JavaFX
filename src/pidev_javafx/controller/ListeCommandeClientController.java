@@ -9,6 +9,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -253,7 +254,7 @@ if (Math.abs(diffInMinutes) > 60) {
     }
 
     @FXML
-    private void AjouterCommande(ActionEvent event) throws IOException {
+    private void AjouterCommande(ActionEvent event) throws IOException, SQLException {
                 
                 erreurAdresse.setText("");
                 erreurTelephone.setText("");
@@ -272,7 +273,7 @@ if (Math.abs(diffInMinutes) > 60) {
                     ProduitService pserv = new ProduitService();
                     LigneCommandeService lcs = new LigneCommandeService();
                     
-                    Produit p1= pserv.getProduitParId(20); 
+                    Produit p1= pserv.findprodbyid(20); 
                     User u =new User(SessionManager.getId(), "test", "test", "test", "test", "test", 0, true);
                     
 

@@ -74,6 +74,10 @@ public class DashbordBackController implements Initializable {
     private JFXButton btnCoach;
     @FXML
     private JFXButton btnActivite;
+    @FXML
+    private JFXButton btnProduits;
+    @FXML
+    private JFXButton btnCategory;
 
     /**
      * Initializes the controller class.
@@ -292,6 +296,40 @@ private void Listabonnement(ActionEvent event) {
               
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/CRUD_Activite.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ConsulterProduit(ActionEvent event) {
+                     
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AllProduct.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ConsulterCategory(ActionEvent event) {
+                     
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AllCategory.fxml"));
             Pane autreInterface = loader.load();
             
             Region parent = (Region) loader.getRoot();

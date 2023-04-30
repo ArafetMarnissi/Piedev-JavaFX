@@ -215,12 +215,12 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Produits">
+                  <JFXButton fx:id="btnProduits" alignment="BASELINE_LEFT" onAction="#ConsulterProduit" prefHeight="38.0" prefWidth="179.0" text="Produits">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Categories">
+                  <JFXButton fx:id="btnCategory" alignment="BASELINE_LEFT" onAction="#ConsulterCategory" prefHeight="38.0" prefWidth="179.0" text="Categories">
                      <font>
                         <Font size="16.0" />
                      </font>

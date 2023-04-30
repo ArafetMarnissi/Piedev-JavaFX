@@ -43,11 +43,6 @@
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../pidev/javafx/assets/activites.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../pidev/javafx/assets/produit.png" />
                      </image>
                   </ImageView>
@@ -89,11 +84,6 @@
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../pidev/javafx/assets/produit.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../pidev/javafx/assets/categories.png" />
                      </image>
                   </ImageView>
@@ -127,12 +117,7 @@
                         <Font size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Produits">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Catégories">
+                  <JFXButton fx:id="btnCategory" alignment="BASELINE_LEFT" onAction="#ConsulterCategory" prefHeight="38.0" prefWidth="179.0" text="Catégories">
                      <font>
                         <Font size="16.0" />
                      </font>

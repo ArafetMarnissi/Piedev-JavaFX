@@ -6,7 +6,7 @@
 package pidev_javafx.entitie;
 
 import java.util.List;
-//import javax.persistence.OneToMany;
+
 
 /**
  *

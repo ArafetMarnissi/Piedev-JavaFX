@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.Controller.FrontmagController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="pan" layoutX="10.0" layoutY="10.0" prefHeight="604.0" prefWidth="752.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="hboxlabe" alignment="CENTER" layoutX="10.0" prefHeight="580.0" prefWidth="772.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <ImageView fx:id="prodimgview" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="50.0" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" translateX="58.0" />
+                  <VBox fx:id="vboxlabe" alignment="CENTER_LEFT" prefHeight="580.0" prefWidth="389.0" spacing="25.0" translateX="60.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="61.0" text="Nom:">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label fx:id="nomprodlabel" prefHeight="17.0" prefWidth="250.0" />
+                        <Label text="Prix:">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label fx:id="prixprodlabel" layoutX="20.0" layoutY="70.0" prefHeight="17.0" prefWidth="250.0" />
+                        <Label fx:id="descriptionprodlabel" layoutY="160.0" prefHeight="17.0" prefWidth="250.0" />
+                        <Label text="Description:">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label text="Note:">
+                           <font>
+                              <Font size="22.0" />
+                           </font></Label>
+                        <Label fx:id="notelabel" />
+                        <Label fx:id="dispoprodlabel" layoutY="210.0" prefHeight="17.0" prefWidth="250.0" />
+                        <Rating fx:id="ratingstar" onMouseClicked="#ratted" rating="0.0">
+                           <effect>
+                              <DropShadow color="#1372f4" />
+                           </effect>
+                        </Rating>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <FontAwesomeIconView fx:id="returnprod" glyphName="ARROW_LEFT" layoutX="41.0" layoutY="130.0" onMouseClicked="#returnprodonclic" size="20" wrappingWidth="31.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="frontprodanchor" layoutX="10.0" layoutY="10.0" prefHeight="604.0" prefWidth="752.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FlowPane fx:id="listprodbycat" layoutX="49.0" layoutY="53.0" prefHeight="337.0" prefWidth="541.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <FontAwesomeIconView fx:id="returntocat" glyphName="ARROW_LEFT" layoutX="21.0" layoutY="98.0" onMouseClicked="#reterntocatonclick" size="20" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="catfrontanchor" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane fx:id="scrolcat" prefHeight="604.0" prefWidth="745.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <FlowPane fx:id="flowcatfront" prefHeight="602.0" prefWidth="751.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pidev_javafx.entitie.Category;
@@ -33,8 +35,27 @@ public class ProduitService implements CrudInterface<Produit>{
     @Override
     public ObservableList<Produit> afficher() {
         ObservableList<Produit>prod=FXCollections.observableArrayList(); 
-        String sql="select * from produit";
-        //Category cat=new Category();
+        String sql="select * from produit where date_expiration>=sysdate()";
+        //  Category cat=new Category();
+        CategoryService cs=new CategoryService();
+        //cat=cs.getCatParId(0);
+        try {
+            Statement ste=cnx.createStatement();
+            ResultSet rs= ste.executeQuery(sql);
+            while(rs.next()){
+                Produit c=new Produit(rs.getInt(1),cs.getCatParId(rs.getInt(2)),rs.getString(3), rs.getString(4),rs.getFloat(5),rs.getInt(6),rs.getString(7),rs.getDate(8),rs.getFloat(9));
+                prod.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return prod;
+    }
+    
+    public ObservableList<Produit> afficherarchive() {
+        ObservableList<Produit>prod=FXCollections.observableArrayList(); 
+        String sql="select * from produit where date_expiration<sysdate()";
+        //  Category cat=new Category();
         CategoryService cs=new CategoryService();
         //cat=cs.getCatParId(0);
         try {
@@ -100,7 +121,7 @@ public class ProduitService implements CrudInterface<Produit>{
     
     public ObservableList<Produit> findprodbycat(int idprod){
         ObservableList<Produit>prod=FXCollections.observableArrayList(); 
-        String sql="select * from produit where category_id=?";
+        String sql="select * from produit where category_id=? and date_expiration>=sysdate() ";
         PreparedStatement ste;
         CategoryService cs=new CategoryService();
         try{
@@ -119,33 +140,54 @@ public class ProduitService implements CrudInterface<Produit>{
         return prod;
     }
     
-    
-    ////optenir le produit par id passer en parametre
-    
-        public Produit getProduitParId(int id){
-        String sql="select * from produit where id=?";
-        PreparedStatement ste;
-        CategoryService cs=new CategoryService();
-        try{
-            ste=cnx.prepareStatement(sql);
-            ste.setInt(1, id);
-            ResultSet rs= ste.executeQuery();
-            if(rs.next()){
-                Produit c=new Produit(rs.getInt(1),cs.getCatParId(rs.getInt(2)),rs.getString(3), rs.getString(4),rs.getFloat(5),rs.getInt(6),rs.getString(7),rs.getDate(8),rs.getFloat(9));
+    public Produit findprodbyid(int id) throws SQLException{
+        String sql="SELECT * from produit where id=?";
+            PreparedStatement preparedStatement = cnx.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            CategoryService cs=new CategoryService();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                Produit c=new Produit(resultSet.getInt(1),cs.getCatParId(resultSet.getInt(2)),resultSet.getString(3), resultSet.getString(4),resultSet.getFloat(5),resultSet.getInt(6),resultSet.getString(7),resultSet.getDate(8),resultSet.getFloat(9));
                 return c;
             }
-            
-            
-        }catch(SQLException ex){
+            else 
+                return null;
+    }
+    public void updaterate(int id,float rate){
+        Produit pp=null;
+        try {
+            pp=findprodbyid(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(pp.getNote()==0){
+            String sql="update produit set note=? where id=? ";
+        PreparedStatement ste ;
+        try {
+            ste = cnx.prepareStatement(sql);
+            ste.setFloat(1, rate);
+            ste.setInt(2, id);
+            ste.executeUpdate();
+            System.out.println("note modifiée");
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return null;
-    }
+        }
+        else{
+                String sql="update produit set note=? where id=? ";
+        PreparedStatement ste ;
+        try {
+            ste = cnx.prepareStatement(sql);
+            ste.setFloat(1, (rate+pp.getNote())/2);
+            ste.setInt(2, id);
+            ste.executeUpdate();
+            System.out.println("note modifiée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+                }
         
-               
-
     
-    
-
+}
    
 }

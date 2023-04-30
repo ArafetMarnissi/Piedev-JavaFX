@@ -66,7 +66,7 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
             while(rs.next()){
             LigneCommande c = new LigneCommande(rs.getInt("id"),
                     CS.getCommandeParId(rs.getInt("commande_id")),
-                    PS.getProduitParId(rs.getInt("produits_id")),
+                    PS.findprodbyid(rs.getInt("produits_id")),
                     rs.getInt("quantite_produit"),
                     rs.getFloat("prix_unitaire")
                     );
@@ -131,7 +131,7 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
             while(rs.next()){
             LigneCommande c = new LigneCommande(rs.getInt("id"),
                     CS.getCommandeParId(rs.getInt("commande_id")),
-                    PS.getProduitParId(rs.getInt("produits_id")),
+                    PS.findprodbyid(rs.getInt("produits_id")),
                     rs.getInt("quantite_produit"),
                     rs.getFloat("prix_unitaire")
                     );
@@ -157,7 +157,7 @@ public class LigneCommandeService implements CrudInterface<LigneCommande>{
             while(rs.next()){
             LigneCommande c = new LigneCommande(rs.getInt("id"),
                     CS.getCommandeParId(rs.getInt("commande_id")),
-                    PS.getProduitParId(rs.getInt("produits_id")),
+                    PS.findprodbyid(rs.getInt("produits_id")),
                     rs.getInt("quantite_produit"),
                     rs.getFloat("prix_unitaire")
                     );

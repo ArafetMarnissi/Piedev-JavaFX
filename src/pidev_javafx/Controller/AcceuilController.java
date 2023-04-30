@@ -81,6 +81,8 @@ public class AcceuilController implements Initializable {
     private Scene scene;
     @FXML
     private JFXButton BtnActivite;
+    @FXML
+    private JFXButton btnCategory;
 
     /**
      * Initializes the controller class.
@@ -495,6 +497,23 @@ public VBox creatHboxBtn(Produit produit){
         }
 
         
+    }
+
+    @FXML
+    private void ConsulterCategory(ActionEvent event) {
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Frontmag.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
 }
