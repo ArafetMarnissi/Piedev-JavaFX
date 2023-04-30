@@ -52,7 +52,7 @@ import pidev_javafx.service.SessionManager;
 public class AcceuilController implements Initializable {
 
     @FXML
-    private AnchorPane PaneContent;
+    public AnchorPane PaneContent;
     @FXML
     private ImageView Panier;
     @FXML
@@ -91,7 +91,7 @@ public class AcceuilController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 ///Panier///
-    getData();
+   // getData();
     afficherPanier();
     if(PanierSession.getPanier().isEmpty()){
         btnPasserCommande.setVisible(false);
@@ -99,7 +99,7 @@ public class AcceuilController implements Initializable {
         btnPasserCommande.setVisible(true);
     }
     
-    
+   /* 
     ///tester ajouter Produit
         Produit produit =new Produit();
         produit.setId(20);
@@ -111,7 +111,7 @@ public class AcceuilController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+*/
 
 /////////all Slide Bar//////////       
 pane1.setVisible(false);
@@ -443,6 +443,7 @@ public VBox creatHboxBtn(Produit produit){
       }
       else{
           PanierSession.getInstance().addProduct(produit);
+          LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
           createCarteProduit(produit);
           System.out.println("le produit n'est pas dans le panier");
       }

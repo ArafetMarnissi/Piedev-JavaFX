@@ -153,6 +153,28 @@ public class ActiviteService implements CrudInterface<Activite>{
          }
          return c;
     }
-    
+    public int countActsByCoach(int coach){
+            int i=0;
+        ObservableList<Activite> c=FXCollections.observableArrayList();
+        String SQL="SELECT a.* FROM activite a JOIN coach c ON a.coach_id = c.id WHERE a.coach_id = ?";
+         PreparedStatement ste;
+         try{
+             ste = cnx.prepareStatement(SQL);
+             ste.setInt(1, coach);
+             ResultSet res= ste.executeQuery();
+              CoachService cs=new CoachService();
+
+             while(res.next()){
+                 i=i+1;
+                Coach a=new Coach();
+            a=cs.getCoachById(res.getInt("coach_id"));
+                Activite co=new Activite(res.getInt(1),res.getInt("nbre_place"), res.getString("nom_acitivite"),res.getString("description_activite"),res.getString("image"),res.getDate("date_activite"),res.getTime("time_activite"),res.getTime("end"),a);
+                c.add(co);
+            }
+         }catch (SQLException e){
+             System.out.println(e.getMessage());
+         }
+         return i;
+    }
     
 }

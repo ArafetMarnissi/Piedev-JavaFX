@@ -100,6 +100,8 @@ public class DashbordFrontController implements Initializable {
     private JFXButton btnCoach;
     @FXML
     private JFXButton btnConsulterParticipation;
+    @FXML
+    private JFXButton btnCategorie;
     
   
     /**
@@ -111,7 +113,7 @@ public class DashbordFrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 ///Panier///
-      //  getData();
+
     afficherPanier();
     if(PanierSession.getPanier().isEmpty()){
         btnPasserCommande.setVisible(false);
@@ -431,7 +433,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
   ////Ajouter un produit au panier
   
   public void AjouterProduitPanier(Produit produit) throws IOException {
- 
+      PanierSession.getInstance();
       VBoxPanier.getChildren().clear();
       
       if(PanierSession.getPanier().containsKey(produit))
@@ -454,6 +456,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
       }
       else{
           PanierSession.getInstance().addProduct(produit);
+          LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
           createCarteProduit(produit);
           System.out.println("le produit n'est pas dans le panier");
       }
@@ -479,6 +482,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            SessionManager.setStatus(false);
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -524,8 +528,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
     @FXML
     private void consulterActivite(ActionEvent event) {
         
-        
-        try {
+         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
             Pane autreInterface = loader.load();
             
@@ -559,6 +562,22 @@ private void ConsulterMesCommandes(ActionEvent event) {
     private void ConsulterMesParticipation(ActionEvent event) {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeParticipationsUser.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ConsulterCategory(ActionEvent event) {
+                        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Frontmag.fxml"));
             Pane autreInterface = loader.load();
             
             Region parent = (Region) loader.getRoot();

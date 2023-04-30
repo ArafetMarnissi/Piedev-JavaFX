@@ -37,6 +37,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -45,9 +47,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import pidev_javafx.entitie.Category;
+import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
 import pidev_javafx.service.CategoryService;
 import pidev_javafx.service.ProduitService;
+import pidev_javafx.service.SessionManager;
 import pidev_javafx.tools.Statics;
 
 /**
@@ -264,6 +268,69 @@ public class FrontmagController implements Initializable {
             });
             icon1.setOnMouseExited(event -> {
             icon1.setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
+            });
+            icon1.setOnMouseClicked(event -> {
+                if(SessionManager.isStatus()){
+                
+                 try{
+                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
+                       Parent root = loader.load();
+                       pidev_javafx.controller.DashbordFrontController controller = loader.getController();
+                       controller.AjouterProduitPanier(produit);
+                     
+                                                       /* try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }*/
+                                                        pan.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(pidev_javafx.controller.AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                
+                
+                
+                }else{
+                                    try{
+                                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
+                                        Parent root = loader.load();
+                                       pidev_javafx.controller.AcceuilController controller = loader.getController();
+                                       controller.AjouterProduitPanier(produit);
+                     
+                                                       /* try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }*/
+                                                       // pan.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(pidev_javafx.controller.AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                                    
+
+                
+                }
+               
             });
             //FontAwesomeIconView icon2 = new FontAwesomeIconView();
             Label lllll=new Label("   \n"

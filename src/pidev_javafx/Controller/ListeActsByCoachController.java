@@ -335,6 +335,13 @@ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 "    -fx-max-height: 40px;");
             v1.getChildren().add(btn2);
                 }
+                                else{
+            Label erreur_place=new Label("Pas de place disponible");
+            erreur_place.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
+            erreur_place.setAlignment(Pos.CENTER);
+            erreur_place.setStyle("-fx-text-fill:#f00020");
+            v1.getChildren().add(erreur_place);
+                }
             }
             
             
