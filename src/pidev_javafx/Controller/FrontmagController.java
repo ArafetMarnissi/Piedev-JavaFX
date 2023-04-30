@@ -5,6 +5,7 @@
  */
 package pidev_javafx.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -35,6 +37,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -82,8 +85,6 @@ public class FrontmagController implements Initializable {
     private FlowPane listprodbycat;
     @FXML
     private FontAwesomeIconView returntocat;
-    @FXML
-    private TextField rechercherfield;
     @FXML
     private AnchorPane catfrontanchor;
     @FXML
@@ -140,7 +141,14 @@ public class FrontmagController implements Initializable {
                 card.setPrefSize(150, 150);
                 scrolcat.setContent(flowcatfront);
                 //card.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
-                card.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+                card.setStyle("-fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+                card.setOnMouseEntered(e->{
+                    card.setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+                });
+                card.setOnMouseExited(e->{
+                    card.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+
+                });
                 ImageView imageView;
             try {
                 imageView = new ImageView(new Image(new FileInputStream(Statics.uploadDirectory+cat.getImageCategory())));
@@ -171,10 +179,24 @@ public class FrontmagController implements Initializable {
         ObservableList<Produit>listp=FXCollections.observableArrayList();
         listp=ps.findprodbycat(idc);
         //listp=ps.afficher();
-        for(Produit produit:listp){
+        if(listp.isEmpty()){
+                Label tt=new Label("cette categorie est vide");
+                tt.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+                listprodbycat.setAlignment(Pos.CENTER);
+                listprodbycat.getChildren().add(tt);
+                }else{
+            for(Produit produit:listp){
             VBox card=new VBox();
             card.setPrefSize(150, 150);
-            card.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+            card.setStyle("-fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+            if(produit.getQuantite_produit()!=0){
+                card.setOnMouseEntered(e->{
+            card.setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        });
+            card.setOnMouseExited(event -> {
+            card.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+            });
+            }
             
             
             ImageView imgview;
@@ -190,27 +212,31 @@ public class FrontmagController implements Initializable {
             Label namelabel=new Label(produit.getNom());     
             namelabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
             namelabel.setAlignment(Pos.CENTER);
-            card.getChildren().add(namelabel);
+            //card.getChildren().add(namelabel);
             Label prixLabel=new Label(Float.toString(produit.getPrix_produit())+"DT");
             prixLabel.setWrapText(true);
             prixLabel.setAlignment(Pos.CENTER);
-            card.getChildren().add(prixLabel);
+            //card.getChildren().add(prixLabel);
             Rating rateprod=new Rating();
             rateprod.setDisable(true);
             rateprod.setPrefSize(50, 50);
             rateprod.setRating(Math.floor(produit.getNote()));
-            card.getChildren().add(rateprod);
+            rateprod.setStyle("-fx-background-color: transparent; -fx-shadow-highlight-color: transparent; -fx-shadow-highlight-size: 0; -fx-shadow-raise: 0; -fx-shadow-color: transparent; -fx-shadow-size: 0;");
+            //card.getChildren().add(rateprod);
+            Label dd;
             if(produit.getQuantite_produit()==0){
                 Label dispo=new Label("Out Of Stock");
+                dd=dispo;
                 dispo.setAlignment(Pos.CENTER);
                 dispo.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
                 dispo.setTextFill(Color.WHITE);
-                card.getChildren().add(dispo);
+                //card.getChildren().add(dispo);
             }else{
                 Label dispo=new Label("In Stock");
+                dd=dispo;
                 dispo.setAlignment(Pos.CENTER);
                 dispo.setTextFill(Color.GREEN);
-                card.getChildren().add(dispo);
+                //card.getChildren().add(dispo);
                 card.setOnMouseClicked(e->{
                     setlabelprod(produit);
                     pan.toFront();
@@ -218,11 +244,42 @@ public class FrontmagController implements Initializable {
             }
             Label catLabel=new Label(produit.getCategory().getNomCategory());
             catLabel.setAlignment(Pos.CENTER);
-            card.getChildren().add(catLabel);
+            //card.getChildren().add(catLabel);
+            VBox hbox = new VBox();
+            hbox.getChildren().addAll(namelabel, prixLabel, rateprod,dd);
+            hbox.setAlignment(Pos.CENTER_LEFT);
+            hbox.setSpacing(10);
+
+            FontAwesomeIconView icon1 = new FontAwesomeIconView(FontAwesomeIcon.CART_PLUS);
+            icon1.getStyleClass().add("icon1");
+            icon1.setSize("30");
+            icon1.setOnMouseEntered(event -> {
+            icon1.setStyle("-fx-scale-x: 1.3; -fx-scale-y: 1.3; -fx-transition: -fx-font-size 0.3s;");
+            });
+            icon1.setOnMouseExited(event -> {
+            icon1.setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
+            });
+            //FontAwesomeIconView icon2 = new FontAwesomeIconView();
+            Label lllll=new Label("   \n"
+                    + "\n"
+                    + "\n");
+            if(dd.getText()=="In Stock"){
+            HBox hbox2 = new HBox();
+            hbox2.getChildren().addAll(hbox,icon1);
+            hbox2.setAlignment(Pos.CENTER_RIGHT);
+            card.getChildren().addAll(hbox, hbox2);
+            }
+            else{
+                HBox hbox2 = new HBox();
+            hbox2.getChildren().addAll(hbox,lllll);
+            hbox2.setAlignment(Pos.CENTER_RIGHT);
+            card.getChildren().addAll(hbox, hbox2);
+            }
             
             listprodbycat.getChildren().add(card);
             listprodbycat.setMargin(card, new Insets(5, 5, 5, 5));
     }
+        }
     }
     public void cat(int id){
         this.idc=id;

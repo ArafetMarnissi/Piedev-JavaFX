@@ -6,8 +6,10 @@
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/test/NewFXMain.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/ProdByCatController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/logo1.png</file>
+            <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/Stat.fxml</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/ProduitController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/AllCategoryController.java</file>
+            <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/StatController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/DetailprodController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/AcceuilController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/service/LigneCommandeService.java</file>
@@ -19,6 +21,7 @@
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/test/Test.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/entitie/Commande.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/entitie/Category.java</file>
+            <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/FrontmagController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/CategoryupdateController.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/Detailprod.fxml</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/Produit.fxml</file>
@@ -35,6 +38,7 @@
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/test/NewFXMain1.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/test/testt.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/testprod.fxml</file>
+            <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/Frontmag.fxml</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/tools/Statics.java</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx.GUI/acceuil.fxml</file>
             <file>file:/C:/Users/damma/OneDrive/Bureau/javafx/javafxpidev/src/pidev_javafx/Controller/DisplayProductController.java</file>

@@ -35,7 +35,7 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/acceuil.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/pidev_javafx.GUI/Frontmag.fxml"));
             Scene scene = new Scene(root, 1000, 700);
             primaryStage.setTitle("Acceuil");
             primaryStage.setScene(scene);
@@ -46,7 +46,7 @@ public class NewFXMain extends Application {
         SMS ss=new SMS();
         for(Produit p:listprod){
             if(p.getQuantite_produit()>0 && p.getQuantite_produit()<5){
-                ss.sms(p.getNom());
+                //ss.sms(p.getNom());
             }
         }
         } catch (IOException ex) {
