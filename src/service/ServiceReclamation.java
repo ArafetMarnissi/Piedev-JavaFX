@@ -45,6 +45,7 @@ public class ServiceReclamation implements IService<Reclamation>{
                     + " `date_reclamtion`) "
                     + "VALUES ('"+FilterBadWord.filter(t.getDescription_reclamation())+"',"
                     + "'"+t.getType_reclamation()+"','"+t.getDate_reclamation()+"')";
+            
             Statement st=conn.createStatement();
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -55,7 +56,33 @@ public class ServiceReclamation implements IService<Reclamation>{
             Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public void ajouterReclamationParUser(Reclamation t,int id_user){
+        try {
+            int id_reclamation=0;
+            
+            String query="INSERT INTO `reclamation`"
+                    + "(`description_reclamation`, `type_reclamation`,"
+                    + " `date_reclamtion`) "
+                    + "VALUES ('"+FilterBadWord.filter(t.getDescription_reclamation())+"',"
+                    + "'"+t.getType_reclamation()+"','"+t.getDate_reclamation()+"')";
+            
+            Statement st=conn.createStatement();
+            st.executeUpdate(query,Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs=st.getGeneratedKeys();
+            if(rs.next()){
+                id_reclamation=rs.getInt(1);
+            }
+            String query2="INSERT INTO `user_reclamation`(`id_user`, `id_reclamation`) VALUES ('"+id_user+"','"+id_reclamation+"')";
+            st.executeUpdate(query2);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     @Override
     public void modifier(int id, Reclamation t) {
         try {
@@ -98,7 +125,7 @@ public class ServiceReclamation implements IService<Reclamation>{
                 Reclamation r=new Reclamation();
                 Date d=new Date();
                 try {
-                    SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+                    SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
                     d=dateFormat.parse(rs.getString("date_reclamtion"));
                 } catch (ParseException ex) {
                     Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +148,37 @@ public class ServiceReclamation implements IService<Reclamation>{
                 .stream()
                 .sorted(Comparator.comparing(Reclamation::getDescription_reclamation))
                 .collect(Collectors.toList());
+    }
+    public Reclamation getById(int idreclamation){
+        return afficher().stream().filter(r->r.getId()==idreclamation).findFirst().orElse(null);
+    }
+    public boolean isBlocked(int id_user){
+        int nb=0;
+        try {
+            String query="SELECT * FROM `user_reclamation`";
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(query);
+            while(rs.next()){
+                if(id_user==rs.getInt("id_user")){
+                    Reclamation r=getById(rs.getInt("id_reclamation"));
+                    if(r.getDate_reclamation()!=null){
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        System.out.println("****"+r.getDate_reclamation());
+                        if(r.getDate_reclamation().equals(dateFormat.format(new Date()))){
+                            nb++;
+                        }
+                    }
+                    
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(nb>=2){
+            return true;
+        }
+        return false;
+        
     }
     
 }

@@ -59,7 +59,7 @@ public class Reclamation {
     }
 
     public String getDate_reclamation() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
         String date=dateFormat.format(date_reclamation);
         return date;
     }
@@ -70,7 +70,7 @@ public class Reclamation {
 
     @Override
     public String toString() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
         String date=dateFormat.format(date_reclamation);
         return "Reclamation{" + "id=" + id + ", description_reclamation=" + description_reclamation + ", type_reclamation=" + type_reclamation + ", date_reclamation=" + date + '}'+"\n";
     }

@@ -51,14 +51,18 @@ public class FXMLreclamationuserController implements Initializable {
     int nblimit=0;
     @FXML
     private Button btnenvoyer;
-    
+    int id_login=2;// integration
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        if(sr.isBlocked(id_login)){
+            btnenvoyer.setDisable(true);
+            tfdescription.setDisable(true);
+            cbtype.setDisable(true);
+        }
         cbdata.add(TypeReclamation.Abonnement);
         cbdata.add(TypeReclamation.Activite);
         cbdata.add(TypeReclamation.Commande);
@@ -79,11 +83,7 @@ public class FXMLreclamationuserController implements Initializable {
             alert.showAndWait();
         }
         else{
-            if(nblimit>=2){
-                Alert alert=new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("invalide");
-                alert.setContentText("Vous n'avez pas le droit d'ajouter une autre reclamation !");
-                alert.showAndWait();
+            if(sr.isBlocked(id_login)){
                 btnenvoyer.setDisable(true);
                 tfdescription.setDisable(true);
                 cbtype.setDisable(true);
@@ -98,8 +98,12 @@ public class FXMLreclamationuserController implements Initializable {
                 tray.setNotificationType(NotificationType.SUCCESS);
                 tray.showAndDismiss(Duration.millis(2000));
                 //NOTIFICATION
-                sr.ajouter(r);
-                nblimit++;
+                sr.ajouterReclamationParUser(r,id_login);
+                if(sr.isBlocked(id_login)){
+                    btnenvoyer.setDisable(true);
+                    tfdescription.setDisable(true);
+                    cbtype.setDisable(true);
+                }
             }
             
         }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -96,7 +100,22 @@ public class FXMLreclamationadminController implements Initializable {
     private void supprimer(ActionEvent event) {
         Reclamation rec=tvreclamation.getSelectionModel().getSelectedItem();
         if(rec!=null){
-            sr.supprimer(rec.getId());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Reclamation");
+            alert.setHeaderText("Are you sure you want to delete this reclamation?");
+            alert.setContentText("Press Yes to confirm, or No to cancel.");
+
+            // Add Yes and No buttons
+            ButtonType buttonYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType buttonNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+            // Get the result of the user's choice
+            Optional<ButtonType> result = alert.showAndWait();
+
+            // Perform actions based on the user's choice
+            if (result.isPresent() && result.get() == buttonYes) {
+                sr.supprimer(rec.getId());
             //NOTIFICATION
                 TrayNotification tray=new TrayNotification();
                 tray.setAnimationType(AnimationType.FADE);
@@ -106,6 +125,14 @@ public class FXMLreclamationadminController implements Initializable {
                 tray.showAndDismiss(Duration.millis(2000));
                 //NOTIFICATION
             refresh(sr.afficher());
+            } 
+
+
+
+
+
+
+            
         }
     }
     public void refresh(List<Reclamation> reclamations){

@@ -28,12 +28,13 @@ public class GstReclamation {
         // TODO code application logic here
        ServiceReclamation sr=new ServiceReclamation();
         ServiceReponse srep=new ServiceReponse();
-       Reclamation r=new Reclamation("hello world",TypeReclamation.Activite,new Date());
+       Reclamation r=new Reclamation("hello fucking world",TypeReclamation.Activite,new Date());
        //sr.ajouter(r);
+       //sr.ajouterReclamationParUser(r, 2);
        //sr.modifier(38, r);
        //sr.supprimer(38);
        //System.out.println(sr.afficher());
-        System.out.println(FilterBadWord.filter("hello shit world"));
+        //System.out.println(FilterBadWord.filter("hello fucking world"));
     }
     
 }

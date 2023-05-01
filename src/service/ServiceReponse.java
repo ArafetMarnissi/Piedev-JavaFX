@@ -33,7 +33,7 @@ public class ServiceReponse implements IService<Reponse>{
     public ServiceReponse(){
         conn=MyConnection.getInstance().getConn();
     }
-    SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yy");
+    SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
     @Override
     public void ajouter(Reponse t) {
         try {

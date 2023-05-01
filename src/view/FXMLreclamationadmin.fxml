@@ -6,10 +6,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1543.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLreclamationadminController">
+<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1543.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLreclamationadminController">
    <children>
       <TableView fx:id="tvreclamation" layoutX="797.0" layoutY="116.0" prefHeight="455.0" prefWidth="732.0">
         <columns>
@@ -19,11 +21,11 @@
         </columns>
       </TableView>
       <TextArea fx:id="tfreponse" layoutX="353.0" layoutY="198.0" prefHeight="234.0" prefWidth="414.0" />
-      <Button layoutX="518.0" layoutY="546.0" mnemonicParsing="false" onAction="#repondre" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Repondre" textFill="WHITE">
+      <Button layoutX="518.0" layoutY="546.0" mnemonicParsing="false" onAction="#repondre" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Répondre" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="1142.0" layoutY="583.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Supprimer" textFill="WHITE">
+      <Button layoutX="1103.0" layoutY="582.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="59.0" prefWidth="159.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="           Supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
@@ -33,7 +35,23 @@
          </font>
       </Label>
       <TextField fx:id="tfrecherche" layoutX="910.0" layoutY="60.0" promptText="Recherche" />
-      <Button layoutX="1148.0" layoutY="60.0" mnemonicParsing="false" onAction="#tri" text="Tri" />
-      <Button layoutX="1290.0" layoutY="60.0" mnemonicParsing="false" onAction="#stat" text="Stat" />
+      <Button layoutX="1148.0" layoutY="52.0" mnemonicParsing="false" onAction="#tri" prefHeight="38.0" prefWidth="62.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Tri" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="1290.0" layoutY="53.0" mnemonicParsing="false" onAction="#stat" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: blue; -fx-background-radius: 15;" text="Statistiques" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="50.0" layoutX="1113.0" layoutY="588.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/eraser.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
