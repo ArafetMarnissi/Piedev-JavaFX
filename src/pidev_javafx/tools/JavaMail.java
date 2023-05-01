@@ -30,8 +30,8 @@ public class JavaMail {
         properties.put("mail.smtp.host", "smtp.office365.com");
         properties.put("mail.smtp.port", "587");
 
-        String myAccountEmail = "goldengym2023@outlook.com";   //    goldengympidev@gmail.com
-        String password = "Golden2023";
+        String myAccountEmail = "pidev2223@outlook.com";   //    goldengympidev@gmail.com
+        String password = "saif1234";
         
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
@@ -50,8 +50,7 @@ private static Message prepareMessage(Session session,String myAccountEmail, Str
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("Reservation confirmée");
-            message.setText("Votre reservation a été effectuée avec succès. \n\nDétails de la réservation : \nDate de début : " + dateDebut + "\nDate de fin : " + dateFin +"\n\nDétails de l'abonnement reserve : \nNom : " + nom + "\nPrix : " + prix + "\nDuree : " + duree );
-            return message;
+            message.setText("Votre résérvation a été effectuée avec succès. \n\nDétails de la réservation : \nDate de début : " + dateDebut + "\nDate de fin : " + dateFin +"\n\nDétails de l'abonnement résérvé : \nNom : " + nom + "\nPrix : " + prix + "\nDuree : " + duree );            return message;
         } catch (Exception ex) {
             Logger.getLogger(JavaMail.class.getName()).log(Level.SEVERE, null, ex);
         }

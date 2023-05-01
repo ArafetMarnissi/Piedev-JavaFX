@@ -246,12 +246,12 @@ private void Addreservation(Abonnement ab) {
         String recepient = "saifzrb@gmail.com";
         JavaMail mail = new JavaMail();
         
-        /*try {
+        try {
             //mail.sendMail(recepient);
             mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
         } catch (Exception ex) {
             Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/ 
+        } 
         }
     else {
         if(derniereReservation.getDateFin() != null && derniereReservation.getDateFin().after(Date.valueOf(dateActuelle1)))
@@ -270,12 +270,12 @@ private void Addreservation(Abonnement ab) {
         labelReservation.setText("Vous avez reservez un abonnement "+ab.getNomAbonnement()+" "+ab.getDureeAbonnement());          
         String recepient = "saifzrb@gmail.com";
         JavaMail mail = new JavaMail();
-        /*try {
+        try {
             //mail.sendMail(recepient);
             mail.sendMail(recepient,debutAbo, finAbo, ab.getNomAbonnement(), ab.getPrixAbonnement(), ab.getDureeAbonnement());
         } catch (Exception ex) {
             Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/     
+        }     
         }
     }        
     } else {

@@ -3,62 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/CRUD_ActiviteController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/DashbordBack.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/Acceuil.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCoachsController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/DashbordFrontController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Participation.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeActsByCoachController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/JavaMail.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ProduitService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/DetailsActiviteFrontController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/CartPanierController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AllCategoryController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/Frontmag.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AffichageController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/PdfService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/DashbordBackController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/ReservationController.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Category.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Activite.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Controller/ListeCommandeClientController.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/NewFXMain.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/CRUD_CoachController.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Commande.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AffichageActiviteFrontController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/FrontmagController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/UserService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AffichageParticipationController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CommandeService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CategoryService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandeClientController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AllProductController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/SMS.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/HomeAboController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AllProduct.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/tools/Statics.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Participation.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AffichageActiviteFront.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AllCategory.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/LigneCommandeService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ActiviteService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/CRUD_Coach.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AffichageParticipation.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/Stat.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Coach.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/CarteAbonnementController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CoachService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ReservationService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/AcceuilController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/AbonnementService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeCommandebackController.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/test/Test.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ParticipationService.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/StatController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/LigneCommandeService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/ProduitService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Controller/DashbordBackController.java</file>
             <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Produit.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/CRUD_Activite.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/verifyAccount.fxml</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/controller/ListeParticipationsUserController.java</file>
-            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/PanierSession.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/service/CommandeService.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/gui/AffichageParticipation.fxml</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/Controller/CartPanierController.java</file>
+            <file>file:/C:/Users/marni/OneDrive/Documents/NetBeansProjects/Pidev_javaFX/src/pidev_javafx/entitie/Coach.java</file>
         </group>
     </open-files>
 </project-private>

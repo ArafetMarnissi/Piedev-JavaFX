@@ -109,16 +109,30 @@ public class LoginController implements Initializable {
              //not verified
              else if (user.getRole().equals("[\"ROLE_CLIENT\"]") && user.isStatus()==false)
              {
-                 try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/verifyAccount.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-    }
+                                    try{
+                                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
+                                        Parent root = loader.load();
+                                       AcceuilController controller = loader.getController();
+                     
+                                                        try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/verifyAccount.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }
+                                                        LoginEmail.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
              }
              else if (user.getRole().equals("[\"ROLE_ADMIN\"]"))
              {
