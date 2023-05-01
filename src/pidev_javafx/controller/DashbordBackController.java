@@ -242,12 +242,13 @@ private void Listabonnement(ActionEvent event) {
 
     @FXML
     private void logoutBack(ActionEvent event) {
-        try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
+     try {
+            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            SessionManager.EndSession();
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

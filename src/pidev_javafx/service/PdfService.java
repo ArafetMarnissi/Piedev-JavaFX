@@ -32,8 +32,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.image.ImageView;
 import pidev_javafx.entitie.Commande;
 import pidev_javafx.entitie.LigneCommande;
+import pidev_javafx.tools.Statics;
 
 /**
  *
@@ -113,7 +115,11 @@ public class PdfService {
             for (int i=0;i<ListLigneCommande.size();i++){
                 //cell = new PdfPCell(new Phrase("img", FontFactory.getFont("Comic Sans MS",12)));
                 //Image image =new Image(new FileInputStream(ListLigneCommande.get(i).getProduit().getImage_produit()));
-                Image image = Image.getInstance("C:\\Users\\marni\\OneDrive\\Documents\\NetBeansProjects\\Pidev_javaFX\\src\\pidev_javafx\\assets\\whey-63f4b48509ee1.jpg");
+  
+                Image image = Image.getInstance(Statics.uploadDirectoryProduit1+ListLigneCommande.get(i).getProduit().getImage_produit());           
+
+            
+            
                 image.scalePercent(20);
                 cell =new PdfPCell();
                 cell.addElement(image);

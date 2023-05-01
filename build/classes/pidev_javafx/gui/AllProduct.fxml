@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev_javafx.controller.AllProductController">
    <children>
@@ -21,12 +20,20 @@
             <FlowPane fx:id="flowarchiveprod" layoutX="16.0" layoutY="6.0" prefHeight="673.0" prefWidth="849.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
+      <AnchorPane id="AnchorPane" fx:id="anchoraffichageprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FlowPane fx:id="panaff" layoutX="134.0" layoutY="83.0" prefHeight="664.0" prefWidth="839.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="versacceuilbtn" layoutX="3.0" layoutY="228.0" mnemonicParsing="false" onAction="#versacceuilonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Tout les produits" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
+            <Button fx:id="versajoutbtn" layoutX="2.0" layoutY="156.0" mnemonicParsing="false" onAction="#versajouonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="ajouter" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
+            <Button fx:id="archivebtn" layoutY="290.0" mnemonicParsing="false" onAction="#archiveonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Archive" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane id="AnchorPane" fx:id="anchorupdateprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="btnmodif" layoutX="423.0" layoutY="619.0" mnemonicParsing="false" onAction="#btnmodifonclick" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Modifier " textFill="WHITE" />
             <FontAwesomeIconView fx:id="closeicon" glyphName="CLOSE" layoutX="661.0" layoutY="31.0" onMouseClicked="#closemodif" size="20" wrappingWidth="33.000004291534424" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
             <Label fx:id="errprix" layoutX="108.0" layoutY="122.0" textFill="RED" />
-
+            <Label fx:id="errprix" layoutX="108.0" layoutY="189.0" textFill="RED" />
             <Label layoutX="108.0" layoutY="255.0" textFill="RED" />
             <Label fx:id="errdesc" layoutX="493.0" layoutY="157.0" textFill="RED" />
             <Label fx:id="errdate" layoutX="467.0" layoutY="210.0" textFill="RED" />
@@ -63,18 +70,10 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane id="AnchorPane" fx:id="anchoraffichageprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <FlowPane fx:id="panaff" layoutX="134.0" layoutY="83.0" prefHeight="664.0" prefWidth="839.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="versacceuilbtn" layoutX="3.0" layoutY="228.0" mnemonicParsing="false" onAction="#versacceuilonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Tout les produits" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
-            <Button fx:id="versajoutbtn" layoutX="2.0" layoutY="156.0" mnemonicParsing="false" onAction="#versajouonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="ajouter" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
-            <Button fx:id="archivebtn" layoutY="290.0" mnemonicParsing="false" onAction="#archiveonclick" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Archive" textFill="WHITE" AnchorPane.leftAnchor="5.0" />
-         </children>
-      </AnchorPane>
       <AnchorPane id="AnchorPane" fx:id="anchorajoutprod" layoutX="10.0" layoutY="10.0" prefHeight="684.0" prefWidth="983.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="btnaff" layoutX="603.0" layoutY="27.0" mnemonicParsing="false" onAction="#affonclick" style="-fx-background-radius: 25px; -fx-background-color: #1372f4;" text="Retour vers affichage" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-            <GridPane layoutX="74.0" layoutY="87.0" prefHeight="392.0" prefWidth="856.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="87.0">
+            <GridPane layoutX="74.0" layoutY="87.0" prefHeight="498.0" prefWidth="856.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="87.0">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -85,6 +84,7 @@
                   <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
@@ -109,13 +109,9 @@
                   <Label fx:id="erreurdate" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                   <Label fx:id="erreurprix" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                   <Label fx:id="erreurimg" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                  <Button fx:id="addprod" mnemonicParsing="false" onAction="#addprod" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <VBox alignment="CENTER" layoutX="205.0" layoutY="511.0" prefHeight="60.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Button fx:id="addprod" mnemonicParsing="false" onAction="#addprod" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #1372f4; -fx-background-radius: 25px;" text="Ajouter" textFill="WHITE" />
-               </children>
-            </VBox>
          </children>
       </AnchorPane>
    </children>

@@ -23,7 +23,7 @@
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="PrixProduitCart" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="70.0" text="Prix">
+                  <Label fx:id="PrixProduitCart" prefHeight="44.0" prefWidth="70.0" text="Prix">
                      <font>
                         <Font name="Cambria Bold" size="14.0" />
                      </font>

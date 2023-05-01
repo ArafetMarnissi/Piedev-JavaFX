@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import pidev_javafx.entitie.User;
 import pidev_javafx.service.UserService;
@@ -161,16 +165,30 @@ public class AddUserController implements Initializable {
 
     @FXML
     private void rediriger(ActionEvent event) {
-        try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/login.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-    }
+                                            try{
+                                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
+                                        Parent root = loader.load();
+                                       AcceuilController controller = loader.getController();
+                     
+                                                        try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Login.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }
+                                                        emailControl.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
     }
     
 }

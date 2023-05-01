@@ -35,8 +35,8 @@ public class NewFXMain extends Application {
             
             primaryStage.setTitle("Reservation");
             primaryStage.setScene(scene);
-            primaryStage.setMinHeight(700);
-            primaryStage.setMinWidth(1095);
+            primaryStage.setMinHeight(800);
+            primaryStage.setMinWidth(1200);
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

@@ -102,6 +102,24 @@ public class DashbordFrontController implements Initializable {
     private JFXButton btnConsulterParticipation;
     @FXML
     private JFXButton btnCategorie;
+    @FXML
+    private ImageView imgParticipation;
+    @FXML
+    private ImageView imgActivite;
+    @FXML
+    private ImageView imgCoach;
+    @FXML
+    private ImageView imgCategorie;
+    @FXML
+    private ImageView imgCommande;
+    @FXML
+    private ImageView imgReservation;
+    @FXML
+    private ImageView imgReclamation;
+    @FXML
+    private ImageView imgMonCompte;
+    @FXML
+    private ImageView imgSupport;
     
   
     /**
@@ -111,7 +129,20 @@ public class DashbordFrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+///
 
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Frontmag.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 ///Panier///
 
     afficherPanier();
@@ -120,9 +151,10 @@ public class DashbordFrontController implements Initializable {
     }else{
         btnPasserCommande.setVisible(true);
     }
- 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////all Slide Bar//////////       
 pane1.setVisible(false);
 hideMenuPane();
@@ -135,7 +167,10 @@ menu.setOnMouseClicked(event -> {
 });
 
 Panier.setOnMouseClicked(event -> {
+     afficherPanier();
     showCartPane();
+    //afficherPanier();
+   
     
 });
 
@@ -349,6 +384,7 @@ public VBox creatHboxBtn(Produit produit){
                 return vboxallBtn;
 }
 
+
 @FXML
 private void ConsulterMesCommandes(ActionEvent event) {
         try {
@@ -380,7 +416,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
 @FXML
   private void PasserCommande(ActionEvent event) {
         
-      if(SessionManager.isStatus()){
+      if(SessionManager.getInstance()!=null){
             try {
                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
                   Pane autreInterface = loader.load();
@@ -458,6 +494,7 @@ private void ConsulterMesCommandes(ActionEvent event) {
           PanierSession.getInstance().addProduct(produit);
           LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
           createCarteProduit(produit);
+          System.out.println(mapHashbox.toString());
           System.out.println("le produit n'est pas dans le panier");
       }
  
@@ -471,6 +508,32 @@ private void ConsulterMesCommandes(ActionEvent event) {
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
  }
+  public void reloadPanier(){
+      
+    if(PanierSession.getPanier().isEmpty()){
+        btnPasserCommande.setVisible(false);
+    }else{
+        btnPasserCommande.setVisible(true);
+    }
+      System.out.println(mapHashbox.toString());
+  VBoxPanier.getChildren().clear();
+        for(Produit prod :mapHashbox.keySet()){
+        
+        VBoxPanier.getChildren().add(mapHashbox.get(prod));
+
+    }
+    AnchorPane anchorPaneLast = new AnchorPane();
+    anchorPaneLast.setPrefWidth(152);
+    anchorPaneLast.setPrefHeight(278);
+    VBoxPanier.getChildren().add(anchorPaneLast);
+    LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+    
+    
+
+       
+
+    
+  }
 
   
     @FXML
@@ -482,12 +545,14 @@ private void ConsulterMesCommandes(ActionEvent event) {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            SessionManager.setStatus(false);
+            SessionManager.EndSession();
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
     }
     }
+
+
 
     @FXML
     private void myprofil(ActionEvent event) {
@@ -589,4 +654,5 @@ private void ConsulterMesCommandes(ActionEvent event) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }

@@ -32,7 +32,11 @@ import javafx.stage.Stage;
 import pidev_javafx.service.SessionManager;
 import pidev_javafx.service.UserService;
 import java.net.HttpURLConnection;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import pidev_javafx.entitie.User;
 
 
 
@@ -59,6 +63,8 @@ public class LoginController implements Initializable {
     private Button createaccount;
     @FXML
     private PasswordField LoginPassword;
+    @FXML
+    private Hyperlink fpwdbutton;
 
     /**
      * Initializes the controller class.
@@ -69,31 +75,9 @@ public class LoginController implements Initializable {
 
     }    
 
-    private void verifier(InputMethodEvent event) {
-        
-       
-    }
+ 
 
 
-    private void seconnecter(ActionEvent event) {
-       
-        /*  boolean test= us.login(email, password);
-        if (test)
-        {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Félicitations");
-        alert.setHeaderText(null);
-        alert.setContentText("Vous serez redirigé vers votre page d'acceuil." );
-        alert.showAndWait();
-        }
-        else {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Echec");
-        alert.setHeaderText(null);
-        alert.setContentText("Le mot de passe ou l'email fourni est incorrect" );
-        alert.showAndWait();
-        } */
-    }
 
     @FXML
     private void loginUser(ActionEvent event) {
@@ -106,10 +90,11 @@ public class LoginController implements Initializable {
              
         if (test)
         {
+           User user = us.getUserParEmail(email);
             //verified
-             if (SessionManager.getRole().equals("[\"ROLE_CLIENT\"]") && SessionManager.isStatus()==true)
+             if (user.getRole().equals("[\"ROLE_CLIENT\"]") && user.isStatus()==true)
              {
-                 
+                 SessionManager.getInstance(user.getId(), user.getEmail(), user.getRole(), user.getPassword(), user.getNom(), user.getPrenom(), user.getPrivate_key(), user.isStatus());
           try {
             root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -122,7 +107,7 @@ public class LoginController implements Initializable {
     }
              }
              //not verified
-             else if (SessionManager.getRole().equals("[\"ROLE_CLIENT\"]") && SessionManager.isStatus()==false)
+             else if (user.getRole().equals("[\"ROLE_CLIENT\"]") && user.isStatus()==false)
              {
                  try {
             root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/verifyAccount.fxml"));
@@ -135,8 +120,9 @@ public class LoginController implements Initializable {
             System.out.println(ex.getMessage());
     }
              }
-             else if (SessionManager.getRole().equals("[\"ROLE_ADMIN\"]"))
+             else if (user.getRole().equals("[\"ROLE_ADMIN\"]"))
              {
+                SessionManager.getInstance(user.getId(), user.getEmail(), user.getRole(), user.getPassword(), user.getNom(), user.getPrenom(), user.getPrivate_key(), user.isStatus());
                    try {
             root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/DashbordBack.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -164,16 +150,30 @@ public class LoginController implements Initializable {
 
     @FXML
     private void clicksignup(ActionEvent event) {
-         try {
-            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/addUser.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-    }
+                                    try{
+                                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
+                                        Parent root = loader.load();
+                                       AcceuilController controller = loader.getController();
+                     
+                                                        try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AddUser.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }
+                                                        LoginEmail.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
     }
 
     @FXML
@@ -196,6 +196,46 @@ public class LoginController implements Initializable {
          {
              mdpverif.setText("mdp doit être > 8");
          }
+    }
+
+    @FXML
+    private void clickForgotPassword(ActionEvent event) {
+//        
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("/pidev_javafx/gui/forgotPassword.fxml"));
+//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//            scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+
+//    }
+                        try{                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
+                                                        Parent root = loader.load();
+                                                        AcceuilController controller = loader.getController();
+                                                        try {
+                                                            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/forgotPassword.fxml"));
+                                                            Pane autreInterface = loader2.load();
+                                                            Region parent = (Region) loader2.getRoot();
+                                                            parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                                                            parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                                                            
+                                                            controller.PaneContent.getChildren().setAll(autreInterface);
+                                                            
+                                                        } catch (IOException ex) {
+                                                            ex.printStackTrace();
+                                                        }
+                                                        LoginPassword.getScene().setRoot(root);
+                                                        
+                                                        
+                                                        
+                                                    } catch (IOException ex) {
+                                        Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+        
+        
     }
 
    

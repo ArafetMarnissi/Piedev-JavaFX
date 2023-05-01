@@ -84,7 +84,7 @@ public class UserService implements CrudInterface<User> {
         if (rs.getInt(1) > 0) {
             
             exists = true;
-            User us=getUserParEmail(email);
+           /* User us=getUserParEmail(email);
             System.out.println(us.toString());
             // Session Start
             SessionManager.setId(us.getId());
@@ -95,9 +95,9 @@ public class UserService implements CrudInterface<User> {
             SessionManager.setPrivate_key(us.getPrivate_key());
             SessionManager.setStatus(us.isStatus());
             SessionManager.setRole(us.getRole());
-            
+            */
         }
-                System.out.println(rs.getArray(email));
+                //System.out.println(rs.getArray(email));
 
         rs.close();
         stmt.close();

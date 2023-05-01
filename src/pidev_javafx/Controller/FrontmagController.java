@@ -45,6 +45,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 import pidev_javafx.entitie.Category;
 import pidev_javafx.entitie.PanierSession;
@@ -104,6 +106,7 @@ public class FrontmagController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        catfrontanchor.toFront();
         affcat();
     }    
 
@@ -174,6 +177,7 @@ public class FrontmagController implements Initializable {
             });
             card.setAlignment(Pos.CENTER);
             flowcatfront.getChildren().add(card);
+            flowcatfront.setAlignment(Pos.CENTER);
             flowcatfront.setMargin(card, new Insets(5, 5, 5, 5));
           
                     
@@ -193,7 +197,7 @@ public class FrontmagController implements Initializable {
                 }else{
             for(Produit produit:listp){
             VBox card=new VBox();
-            card.setPrefSize(350, 350);
+            card.setPrefSize(270, 270);
             card.setStyle("-fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
             if(produit.getQuantite_produit()!=0){
                 card.setOnMouseEntered(e->{
@@ -208,9 +212,13 @@ public class FrontmagController implements Initializable {
             ImageView imgview;
             try {
                 imgview = new ImageView(new Image(new FileInputStream(Statics.uploadDirectoryProduit1+produit.getImage_produit())));
-                imgview.setFitWidth(320);
-                imgview.setFitHeight(320);
+                imgview.setFitWidth(250);
+                imgview.setFitHeight(250);
                 imgview.setPreserveRatio(true);
+                                imgview.setOnMouseClicked(e->{
+                    setlabelprod(produit);
+                    pan.toFront();
+            });
                 card.getChildren().add(imgview);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FrontmagController.class.getName()).log(Level.SEVERE, null, ex);
@@ -246,10 +254,7 @@ public class FrontmagController implements Initializable {
                 dispo.setAlignment(Pos.CENTER);
                 dispo.setTextFill(Color.GREEN);
                 //card.getChildren().add(dispo);
-                card.setOnMouseClicked(e->{
-                    setlabelprod(produit);
-                    pan.toFront();
-            });
+
             }
             Label catLabel=new Label(produit.getCategory().getNomCategory());
             catLabel.setAlignment(Pos.CENTER);
@@ -270,13 +275,14 @@ public class FrontmagController implements Initializable {
             icon1.setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
             });
             icon1.setOnMouseClicked(event -> {
-                if(SessionManager.isStatus()){
+                if(SessionManager.getInstance()!=null){
                 
                  try{
                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
                        Parent root = loader.load();
                        pidev_javafx.controller.DashbordFrontController controller = loader.getController();
                        controller.AjouterProduitPanier(produit);
+                       notif2("GoldenGym","Succée, Produit Ajouté ");
                      
                                                        /* try {
                                                             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
@@ -290,7 +296,7 @@ public class FrontmagController implements Initializable {
                                                         } catch (IOException ex) {
                                                             ex.printStackTrace();
                                                         }*/
-                                                        pan.getScene().setRoot(root);
+                                                        //pan.getScene().setRoot(root);
                                                         
                                                         
                                                         
@@ -306,6 +312,8 @@ public class FrontmagController implements Initializable {
                                         Parent root = loader.load();
                                        pidev_javafx.controller.AcceuilController controller = loader.getController();
                                        controller.AjouterProduitPanier(produit);
+                                       notif2("GoldenGym","Succée, Produit Ajouté ");
+                                       //controller.VBoxPanier.getChildren().clear();
                      
                                                        /* try {
                                                             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
@@ -320,6 +328,7 @@ public class FrontmagController implements Initializable {
                                                             ex.printStackTrace();
                                                         }*/
                                                        // pan.getScene().setRoot(root);
+                                                        
                                                         
                                                         
                                                         
@@ -350,6 +359,7 @@ public class FrontmagController implements Initializable {
             }
             
             listprodbycat.getChildren().add(card);
+            listprodbycat.setAlignment(Pos.TOP_LEFT);
             listprodbycat.setMargin(card, new Insets(5, 5, 5, 5));
     }
         }
@@ -402,5 +412,35 @@ public class FrontmagController implements Initializable {
         
         
         
+}
+       public void notif2(String title, String text){
+   Image img = new Image("/pidev/javafx/assets/logo1.png");
+   
+   ImageView img1= new ImageView(img);
+                img1.setFitWidth(200);
+                img1.setFitHeight(200);
+                img1.setPreserveRatio(true);
+                img1.setStyle("-fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+
+        Label titleLabel = new Label(title);
+        titleLabel.setFont(Font.font("Verdana",FontWeight.NORMAL, 14));
+
+        // create a label with the message and the Verdana font
+        Label messageLabel = new Label(text);
+        messageLabel.setFont(Font.font("Verdana",FontWeight.BOLD, 16));
+                StackPane customRegion = new StackPane(img1,titleLabel,messageLabel);
+        customRegion.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        customRegion.setAlignment(Pos.CENTER);
+            //customRegion.getChildrenUnmodifiable().add(img1);
+    Notifications notificationBuilder = Notifications.create()
+    .title(title)
+    .text(text)
+            .graphic(img1)
+            .hideAfter(Duration.seconds(5))
+            //.darkStyle()
+            .position(Pos.BOTTOM_RIGHT);
+   
+    notificationBuilder.show();
+         
 }
 }

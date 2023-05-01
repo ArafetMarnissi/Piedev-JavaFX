@@ -28,6 +28,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -38,10 +40,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
+
 import pidev_javafx.service.SessionManager;
 
 /**
@@ -68,7 +73,7 @@ public class AcceuilController implements Initializable {
     @FXML
     private ScrollPane ScrollPanePanierContent;
     @FXML
-    private VBox VBoxPanier;
+    public VBox VBoxPanier;
     @FXML
     private Label LabelPrixTotal;
     @FXML
@@ -89,9 +94,21 @@ public class AcceuilController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+////
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Frontmag.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 ///Panier///
-   // getData();
+
     afficherPanier();
     if(PanierSession.getPanier().isEmpty()){
         btnPasserCommande.setVisible(false);
@@ -99,19 +116,7 @@ public class AcceuilController implements Initializable {
         btnPasserCommande.setVisible(true);
     }
     
-   /* 
-    ///tester ajouter Produit
-        Produit produit =new Produit();
-        produit.setId(20);
-        produit.setNom("Vitamin");
-        produit.setPrix_produit(170);
-        produit.setImage_produit("/pidev_javafx/assets/front-view-fit-woman-training-with-dumbells.jpg");
-        try {
-            AjouterProduitPanier(produit);
-        } catch (IOException ex) {
-            Logger.getLogger(DashbordFrontController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-*/
+
 
 /////////all Slide Bar//////////       
 pane1.setVisible(false);
@@ -125,6 +130,8 @@ menu.setOnMouseClicked(event -> {
 });
 
 Panier.setOnMouseClicked(event -> {
+    //reloadPanier();
+    afficherPanier();
     showCartPane();
     
 });
@@ -209,8 +216,13 @@ private List<Produit> getData(){
 }
 
 public void afficherPanier(){
+        if(PanierSession.getPanier().isEmpty()){
+        btnPasserCommande.setVisible(false);
+    }else{
+        btnPasserCommande.setVisible(true);
+    }
 
-        
+        VBoxPanier.getChildren().clear();
         HashMap<Produit,Integer> panier =PanierSession.getPanier();
         List<Produit> produitsPanier = new ArrayList<>(panier.keySet());
         
@@ -237,6 +249,10 @@ public void afficherPanier(){
 
 public void RemoveItemPanier(Produit produit) throws IOException {
   VBoxPanier.getChildren().clear();
+  
+  
+  //SessionCartPanier.getMapHashBox().remove(produit);
+  
     mapHashbox.remove(produit);
     
     for(Produit prod :mapHashbox.keySet()){
@@ -301,6 +317,7 @@ public VBox creatHboxBtn(Produit produit){
                         PanierSession.getInstance().addProduct(produit);
                         labelQua.setText(panier.get(produit).toString());
                         LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+                        
 
                     }
                 });
@@ -334,7 +351,7 @@ public VBox creatHboxBtn(Produit produit){
 
 @FXML
   private void PasserCommande(ActionEvent event) {
-      if(SessionManager.isStatus()){  
+      if(SessionManager.getInstance()!=null){  
             try {
                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/ListeCommandeClient.fxml"));
                   Pane autreInterface = loader.load();
@@ -355,12 +372,40 @@ public VBox creatHboxBtn(Produit produit){
 
               } 
       }else{
-          Alert confirmation = new Alert(Alert.AlertType.ERROR);
-        confirmation.setTitle("Probléme de connection");
-        confirmation.setHeaderText("Vous n'êtes pas connecté");
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Connexion");
+                                alert.setHeaderText("");
+                                alert.setContentText("Vous devez étre connecté");
+                                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
 
-        Optional<ButtonType> result = confirmation.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK){
+                            ButtonType buttonTypeYes = new ButtonType("Se connecter");
+                            ButtonType buttonTypeNo = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            
+                            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+                            alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+                            Button buttonYes = (Button) alert.getDialogPane().lookupButton(buttonTypeYes);
+                            Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+                            
+
+                                                buttonYes.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                                                        + " -fx-min-width: 130px;\n" +
+                                    "    -fx-max-width: 130px;\n" +
+                                    "    -fx-min-height: 40px;\n" +
+                                    "    -fx-max-height: 40px;");
+                                                buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                                                        + " -fx-min-width: 130px;\n" +
+                                    "    -fx-max-width: 130px;\n" +
+                                    "    -fx-min-height: 40px;\n" +
+                                    "    -fx-max-height: 40px;");
+                                                //buttonCancel.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+                                                    alert.setContentText(null);
+                                                    Label headerLabel1 = new Label("Vous devez étre connecté");
+                                                    headerLabel1.setFont(font);
+                                                    alert.getDialogPane().setContent(headerLabel1);
+
+                                                Optional<ButtonType> result = alert.showAndWait();
+                                                    
+        if (result.isPresent() && result.get() == buttonTypeYes){
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/login.fxml"));
             Pane autreInterface = loader.load();
@@ -447,7 +492,7 @@ public VBox creatHboxBtn(Produit produit){
           createCarteProduit(produit);
           System.out.println("le produit n'est pas dans le panier");
       }
- 
+      System.out.println(mapHashbox.toString());
       for(Produit prod :mapHashbox.keySet()){
         
         VBoxPanier.getChildren().add(mapHashbox.get(prod));
@@ -457,9 +502,35 @@ public VBox creatHboxBtn(Produit produit){
     anchorPaneLast.setPrefWidth(152);
     anchorPaneLast.setPrefHeight(278);
     VBoxPanier.getChildren().add(anchorPaneLast);
+    
  }
 
-  
+    public void reloadPanier(){
+      
+    if(PanierSession.getPanier().isEmpty()){
+        btnPasserCommande.setVisible(false);
+    }else{
+        btnPasserCommande.setVisible(true);
+    }
+      System.out.println(mapHashbox.toString());
+  VBoxPanier.getChildren().clear();
+        for(Produit prod :mapHashbox.keySet()){
+        
+        VBoxPanier.getChildren().add(mapHashbox.get(prod));
+
+    }
+    AnchorPane anchorPaneLast = new AnchorPane();
+    anchorPaneLast.setPrefWidth(152);
+    anchorPaneLast.setPrefHeight(278);
+    VBoxPanier.getChildren().add(anchorPaneLast);
+    LabelPrixTotal.setText(String.format("%.2f", PanierSession.getInstance().calculTotale())+" DT");
+    
+    
+
+       
+
+    
+  }
 
 
 

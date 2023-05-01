@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import pidev_javafx.entitie.PanierSession;
 import pidev_javafx.entitie.Produit;
 import pidev_javafx.controller.DashbordFrontController;
+import pidev_javafx.tools.Statics;
 
 /**
  * FXML Controller class
@@ -64,7 +65,7 @@ public class CartPanierController implements Initializable {
         PrixProduitCart.setText("DT "+produit.getPrix_produit());      
         
         try {
-            imageProduitCart.setImage(new Image(new FileInputStream(produit.getImage_produit())));
+            imageProduitCart.setImage(new Image(new FileInputStream(Statics.uploadDirectoryProduit1+produit.getImage_produit())));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CartPanierController.class.getName()).log(Level.SEVERE, null, ex);
         }

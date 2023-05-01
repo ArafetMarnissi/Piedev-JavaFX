@@ -30,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -42,6 +43,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import pidev_javafx.entitie.Commande;
@@ -185,14 +188,40 @@ public class ListeCommandeClientController implements Initializable {
 
 @FXML
     private void SupprimerCommande(ActionEvent event) {
-       
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirmation de Suppression");
-        confirmation.setHeaderText(" Êtes vous sûrs de supprimer cette commande?");
-        confirmation.setContentText("Cette action est irréversible");
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation de Suppression");
+                                alert.setHeaderText("Êtes vous sûrs de supprimer cette commande?");
+                                alert.setContentText("Cette action est irréversible");
+                                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
 
-        Optional<ButtonType> result = confirmation.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK){
+                            ButtonType buttonTypeYes = new ButtonType("Oui");
+                            ButtonType buttonTypeNo = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            
+                            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+                            alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+                            Button buttonYes = (Button) alert.getDialogPane().lookupButton(buttonTypeYes);
+                            Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+                            
+
+                                                buttonYes.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #1372f4; -fx-background-radius: 25px;"
+                                                        + " -fx-min-width: 130px;\n" +
+                                    "    -fx-max-width: 130px;\n" +
+                                    "    -fx-min-height: 40px;\n" +
+                                    "    -fx-max-height: 40px;");
+                                                buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                                                        + " -fx-min-width: 130px;\n" +
+                                    "    -fx-max-width: 130px;\n" +
+                                    "    -fx-min-height: 40px;\n" +
+                                    "    -fx-max-height: 40px;");
+                                                //buttonCancel.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+                                                    alert.setContentText(null);
+                                                    Label headerLabel1 = new Label("Vous devez étre connecté");
+                                                    headerLabel1.setFont(font);
+                                                    alert.getDialogPane().setContent(headerLabel1);
+
+                                                Optional<ButtonType> result = alert.showAndWait();
+                                                    
+        if (result.isPresent() && result.get() == buttonTypeYes){
             cs.supprimer(tableCommande.getSelectionModel().getSelectedItem());
         } else {
             afficher();
@@ -299,12 +328,12 @@ if (Math.abs(diffInMinutes) > 60) {
                     PdfService PdfS =new PdfService();
                     PdfS.genererPdf(ps.getLatestCommande());
                     ///Send Email 
-                    try {
+                   /* try {
 
                         MailFacture.sendMail(SessionManager.getEmail(), ps.getLatestCommande());
                     } catch (Exception ex) {
                         Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }*/
                     ///vider la panier
                     PanierSession.EndSession();
         

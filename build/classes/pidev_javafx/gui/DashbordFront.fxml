@@ -36,52 +36,47 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="11.0" AnchorPane.topAnchor="20.0">
                <children>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgParticipation" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/tableau-de-bord.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgActivite" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/profil-de-lutilisateur.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                  <ImageView fx:id="imgCoach" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                      <image>
                         <Image url="@../../pidev/javafx/assets/male.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="16.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../pidev/javafx/assets/profil-de-lutilisateur.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgCategorie" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/activites.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgCommande" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/produit.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgReservation" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/categories.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgReclamation" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/livraison-de-la-commande.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgMonCompte" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/sabonner.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgSupport" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/fichier.png" />
                      </image>
@@ -125,11 +120,6 @@
                   <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="16.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../pidev/javafx/assets/male.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../pidev/javafx/assets/produit.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -193,11 +183,6 @@
                      </font>
                   </JFXButton>
                   <JFXButton fx:id="btnCoach" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="53.0" onAction="#consulterCoach" prefHeight="38.0" prefWidth="179.0" text="Coach">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="179.0" text="Produits">
                      <font>
                         <Font size="16.0" />
                      </font>

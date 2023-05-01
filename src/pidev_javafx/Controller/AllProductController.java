@@ -258,6 +258,7 @@ public class AllProductController implements Initializable {
 
     @FXML
     private void addprod(ActionEvent event) {
+        
         erreurdate.setText("");
         erreurdesc.setText("");
         erreurnom.setText("");
@@ -356,6 +357,7 @@ public class AllProductController implements Initializable {
 
     @FXML
     private void versajouonclick(ActionEvent event) {
+        
         anchorajoutprod.toFront();
     }
 

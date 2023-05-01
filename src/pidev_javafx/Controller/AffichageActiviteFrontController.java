@@ -343,10 +343,10 @@ AfficherActivite(listAc, flowpane_affich_date);
             v1.getChildren().add(nom_act4);
             Label nom_act2=new Label("\n");
             v1.getChildren().add(nom_act2);
-            
-           if(SessionManager.isStatus()){
+            Participation test=ps.FindPartById(a.getId(), SessionManager.getId());           
+           if(SessionManager.getInstance()!=null){
 
-            Participation test=ps.FindPartById(a.getId(), SessionManager.getId());
+ 
                
                 if(a.getNbrePlace()>0){
                 if(test==null){
@@ -612,7 +612,7 @@ Alert alert = new Alert(AlertType.CONFIRMATION);
                                                 Optional<ButtonType> result = alert.showAndWait();
                                                     if (result.get() == buttonTypeYes){
                                         // code pour le bouton "Oui"
-try{
+                                    try{
                                          FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/Acceuil.fxml"));
                                         Parent root = loader.load();
                                        AcceuilController controller = loader.getController();
@@ -657,7 +657,7 @@ try{
                 }
 
         }
-                
+        if(a.getNbrePlace()>0 || test!=null){        
             v1.setOnMouseClicked(e -> {
                
                    
@@ -689,6 +689,9 @@ try{
                 }
 
             });
+            }else{
+            v1.setPickOnBounds(false);
+            }
 
             flowpane.getChildren().add(v1);
 

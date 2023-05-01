@@ -137,7 +137,7 @@ public class ReservationController implements Initializable {
     
     
 public void showReservation() {
-    if (SessionManager.isStatus()) {
+    if (SessionManager.getInstance()!=null) {
         try {
             Connection cnx = MaConnection.getInstance().getCnx();
             String query = "SELECT * FROM reservation WHERE user_id = ?";
@@ -173,7 +173,7 @@ public void showReservation() {
      
         
      public void showReservation1() {
-    if (SessionManager.isStatus()) {
+    if (SessionManager.getInstance()!=null) {
         reList.removeAll(reList);
         try {
             Connection cnx = MaConnection.getInstance().getCnx();
@@ -208,7 +208,7 @@ public void showReservation() {
 } 
     
 private void Addreservation(Abonnement ab) {
-    if (SessionManager.isStatus()) {
+    if (SessionManager.getInstance()!=null) {
         // Le code pour ajouter une réservation ici
         
     ArrayList<Abonnement> abonnements = new ArrayList<>();

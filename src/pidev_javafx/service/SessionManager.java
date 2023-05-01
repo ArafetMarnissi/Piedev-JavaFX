@@ -11,6 +11,7 @@ package pidev_javafx.service;
  */
 public class SessionManager {
     
+    private static SessionManager instance;
     private static int id;
     private static String email;
     private static String role;
@@ -18,9 +19,36 @@ public class SessionManager {
     private static int private_key;
     private static boolean status;
 
+    private SessionManager(int id,String email,String role,String password,String nom,String prenom,int private_key,boolean status) {
+    this.id=id;
+    this.email=email;
+    this.role=role;
+    this.password =password;
+    this.nom=nom;
+    this.prenom =prenom;
+    this.private_key = private_key;
+    this.status=status;
+ 
+    }
+
     
     
-    
+        public static synchronized SessionManager getInstance(int id,String email,String role,String password,String nom,String prenom,int private_key,boolean status) {
+        if (instance == null) {
+            instance = new SessionManager( id, email, role, password, nom, prenom, private_key, status);
+        }
+        return instance;
+    }
+       /*     public static SessionManager getInstance() {
+        if (instance == null) {
+            instance = new SessionManager();
+        }
+        return instance;
+    }*/
+    public static SessionManager EndSession(){
+        instance =null;
+        return instance;
+    }
     
     public static int getId() {
         return id;
@@ -84,6 +112,14 @@ public class SessionManager {
 
     public static void setStatus(boolean status) {
         SessionManager.status = status;
+    }
+
+    public static SessionManager getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(SessionManager instance) {
+        SessionManager.instance = instance;
     }
     
     

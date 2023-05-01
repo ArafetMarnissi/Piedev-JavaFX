@@ -207,8 +207,9 @@ public class ListeCoachsController implements Initializable {
                         v1.getChildren().add(nom_act4);
                         Label nom_act2=new Label("\n");
                         v1.getChildren().add(nom_act2);
-                        if(SessionManager.isStatus()){
-                        Participation test=ps.FindPartById(a.getId(), SessionManager.getId());
+                    Participation test=ps.FindPartById(a.getId(), SessionManager.getId());
+                        if(SessionManager.getInstance()!=null){
+
                         if(a.getNbrePlace()>0){
                        if(test==null){
                         Button btn=new Button("Participer");
@@ -468,9 +469,10 @@ public class ListeCoachsController implements Initializable {
 
 
                                             }
+                        if(a.getNbrePlace()>0 || test!=null){
                         v1.setOnMouseClicked(e -> {
 
-                                try{
+                                
 
                                     int random_int = (int)Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
                                     String newFileName = random_int+"-qrCode.png";
@@ -489,18 +491,38 @@ public class ListeCoachsController implements Initializable {
                                         System.out.println(ex.getMessage());
                                     }
 
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
-                                    Parent root = loader.load();
-                                    AffichageActiviteFrontController mcc = loader.getController();
-                                    mcc.recupDataD(a,newFileName);
-                                    mcc.anchorPane_affich_details_acts_front.toFront();
-                                    flowpane_acts_coach.getScene().setRoot(root);
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/DashbordFront.fxml"));
+                    Parent root = loader.load();
+                    DashbordFrontController controller = loader.getController();
+                    
+                    try {
+                        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/AffichageActiviteFront.fxml"));
+                        Pane autreInterface = loader2.load();
+                        AffichageActiviteFrontController mcc = loader2.getController();
+                        mcc.recupDataD(a,newFileName);
+                        mcc.anchorPane_affich_details_acts_front.toFront();
+                        Region parent = (Region) loader2.getRoot();
+                        parent.prefWidthProperty().bind(controller.PaneContent.widthProperty());
+                        parent.prefHeightProperty().bind(controller.PaneContent.heightProperty());
+                        
+                        controller.PaneContent.getChildren().setAll(autreInterface);
+                        
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    flowpane_acts_coach.getScene().setRoot(root);
+                    
+                    
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-                                }catch(IOException ex){
-                                    Logger.getLogger(AffichageActiviteFrontController.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-
-                        });
+             });
+                        }else{
+                        v1.setPickOnBounds(false);
+                        }
                         flowpane_acts_coach.getChildren().add(v1);
                         flowpane_acts_coach.setMargin(v1,new Insets(5,5,5,5));
 

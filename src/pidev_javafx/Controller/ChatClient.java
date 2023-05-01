@@ -36,7 +36,7 @@ public class ChatClient extends Application {
         root.setCenter(chatLog);
         root.setBottom(messageInput);
         root.setRight(sendButton);
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 478.4, 181.6);
         primaryStage.setScene(scene);
         primaryStage.show();
         setUpNetworking();
@@ -44,8 +44,15 @@ public class ChatClient extends Application {
             out.println(messageInput.getText());
             
             messageInput.setText(SessionManager.getNom());
+            if(SessionManager.getRole().equals("[\"ROLE_ADMIN\"]"))
+            {
+                messageInput.setText("admin : ");
+            }
+            else 
+            {
+                messageInput.setText("client : "); 
+            }
             
-            messageInput.setText("");
             
         });
     }
