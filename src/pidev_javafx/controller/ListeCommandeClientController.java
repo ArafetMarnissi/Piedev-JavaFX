@@ -241,13 +241,26 @@ public class ListeCommandeClientController implements Initializable {
         long diffInMinutes = duration.toMinutes();
 
 if (Math.abs(diffInMinutes) > 60) {
-    
-        Alert confirmation = new Alert(Alert.AlertType.ERROR);
-        confirmation.setTitle("Erreur");
-        confirmation.setHeaderText(" Vous ne pouvez pas modifer cette commande");
-        Optional<ButtonType> result = confirmation.showAndWait();    
-    }
-    else{
+
+ Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erreur de modification");
+                                alert.setHeaderText("Vous ne pouvez pas modifer cette commande");
+                                alert.setContentText("");
+                                Font font = Font.font("Verdana",FontWeight.BOLD, 16);
+
+                            ButtonType buttonTypeNo = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().setAll(buttonTypeNo);
+                            alert.getDialogPane().setStyle("-fx-background-color: #FFFFFF;");
+                            Button buttonNo = (Button) alert.getDialogPane().lookupButton(buttonTypeNo);
+                                                buttonNo.setStyle("-fx-text-fill:#ffffff; -fx-background-color: #f00020; -fx-background-radius: 25px;"
+                                                        + " -fx-min-width: 130px;\n" +
+                                    "    -fx-max-width: 130px;\n" +
+                                    "    -fx-min-height: 40px;\n" +
+                                    "    -fx-max-height: 40px;");
+                                                    alert.setContentText(null);
+                                                Optional<ButtonType> result = alert.showAndWait();
+
+}else{
         setDataCommandeModifer(tableCommande.getSelectionModel().getSelectedItem());
        PaneModiferCommande.toFront();
 }

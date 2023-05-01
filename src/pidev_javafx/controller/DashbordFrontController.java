@@ -143,6 +143,21 @@ public class DashbordFrontController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
+                //////////////////////
+                
+                        menu.setOnMouseEntered(e->{
+            menu.setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        });
+            menu.setOnMouseExited(event -> {
+            menu.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+       });
+               Panier.setOnMouseEntered(e->{
+            Panier.setStyle("-fx-scale-x: 1.5; -fx-scale-y: 1.5; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        });
+            Panier.setOnMouseExited(event -> {
+            Panier.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+       });     
+           
 ///Panier///
 
     afficherPanier();

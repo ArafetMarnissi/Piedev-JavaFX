@@ -87,6 +87,37 @@ public class DashbordBackController implements Initializable {
         LabelAdresse.setText(SessionManager.getEmail());
         LabelNomPrenom.setText(SessionManager.getNom()+ " " + SessionManager.getPrenom());
         
+                        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/StatsAbo.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        ///////////////////////////////
+        //hover effect
+                menu.setOnMouseEntered(e->{
+            menu.setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        });
+            menu.setOnMouseExited(event -> {
+            menu.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+       });
+               profile.setOnMouseEntered(e->{
+            profile.setStyle("-fx-scale-x: 1.5; -fx-scale-y: 1.5; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+        });
+            profile.setOnMouseExited(event -> {
+            profile.setStyle("-fx-scale-x: 1; -fx-scale-y: 1; -fx-transition: -fx-scale-x 0.3s, -fx-scale-y 0.3s; -fx-background-color: #AED6F1; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+       });     
+           
+        
         /////////all Slide Bar//////////       
 pane1.setVisible(false);
 hideMenuPane();
