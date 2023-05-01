@@ -342,5 +342,22 @@ private void Listabonnement(ActionEvent event) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void AdminReclamation(ActionEvent event) {
+                      
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/FXMLreclamationadmin.fxml"));
+            Pane autreInterface = loader.load();
+            
+            Region parent = (Region) loader.getRoot();
+            
+            parent.prefWidthProperty().bind(PaneContent.widthProperty());
+            parent.prefHeightProperty().bind(PaneContent.heightProperty());
+            PaneContent.getChildren().setAll(autreInterface);
+        } catch (IOException ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
  
 }

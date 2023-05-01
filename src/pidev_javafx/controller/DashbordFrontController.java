@@ -120,6 +120,10 @@ public class DashbordFrontController implements Initializable {
     private ImageView imgMonCompte;
     @FXML
     private ImageView imgSupport;
+    @FXML
+    private JFXButton reclamtionFxId;
+    @FXML
+    private JFXButton reponsesFxId;
     
   
     /**
@@ -652,6 +656,40 @@ private void ConsulterMesCommandes(ActionEvent event) {
             PaneContent.getChildren().setAll(autreInterface);
         } catch (IOException ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void consulterReclamation(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/FXMLreclamationuser.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void getResponses(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev_javafx/gui/FXMLrecalamtionuserreponse.fxml"));
+            Pane autreInterface = loader.load();
+            
+        Insets insets = new Insets(0);
+        autreInterface.setPadding(insets);
+            
+            PaneContent.getChildren().setAll(autreInterface);
+            PaneContent.setPadding(insets);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     
